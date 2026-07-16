@@ -1,0 +1,39 @@
+<!-- @dsCard group="Components" viewport="700x430" name="Content — Video, Post, Iteration" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  body { margin: 0; background: var(--color-bg); font-family: var(--font-sans); color: var(--color-fg); padding: 24px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+  const { VideoCard, PostCard, IterationCard } = window.MehmetErgulDesignSystem_61b8ed;
+  function Demo() {
+    return (
+      <div className="grid">
+        <VideoCard title="Designing an AI annotation tool in 12 weeks" channel="Mehmet Ergul"
+          meta="24K views · 2 weeks ago" duration="14:22" badge="New"
+          thumb="radial-gradient(120% 100% at 30% 20%, #2a2320, #0c0c0c)" />
+        <PostCard category="Design Systems" title="Approaching Design Systems in a Scale-up"
+          excerpt="Most teams invest in a design system to improve UX. That's the wrong reason."
+          date="June 2023" readingTime="8 min read" tone="editorial"
+          cover="radial-gradient(120% 100% at 70% 30%, #241f2a, #0c0c0c)" />
+        <IterationCard label="Compact toolbar" version="v3" status="current" current
+          note="Collapsed secondary actions into an overflow menu."
+          art="linear-gradient(135deg,#20262a,#0c0c0c)" />
+      </div>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById("root")).render(<Demo />);
+</script>
+</body>
+</html>

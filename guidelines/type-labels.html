@@ -1,0 +1,26 @@
+<!-- @dsCard group="Type" viewport="700x200" name="Labels & data" subtitle="Uppercase wide-tracked eyebrows; tabular mono for live data" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; background: var(--color-bg); font-family: var(--font-sans); padding: 26px; }
+  .stack { display: flex; flex-direction: column; gap: 18px; }
+  .row { display: flex; align-items: baseline; gap: 16px; }
+  .meta { color: var(--color-fg-subtle); font-size: 11px; font-family: var(--font-mono); }
+  .eyebrow { font-size: var(--text-sm); text-transform: uppercase; letter-spacing: var(--tracking-widest); color: var(--color-fg-muted); }
+  .issue { font-size: var(--text-2xs); font-weight: 500; text-transform: uppercase; letter-spacing: var(--tracking-wider); color: var(--text-accent); }
+  .nav { font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--tracking-wider); color: var(--color-fg); }
+  .mono { font-family: var(--font-mono); font-size: 20px; color: var(--color-fg-subtle); font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+  <div class="stack">
+    <div class="row"><span class="eyebrow">Recent work</span><span class="meta">section label · 0.18em</span></div>
+    <div class="row"><span class="issue">Design Leadership</span><span class="meta">issue label · rust · 0.12em</span></div>
+    <div class="row"><span class="nav">work&nbsp;&nbsp;thoughts&nbsp;&nbsp;about</span><span class="meta">nav · 12px · 0.12em</span></div>
+    <div class="row"><span class="mono">03mo 12d 06h</span><span class="meta">data · mono · tabular</span></div>
+  </div>
+</body>
+</html>

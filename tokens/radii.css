@@ -1,0 +1,35 @@
+/* Radii, borders & shadows.
+   Corners are restrained: small radius on media, pill on chips/CTAs,
+   roomy radius on cards. Shadows are deep and soft (dark UI) — the lift
+   on a card is felt more through borders brightening than through shadow. */
+
+:root {
+  /* ——— Corner radii ——— */
+  --radius-xs: 2px;      /* media frames (rounded-sm) */
+  --radius-sm: 8px;      /* small controls, select */
+  --radius-md: 12px;     /* thought section cards */
+  --radius-lg: 16px;     /* glass header, processes cards */
+  --radius-xl: 18px;     /* article cards (1.1rem) */
+  --radius-2xl: 22px;    /* large article diagram frames */
+  --radius-pill: 9999px; /* chips, CTA buttons */
+
+  /* ——— Border widths ——— */
+  --border-hairline: 1px;
+  --border-accent: 3px;  /* rust rule on ledes / pullquotes */
+
+  /* ——— Translucent borders (glass surfaces over imagery) ——— */
+  --border-glass: 1px solid rgba(255, 255, 255, 0.1); /* @kind other */
+  --border-glass-strong: 1px solid rgba(255, 255, 255, 0.16); /* @kind other */
+
+  /* ——— Shadows ——— */
+  --shadow-header: 0 8px 40px rgba(0, 0, 0, 0.35);
+  --shadow-card: 0 16px 44px rgba(0, 0, 0, 0.1);
+  --shadow-card-hover: 0 28px 70px rgba(0, 0, 0, 0.35);
+  --shadow-float: 0 20px 56px rgba(0, 0, 0, 0.12);
+
+  /* Inverted (white) article cards carry a hairline + soft float */
+  --shadow-inverted-card: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 16px 44px rgba(0, 0, 0, 0.1);
+
+  /* ——— Glass blur (used on the fixed header) ——— */
+  --blur-glass: blur(16px) saturate(150%); /* @kind other */
+}

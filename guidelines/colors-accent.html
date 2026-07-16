@@ -1,0 +1,26 @@
+<!-- @dsCard group="Colors" viewport="700x170" name="Accent & status" subtitle="A single warm rust for editorial; green only for live status" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; background: var(--color-bg); font-family: var(--font-sans); padding: 22px; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .sw { width: 110px; }
+  .chip { height: 64px; border-radius: var(--radius-sm); border: 1px solid var(--color-border); }
+  .name { color: var(--color-fg); font-size: 12px; margin-top: 8px; }
+  .hex { color: var(--color-fg-subtle); font-size: 11px; font-family: var(--font-mono); margin-top: 2px; }
+  .note { color: var(--color-fg-subtle); font-size: 11px; margin-top: 2px; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="sw"><div class="chip" style="background:var(--rust-600)"></div><div class="name">rust-600</div><div class="hex">#a8480f</div></div>
+    <div class="sw"><div class="chip" style="background:var(--rust-500)"></div><div class="name">rust-500</div><div class="hex">#c0551a</div><div class="note">editorial accent</div></div>
+    <div class="sw"><div class="chip" style="background:var(--rust-300)"></div><div class="name">rust-300</div><div class="hex">#e8a080</div><div class="note">on dark phase</div></div>
+    <div class="sw"><div class="chip" style="background:var(--signal-orange)"></div><div class="name">signal-orange</div><div class="hex">#f97316</div><div class="note">category eyebrow</div></div>
+    <div class="sw"><div class="chip" style="background:var(--live-green)"></div><div class="name">live-green</div><div class="hex">#4ade80</div><div class="note">live status</div></div>
+  </div>
+</body>
+</html>

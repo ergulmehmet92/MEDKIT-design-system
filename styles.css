@@ -1,0 +1,10 @@
+/* Mehmet Ergul Design System — global entry point.
+   Consumers link THIS file. It is a manifest of @imports only;
+   every token, font, and primitive style lives in an imported file. */
+
+@import "./tokens/fonts.css";
+@import "./tokens/colors.css";
+@import "./tokens/typography.css";
+@import "./tokens/spacing.css";
+@import "./tokens/radii.css";
+@import "./tokens/motion.css";

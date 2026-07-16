@@ -1,0 +1,23 @@
+<!-- @dsCard group="Spacing" viewport="700x210" name="Elevation & shadow" subtitle="Deep soft shadows on dark; lift felt through brightening borders" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; background: var(--color-bg); font-family: var(--font-sans); padding: 26px; }
+  .row { display: flex; gap: 22px; flex-wrap: wrap; }
+  .col { display: flex; flex-direction: column; gap: 10px; }
+  .box { width: 150px; height: 86px; border-radius: var(--radius-lg); background: var(--color-bg-elevated); border: 1px solid var(--color-border); }
+  .box.white { background: var(--surface-inverted); border: 1px solid rgba(0,0,0,0.08); }
+  .lab { color: var(--color-fg-muted); font-size: 11px; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="col"><div class="box" style="box-shadow:var(--shadow-card-hover)"></div><div class="lab">card-hover</div></div>
+    <div class="col"><div class="box" style="box-shadow:var(--shadow-header)"></div><div class="lab">header</div></div>
+    <div class="col"><div class="box white" style="box-shadow:var(--shadow-inverted-card)"></div><div class="lab">inverted-card</div></div>
+  </div>
+</body>
+</html>

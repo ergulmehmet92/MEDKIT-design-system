@@ -1,0 +1,25 @@
+/* Motion — one signature curve does most of the work: a sharp ease-out-expo
+   that settles slowly. Entrances are fade + rise (translateY). Hovers are
+   opacity / colour shifts, never scale-down. Media zooms a hair on hover. */
+
+:root {
+  /* ——— Easing ——— */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1); /* @kind other */
+  --ease-standard: cubic-bezier(0.42, 0, 0.58, 1); /* @kind other */
+
+  /* ——— Durations ——— */
+  --duration-fast: 0.3s; /* @kind other */
+  --duration-medium: 0.5s; /* @kind other */
+  --duration-slow: 0.8s; /* @kind other */
+  --duration-reveal: 1s; /* @kind other */
+
+  /* ——— Composed transitions ——— */
+  --transition-color: color var(--duration-fast) var(--ease-out-expo);
+  --transition-border: border-color var(--duration-fast) var(--ease-out-expo);
+  --transition-hover: all var(--duration-medium) var(--ease-out-expo);
+
+  /* Entrance offset (fade-up) */
+  --reveal-offset: 24px;
+  /* Media hover zoom */
+  --media-hover-scale: 1.02; /* @kind other */
+}

@@ -1,0 +1,35 @@
+<!-- @dsCard group="Colors" viewport="700x210" name="Semantic surfaces" subtitle="Background, elevated, panel and the inverted white editorial card" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; background: var(--color-bg); font-family: var(--font-sans); padding: 22px; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .tile { border-radius: var(--radius-md); border: 1px solid var(--color-border); padding: 16px; min-height: 96px; display: flex; flex-direction: column; justify-content: space-between; }
+  .t-name { font-size: 12px; }
+  .t-var { font-size: 11px; font-family: var(--font-mono); opacity: 0.6; margin-top: 4px; }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="tile" style="background:var(--color-bg)">
+      <span style="color:var(--color-fg);font-size:13px">Page</span>
+      <div><div class="t-name" style="color:var(--color-fg-muted)">--color-bg</div><div class="t-var" style="color:var(--color-fg)">#0e0e0e</div></div>
+    </div>
+    <div class="tile" style="background:var(--color-bg-elevated)">
+      <span style="color:var(--color-fg);font-size:13px">Elevated</span>
+      <div><div class="t-name" style="color:var(--color-fg-muted)">--color-bg-elevated</div><div class="t-var" style="color:var(--color-fg)">#1a1a1a</div></div>
+    </div>
+    <div class="tile" style="background:var(--color-bg-panel)">
+      <span style="color:var(--color-fg);font-size:13px">Panel</span>
+      <div><div class="t-name" style="color:var(--color-fg-muted)">--color-bg-panel</div><div class="t-var" style="color:var(--color-fg)">#121212</div></div>
+    </div>
+    <div class="tile" style="background:var(--surface-inverted)">
+      <span style="color:var(--ink-950);font-size:13px">Inverted</span>
+      <div><div class="t-name" style="color:#666">--surface-inverted</div><div class="t-var" style="color:var(--ink-950)">#ffffff</div></div>
+    </div>
+  </div>
+</body>
+</html>

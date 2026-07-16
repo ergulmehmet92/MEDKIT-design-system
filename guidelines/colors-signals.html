@@ -1,0 +1,25 @@
+<!-- @dsCard group="Colors" viewport="700x180" name="Domain signals" subtitle="One disciplined accent per content stream — differentiate by value, not new hues" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; background: var(--color-bg); font-family: var(--font-sans); padding: 24px; }
+  .row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .sig { flex: 1; min-width: 150px; border-radius: var(--radius-md); border: 1px solid var(--color-border); background: var(--color-bg-elevated); padding: 16px; }
+  .dot { width: 28px; height: 28px; border-radius: 50%; }
+  .name { color: var(--color-fg); font-size: 13px; font-weight: 600; margin-top: 12px; }
+  .use { color: var(--color-fg-muted); font-size: 12px; margin-top: 2px; }
+  .hex { color: var(--color-fg-subtle); font-size: 11px; font-family: var(--font-mono); margin-top: 6px; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="sig"><div class="dot" style="background:var(--signal-editorial)"></div><div class="name">Editorial</div><div class="use">Writing · thoughts</div><div class="hex">#c0551a</div></div>
+    <div class="sig"><div class="dot" style="background:var(--signal-content)"></div><div class="name">Content</div><div class="use">Video · channel</div><div class="hex">#e08a1f</div></div>
+    <div class="sig"><div class="dot" style="background:var(--signal-craft)"></div><div class="name">Craft</div><div class="use">Design iterations</div><div class="hex">#7d8aa0</div></div>
+    <div class="sig"><div class="dot" style="background:var(--signal-live)"></div><div class="name">Live</div><div class="use">Status only</div><div class="hex">#4ade80</div></div>
+  </div>
+</body>
+</html>

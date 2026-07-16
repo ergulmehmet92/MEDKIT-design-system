@@ -1,0 +1,27 @@
+<!-- @dsCard group="Type" viewport="700x250" name="Body & editorial" subtitle="UI body vs the larger long-form measure with generous leading" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; background: var(--color-bg); font-family: var(--font-sans); padding: 26px; }
+  .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .meta { color: var(--color-fg-subtle); font-size: 11px; font-family: var(--font-mono); margin-bottom: 8px; }
+  .ui { color: var(--color-fg-muted); font-size: var(--text-sm); line-height: var(--leading-relaxed); }
+  .art { color: var(--color-fg); font-size: var(--text-article); line-height: var(--leading-article); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div>
+      <div class="meta">UI body · 14px · 1.6</div>
+      <p class="ui">An AI-powered production tool for enriching free-text data, designed and shipped as a headline platform feature in 12 weeks.</p>
+    </div>
+    <div>
+      <div class="meta">Editorial · 22px · 1.72</div>
+      <p class="art">Most teams invest in a design system to improve UX. That's the wrong reason, and it's why most of them fail.</p>
+    </div>
+  </div>
+</body>
+</html>

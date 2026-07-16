@@ -1,0 +1,145 @@
+/* ============================================================================
+   COLORS — Mehmet Ergul Design System
+   ----------------------------------------------------------------------------
+   A monochrome foundation that scales across surfaces and content domains.
+
+   Two structural ideas make this system extensible beyond the portfolio:
+
+   1. DUAL TONE — every surface is one of two themes:
+        [data-theme="ink"]   near-black canvas (default — app, video, hero)
+        [data-theme="paper"] warm off-white canvas (reading, blog, docs)
+      Components read SEMANTIC aliases (--color-bg, --color-fg, …) only, so
+      the same component renders correctly in either tone with no props.
+
+   2. DOMAIN SIGNALS — monochrome stays the foundation; a small, disciplined
+      set of desaturated accents lets each content stream carry a signature:
+        editorial (rust)  ·  content/video (amber)  ·  craft/design (steel)
+      plus a single status hue (live green). Never introduce hues outside
+      this set — differentiate with value, not new colors.
+   ========================================================================== */
+
+:root {
+  /* ——— Ink scale (near-black canvas → off-white ink) ——— */
+  --ink-950: #0a0a0a;
+  --ink-900: #0e0e0e;
+  --ink-850: #121212;
+  --ink-800: #1a1a1a;
+  --ink-750: #202020;
+  --ink-700: #2a2a2a;
+  --ink-600: #444444;
+  --ink-500: #666666;
+  --ink-400: #999999;
+  --ink-300: #c2c2c2;
+  --ink-200: #e8e8e8;
+  --ink-100: #f5f5f5;
+  --pure-white: #ffffff;
+
+  /* ——— Paper scale (warm off-whites & warm greys for light tone) ——— */
+  --paper-50: #faf9f7;
+  --paper-100: #f3f1ec;
+  --paper-150: #ece9e2;
+  --paper-200: #e4e0d8;
+  --paper-300: #d6d1c6;
+  --paper-400: #b0aa9d;
+  --paper-500: #847f74;
+  --paper-600: #595550;
+  --paper-700: #38352f;
+
+  /* ——— Warm accent ramp (the editorial rust, anchored at 500) ——— */
+  --rust-700: #8f3d0c;
+  --rust-600: #a8480f;
+  --rust-500: #c0551a; /* anchor */
+  --rust-400: #d4762f;
+  --rust-300: #e8a080;
+  --rust-200: #f2c9b3;
+
+  /* ——— Domain-signal accents (desaturated; one per content stream) ——— */
+  --signal-editorial: #c0551a; /* writing / thoughts — rust */
+  --signal-content: #e08a1f;   /* video / channel — warm amber */
+  --signal-craft: #7d8aa0;     /* design iterations / systems — muted steel */
+  --signal-orange: #f97316;    /* bright category eyebrow (content cards) */
+  --signal-live: #4ade80;      /* status only — "in motion" */
+
+  /* ===== SEMANTIC ALIASES — author UI against these (default = ink) ===== */
+  --color-bg: var(--ink-900);
+  --color-bg-elevated: var(--ink-800);
+  --color-bg-panel: var(--ink-850);
+  --color-bg-deep: var(--ink-950);
+  --color-bg-hover: var(--ink-750);
+
+  --color-fg: var(--ink-100);
+  --color-fg-muted: var(--ink-400);
+  --color-fg-subtle: var(--ink-500);
+
+  --color-border: var(--ink-700);
+  --color-border-hover: var(--ink-600);
+  --color-border-glass: rgba(255, 255, 255, 0.12);
+
+  /* Opposite-tone card painted INSIDE this theme (e.g. white diagram on dark) */
+  --surface-contrast: var(--pure-white);
+  --on-contrast: var(--ink-950);
+
+  /* Generic accent (defaults to editorial); domains re-point it locally */
+  --accent: var(--signal-editorial);
+  --accent-on: var(--ink-100);
+
+  --selection-bg: var(--ink-100);
+  --selection-fg: var(--ink-900);
+
+  /* Back-compat aliases (resolve per-theme at use site) */
+  --text-accent: var(--accent);
+  --text-accent-dark: var(--rust-300);
+  --surface-inverted: var(--surface-contrast);
+  --color-accent: var(--ink-200);
+
+  color-scheme: dark;
+}
+
+/* ——— INK theme (explicit; identical to root default) ——— */
+[data-theme="ink"] {
+  --color-bg: var(--ink-900);
+  --color-bg-elevated: var(--ink-800);
+  --color-bg-panel: var(--ink-850);
+  --color-bg-deep: var(--ink-950);
+  --color-bg-hover: var(--ink-750);
+  --color-fg: var(--ink-100);
+  --color-fg-muted: var(--ink-400);
+  --color-fg-subtle: var(--ink-500);
+  --color-border: var(--ink-700);
+  --color-border-hover: var(--ink-600);
+  --color-border-glass: rgba(255, 255, 255, 0.12);
+  --surface-contrast: var(--pure-white);
+  --on-contrast: var(--ink-950);
+  --accent: var(--signal-editorial);
+  --accent-on: var(--ink-100);
+  --selection-bg: var(--ink-100);
+  --selection-fg: var(--ink-900);
+  color-scheme: dark;
+}
+
+/* ——— PAPER theme (warm light tone for reading / blog / docs) ——— */
+[data-theme="paper"] {
+  --color-bg: var(--paper-50);
+  --color-bg-elevated: var(--pure-white);
+  --color-bg-panel: var(--paper-100);
+  --color-bg-deep: var(--paper-200);
+  --color-bg-hover: var(--paper-100);
+  --color-fg: var(--ink-950);
+  --color-fg-muted: var(--paper-600);
+  --color-fg-subtle: var(--paper-500);
+  --color-border: var(--paper-200);
+  --color-border-hover: var(--paper-300);
+  --color-border-glass: rgba(10, 10, 10, 0.1);
+  --surface-contrast: var(--ink-900);
+  --on-contrast: var(--ink-100);
+  --accent: var(--rust-600);
+  --accent-on: var(--pure-white);
+  --selection-bg: var(--rust-200);
+  --selection-fg: var(--ink-950);
+  color-scheme: light;
+}
+
+::selection {
+  background: var(--selection-bg);
+  color: var(--selection-fg);
+}

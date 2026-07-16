@@ -1,0 +1,50 @@
+/* Typography — Inter throughout, with a deliberately light display register.
+   The brand voice is quiet: large headings sit at weight 300 (light) with
+   tight tracking; labels are small, uppercase, wide-tracked greys.
+   Body copy in editorial runs large (~1.375rem) with generous leading. */
+
+:root {
+  /* ——— Weights ——— */
+  --weight-light: 300;   /* hero + section display */
+  --weight-regular: 400; /* body */
+  --weight-medium: 500;  /* eyebrow labels */
+  --weight-semibold: 600;/* card titles, CTAs */
+  --weight-bold: 700;    /* article H1 */
+
+  /* ——— Type scale (rem) ——— */
+  --text-2xs: 0.6875rem; /* 11px — issue labels */
+  --text-xs: 0.75rem;    /* 12px — eyebrow / chips */
+  --text-sm: 0.875rem;   /* 14px — meta, secondary body */
+  --text-base: 1rem;     /* 16px */
+  --text-lg: 1.125rem;   /* 18px — card titles */
+  --text-xl: 1.25rem;    /* 20px */
+  --text-2xl: 1.5rem;    /* 24px — article H2 */
+  --text-3xl: 1.875rem;  /* 30px */
+  --text-4xl: 2.25rem;   /* 36px */
+  --text-5xl: 3rem;      /* 48px */
+  --text-6xl: 3.75rem;   /* 60px — hero / contact display */
+
+  /* Editorial body — long-form measure runs larger than UI */
+  --text-article: 1.375rem;
+
+  /* ——— Fluid display steps (hero / page titles) — scale with viewport ——— */
+  --display-sm: clamp(1.75rem, 1.2rem + 2.4vw, 2.75rem); /* @kind other */
+  --display-md: clamp(2.25rem, 1.4rem + 3.6vw, 3.5rem); /* @kind other */
+  --display-lg: clamp(2.5rem, 1.2rem + 5vw, 4.25rem); /* @kind other */
+  --display-xl: clamp(3rem, 1rem + 7vw, 5.5rem); /* @kind other */
+
+  /* ——— Line height ——— */
+  --leading-tight: 1.08;   /* display H1 */
+  --leading-snug: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.6;
+  --leading-article: 1.72;  /* long-form body */
+
+  /* ——— Letter spacing ——— */
+  --tracking-tight: -0.03em; /* large display */
+  --tracking-snug: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.04em;   /* chips */
+  --tracking-wider: 0.12em;  /* nav, eyebrows */
+  --tracking-widest: 0.18em; /* hero kicker, section labels */
+}

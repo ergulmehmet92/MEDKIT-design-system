@@ -1,0 +1,16 @@
+/* Typeface — Inter.
+   Inter is the real typeface used across the product (loaded via next/font).
+   It is shipped here from Google Fonts; no substitution was made. */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..700;1,14..32,300..600&display=swap");
+
+:root {
+  /* Raw family stacks */
+  --font-inter: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Menlo", "Consolas", monospace;
+
+  /* Semantic role aliases (everything is Inter; mono used for live timers/data) */
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-inter);
+  --font-body: var(--font-inter);
+}
