@@ -1,0 +1,67 @@
+<!-- @dsCard group="Components" viewport="700x320" name="Charts — Line, Bar, Donut, DataTable" -->
+<!-- Static specimen (token CSS only) so this card renders even before
+     _ds_bundle.js is regenerated to include the chart components. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  body { margin: 0; background: var(--color-bg); font-family: var(--font-sans); color: var(--color-fg); padding: 24px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 22px; align-items: start; }
+  .cell { border: 1px solid var(--color-border); background: var(--color-bg-elevated); border-radius: var(--radius-lg); padding: 16px; }
+  .eyebrow { font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: var(--tracking-widest); color: var(--color-fg-subtle); margin-bottom: 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: var(--text-xs); }
+  thead tr { border-bottom: 1px solid var(--color-border); }
+  th { text-align: left; padding: 0 10px 6px 0; font-weight: 400; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-fg-subtle); }
+  th.r, td.r { text-align: right; }
+  tbody tr { border-bottom: 1px solid color-mix(in srgb, var(--color-border) 60%, transparent); }
+  td { padding: 7px 10px 7px 0; }
+  .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; color: var(--color-fg-muted); }
+  .up { color: var(--signal-live); } .down { color: var(--signal-danger); }
+  .legend { display: flex; flex-direction: column; gap: 6px; font-size: var(--text-xs); color: var(--color-fg-muted); margin-top: 10px; }
+  .legend span { display: flex; align-items: center; gap: 8px; }
+  .dot { width: 9px; height: 9px; border-radius: 3px; }
+</style>
+</head>
+<body>
+  <div class="cell">
+    <div class="eyebrow">LineChart</div>
+    <svg viewBox="0 0 300 110" style="width:100%;display:block">
+      <polyline points="10,80 300,80" fill="none" stroke="var(--ink-600)" stroke-width="1" stroke-dasharray="4 5"/>
+      <polyline points="10,55 55,62 100,64 145,56 190,50 235,42 290,30" fill="none" stroke="var(--ink-200)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="290" cy="30" r="3.5" fill="var(--pure-white)"/>
+      <text x="296" y="76" font-size="9" fill="var(--ink-500)" text-anchor="end" font-family="Inter,sans-serif">avg</text>
+    </svg>
+    <div class="eyebrow" style="margin-top:16px">DataTable</div>
+    <table>
+      <thead><tr><th>Ticker</th><th>Instrument</th><th class="r">Weight</th><th class="r">Δ 1d</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">WGLD</td><td>Gold ETC</td><td class="r mono">12.0%</td><td class="r mono up">+1.4%</td></tr>
+        <tr><td class="mono">CEG</td><td>Constellation Energy</td><td class="r mono">4.7%</td><td class="r mono down">−2.1%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="cell">
+    <div class="eyebrow">DonutChart · BarChart</div>
+    <svg width="110" height="110" viewBox="0 0 110 110" style="transform:rotate(-90deg)">
+      <circle cx="55" cy="55" r="47" fill="none" stroke="var(--color-bg-hover)" stroke-width="14"/>
+      <circle cx="55" cy="55" r="47" fill="none" stroke="var(--ink-200)" stroke-width="14" stroke-dasharray="124 295"/>
+      <circle cx="55" cy="55" r="47" fill="none" stroke="var(--ink-400)" stroke-width="14" stroke-dasharray="40 255" stroke-dashoffset="-127"/>
+      <circle cx="55" cy="55" r="47" fill="none" stroke="var(--ink-500)" stroke-width="14" stroke-dasharray="82 213" stroke-dashoffset="-170"/>
+      <circle cx="55" cy="55" r="47" fill="none" stroke="var(--ink-600)" stroke-width="14" stroke-dasharray="37 258" stroke-dashoffset="-255"/>
+    </svg>
+    <div class="legend">
+      <span><span class="dot" style="background:var(--ink-200)"></span>strong<span class="mono" style="margin-left:auto">6</span></span>
+      <span><span class="dot" style="background:var(--ink-400)"></span>mixed<span class="mono" style="margin-left:auto">2</span></span>
+      <span><span class="dot" style="background:var(--ink-500)"></span>downtrend<span class="mono" style="margin-left:auto">4</span></span>
+    </div>
+    <div style="margin-top:14px">
+      <div style="display:flex;justify-content:space-between;font-size:var(--text-xs);margin-bottom:4px"><span>Cash</span><span class="mono">83.9% → 40%</span></div>
+      <div style="position:relative;height:9px;border-radius:4px;background:var(--color-bg-hover);overflow:hidden">
+        <div style="position:absolute;inset:0 auto 0 0;width:84%;background:var(--rust-500);border-radius:0 4px 4px 0"></div>
+        <div style="position:absolute;top:0;bottom:0;left:40%;width:2px;background:var(--color-fg)"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

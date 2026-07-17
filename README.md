@@ -66,7 +66,7 @@ How the system writes.
 - `components/feedback/` — **LiveBadge** (in-motion pulse + tabular timer)
 - `components/forms/` — **Input** (field / textarea), **Select** (dropdown)
 - `components/content/` — **VideoCard** (video/content), **PostCard** (blog), **IterationCard** + **VersionBadge** (design iterations), **PullQuote** (editorial excerpt)
-- `components/data/` — **Panel** (labeled dashboard surface), **StatTile** (KPI), **TrackBar** (meter with target tick), **StatusPill** (machine-state pill). Chart-ink + data-table specs live in `guidelines/chart-ink.html` and `guidelines/data-tables.html`.
+- `components/data/` — **Panel** (labeled dashboard surface), **StatTile** (KPI), **TrackBar** (meter with target tick), **StatusPill** (machine-state pill), **LineChart** / **BarChart** / **DonutChart** (the Chart.js line/bar/doughnut taxonomy in chart ink), **DataTable** (finance-grade table: mono numerics, delta tint, sort, footer). Chart-ink + data-table specs live in `guidelines/chart-ink.html` and `guidelines/data-tables.html`.
 
 **UI kits**
 - `ui_kits/portfolio/` — a full click-through personal-portfolio example: Home (hero · recent work · collaborators · processes · thoughts · contact), Thoughts index, About, and a cinematic Article reader.
