@@ -4,10 +4,13 @@ import React, { useState } from "react";
  * Card — surface container with the brand's hairline-border hover treatment.
  * Theme-aware: "elevated" and "panel" read semantic tokens and adapt to ink
  * or paper. "contrast" paints the opposite tone (a white diagram card on a
- * dark page, or an ink callout on a light page).
+ * dark page, or an ink callout on a light page). Renders as a link when
+ * `href` (or a custom `as`, e.g. a router Link) is given.
  */
 export function Card({
   children,
+  as,
+  href,
   surface = "elevated",
   hoverable = true,
   lift = false,
@@ -47,8 +50,11 @@ export function Card({
 
   const shouldLift = (lift || surface === "panel") && lit;
 
+  const Tag = as || (href ? "a" : "div");
+
   return (
-    <div
+    <Tag
+      href={href}
       onClick={onClick}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
@@ -58,13 +64,15 @@ export function Card({
         transform: shouldLift ? "translateY(-2px)" : "none",
         transition:
           "var(--transition-border), transform var(--duration-medium) var(--ease-out-expo), box-shadow var(--duration-medium) var(--ease-out-expo)",
-        cursor: onClick ? "pointer" : "default",
+        cursor: onClick || href ? "pointer" : "default",
+        display: "block",
+        textDecoration: "none",
         ...surfaces[surface],
         ...style,
       }}
       {...rest}
     >
       {children}
-    </div>
+    </Tag>
   );
 }

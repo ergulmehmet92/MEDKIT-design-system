@@ -20,6 +20,7 @@
 
 :root {
   /* ——— Ink scale (near-black canvas → off-white ink) ——— */
+  --ink-50: #fafafa;
   --ink-950: #0a0a0a;
   --ink-900: #0e0e0e;
   --ink-850: #121212;
@@ -57,8 +58,10 @@
   --signal-editorial: #c0551a; /* writing / thoughts — rust */
   --signal-content: #e08a1f;   /* video / channel — warm amber */
   --signal-craft: #7d8aa0;     /* design iterations / systems — muted steel */
-  --signal-orange: #f97316;    /* bright category eyebrow (content cards) */
+  --signal-orange: #f97316;    /* DEPRECATED — overlaps the content amber; use var(--accent) under [data-stream] instead. Removed once no consumer remains. */
   --signal-live: #4ade80;      /* status only — "in motion" */
+  --signal-warn: #e08a1f;      /* status only — warnings/stale/near (amber value, decoupled from the content stream) */
+  --signal-danger: #d4762f;    /* status only — errors/destructive (rust-400 value; no new hue) */
 
   /* ===== SEMANTIC ALIASES — author UI against these (default = ink) ===== */
   --color-bg: var(--ink-900);
@@ -67,9 +70,9 @@
   --color-bg-deep: var(--ink-950);
   --color-bg-hover: var(--ink-750);
 
-  --color-fg: var(--ink-100);
-  --color-fg-muted: var(--ink-400);
-  --color-fg-subtle: var(--ink-500);
+  --color-fg: var(--ink-50);
+  --color-fg-muted: var(--ink-300);
+  --color-fg-subtle: var(--ink-400);
 
   --color-border: var(--ink-700);
   --color-border-hover: var(--ink-600);
@@ -102,9 +105,9 @@
   --color-bg-panel: var(--ink-850);
   --color-bg-deep: var(--ink-950);
   --color-bg-hover: var(--ink-750);
-  --color-fg: var(--ink-100);
-  --color-fg-muted: var(--ink-400);
-  --color-fg-subtle: var(--ink-500);
+  --color-fg: var(--ink-50);
+  --color-fg-muted: var(--ink-300);
+  --color-fg-subtle: var(--ink-400);
   --color-border: var(--ink-700);
   --color-border-hover: var(--ink-600);
   --color-border-glass: rgba(255, 255, 255, 0.12);
@@ -125,8 +128,8 @@
   --color-bg-deep: var(--paper-200);
   --color-bg-hover: var(--paper-100);
   --color-fg: var(--ink-950);
-  --color-fg-muted: var(--paper-600);
-  --color-fg-subtle: var(--paper-500);
+  --color-fg-muted: var(--paper-700);
+  --color-fg-subtle: var(--paper-600);
   --color-border: var(--paper-200);
   --color-border-hover: var(--paper-300);
   --color-border-glass: rgba(10, 10, 10, 0.1);

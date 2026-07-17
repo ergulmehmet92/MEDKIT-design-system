@@ -14,7 +14,7 @@ If the user invokes this skill without any other guidance, ask them what they wa
 - `README.md` — full design guide: scaling architecture, content voice, visual foundations, iconography, manifest.
 - `styles.css` — global stylesheet; link it to inherit every token. `@import`s `tokens/*.css`.
 - `tokens/` — colors (dual theme + domain signals), typography, spacing, radii/shadows, motion, fonts (Inter via Google Fonts).
-- `components/` — theme-aware React primitives (Button, Badge, Chip, Card, Avatar, IconButton, SectionLabel, Tabs, Input, Select, LiveBadge) and content components (VideoCard, PostCard, IterationCard, VersionBadge), exported on `window.MehmetErgulDesignSystem_61b8ed` via `_ds_bundle.js`.
+- `components/` — theme-aware React primitives (Button, Badge, Chip, Card, Avatar, IconButton, SectionLabel, Tabs, Input, Select, LiveBadge), content components (VideoCard, PostCard, IterationCard, VersionBadge, PullQuote), and data components (Panel, StatTile, TrackBar, StatusPill), exported on `window.MehmetErgulDesignSystem_61b8ed` via `_ds_bundle.js` (bundle predates the data/PullQuote additions — import those from source until it is regenerated).
 - `guidelines/` — foundation specimen cards.
 - `ui_kits/portfolio/` — a personal-portfolio example (Home, Thoughts, About, Article).
 - `ui_kits/studio/` — multi-domain content hub (Videos, Writing on the paper theme, Design iterations).

@@ -4,6 +4,10 @@ export type CardSurface = "elevated" | "panel" | "contrast" | "bare";
 
 export interface CardProps {
   children: React.ReactNode;
+  /** Element/component to render as (e.g. a router Link). Defaults to "a" when href is set, else "div". */
+  as?: React.ElementType;
+  /** Renders the card as a link. */
+  href?: string;
   /**
    * "elevated" default surface · "panel" recessed body · "contrast" opposite
    * tone (white-on-dark / ink-on-light) · "bare" transparent with hover border.

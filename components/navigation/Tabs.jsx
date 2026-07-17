@@ -1,24 +1,52 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 /**
  * Tabs — the brand's underline navigation. A row of wide-tracked labels with
  * a single moving rule beneath the active one. Used to switch content streams
  * (Videos / Writing / Design) on the studio surface. Controlled or uncontrolled.
  *
+ * Full tablist semantics: roving tabindex, ArrowLeft/Right + Home/End move
+ * focus and selection, `aria-controls` wiring via `idPrefix` (give each panel
+ * `id="{idPrefix}-panel-{id}"` and `aria-labelledby="{idPrefix}-tab-{id}"`).
+ *
  * items: Array<{ id, label, count? }>
  */
-export function Tabs({ items = [], value, defaultValue, onChange, style = {}, ...rest }) {
+export function Tabs({
+  items = [],
+  value,
+  defaultValue,
+  onChange,
+  idPrefix,
+  "aria-label": ariaLabel,
+  style = {},
+  ...rest
+}) {
   const [internal, setInternal] = useState(defaultValue ?? items[0]?.id);
   const active = value ?? internal;
+  const refs = useRef({});
 
-  const select = (id) => {
+  const select = (id, focus = false) => {
     if (value === undefined) setInternal(id);
     onChange && onChange(id);
+    if (focus && refs.current[id]) refs.current[id].focus();
+  };
+
+  const onKeyDown = (e, index) => {
+    const last = items.length - 1;
+    let next = null;
+    if (e.key === "ArrowRight") next = index === last ? 0 : index + 1;
+    else if (e.key === "ArrowLeft") next = index === 0 ? last : index - 1;
+    else if (e.key === "Home") next = 0;
+    else if (e.key === "End") next = last;
+    if (next == null) return;
+    e.preventDefault();
+    select(items[next].id, true);
   };
 
   return (
     <div
       role="tablist"
+      aria-label={ariaLabel}
       style={{
         display: "flex",
         gap: "1.75rem",
@@ -27,21 +55,38 @@ export function Tabs({ items = [], value, defaultValue, onChange, style = {}, ..
       }}
       {...rest}
     >
-      {items.map((it) => {
+      {items.map((it, i) => {
         const on = it.id === active;
-        return <Tab key={it.id} item={it} active={on} onSelect={() => select(it.id)} />;
+        return (
+          <Tab
+            key={it.id}
+            item={it}
+            active={on}
+            idPrefix={idPrefix}
+            tabRef={(el) => {
+              refs.current[it.id] = el;
+            }}
+            onSelect={() => select(it.id)}
+            onKeyDown={(e) => onKeyDown(e, i)}
+          />
+        );
       })}
     </div>
   );
 }
 
-function Tab({ item, active, onSelect }) {
+function Tab({ item, active, idPrefix, tabRef, onSelect, onKeyDown }) {
   const [hover, setHover] = useState(false);
   return (
     <button
+      ref={tabRef}
       role="tab"
+      id={idPrefix ? `${idPrefix}-tab-${item.id}` : undefined}
+      aria-controls={idPrefix ? `${idPrefix}-panel-${item.id}` : undefined}
       aria-selected={active}
+      tabIndex={active ? 0 : -1}
       onClick={onSelect}
+      onKeyDown={onKeyDown}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       style={{

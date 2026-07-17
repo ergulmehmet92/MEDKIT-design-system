@@ -28,7 +28,7 @@ export function LiveBadge({ elapsed = "00mo 00d 00h", label = "live", style = {}
               position: "absolute",
               inset: 0,
               borderRadius: "50%",
-              background: "var(--live-green)",
+              background: "var(--signal-live)",
               opacity: 0.75,
               animation: "me-ping 1.4s cubic-bezier(0,0,0.2,1) infinite",
             }}
@@ -39,7 +39,7 @@ export function LiveBadge({ elapsed = "00mo 00d 00h", label = "live", style = {}
               width: 8,
               height: 8,
               borderRadius: "50%",
-              background: "var(--live-green)",
+              background: "var(--signal-live)",
             }}
           />
         </span>
@@ -49,7 +49,7 @@ export function LiveBadge({ elapsed = "00mo 00d 00h", label = "live", style = {}
             fontSize: "0.625rem",
             textTransform: "uppercase",
             letterSpacing: "var(--tracking-wider)",
-            color: "var(--live-green)",
+            color: "var(--signal-live)",
           }}
         >
           {label}

@@ -1,0 +1,60 @@
+<!-- @dsCard group="Components" viewport="700x300" name="Data — Panel, StatTile, TrackBar, StatusPill" -->
+<!-- Static specimen (token CSS only) so this card renders even before
+     _ds_bundle.js is regenerated to include the data components. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  body { margin: 0; background: var(--color-bg); font-family: var(--font-sans); color: var(--color-fg); padding: 24px; }
+  .grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 16px; }
+  .panel { border: 1px solid var(--color-border); background: var(--color-bg-elevated); border-radius: var(--radius-lg); padding: 20px; }
+  .panel-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; }
+  .eyebrow { font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: var(--tracking-widest); color: var(--color-fg-subtle); }
+  .aside { font-size: var(--text-2xs); color: var(--color-fg-subtle); }
+  .row-label { display: flex; justify-content: space-between; font-size: var(--text-sm); margin-bottom: 6px; }
+  .row-label .num { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-fg-muted); font-variant-numeric: tabular-nums; }
+  .track { position: relative; height: 10px; border-radius: 4px; background: var(--color-bg-hover); overflow: hidden; margin-bottom: 14px; }
+  .fill { position: absolute; inset: 0 auto 0 0; border-radius: 0 4px 4px 0; background: var(--ink-300); }
+  .fill--story { background: var(--rust-500); }
+  .tick { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--color-fg); }
+  .tile { border: 1px solid var(--color-border); background: var(--color-bg-elevated); border-radius: var(--radius-lg); padding: 16px; margin-bottom: 12px; }
+  .tile .label { font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: var(--tracking-wider); color: var(--color-fg-subtle); }
+  .tile .value { font-size: var(--text-4xl); font-weight: var(--weight-light); margin-top: 6px; display: flex; align-items: baseline; gap: 8px; }
+  .tile .sub { font-size: var(--text-xs); color: var(--color-fg-muted); margin-top: 4px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; transform: translateY(-2px); }
+  .pills { display: flex; gap: 8px; flex-wrap: wrap; }
+  .pill { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--color-border); border-radius: var(--radius-pill); padding: 4px 10px; font-size: var(--text-2xs); letter-spacing: var(--tracking-wide); color: var(--color-fg-muted); }
+  .pill .dot { width: 6px; height: 6px; transform: none; }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="panel">
+      <div class="panel-head"><span class="eyebrow">Allocation vs targets</span><span class="aside">tick = target</span></div>
+      <div class="row-label"><span>Cash / Deposits</span><span class="num">83.9% → 40%</span></div>
+      <div class="track"><div class="fill fill--story" style="width:84%"></div><div class="tick" style="left:40%"></div></div>
+      <div class="row-label"><span>Gold</span><span class="num">3.8% → 12%</span></div>
+      <div class="track"><div class="fill" style="width:32%"></div><div class="tick" style="left:12%"></div></div>
+      <div class="pills">
+        <span class="pill"><span class="dot" style="background:var(--signal-live)"></span>ran 07:15</span>
+        <span class="pill"><span class="dot" style="background:var(--signal-warn)"></span>fired — standing</span>
+        <span class="pill"><span class="dot" style="background:var(--ink-400)"></span>unlit</span>
+      </div>
+    </div>
+    <div>
+      <div class="tile">
+        <div class="label">Active predictions</div>
+        <div class="value">5</div>
+        <div class="sub">0 resolved — Brier pending</div>
+      </div>
+      <div class="tile">
+        <div class="label">Integrity — red flags</div>
+        <div class="value">0 <span class="dot" style="background:var(--signal-live)"></span></div>
+        <div class="sub">10 invariants held</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!-- @dsCard group="Components" viewport="700x210" name="Chart ink" subtitle="Data draws in the ink ramp; rust marks the one story; status hues never color series" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; background: var(--color-bg); font-family: var(--font-sans); color: var(--color-fg); padding: 26px; display: flex; gap: 36px; align-items: center; }
+  .rules { font-size: var(--text-xs); color: var(--color-fg-muted); line-height: 1.7; max-width: 300px; }
+  .rules strong { color: var(--color-fg); font-weight: var(--weight-semibold); }
+</style>
+</head>
+<body>
+  <svg width="300" height="150" viewBox="0 0 300 150" aria-label="Sparkline specimen">
+    <polyline points="10,120 300,120" fill="none" stroke="var(--ink-600)" stroke-width="1" stroke-dasharray="4 5" />
+    <text x="296" y="112" font-size="10" fill="var(--ink-500)" text-anchor="end" font-family="Inter, sans-serif">avg 67.2%</text>
+    <polyline points="10,70 40,78 70,80 100,72 130,70 160,78 190,72 220,70 250,64 280,55 296,48"
+      fill="none" stroke="var(--ink-200)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    <circle cx="296" cy="48" r="3.5" fill="var(--pure-white)" />
+    <circle cx="160" cy="78" r="3.5" fill="var(--rust-500)" />
+    <text x="160" y="98" font-size="10" fill="var(--rust-400)" text-anchor="middle" font-family="Inter, sans-serif">the story mark</text>
+    <text x="10" y="140" font-size="10" fill="var(--ink-400)" font-family="Inter, sans-serif" letter-spacing="0.05em">Jan&#160;&#160;&#160;&#160;&#160;Mar&#160;&#160;&#160;&#160;&#160;May&#160;&#160;&#160;&#160;&#160;Jul&#160;&#160;&#160;&#160;&#160;Sep&#160;&#160;&#160;&#160;&#160;Nov</text>
+  </svg>
+  <div class="rules">
+    <strong>Chart ink.</strong> Data series draw in the ink ramp — line <code>--ink-200</code>, comparison/average <code>--ink-600</code> dashed, axis labels <code>--ink-400</code>. <strong>Rust marks the one story</strong> per view, nothing else. Status hues (live / warn / danger) mark state, never series. Labels carry identity on every mark — color is never the only channel.
+  </div>
+</body>
+</html>
