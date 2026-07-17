@@ -9,7 +9,7 @@ import React, { useRef, useState } from "react";
  * focus and selection, `aria-controls` wiring via `idPrefix` (give each panel
  * `id="{idPrefix}-panel-{id}"` and `aria-labelledby="{idPrefix}-tab-{id}"`).
  *
- * items: Array<{ id, label, count? }>
+ * items: Array<{ id, label, count?, hint? }>
  */
 export function Tabs({
   items = [],
@@ -98,8 +98,10 @@ function Tab({ item, active, idPrefix, tabRef, onSelect, onKeyDown }) {
         padding: "0 0 0.9rem",
         marginBottom: -1,
         display: "inline-flex",
-        alignItems: "center",
-        gap: "0.5rem",
+        flexDirection: item.hint != null ? "column" : "row",
+        alignItems: item.hint != null ? "flex-start" : "center",
+        gap: item.hint != null ? 0 : "0.5rem",
+        textAlign: "left",
         fontFamily: "var(--font-sans)",
         fontSize: "var(--text-sm)",
         textTransform: "uppercase",
@@ -108,10 +110,27 @@ function Tab({ item, active, idPrefix, tabRef, onSelect, onKeyDown }) {
         transition: "var(--transition-color)",
       }}
     >
-      {item.label}
-      {item.count != null && (
-        <span style={{ fontSize: "var(--text-2xs)", color: "var(--color-fg-subtle)", fontVariantNumeric: "tabular-nums" }}>
-          {item.count}
+      <span style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
+        {item.label}
+        {item.count != null && (
+          <span style={{ fontSize: "var(--text-2xs)", color: "var(--color-fg-subtle)", fontVariantNumeric: "tabular-nums" }}>
+            {item.count}
+          </span>
+        )}
+      </span>
+      {item.hint != null && (
+        <span
+          style={{
+            display: "block",
+            marginTop: "0.15rem",
+            fontSize: "var(--text-2xs)",
+            fontWeight: "var(--weight-regular)",
+            textTransform: "none",
+            letterSpacing: "var(--tracking-normal)",
+            color: "var(--color-fg-muted)",
+          }}
+        >
+          {item.hint}
         </span>
       )}
       <span

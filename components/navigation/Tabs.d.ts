@@ -5,6 +5,8 @@ export interface TabItem {
   label: string;
   /** Optional count shown after the label. */
   count?: number;
+  /** Optional one-line descriptor under the label (small, muted, not uppercased). */
+  hint?: React.ReactNode;
 }
 
 export interface TabsProps {

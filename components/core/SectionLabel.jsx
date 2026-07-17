@@ -4,11 +4,13 @@ import React from "react";
  * SectionLabel — the small uppercase eyebrow that titles every page band
  * ("Recent work", "Thoughts", "Processes"), optionally with a right-aligned
  * meta note ("02 projects"). The brand's primary structural typographic mark.
+ * Pass `as="h2"` to keep heading semantics when the label titles a section.
  */
-export function SectionLabel({ children, meta = null, accent = false, style = {}, ...rest }) {
+export function SectionLabel({ children, as: Tag = "div", meta = null, accent = false, style = {}, ...rest }) {
   return (
-    <div
+    <Tag
       style={{
+        margin: 0,
         display: "flex",
         alignItems: "baseline",
         justifyContent: meta ? "space-between" : "flex-start",
@@ -41,6 +43,6 @@ export function SectionLabel({ children, meta = null, accent = false, style = {}
           {meta}
         </span>
       )}
-    </div>
+    </Tag>
   );
 }

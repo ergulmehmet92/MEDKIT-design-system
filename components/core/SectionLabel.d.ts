@@ -1,6 +1,8 @@
 import React from "react";
 
 export interface SectionLabelProps {
+  /** Element to render as — use "h2"/"h3" when the label titles a section. @default "div" */
+  as?: React.ElementType;
   children: React.ReactNode;
   /** Optional right-aligned meta note, e.g. "02 projects". */
   meta?: React.ReactNode;
