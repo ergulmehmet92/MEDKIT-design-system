@@ -219,7 +219,7 @@ function ArticleScreen({ post, onBack }) {
         </div>
 
         <p style={{ marginTop: 64, paddingTop: 32, borderTop: "0.5px solid var(--color-border)", fontSize: 13, color: "var(--color-fg-subtle)" }}>
-          Written by Mehmet Ergul · Sample article from the MEDKIT UI kit.
+          Written by Mehmet Ergul · Sample article from the MED·Kit UI kit.
         </p>
       </div>
     </article>

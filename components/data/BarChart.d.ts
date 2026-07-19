@@ -28,7 +28,7 @@ export interface BarChartProps {
 }
 
 /**
- * The Chart.js bar type in MEDKIT chart ink — de-emphasis ink bars, one rust
+ * The Chart.js bar type in MED·Kit chart ink — de-emphasis ink bars, one rust
  * story bar, fg target ticks.
  */
 export function BarChart(props: BarChartProps): React.ReactElement;

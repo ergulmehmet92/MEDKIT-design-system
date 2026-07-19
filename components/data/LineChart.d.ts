@@ -24,7 +24,7 @@ export interface LineChartProps {
 }
 
 /**
- * The Chart.js line type in MEDKIT chart ink — ink-ramp series, one rust
+ * The Chart.js line type in MED·Kit chart ink — ink-ramp series, one rust
  * story series, dashed comparisons, hover column readout.
  */
 export function LineChart(props: LineChartProps): React.ReactElement;

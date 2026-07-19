@@ -24,7 +24,7 @@ export interface DonutChartProps {
 }
 
 /**
- * The Chart.js doughnut type in MEDKIT chart ink — ordinal ink-ramp segments,
+ * The Chart.js doughnut type in MED·Kit chart ink — ordinal ink-ramp segments,
  * one rust story segment, hairline gaps, center readout.
  */
 export function DonutChart(props: DonutChartProps): React.ReactElement;

@@ -1,6 +1,6 @@
 ---
 name: medkit-design
-description: Use this skill to generate well-crafted interfaces and assets with MEDKIT (a quiet, near-black, cinematic editorial design language with one warm rust accent), either for production or throwaway prototypes/mocks/etc. Contains essential design guidelines, colors, type, fonts, and UI kit components for prototyping.
+description: Use this skill to generate well-crafted interfaces and assets with MED·Kit, the Mehmet Ergul Design Kit (a quiet, near-black, cinematic editorial design language with one warm rust accent), either for production or throwaway prototypes/mocks/etc. Contains essential design guidelines, colors, type, fonts, and UI kit components for prototyping.
 user-invocable: true
 ---
 

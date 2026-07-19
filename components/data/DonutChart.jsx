@@ -5,7 +5,7 @@ const RAMP = ["var(--ink-200)", "var(--ink-400)", "var(--ink-500)", "var(--ink-6
 const EMPHASIS = "var(--rust-500)";
 
 /**
- * DonutChart — the Chart.js doughnut type, transformed to MEDKIT chart ink:
+ * DonutChart — the Chart.js doughnut type, transformed to MED·Kit chart ink:
  * segments step down the ink ramp in data order, `emphasis` marks at most one
  * story segment in rust, hairline gaps keep the ring quiet. The legend
  * carries identity for every segment — color is never the only channel.

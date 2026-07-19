@@ -1,6 +1,6 @@
-# MEDKIT — Design System
+# MED·Kit — Mehmet Ergul Design Kit
 
-**MEDKIT** is a quiet, cinematic, editorial design system: a near-black canvas, large light-weight type, restrained monochrome greys, and a single warm rust accent reserved for long-form writing. It ships as tokens, theme-aware React components, foundation specimen cards, and two full UI kits — everything needed to produce pages, mocks, and prototypes in this language.
+**MED·Kit** (the Mehmet Ergul Design Kit) is a quiet, cinematic, editorial design system: a near-black canvas, large light-weight type, restrained monochrome greys, and a single warm rust accent reserved for long-form writing. It ships as tokens, theme-aware React components, foundation specimen cards, and two full UI kits — everything needed to produce pages, mocks, and prototypes in this language.
 
 Built and maintained by [Mehmet Ergul](https://github.com/ergulmehmet92). Free to use under the [MIT license](LICENSE).
 

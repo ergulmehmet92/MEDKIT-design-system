@@ -11,7 +11,7 @@ function niceMax(values) {
 }
 
 /**
- * BarChart — the Chart.js bar type, transformed to MEDKIT chart ink. Data
+ * BarChart — the Chart.js bar type, transformed to MED·Kit chart ink. Data
  * draws in de-emphasis ink; `emphasis` marks at most one story bar in rust;
  * targets render as fg ticks. Horizontal rows (label + mono readout + track)
  * by default, classic columns with `horizontal={false}`. Labels carry

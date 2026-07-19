@@ -6,7 +6,7 @@ const W = 480;
 const PAD = { top: 14, right: 12, bottom: 24, left: 12 };
 
 /**
- * LineChart — the Chart.js line type, transformed to MEDKIT chart ink and
+ * LineChart — the Chart.js line type, transformed to MED·Kit chart ink and
  * rendered as token-native SVG. Series step down the ink ramp; `emphasis`
  * marks at most one story series in rust; `dashed` is for comparison lines
  * (averages, benchmarks). Hovering a column shows a mono readout for every
