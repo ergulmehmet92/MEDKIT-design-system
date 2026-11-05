@@ -69,7 +69,7 @@ export async function checkAllThemes() {
   return results;
 }
 
-if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const results = await checkAllThemes();
   for (const { theme, failures, checked } of results) {
     console.log(`${theme}: ${checked - failures.length} of ${checked} pairs pass`);
