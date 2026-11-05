@@ -66,6 +66,64 @@
     --mk-color-ambient-paper-accent: oklch(0.7853 0.0563 115.58);
     --mk-color-hairline-pale: oklch(0.9563 0.0143 84.58 / 0.18);
     --mk-color-hairline-deep: oklch(0.2081 0.0221 158.19 / 0.2);
+    --mk-color-viz-amber-paper: oklch(0.5993 0.1239 78.00);
+    --mk-color-viz-amber-forest: oklch(0.6601 0.1359 78.17);
+    --mk-color-viz-teal-paper: oklch(0.5800 0.1001 187.75);
+    --mk-color-viz-teal-forest: oklch(0.6393 0.1101 187.76);
+    --mk-color-viz-iris-paper: oklch(0.4991 0.1609 284.97);
+    --mk-color-viz-iris-forest: oklch(0.5805 0.1603 284.87);
+    --mk-color-viz-rose-paper: oklch(0.5604 0.1604 4.91);
+    --mk-color-viz-rose-forest: oklch(0.6205 0.1606 5.13);
+    --mk-color-viz-blue-paper: oklch(0.5190 0.1399 250.09);
+    --mk-color-viz-blue-forest: oklch(0.6006 0.1400 250.01);
+    --mk-color-viz-olive-paper: oklch(0.5811 0.1304 122.01);
+    --mk-color-viz-olive-forest: oklch(0.6201 0.1306 122.16);
+    --mk-color-viz-orchid-paper: oklch(0.5400 0.1603 324.90);
+    --mk-color-viz-orchid-forest: oklch(0.5992 0.1604 324.84);
+    --mk-color-viz-jade-paper: oklch(0.5591 0.1158 165.04);
+    --mk-color-viz-jade-forest: oklch(0.5992 0.1198 165.10);
+    --mk-color-viz-amber-scale-paper-100: oklch(0.9311 0.0506 78.73);
+    --mk-color-viz-amber-scale-paper-200: oklch(0.8594 0.0802 78.18);
+    --mk-color-viz-amber-scale-paper-300: oklch(0.7790 0.1095 77.51);
+    --mk-color-viz-amber-scale-paper-400: oklch(0.6997 0.1298 78.16);
+    --mk-color-viz-amber-scale-paper-500: oklch(0.6100 0.1268 78.30);
+    --mk-color-viz-amber-scale-paper-600: oklch(0.5213 0.1083 78.06);
+    --mk-color-viz-amber-scale-paper-700: oklch(0.4309 0.0882 78.47);
+    --mk-color-viz-amber-scale-forest-100: oklch(0.3193 0.0496 76.35);
+    --mk-color-viz-amber-scale-forest-200: oklch(0.3987 0.0699 77.70);
+    --mk-color-viz-amber-scale-forest-300: oklch(0.4894 0.0898 77.90);
+    --mk-color-viz-amber-scale-forest-400: oklch(0.5804 0.1100 77.76);
+    --mk-color-viz-amber-scale-forest-500: oklch(0.6711 0.1301 77.94);
+    --mk-color-viz-amber-scale-forest-600: oklch(0.7695 0.1300 78.25);
+    --mk-color-viz-amber-scale-forest-700: oklch(0.8693 0.1005 77.52);
+    --mk-color-viz-blue-scale-paper-100: oklch(0.9299 0.0305 249.69);
+    --mk-color-viz-blue-scale-paper-200: oklch(0.8511 0.0593 249.30);
+    --mk-color-viz-blue-scale-paper-300: oklch(0.7608 0.0903 250.06);
+    --mk-color-viz-blue-scale-paper-400: oklch(0.6703 0.1201 249.72);
+    --mk-color-viz-blue-scale-paper-500: oklch(0.5808 0.1394 249.84);
+    --mk-color-viz-blue-scale-paper-600: oklch(0.4894 0.1390 250.38);
+    --mk-color-viz-blue-scale-paper-700: oklch(0.3995 0.1125 250.25);
+    --mk-color-viz-blue-scale-forest-100: oklch(0.3209 0.0491 248.55);
+    --mk-color-viz-blue-scale-forest-200: oklch(0.3999 0.0801 249.98);
+    --mk-color-viz-blue-scale-forest-300: oklch(0.4893 0.1105 250.20);
+    --mk-color-viz-blue-scale-forest-400: oklch(0.5805 0.1302 250.07);
+    --mk-color-viz-blue-scale-forest-500: oklch(0.6708 0.1301 250.07);
+    --mk-color-viz-blue-scale-forest-600: oklch(0.7695 0.1005 250.10);
+    --mk-color-viz-blue-scale-forest-700: oklch(0.8699 0.0601 250.05);
+    --mk-color-viz-blue-amber-paper-100: oklch(0.4501 0.1267 250.26);
+    --mk-color-viz-blue-amber-paper-200: oklch(0.5997 0.1298 249.83);
+    --mk-color-viz-blue-amber-paper-300: oklch(0.7591 0.0810 250.60);
+    --mk-color-viz-blue-amber-paper-400: oklch(0.9010 0.0100 87.48);
+    --mk-color-viz-blue-amber-paper-500: oklch(0.7998 0.1003 78.40);
+    --mk-color-viz-blue-amber-paper-600: oklch(0.6601 0.1359 78.17);
+    --mk-color-viz-blue-amber-paper-700: oklch(0.5213 0.1083 78.06);
+    --mk-color-viz-blue-amber-forest-100: oklch(0.6802 0.1194 249.98);
+    --mk-color-viz-blue-amber-forest-200: oklch(0.5304 0.1295 249.65);
+    --mk-color-viz-blue-amber-forest-300: oklch(0.3903 0.1001 249.86);
+    --mk-color-viz-blue-amber-forest-400: oklch(0.3015 0.0122 150.25);
+    --mk-color-viz-blue-amber-forest-500: oklch(0.4208 0.0800 77.99);
+    --mk-color-viz-blue-amber-forest-600: oklch(0.5700 0.1180 77.97);
+    --mk-color-viz-blue-amber-forest-700: oklch(0.7200 0.1401 78.12);
     --mk-color-surface-default: var(--mk-color-forest);
     --mk-color-surface-subtle: var(--mk-color-forest);
     --mk-color-text-default: var(--mk-color-off-white);
@@ -88,6 +146,35 @@
     --mk-color-action-background-primary-lit: var(--mk-color-highlight);
     --mk-color-action-background-primary-far: var(--mk-color-beige);
     --mk-color-action-foreground-primary-default: var(--mk-color-forest);
+    --mk-color-dataviz-category-1: var(--mk-color-viz-amber-forest);
+    --mk-color-dataviz-category-2: var(--mk-color-viz-teal-forest);
+    --mk-color-dataviz-category-3: var(--mk-color-viz-iris-forest);
+    --mk-color-dataviz-category-4: var(--mk-color-viz-rose-forest);
+    --mk-color-dataviz-category-5: var(--mk-color-viz-blue-forest);
+    --mk-color-dataviz-category-6: var(--mk-color-viz-olive-forest);
+    --mk-color-dataviz-category-7: var(--mk-color-viz-orchid-forest);
+    --mk-color-dataviz-category-8: var(--mk-color-viz-jade-forest);
+    --mk-color-dataviz-sequential-100: var(--mk-color-viz-amber-scale-forest-100);
+    --mk-color-dataviz-sequential-200: var(--mk-color-viz-amber-scale-forest-200);
+    --mk-color-dataviz-sequential-300: var(--mk-color-viz-amber-scale-forest-300);
+    --mk-color-dataviz-sequential-400: var(--mk-color-viz-amber-scale-forest-400);
+    --mk-color-dataviz-sequential-500: var(--mk-color-viz-amber-scale-forest-500);
+    --mk-color-dataviz-sequential-600: var(--mk-color-viz-amber-scale-forest-600);
+    --mk-color-dataviz-sequential-700: var(--mk-color-viz-amber-scale-forest-700);
+    --mk-color-dataviz-sequential-alt-100: var(--mk-color-viz-blue-scale-forest-100);
+    --mk-color-dataviz-sequential-alt-200: var(--mk-color-viz-blue-scale-forest-200);
+    --mk-color-dataviz-sequential-alt-300: var(--mk-color-viz-blue-scale-forest-300);
+    --mk-color-dataviz-sequential-alt-400: var(--mk-color-viz-blue-scale-forest-400);
+    --mk-color-dataviz-sequential-alt-500: var(--mk-color-viz-blue-scale-forest-500);
+    --mk-color-dataviz-sequential-alt-600: var(--mk-color-viz-blue-scale-forest-600);
+    --mk-color-dataviz-sequential-alt-700: var(--mk-color-viz-blue-scale-forest-700);
+    --mk-color-dataviz-diverging-below-3: var(--mk-color-viz-blue-amber-forest-100);
+    --mk-color-dataviz-diverging-below-2: var(--mk-color-viz-blue-amber-forest-200);
+    --mk-color-dataviz-diverging-below-1: var(--mk-color-viz-blue-amber-forest-300);
+    --mk-color-dataviz-diverging-mid: var(--mk-color-viz-blue-amber-forest-400);
+    --mk-color-dataviz-diverging-above-1: var(--mk-color-viz-blue-amber-forest-500);
+    --mk-color-dataviz-diverging-above-2: var(--mk-color-viz-blue-amber-forest-600);
+    --mk-color-dataviz-diverging-above-3: var(--mk-color-viz-blue-amber-forest-700);
     --mk-font-family-sans: 'TeX Gyre Heros', Arial, sans-serif;
     --mk-font-family-mono: 'Share Tech Mono', ui-monospace, Menlo, monospace;
     --mk-font-family-body: var(--mk-font-family-sans);
@@ -132,11 +219,16 @@
     --mk-space-32: 8rem;
     --mk-size-120: 7.5rem;
     --mk-size-180: 11.25rem;
+    --mk-size-280: 17.5rem;
+    --mk-size-520: 32.5rem;
     --mk-size-control: var(--mk-space-12);
     --mk-size-row: var(--mk-space-14);
     --mk-size-column: var(--mk-size-180);
+    --mk-size-chart: var(--mk-size-520);
     --mk-brightness-dim: 0.5;
     --mk-brightness-full: 1;
+    --mk-mix-030: 0.3;
+    --mk-mix-044: 0.44;
     --mk-radius-none: 0rem;
     --mk-radius-full: 999rem;
     --mk-radius-default: var(--mk-radius-none);
@@ -146,6 +238,7 @@
     --mk-stroke-focus: 2px;
     --mk-time-150: 0.15s;
     --mk-time-200: 0.2s;
+    --mk-time-600: 0.6s;
     --mk-time-1400: 1.4s;
     --mk-time-1800: 1.8s;
     --mk-curve-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -168,8 +261,11 @@
     --mk-motion-duration-interaction: var(--mk-time-150);
     --mk-motion-duration-theme-text: var(--mk-time-1400);
     --mk-motion-duration-theme-light: var(--mk-time-1800);
+    --mk-motion-duration-chart-reveal: var(--mk-time-1400);
+    --mk-motion-duration-chart-change: var(--mk-time-600);
     --mk-motion-delay-theme-text: var(--mk-time-200);
     --mk-motion-easing-default: var(--mk-curve-out-expo);
+    --mk-dataviz-tint: var(--mk-mix-044);
   }
 
   @supports (color: light-dark(#fff, #000)) {
@@ -194,6 +290,35 @@
       --mk-color-action-background-primary-lit: light-dark(var(--mk-color-hunter), var(--mk-color-highlight));
       --mk-color-action-background-primary-far: light-dark(var(--mk-color-forest-deep), var(--mk-color-beige));
       --mk-color-action-foreground-primary-default: light-dark(var(--mk-color-off-white), var(--mk-color-forest));
+      --mk-color-dataviz-category-1: light-dark(var(--mk-color-viz-amber-paper), var(--mk-color-viz-amber-forest));
+      --mk-color-dataviz-category-2: light-dark(var(--mk-color-viz-teal-paper), var(--mk-color-viz-teal-forest));
+      --mk-color-dataviz-category-3: light-dark(var(--mk-color-viz-iris-paper), var(--mk-color-viz-iris-forest));
+      --mk-color-dataviz-category-4: light-dark(var(--mk-color-viz-rose-paper), var(--mk-color-viz-rose-forest));
+      --mk-color-dataviz-category-5: light-dark(var(--mk-color-viz-blue-paper), var(--mk-color-viz-blue-forest));
+      --mk-color-dataviz-category-6: light-dark(var(--mk-color-viz-olive-paper), var(--mk-color-viz-olive-forest));
+      --mk-color-dataviz-category-7: light-dark(var(--mk-color-viz-orchid-paper), var(--mk-color-viz-orchid-forest));
+      --mk-color-dataviz-category-8: light-dark(var(--mk-color-viz-jade-paper), var(--mk-color-viz-jade-forest));
+      --mk-color-dataviz-sequential-100: light-dark(var(--mk-color-viz-amber-scale-paper-100), var(--mk-color-viz-amber-scale-forest-100));
+      --mk-color-dataviz-sequential-200: light-dark(var(--mk-color-viz-amber-scale-paper-200), var(--mk-color-viz-amber-scale-forest-200));
+      --mk-color-dataviz-sequential-300: light-dark(var(--mk-color-viz-amber-scale-paper-300), var(--mk-color-viz-amber-scale-forest-300));
+      --mk-color-dataviz-sequential-400: light-dark(var(--mk-color-viz-amber-scale-paper-400), var(--mk-color-viz-amber-scale-forest-400));
+      --mk-color-dataviz-sequential-500: light-dark(var(--mk-color-viz-amber-scale-paper-500), var(--mk-color-viz-amber-scale-forest-500));
+      --mk-color-dataviz-sequential-600: light-dark(var(--mk-color-viz-amber-scale-paper-600), var(--mk-color-viz-amber-scale-forest-600));
+      --mk-color-dataviz-sequential-700: light-dark(var(--mk-color-viz-amber-scale-paper-700), var(--mk-color-viz-amber-scale-forest-700));
+      --mk-color-dataviz-sequential-alt-100: light-dark(var(--mk-color-viz-blue-scale-paper-100), var(--mk-color-viz-blue-scale-forest-100));
+      --mk-color-dataviz-sequential-alt-200: light-dark(var(--mk-color-viz-blue-scale-paper-200), var(--mk-color-viz-blue-scale-forest-200));
+      --mk-color-dataviz-sequential-alt-300: light-dark(var(--mk-color-viz-blue-scale-paper-300), var(--mk-color-viz-blue-scale-forest-300));
+      --mk-color-dataviz-sequential-alt-400: light-dark(var(--mk-color-viz-blue-scale-paper-400), var(--mk-color-viz-blue-scale-forest-400));
+      --mk-color-dataviz-sequential-alt-500: light-dark(var(--mk-color-viz-blue-scale-paper-500), var(--mk-color-viz-blue-scale-forest-500));
+      --mk-color-dataviz-sequential-alt-600: light-dark(var(--mk-color-viz-blue-scale-paper-600), var(--mk-color-viz-blue-scale-forest-600));
+      --mk-color-dataviz-sequential-alt-700: light-dark(var(--mk-color-viz-blue-scale-paper-700), var(--mk-color-viz-blue-scale-forest-700));
+      --mk-color-dataviz-diverging-below-3: light-dark(var(--mk-color-viz-blue-amber-paper-100), var(--mk-color-viz-blue-amber-forest-100));
+      --mk-color-dataviz-diverging-below-2: light-dark(var(--mk-color-viz-blue-amber-paper-200), var(--mk-color-viz-blue-amber-forest-200));
+      --mk-color-dataviz-diverging-below-1: light-dark(var(--mk-color-viz-blue-amber-paper-300), var(--mk-color-viz-blue-amber-forest-300));
+      --mk-color-dataviz-diverging-mid: light-dark(var(--mk-color-viz-blue-amber-paper-400), var(--mk-color-viz-blue-amber-forest-400));
+      --mk-color-dataviz-diverging-above-1: light-dark(var(--mk-color-viz-blue-amber-paper-500), var(--mk-color-viz-blue-amber-forest-500));
+      --mk-color-dataviz-diverging-above-2: light-dark(var(--mk-color-viz-blue-amber-paper-600), var(--mk-color-viz-blue-amber-forest-600));
+      --mk-color-dataviz-diverging-above-3: light-dark(var(--mk-color-viz-blue-amber-paper-700), var(--mk-color-viz-blue-amber-forest-700));
     }
   }
 
@@ -219,6 +344,35 @@
       --mk-color-action-background-primary-lit: var(--mk-color-hunter);
       --mk-color-action-background-primary-far: var(--mk-color-forest-deep);
       --mk-color-action-foreground-primary-default: var(--mk-color-off-white);
+      --mk-color-dataviz-category-1: var(--mk-color-viz-amber-paper);
+      --mk-color-dataviz-category-2: var(--mk-color-viz-teal-paper);
+      --mk-color-dataviz-category-3: var(--mk-color-viz-iris-paper);
+      --mk-color-dataviz-category-4: var(--mk-color-viz-rose-paper);
+      --mk-color-dataviz-category-5: var(--mk-color-viz-blue-paper);
+      --mk-color-dataviz-category-6: var(--mk-color-viz-olive-paper);
+      --mk-color-dataviz-category-7: var(--mk-color-viz-orchid-paper);
+      --mk-color-dataviz-category-8: var(--mk-color-viz-jade-paper);
+      --mk-color-dataviz-sequential-100: var(--mk-color-viz-amber-scale-paper-100);
+      --mk-color-dataviz-sequential-200: var(--mk-color-viz-amber-scale-paper-200);
+      --mk-color-dataviz-sequential-300: var(--mk-color-viz-amber-scale-paper-300);
+      --mk-color-dataviz-sequential-400: var(--mk-color-viz-amber-scale-paper-400);
+      --mk-color-dataviz-sequential-500: var(--mk-color-viz-amber-scale-paper-500);
+      --mk-color-dataviz-sequential-600: var(--mk-color-viz-amber-scale-paper-600);
+      --mk-color-dataviz-sequential-700: var(--mk-color-viz-amber-scale-paper-700);
+      --mk-color-dataviz-sequential-alt-100: var(--mk-color-viz-blue-scale-paper-100);
+      --mk-color-dataviz-sequential-alt-200: var(--mk-color-viz-blue-scale-paper-200);
+      --mk-color-dataviz-sequential-alt-300: var(--mk-color-viz-blue-scale-paper-300);
+      --mk-color-dataviz-sequential-alt-400: var(--mk-color-viz-blue-scale-paper-400);
+      --mk-color-dataviz-sequential-alt-500: var(--mk-color-viz-blue-scale-paper-500);
+      --mk-color-dataviz-sequential-alt-600: var(--mk-color-viz-blue-scale-paper-600);
+      --mk-color-dataviz-sequential-alt-700: var(--mk-color-viz-blue-scale-paper-700);
+      --mk-color-dataviz-diverging-below-3: var(--mk-color-viz-blue-amber-paper-100);
+      --mk-color-dataviz-diverging-below-2: var(--mk-color-viz-blue-amber-paper-200);
+      --mk-color-dataviz-diverging-below-1: var(--mk-color-viz-blue-amber-paper-300);
+      --mk-color-dataviz-diverging-mid: var(--mk-color-viz-blue-amber-paper-400);
+      --mk-color-dataviz-diverging-above-1: var(--mk-color-viz-blue-amber-paper-500);
+      --mk-color-dataviz-diverging-above-2: var(--mk-color-viz-blue-amber-paper-600);
+      --mk-color-dataviz-diverging-above-3: var(--mk-color-viz-blue-amber-paper-700);
     }
 
     [data-theme="forest"] {
@@ -242,15 +396,46 @@
       --mk-color-action-background-primary-lit: var(--mk-color-highlight);
       --mk-color-action-background-primary-far: var(--mk-color-beige);
       --mk-color-action-foreground-primary-default: var(--mk-color-forest);
+      --mk-color-dataviz-category-1: var(--mk-color-viz-amber-forest);
+      --mk-color-dataviz-category-2: var(--mk-color-viz-teal-forest);
+      --mk-color-dataviz-category-3: var(--mk-color-viz-iris-forest);
+      --mk-color-dataviz-category-4: var(--mk-color-viz-rose-forest);
+      --mk-color-dataviz-category-5: var(--mk-color-viz-blue-forest);
+      --mk-color-dataviz-category-6: var(--mk-color-viz-olive-forest);
+      --mk-color-dataviz-category-7: var(--mk-color-viz-orchid-forest);
+      --mk-color-dataviz-category-8: var(--mk-color-viz-jade-forest);
+      --mk-color-dataviz-sequential-100: var(--mk-color-viz-amber-scale-forest-100);
+      --mk-color-dataviz-sequential-200: var(--mk-color-viz-amber-scale-forest-200);
+      --mk-color-dataviz-sequential-300: var(--mk-color-viz-amber-scale-forest-300);
+      --mk-color-dataviz-sequential-400: var(--mk-color-viz-amber-scale-forest-400);
+      --mk-color-dataviz-sequential-500: var(--mk-color-viz-amber-scale-forest-500);
+      --mk-color-dataviz-sequential-600: var(--mk-color-viz-amber-scale-forest-600);
+      --mk-color-dataviz-sequential-700: var(--mk-color-viz-amber-scale-forest-700);
+      --mk-color-dataviz-sequential-alt-100: var(--mk-color-viz-blue-scale-forest-100);
+      --mk-color-dataviz-sequential-alt-200: var(--mk-color-viz-blue-scale-forest-200);
+      --mk-color-dataviz-sequential-alt-300: var(--mk-color-viz-blue-scale-forest-300);
+      --mk-color-dataviz-sequential-alt-400: var(--mk-color-viz-blue-scale-forest-400);
+      --mk-color-dataviz-sequential-alt-500: var(--mk-color-viz-blue-scale-forest-500);
+      --mk-color-dataviz-sequential-alt-600: var(--mk-color-viz-blue-scale-forest-600);
+      --mk-color-dataviz-sequential-alt-700: var(--mk-color-viz-blue-scale-forest-700);
+      --mk-color-dataviz-diverging-below-3: var(--mk-color-viz-blue-amber-forest-100);
+      --mk-color-dataviz-diverging-below-2: var(--mk-color-viz-blue-amber-forest-200);
+      --mk-color-dataviz-diverging-below-1: var(--mk-color-viz-blue-amber-forest-300);
+      --mk-color-dataviz-diverging-mid: var(--mk-color-viz-blue-amber-forest-400);
+      --mk-color-dataviz-diverging-above-1: var(--mk-color-viz-blue-amber-forest-500);
+      --mk-color-dataviz-diverging-above-2: var(--mk-color-viz-blue-amber-forest-600);
+      --mk-color-dataviz-diverging-above-3: var(--mk-color-viz-blue-amber-forest-700);
     }
   }
 
   [data-theme="paper"] {
     --mk-glass-brightness: var(--mk-brightness-full);
+    --mk-dataviz-tint: var(--mk-mix-030);
   }
 
   [data-theme="forest"] {
     --mk-glass-brightness: var(--mk-brightness-dim);
+    --mk-dataviz-tint: var(--mk-mix-044);
   }
 
   [data-density="analytical"] {
@@ -263,6 +448,7 @@
     --mk-size-control: var(--mk-space-8);
     --mk-size-row: var(--mk-space-8);
     --mk-size-column: var(--mk-size-120);
+    --mk-size-chart: var(--mk-size-280);
     --mk-line-height-body: var(--mk-leading-400);
     --mk-gap-sm: var(--mk-space-1);
     --mk-gap-md: var(--mk-space-2);
@@ -285,6 +471,7 @@
     --mk-size-control: var(--mk-space-12);
     --mk-size-row: var(--mk-space-14);
     --mk-size-column: var(--mk-size-180);
+    --mk-size-chart: var(--mk-size-520);
     --mk-line-height-body: var(--mk-leading-300);
     --mk-gap-sm: var(--mk-space-2);
     --mk-gap-md: var(--mk-space-4);
@@ -330,6 +517,35 @@
       --mk-color-action-background-primary-lit: ButtonFace;
       --mk-color-action-background-primary-far: ButtonFace;
       --mk-color-action-foreground-primary-default: ButtonText;
+      --mk-color-dataviz-category-1: CanvasText;
+      --mk-color-dataviz-category-2: CanvasText;
+      --mk-color-dataviz-category-3: CanvasText;
+      --mk-color-dataviz-category-4: CanvasText;
+      --mk-color-dataviz-category-5: CanvasText;
+      --mk-color-dataviz-category-6: CanvasText;
+      --mk-color-dataviz-category-7: CanvasText;
+      --mk-color-dataviz-category-8: CanvasText;
+      --mk-color-dataviz-sequential-100: CanvasText;
+      --mk-color-dataviz-sequential-200: CanvasText;
+      --mk-color-dataviz-sequential-300: CanvasText;
+      --mk-color-dataviz-sequential-400: CanvasText;
+      --mk-color-dataviz-sequential-500: CanvasText;
+      --mk-color-dataviz-sequential-600: CanvasText;
+      --mk-color-dataviz-sequential-700: CanvasText;
+      --mk-color-dataviz-sequential-alt-100: CanvasText;
+      --mk-color-dataviz-sequential-alt-200: CanvasText;
+      --mk-color-dataviz-sequential-alt-300: CanvasText;
+      --mk-color-dataviz-sequential-alt-400: CanvasText;
+      --mk-color-dataviz-sequential-alt-500: CanvasText;
+      --mk-color-dataviz-sequential-alt-600: CanvasText;
+      --mk-color-dataviz-sequential-alt-700: CanvasText;
+      --mk-color-dataviz-diverging-below-3: CanvasText;
+      --mk-color-dataviz-diverging-below-2: CanvasText;
+      --mk-color-dataviz-diverging-below-1: CanvasText;
+      --mk-color-dataviz-diverging-mid: CanvasText;
+      --mk-color-dataviz-diverging-above-1: CanvasText;
+      --mk-color-dataviz-diverging-above-2: CanvasText;
+      --mk-color-dataviz-diverging-above-3: CanvasText;
     }
   }
 

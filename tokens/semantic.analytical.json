@@ -73,6 +73,9 @@
     },
     "column": {
       "$value": "{size.120}"
+    },
+    "chart": {
+      "$value": "{size.280}"
     }
   }
 }

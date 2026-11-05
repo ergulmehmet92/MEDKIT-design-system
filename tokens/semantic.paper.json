@@ -43,9 +43,18 @@
           "default": {"$value": "{color.off-white}"}
         }
       }
+    },
+    "dataviz": {
+      "category": {"1": {"$value": "{color.viz.amber.paper}"}, "2": {"$value": "{color.viz.teal.paper}"}, "3": {"$value": "{color.viz.iris.paper}"}, "4": {"$value": "{color.viz.rose.paper}"}, "5": {"$value": "{color.viz.blue.paper}"}, "6": {"$value": "{color.viz.olive.paper}"}, "7": {"$value": "{color.viz.orchid.paper}"}, "8": {"$value": "{color.viz.jade.paper}"}},
+      "sequential": {"100": {"$value": "{color.viz.amber-scale.paper.100}"}, "200": {"$value": "{color.viz.amber-scale.paper.200}"}, "300": {"$value": "{color.viz.amber-scale.paper.300}"}, "400": {"$value": "{color.viz.amber-scale.paper.400}"}, "500": {"$value": "{color.viz.amber-scale.paper.500}"}, "600": {"$value": "{color.viz.amber-scale.paper.600}"}, "700": {"$value": "{color.viz.amber-scale.paper.700}"}},
+      "sequential-alt": {"100": {"$value": "{color.viz.blue-scale.paper.100}"}, "200": {"$value": "{color.viz.blue-scale.paper.200}"}, "300": {"$value": "{color.viz.blue-scale.paper.300}"}, "400": {"$value": "{color.viz.blue-scale.paper.400}"}, "500": {"$value": "{color.viz.blue-scale.paper.500}"}, "600": {"$value": "{color.viz.blue-scale.paper.600}"}, "700": {"$value": "{color.viz.blue-scale.paper.700}"}},
+      "diverging": {"below-3": {"$value": "{color.viz.blue-amber.paper.100}"}, "below-2": {"$value": "{color.viz.blue-amber.paper.200}"}, "below-1": {"$value": "{color.viz.blue-amber.paper.300}"}, "mid": {"$value": "{color.viz.blue-amber.paper.400}"}, "above-1": {"$value": "{color.viz.blue-amber.paper.500}"}, "above-2": {"$value": "{color.viz.blue-amber.paper.600}"}, "above-3": {"$value": "{color.viz.blue-amber.paper.700}"}}
     }
   },
   "glass": {
     "brightness": {"$value": "{brightness.full}"}
+  },
+  "dataviz": {
+    "tint": {"$type": "number", "$value": "{mix.030}"}
   }
 }

@@ -178,6 +178,194 @@
           }
         }
       }
+    },
+    "dataviz": {
+      "category": {
+        "1": {
+          "$value": "{color.viz.amber.forest}",
+          "$description": "Categorical slots, assigned in this order and never cycled. Marks only, never text. 3:1 or more on every surface.",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        },
+        "2": {
+          "$value": "{color.viz.teal.forest}",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        },
+        "3": {
+          "$value": "{color.viz.iris.forest}",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        },
+        "4": {
+          "$value": "{color.viz.rose.forest}",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        },
+        "5": {
+          "$value": "{color.viz.blue.forest}",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        },
+        "6": {
+          "$value": "{color.viz.olive.forest}",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        },
+        "7": {
+          "$value": "{color.viz.orchid.forest}",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        },
+        "8": {
+          "$value": "{color.viz.jade.forest}",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        }
+      },
+      "sequential": {
+        "100": {
+          "$value": "{color.viz.amber-scale.forest.100}",
+          "$description": "Magnitude, one hue. 100 sits nearest the surface.",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        },
+        "200": {
+          "$value": "{color.viz.amber-scale.forest.200}",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        },
+        "300": {
+          "$value": "{color.viz.amber-scale.forest.300}",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        },
+        "400": {
+          "$value": "{color.viz.amber-scale.forest.400}",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        },
+        "500": {
+          "$value": "{color.viz.amber-scale.forest.500}",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        },
+        "600": {
+          "$value": "{color.viz.amber-scale.forest.600}",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        },
+        "700": {
+          "$value": "{color.viz.amber-scale.forest.700}",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        }
+      },
+      "sequential-alt": {
+        "100": {
+          "$value": "{color.viz.blue-scale.forest.100}",
+          "$description": "A second magnitude scale in the same view.",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        },
+        "200": {
+          "$value": "{color.viz.blue-scale.forest.200}",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        },
+        "300": {
+          "$value": "{color.viz.blue-scale.forest.300}",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        },
+        "400": {
+          "$value": "{color.viz.blue-scale.forest.400}",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        },
+        "500": {
+          "$value": "{color.viz.blue-scale.forest.500}",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        },
+        "600": {
+          "$value": "{color.viz.blue-scale.forest.600}",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        },
+        "700": {
+          "$value": "{color.viz.blue-scale.forest.700}",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        }
+      },
+      "diverging": {
+        "below-3": {
+          "$value": "{color.viz.blue-amber.forest.100}",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        },
+        "below-2": {
+          "$value": "{color.viz.blue-amber.forest.200}",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        },
+        "below-1": {
+          "$value": "{color.viz.blue-amber.forest.300}",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        },
+        "mid": {
+          "$value": "{color.viz.blue-amber.forest.400}",
+          "$description": "Polarity. The midpoint is a warm neutral and means nothing.",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        },
+        "above-1": {
+          "$value": "{color.viz.blue-amber.forest.500}",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        },
+        "above-2": {
+          "$value": "{color.viz.blue-amber.forest.600}",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        },
+        "above-3": {
+          "$value": "{color.viz.blue-amber.forest.700}",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        }
+      }
     }
   },
   "font": {
@@ -295,6 +483,10 @@
     "column": {
       "$value": "{size.180}",
       "$description": "Narrowest column in an auto-fit grid, such as a metric row."
+    },
+    "chart": {
+      "$value": "{size.520}",
+      "$description": "Plot height for one chart, without its axis labels."
     }
   },
   "glass": {
@@ -342,6 +534,14 @@
       "theme-light": {
         "$value": "{time.1800}",
         "$description": "Dawn: the light changing theme."
+      },
+      "chart-reveal": {
+        "$value": "{time.1400}",
+        "$description": "A chart drawing itself in, once."
+      },
+      "chart-change": {
+        "$value": "{time.600}",
+        "$description": "A chart moving to a new range or new data."
       }
     },
     "delay": {
@@ -356,6 +556,13 @@
       "default": {
         "$value": "{curve.out-expo}"
       }
+    }
+  },
+  "dataviz": {
+    "tint": {
+      "$type": "number",
+      "$value": "{mix.044}",
+      "$description": "How much of a series colour a large filled area keeps when mixed into the surface. Higher on Forest, where the surface is dark."
     }
   }
 }

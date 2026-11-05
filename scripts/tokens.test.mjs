@@ -36,7 +36,7 @@ describe("primitive colours", () => {
   it("match the palette approved in the brand spec", () => {
     const hexes = Object.fromEntries(
       tokensIn(json("tokens/primitives.json").color)
-        .filter((token) => token.value.alpha === undefined)
+        .filter((token) => token.value.alpha === undefined && token.path[0] !== "viz")
         .map((token) => [token.path.join("."), token.value.hex]),
     );
 
@@ -66,6 +66,18 @@ describe("primitive colours", () => {
       "ambient-paper-high": "#fbf8f1",
       "ambient-paper-accent": "#b7be95",
     });
+  });
+});
+
+describe("chart colours", () => {
+  it("sit in their own group, apart from the brand palette, with a Paper and a Forest step for each", () => {
+    const viz = tokensIn(json("tokens/primitives.json").color.viz);
+    const hues = ["amber", "teal", "iris", "rose", "blue", "olive", "orchid", "jade"];
+
+    expect(viz).toHaveLength(hues.length * 2 + 3 * 14);
+    for (const hue of hues) {
+      expect(viz.filter((token) => token.path[0] === hue).map((token) => token.path[1]).sort()).toEqual(["forest", "paper"]);
+    }
   });
 });
 
