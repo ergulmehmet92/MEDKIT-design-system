@@ -1,0 +1,12 @@
+@layer components {
+  .mk-eyebrow {
+    margin: 0;
+    color: var(--mk-eyebrow-color, var(--mk-color-text-muted));
+    font-family: var(--mk-font-family-label);
+    font-size: var(--mk-font-size-label);
+    font-weight: var(--mk-font-weight-label);
+    letter-spacing: var(--mk-tracking-label);
+    line-height: var(--mk-line-height-body);
+    text-transform: uppercase;
+  }
+}
