@@ -41,6 +41,16 @@ describe("the real tokens", () => {
   });
 });
 
+describe("status lamps", () => {
+  it("are held to the 3:1 graphics minimum on every surface", async () => {
+    const { PAIRS } = await import("./contrast.mjs");
+    const statusPairs = PAIRS.filter((pair) => pair.foreground.startsWith("color.status."));
+
+    expect(statusPairs).toHaveLength(6);
+    expect(statusPairs.every((pair) => pair.minimum === 3)).toBe(true);
+  });
+});
+
 describe("generated accessibility modes", () => {
   const css = () => readFileSync("dist/tokens/tokens.css", "utf8");
 

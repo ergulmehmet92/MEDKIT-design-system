@@ -17,6 +17,11 @@
       "strong": {"$value": "{color.grey-300}", "$description": "Control boundaries. 3:1 or more on every surface.", "$extensions": {"com.medkit.forcedColors": "CanvasText"}},
       "focus": {"$value": "{color.honey}", "$description": "Focus indicator. 3:1 or more on every surface.", "$extensions": {"com.medkit.forcedColors": "Highlight"}}
     },
+    "status": {
+      "live": {"$value": "{color.signal-green}", "$description": "Live lamp. Graphics only, never as text. 3:1 or more on every surface.", "$extensions": {"com.medkit.forcedColors": "CanvasText"}},
+      "stale": {"$value": "{color.signal-orange}", "$description": "Stale lamp. Graphics only, never as text. 3:1 or more on every surface.", "$extensions": {"com.medkit.forcedColors": "CanvasText"}},
+      "failed": {"$value": "{color.signal-red}", "$description": "Failed lamp. Graphics only, never as text. 3:1 or more on every surface.", "$extensions": {"com.medkit.forcedColors": "CanvasText"}}
+    },
     "action": {
       "background": {
         "primary": {

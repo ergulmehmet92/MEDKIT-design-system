@@ -51,7 +51,35 @@ describe("primitive colours", () => {
       "off-white": "#f5f0e6",
       "grey-300": "#a9a294",
       "grey-600": "#5f594e",
+      "signal-green": "#3dff6e",
+      "signal-green-deep": "#008f34",
+      "signal-orange": "#ff9424",
+      "signal-orange-deep": "#d05a00",
+      "signal-red": "#ff3a2e",
+      "signal-red-deep": "#e3241b",
     });
+  });
+});
+
+describe("status roles", () => {
+  it("use neon on Forest and the deeper colours on Paper", () => {
+    const forest = json("tokens/semantic.json").color.status;
+    const paper = json("tokens/semantic.paper.json").color.status;
+
+    expect(forest.live.$value).toBe("{color.signal-green}");
+    expect(forest.stale.$value).toBe("{color.signal-orange}");
+    expect(forest.failed.$value).toBe("{color.signal-red}");
+    expect(paper.live.$value).toBe("{color.signal-green-deep}");
+    expect(paper.stale.$value).toBe("{color.signal-orange-deep}");
+    expect(paper.failed.$value).toBe("{color.signal-red-deep}");
+  });
+
+  it("stay graphics-only, so nothing presents them as a text colour", () => {
+    const { status } = json("tokens/semantic.json").color;
+
+    for (const role of Object.values(status).filter((value) => value.$value)) {
+      expect(role.$description).toMatch(/never as text/i);
+    }
   });
 });
 

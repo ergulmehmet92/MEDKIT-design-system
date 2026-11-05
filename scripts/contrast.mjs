@@ -6,6 +6,7 @@ import { resolver, resolveTokens } from "./resolve-tokens.mjs";
 const TEXT = ["color.text.default", "color.text.muted", "color.text.accent"];
 const SURFACES = ["color.surface.default", "color.surface.subtle"];
 const BOUNDARIES = ["color.border.strong", "color.border.focus"];
+const LAMPS = ["color.status.live", "color.status.stale", "color.status.failed"];
 const ACTION_FILLS = ["default", "hover", "active"].map((state) => `color.action.background.primary.${state}`);
 
 const pairsOf = (foregrounds, backgrounds, minimum) =>
@@ -15,6 +16,7 @@ export const PAIRS = [
   ...pairsOf(TEXT, SURFACES, 4.5),
   ...pairsOf(["color.action.foreground.primary.default"], ACTION_FILLS, 4.5),
   ...pairsOf(BOUNDARIES, SURFACES, 3),
+  ...pairsOf(LAMPS, SURFACES, 3),
 ];
 
 function luminance(hex) {

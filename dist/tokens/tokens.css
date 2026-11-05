@@ -59,6 +59,12 @@
     --mk-color-off-white: oklch(0.9563 0.0143 84.58);
     --mk-color-grey-300: oklch(0.7142 0.0215 84.59);
     --mk-color-grey-600: oklch(0.4663 0.0189 82.75);
+    --mk-color-signal-green: oklch(0.8780 0.2412 147.09);
+    --mk-color-signal-green-deep: oklch(0.5665 0.1669 147.32);
+    --mk-color-signal-orange: oklch(0.7645 0.1697 59.71);
+    --mk-color-signal-orange-deep: oklch(0.6080 0.1687 46.81);
+    --mk-color-signal-red: oklch(0.6533 0.2330 28.87);
+    --mk-color-signal-red-deep: oklch(0.5879 0.2234 29.05);
     --mk-color-hairline-pale: oklch(0.9563 0.0143 84.58 / 0.18);
     --mk-color-hairline-deep: oklch(0.2081 0.0221 158.19 / 0.2);
     --mk-color-surface-default: var(--mk-color-forest);
@@ -69,6 +75,9 @@
     --mk-color-border-default: var(--mk-color-hairline-pale);
     --mk-color-border-strong: var(--mk-color-grey-300);
     --mk-color-border-focus: var(--mk-color-honey);
+    --mk-color-status-live: var(--mk-color-signal-green);
+    --mk-color-status-stale: var(--mk-color-signal-orange);
+    --mk-color-status-failed: var(--mk-color-signal-red);
     --mk-color-action-background-primary-default: var(--mk-color-off-white);
     --mk-color-action-background-primary-hover: var(--mk-color-beige);
     --mk-color-action-background-primary-active: var(--mk-color-sand);
@@ -149,6 +158,9 @@
       --mk-color-border-default: light-dark(var(--mk-color-hairline-deep), var(--mk-color-hairline-pale));
       --mk-color-border-strong: light-dark(var(--mk-color-grey-600), var(--mk-color-grey-300));
       --mk-color-border-focus: light-dark(var(--mk-color-honey-deep), var(--mk-color-honey));
+      --mk-color-status-live: light-dark(var(--mk-color-signal-green-deep), var(--mk-color-signal-green));
+      --mk-color-status-stale: light-dark(var(--mk-color-signal-orange-deep), var(--mk-color-signal-orange));
+      --mk-color-status-failed: light-dark(var(--mk-color-signal-red-deep), var(--mk-color-signal-red));
       --mk-color-action-background-primary-default: light-dark(var(--mk-color-forest), var(--mk-color-off-white));
       --mk-color-action-background-primary-hover: light-dark(var(--mk-color-hunter), var(--mk-color-beige));
       --mk-color-action-background-primary-active: light-dark(var(--mk-color-hunter), var(--mk-color-sand));
@@ -166,6 +178,9 @@
       --mk-color-border-default: var(--mk-color-hairline-deep);
       --mk-color-border-strong: var(--mk-color-grey-600);
       --mk-color-border-focus: var(--mk-color-honey-deep);
+      --mk-color-status-live: var(--mk-color-signal-green-deep);
+      --mk-color-status-stale: var(--mk-color-signal-orange-deep);
+      --mk-color-status-failed: var(--mk-color-signal-red-deep);
       --mk-color-action-background-primary-default: var(--mk-color-forest);
       --mk-color-action-background-primary-hover: var(--mk-color-hunter);
       --mk-color-action-background-primary-active: var(--mk-color-hunter);
@@ -181,6 +196,9 @@
       --mk-color-border-default: var(--mk-color-hairline-pale);
       --mk-color-border-strong: var(--mk-color-grey-300);
       --mk-color-border-focus: var(--mk-color-honey);
+      --mk-color-status-live: var(--mk-color-signal-green);
+      --mk-color-status-stale: var(--mk-color-signal-orange);
+      --mk-color-status-failed: var(--mk-color-signal-red);
       --mk-color-action-background-primary-default: var(--mk-color-off-white);
       --mk-color-action-background-primary-hover: var(--mk-color-beige);
       --mk-color-action-background-primary-active: var(--mk-color-sand);
@@ -207,6 +225,9 @@
       --mk-color-border-default: CanvasText;
       --mk-color-border-strong: CanvasText;
       --mk-color-border-focus: Highlight;
+      --mk-color-status-live: CanvasText;
+      --mk-color-status-stale: CanvasText;
+      --mk-color-status-failed: CanvasText;
       --mk-color-action-background-primary-default: ButtonFace;
       --mk-color-action-background-primary-hover: ButtonFace;
       --mk-color-action-background-primary-active: ButtonFace;

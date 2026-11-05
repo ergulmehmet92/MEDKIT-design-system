@@ -16,6 +16,11 @@
       "strong": {"$value": "{color.grey-600}"},
       "focus": {"$value": "{color.honey-deep}"}
     },
+    "status": {
+      "live": {"$value": "{color.signal-green-deep}"},
+      "stale": {"$value": "{color.signal-orange-deep}"},
+      "failed": {"$value": "{color.signal-red-deep}"}
+    },
     "action": {
       "background": {
         "primary": {
