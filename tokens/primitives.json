@@ -1,0 +1,9 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$description": "Primitive tier: raw values. Components never read these directly.",
+  "color": {
+    "$type": "color",
+    "forest": {"$value": {"colorSpace": "oklch", "components": [0.2081, 0.0221, 158.1871], "hex": "#0f1b14"}},
+    "off-white": {"$value": {"colorSpace": "oklch", "components": [0.9563, 0.0143, 84.5834], "hex": "#f5f0e6"}}
+  }
+}

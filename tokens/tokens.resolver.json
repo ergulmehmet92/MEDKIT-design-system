@@ -1,0 +1,21 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/resolver.json",
+  "name": "MED·Kit design tokens",
+  "version": "2025.10",
+  "description": "Every token set MED·Kit combines, in the order later sets win.",
+  "sets": {
+    "primitives": {
+      "description": "Raw values.",
+      "sources": [{"$ref": "primitives.json"}]
+    },
+    "semantic": {
+      "description": "Roles that components read.",
+      "sources": [{"$ref": "semantic.json"}]
+    }
+  },
+  "modifiers": {},
+  "resolutionOrder": [
+    {"$ref": "#/sets/primitives"},
+    {"$ref": "#/sets/semantic"}
+  ]
+}

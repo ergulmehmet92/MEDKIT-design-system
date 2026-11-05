@@ -1,0 +1,13 @@
+@layer components {
+  .mk-button {
+    --_bg: var(--mk-button-bg, var(--mk-color-action-background-primary-default));
+    --_fg: var(--mk-button-fg, var(--mk-color-action-foreground-primary-default));
+
+    min-block-size: 2.75rem;
+    padding-inline: 1rem;
+    border: 0;
+    background: var(--_bg);
+    color: var(--_fg);
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$description": "Semantic tier: roles, as aliases only. Names describe purpose and never mention a hue or theme.",
+  "color": {
+    "$type": "color",
+    "action": {
+      "background": {
+        "primary": {
+          "default": {"$value": "{color.off-white}", "$description": "Primary action fill at rest."}
+        }
+      },
+      "foreground": {
+        "primary": {
+          "default": {"$value": "{color.forest}", "$description": "Label on the primary action fill. 4.5:1 or more."}
+        }
+      }
+    }
+  }
+}

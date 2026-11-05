@@ -1,0 +1,11 @@
+/* Generated. Do not edit. Load before any other stylesheet. */
+@layer reset, tokens, base, components, utilities;
+
+@layer tokens {
+  :root {
+    --mk-color-forest: oklch(0.2081 0.0221 158.19);
+    --mk-color-off-white: oklch(0.9563 0.0143 84.58);
+    --mk-color-action-background-primary-default: var(--mk-color-off-white);
+    --mk-color-action-foreground-primary-default: var(--mk-color-forest);
+  }
+}
