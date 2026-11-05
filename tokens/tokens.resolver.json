@@ -21,11 +21,27 @@
         "paper": [{"$ref": "semantic.paper.json"}]
       },
       "default": "forest"
+    },
+    "contrast": {
+      "description": "prefers-contrast: more. Promotes weak roles to stronger roles, so it holds in either theme.",
+      "contexts": {
+        "standard": [],
+        "more": [
+          {
+            "color": {
+              "text": {"muted": {"$value": "{color.text.default}"}},
+              "border": {"default": {"$value": "{color.border.strong}"}}
+            }
+          }
+        ]
+      },
+      "default": "standard"
     }
   },
   "resolutionOrder": [
     {"$ref": "#/sets/primitives"},
     {"$ref": "#/sets/semantic"},
-    {"$ref": "#/modifiers/scheme"}
+    {"$ref": "#/modifiers/scheme"},
+    {"$ref": "#/modifiers/contrast"}
   ]
 }

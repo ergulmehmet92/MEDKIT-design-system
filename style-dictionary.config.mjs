@@ -1,52 +1,26 @@
 // Token build: DTCG 2025.10 sources to CSS custom properties, via Style Dictionary 5.
-// Style Dictionary doesn't read resolver documents yet, so this script does, and the resolver
-// stays the single source of truth for which files make up each theme.
+// Style Dictionary doesn't read resolver documents yet, so scripts/resolve-tokens.mjs does, and
+// the resolver stays the single source of truth for which files make up each theme.
 // Adapted from the atomic-design skill's template (MIT, Gökberk Nur).
 
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import StyleDictionary from "style-dictionary";
+import { resolveTokens } from "./scripts/resolve-tokens.mjs";
 
-const ROOT = dirname(fileURLToPath(import.meta.url));
-const TOKENS = join(ROOT, "tokens");
-const OUT = join(ROOT, "dist/tokens");
+const OUT = join(dirname(fileURLToPath(import.meta.url)), "dist/tokens");
 const PREFIX = "mk";
 const LAYERS = "@layer reset, tokens, base, components, utilities;";
 const SUPPORTS = "(color: light-dark(#fff, #000))";
-
-const resolver = JSON.parse(await readFile(join(TOKENS, "tokens.resolver.json"), "utf8"));
-
-const isGroup = (value) => value && typeof value === "object" && !Array.isArray(value) && !("$value" in value);
-
-// Groups merge. A token declared again replaces the earlier one.
-function merge(into, from) {
-  for (const [key, value] of Object.entries(from)) {
-    into[key] = isGroup(value) && isGroup(into[key]) ? merge(into[key], value) : structuredClone(value);
-  }
-  return into;
-}
-
-async function resolve(input) {
-  const tree = {};
-  for (const { $ref } of resolver.resolutionOrder) {
-    const [, kind, name] = $ref.split("/");
-    const sources = kind === "sets" ? resolver.sets[name].sources : resolver.modifiers[name].contexts[input[name] ?? resolver.modifiers[name].default];
-    for (const source of sources) {
-      merge(tree, JSON.parse(await readFile(join(TOKENS, source.$ref), "utf8")));
-    }
-  }
-  delete tree.$schema;
-  delete tree.$description;
-  return tree;
-}
+const FORCED_KEY = "com.medkit.forcedColors";
 
 const transforms = StyleDictionary.hooks.transformGroups.css.map((name) => (name === "color/css" ? "color/oklch" : name));
 
-// Returns a map of custom property name to its CSS value for one theme.
+// Returns each token's CSS value and forced-colors system colour for one theme permutation.
 async function build(input) {
   const dictionary = new StyleDictionary({
-    tokens: await resolve(input),
+    tokens: await resolveTokens(input),
     usesDtcg: true,
     log: { verbosity: "silent" },
     platforms: { css: { transforms, prefix: PREFIX } },
@@ -59,14 +33,21 @@ async function build(input) {
     const alias = typeof token.original.$value === "string" && token.original.$value.match(/^\{([^{}]+)\}$/);
     return alias ? `var(--${byPath.get(alias[1]).name})` : token.$value;
   };
-  return new Map(allTokens.map((token) => [token.name, cssValue(token)]));
+  return {
+    values: new Map(allTokens.map((token) => [token.name, cssValue(token)])),
+    forced: allTokens.filter((token) => token.$extensions?.[FORCED_KEY]).map((token) => [token.name, token.$extensions[FORCED_KEY]]),
+  };
 }
 
 const declarations = (entries, pad) => entries.map(([name, value]) => `${pad}--${name}: ${value};`).join("\n");
 
-const forest = await build({ scheme: "forest" });
-const paper = await build({ scheme: "paper" });
-const themed = [...forest.keys()].filter((name) => forest.get(name) !== paper.get(name));
+const { values: forest, forced } = await build({ scheme: "forest" });
+const { values: paper } = await build({ scheme: "paper" });
+const { values: more } = await build({ contrast: "more" });
+
+const names = [...forest.keys()];
+const themed = names.filter((name) => forest.get(name) !== paper.get(name));
+const promoted = names.filter((name) => forest.get(name) !== more.get(name)).map((name) => [name, more.get(name)]);
 
 const css = `/* Generated. Do not edit. Load before any other stylesheet. */
 ${LAYERS}
@@ -103,6 +84,20 @@ ${declarations(themed.map((name) => [name, paper.get(name)]), "      ")}
 ${declarations(themed.map((name) => [name, forest.get(name)]), "      ")}
     }
   }
+
+  @media (prefers-contrast: more) {
+    :root,
+    [data-theme] {
+${declarations(promoted, "      ")}
+    }
+  }
+
+  @media (forced-colors: active) {
+    :root,
+    [data-theme] {
+${declarations(forced, "      ")}
+    }
+  }
 }
 
 @layer base {
@@ -116,4 +111,4 @@ ${declarations(themed.map((name) => [name, forest.get(name)]), "      ")}
 
 await mkdir(OUT, { recursive: true });
 await writeFile(join(OUT, "tokens.css"), css);
-console.log(`Built ${forest.size} tokens into dist/tokens/tokens.css`);
+console.log(`Built ${names.length} tokens into dist/tokens/tokens.css`);

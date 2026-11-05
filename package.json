@@ -24,7 +24,8 @@
     "tokens": "node style-dictionary.config.mjs",
     "validate": "python3 scripts/validate_tokens.py --resolver tokens/tokens.resolver.json",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "contrast": "node scripts/contrast.mjs"
   },
   "peerDependencies": {
     "react": "^19.0.0",

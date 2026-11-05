@@ -1,33 +1,33 @@
 {
   "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
-  "$description": "Semantic tier: roles, as aliases only, with Forest values. semantic.paper.json overrides them for Paper. Names describe purpose and never mention a hue or theme.",
+  "$description": "Semantic tier: roles, as aliases only, with Forest values. semantic.paper.json overrides them for Paper. Names describe purpose and never mention a hue or theme. The forcedColors extension names the system colour each role uses in forced-colors mode.",
   "color": {
     "$type": "color",
     "surface": {
-      "default": {"$value": "{color.forest}", "$description": "Page and section background."},
-      "subtle": {"$value": "{color.forest}", "$description": "Quieter areas within a page. Only differs from the default in Paper."}
+      "default": {"$value": "{color.forest}", "$description": "Page and section background.", "$extensions": {"com.medkit.forcedColors": "Canvas"}},
+      "subtle": {"$value": "{color.forest}", "$description": "Quieter areas within a page. Only differs from the default in Paper.", "$extensions": {"com.medkit.forcedColors": "Canvas"}}
     },
     "text": {
-      "default": {"$value": "{color.off-white}", "$description": "Body and heading text. 4.5:1 or more on every surface."},
-      "muted": {"$value": "{color.grey-300}", "$description": "Labels and secondary text. 4.5:1 or more on every surface."},
-      "accent": {"$value": "{color.honey}", "$description": "Emphasised text. 4.5:1 or more on every surface."}
+      "default": {"$value": "{color.off-white}", "$description": "Body and heading text. 4.5:1 or more on every surface.", "$extensions": {"com.medkit.forcedColors": "CanvasText"}},
+      "muted": {"$value": "{color.grey-300}", "$description": "Labels and secondary text. 4.5:1 or more on every surface.", "$extensions": {"com.medkit.forcedColors": "CanvasText"}},
+      "accent": {"$value": "{color.honey}", "$description": "Emphasised text. 4.5:1 or more on every surface.", "$extensions": {"com.medkit.forcedColors": "CanvasText"}}
     },
     "border": {
-      "default": {"$value": "{color.hairline-pale}", "$description": "Decorative rules and grid lines. Exempt from contrast minimums, so never a control's only boundary."},
-      "strong": {"$value": "{color.grey-300}", "$description": "Control boundaries. 3:1 or more on every surface."},
-      "focus": {"$value": "{color.honey}", "$description": "Focus indicator. 3:1 or more on every surface."}
+      "default": {"$value": "{color.hairline-pale}", "$description": "Decorative rules and grid lines. Exempt from contrast minimums, so never a control's only boundary.", "$extensions": {"com.medkit.forcedColors": "CanvasText"}},
+      "strong": {"$value": "{color.grey-300}", "$description": "Control boundaries. 3:1 or more on every surface.", "$extensions": {"com.medkit.forcedColors": "CanvasText"}},
+      "focus": {"$value": "{color.honey}", "$description": "Focus indicator. 3:1 or more on every surface.", "$extensions": {"com.medkit.forcedColors": "Highlight"}}
     },
     "action": {
       "background": {
         "primary": {
-          "default": {"$value": "{color.off-white}", "$description": "Primary action fill at rest."},
-          "hover": {"$value": "{color.beige}", "$description": "Primary action fill on hover."},
-          "active": {"$value": "{color.sand}", "$description": "Primary action fill while pressed."}
+          "default": {"$value": "{color.off-white}", "$description": "Primary action fill at rest.", "$extensions": {"com.medkit.forcedColors": "ButtonFace"}},
+          "hover": {"$value": "{color.beige}", "$description": "Primary action fill on hover.", "$extensions": {"com.medkit.forcedColors": "ButtonFace"}},
+          "active": {"$value": "{color.sand}", "$description": "Primary action fill while pressed.", "$extensions": {"com.medkit.forcedColors": "ButtonFace"}}
         }
       },
       "foreground": {
         "primary": {
-          "default": {"$value": "{color.forest}", "$description": "Label on every primary action fill. 4.5:1 or more."}
+          "default": {"$value": "{color.forest}", "$description": "Label on every primary action fill. 4.5:1 or more.", "$extensions": {"com.medkit.forcedColors": "ButtonText"}}
         }
       }
     }

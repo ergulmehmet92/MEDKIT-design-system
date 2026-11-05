@@ -89,6 +89,32 @@
       --mk-color-action-foreground-primary-default: var(--mk-color-forest);
     }
   }
+
+  @media (prefers-contrast: more) {
+    :root,
+    [data-theme] {
+      --mk-color-text-muted: var(--mk-color-text-default);
+      --mk-color-border-default: var(--mk-color-border-strong);
+    }
+  }
+
+  @media (forced-colors: active) {
+    :root,
+    [data-theme] {
+      --mk-color-surface-default: Canvas;
+      --mk-color-surface-subtle: Canvas;
+      --mk-color-text-default: CanvasText;
+      --mk-color-text-muted: CanvasText;
+      --mk-color-text-accent: CanvasText;
+      --mk-color-border-default: CanvasText;
+      --mk-color-border-strong: CanvasText;
+      --mk-color-border-focus: Highlight;
+      --mk-color-action-background-primary-default: ButtonFace;
+      --mk-color-action-background-primary-hover: ButtonFace;
+      --mk-color-action-background-primary-active: ButtonFace;
+      --mk-color-action-foreground-primary-default: ButtonText;
+    }
+  }
 }
 
 @layer base {
