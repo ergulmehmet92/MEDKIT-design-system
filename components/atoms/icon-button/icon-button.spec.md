@@ -8,7 +8,7 @@
 
 | Part | Element | Notes |
 |---|---|---|
-| root | `button`, through Button | Quiet variant, 44px square |
+| root | `button`, through Button | Quiet variant, 48px circle |
 | icon | `svg` from the consumer | Must set `aria-hidden="true"` and use `currentColor` |
 
 ## API
@@ -38,7 +38,7 @@ Native `click`.
 
 ## Accessibility
 
-The label is required, so the button always has a name. The tooltip helps pointer users, but touch and keyboard users rely on the icon being clear, so only use widely understood icons. Target size is 44px.
+The label is required, so the button always has a name. The tooltip helps pointer users, but touch and keyboard users rely on the icon being clear, so only use widely understood icons. Target size is 48px.
 
 ## Responsive behaviour
 

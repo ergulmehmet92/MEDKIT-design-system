@@ -37,18 +37,22 @@ async function build(input) {
   };
   return {
     values: new Map(allTokens.map((token) => [token.name, cssValue(token)])),
+    colours: new Set(allTokens.filter((token) => token.$type === "color").map((token) => token.name)),
     forced: allTokens.filter((token) => token.$extensions?.[FORCED_KEY]).map((token) => [token.name, token.$extensions[FORCED_KEY]]),
   };
 }
 
 const declarations = (entries, pad) => entries.map(([name, value]) => `${pad}--${name}: ${value};`).join("\n");
 
-const { values: forest, forced } = await build({ scheme: "forest" });
+const { values: forest, colours, forced } = await build({ scheme: "forest" });
 const { values: paper } = await build({ scheme: "paper" });
 const { values: more } = await build({ contrast: "more" });
 
 const names = [...forest.keys()];
-const themed = names.filter((name) => forest.get(name) !== paper.get(name));
+const changed = names.filter((name) => forest.get(name) !== paper.get(name));
+const themed = changed.filter((name) => colours.has(name));
+// light-dark() only takes colours, so other roles follow the nearest data-theme instead.
+const themedOther = changed.filter((name) => !colours.has(name));
 const promoted = names.filter((name) => forest.get(name) !== more.get(name)).map((name) => [name, more.get(name)]);
 
 const LATIN = "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD";
@@ -101,6 +105,14 @@ ${declarations(themed.map((name) => [name, paper.get(name)]), "      ")}
     [data-theme="forest"] {
 ${declarations(themed.map((name) => [name, forest.get(name)]), "      ")}
     }
+  }
+
+  [data-theme="paper"] {
+${declarations(themedOther.map((name) => [name, paper.get(name)]), "    ")}
+  }
+
+  [data-theme="forest"] {
+${declarations(themedOther.map((name) => [name, forest.get(name)]), "    ")}
   }
 
   @media (prefers-contrast: more) {

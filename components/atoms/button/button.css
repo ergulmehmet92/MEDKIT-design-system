@@ -1,21 +1,28 @@
 @layer components {
   .mk-button {
-    --_bg: var(--mk-button-bg, var(--mk-color-action-background-primary-default));
-    --_bg-hover: var(--mk-button-bg-hover, var(--mk-color-action-background-primary-hover));
-    --_bg-active: var(--mk-button-bg-active, var(--mk-color-action-background-primary-active));
-    --_fg: var(--mk-button-fg, var(--mk-color-action-foreground-primary-default));
-    --_border: var(--mk-button-border, transparent);
+    --_angle: var(--mk-light-angle, 0deg);
+    --_x: var(--mk-light-x, 50%);
+    --_y: var(--mk-light-y, 0%);
+    --_near: var(--mk-light-near, 0.4);
+    --_specular: var(--mk-color-material-specular);
+    --_cast:
+      0 1px 1px color-mix(in srgb, var(--mk-color-material-shade) 60%, transparent),
+      0 0.75rem 1.5rem -0.625rem color-mix(in srgb, var(--mk-color-material-shade) 45%, transparent);
+    --_occlusion: inset 0 -0.5rem 0.75rem -0.5rem color-mix(in srgb, var(--mk-color-material-shade) 45%, transparent);
 
+    position: relative;
+    isolation: isolate;
+    box-sizing: border-box;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: var(--mk-gap-sm);
-    min-block-size: 2.75rem;
+    min-block-size: 3rem;
     padding-block: var(--mk-inset-sm);
-    padding-inline: var(--mk-inset-md);
-    border: var(--mk-border-width-default) solid var(--_border);
-    border-radius: var(--mk-radius-default);
-    background-color: var(--_bg);
+    padding-inline: var(--mk-inset-control);
+    border: var(--mk-border-width-default) solid transparent;
+    border-radius: var(--mk-radius-control);
+    background: none;
     color: var(--_fg);
     font-family: var(--mk-font-family-body);
     font-size: var(--mk-font-size-body);
@@ -23,33 +30,130 @@
     line-height: var(--mk-line-height-snug);
     text-align: center;
     cursor: pointer;
-    transition:
-      background-color var(--mk-motion-duration-interaction) var(--mk-motion-easing-default),
-      border-color var(--mk-motion-duration-interaction) var(--mk-motion-easing-default);
+    transition: transform var(--mk-motion-duration-interaction) var(--mk-motion-easing-default);
 
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    /* Eclipse: an opaque body blocks the light, which spills past its edge. */
+    &[data-variant="primary"] {
+      --_fg: var(--mk-button-fg, var(--mk-color-action-foreground-primary-default));
+      --_body: var(--mk-button-bg, var(--mk-color-action-background-primary-default));
+      --_glow: var(--mk-color-material-glow);
+      --_rim: conic-gradient(
+        from calc(var(--_angle) - 95deg),
+        transparent 0deg,
+        var(--_glow) 55deg,
+        color-mix(in oklab, var(--_glow) 35%, var(--_specular)) 95deg,
+        var(--_glow) 135deg,
+        transparent 190deg
+      );
+
+      &::before {
+        inset: -1px;
+        z-index: -2;
+        background: var(--_rim);
+        filter: blur(0.6875rem);
+        opacity: calc(0.5 + 0.5 * var(--_near));
+        transition:
+          inset var(--mk-motion-duration-interaction) var(--mk-motion-easing-default),
+          filter var(--mk-motion-duration-interaction) var(--mk-motion-easing-default);
+      }
+
+      &::after {
+        inset: -1px;
+        z-index: -1;
+        border: var(--mk-border-width-default) solid transparent;
+        background:
+          radial-gradient(
+              90% 170% at var(--_x) var(--_y),
+              var(--mk-color-action-background-primary-lit),
+              var(--_body) 58%,
+              var(--mk-color-action-background-primary-far)
+            )
+            padding-box,
+          var(--_rim) border-box;
+        box-shadow: var(--_cast), var(--_occlusion);
+      }
+
+      @media (hover: hover) {
+        &:hover:not(:disabled)::before {
+          inset: -5px;
+          filter: blur(0.875rem);
+        }
+      }
+
+      &:active:not(:disabled)::before {
+        inset: 1px;
+        filter: blur(0.375rem);
+      }
+    }
+
+    /* Lens: clear glass, bent at its edge, with a highlight facing the light. */
     &[data-variant="quiet"] {
-      --_bg: transparent;
-      --_bg-hover: transparent;
-      --_bg-active: transparent;
-      --_fg: var(--mk-color-text-default);
-      --_border: var(--mk-color-border-strong);
-    }
+      --_fg: var(--mk-button-fg, var(--mk-color-text-default));
 
-    &:hover:not(:disabled) {
-      background-color: var(--_bg-hover);
-    }
+      background: color-mix(in srgb, var(--mk-button-bg, var(--mk-color-surface-default)) 28%, transparent);
+      -webkit-backdrop-filter: var(--mk-lens, blur(3px)) brightness(var(--mk-glass-brightness)) saturate(1.4);
+      backdrop-filter: var(--mk-lens, blur(3px)) brightness(var(--mk-glass-brightness)) saturate(1.4);
+      box-shadow:
+        var(--_cast),
+        var(--_occlusion),
+        inset 0 0 0 0.5px color-mix(in srgb, var(--_specular) 14%, transparent);
 
-    &[data-variant="quiet"]:hover:not(:disabled) {
-      border-color: var(--mk-color-text-default);
+      &::before {
+        inset: -1px;
+        padding: 1px;
+        background: conic-gradient(
+          from calc(var(--_angle) - 80deg),
+          transparent 0deg,
+          color-mix(in srgb, var(--_specular) 95%, transparent) 80deg,
+          transparent 160deg,
+          transparent 215deg,
+          color-mix(in srgb, var(--_specular) 32%, transparent) 260deg,
+          transparent 305deg
+        );
+        mask:
+          linear-gradient(currentColor 0 0) content-box exclude,
+          linear-gradient(currentColor 0 0);
+        opacity: calc(0.6 + 0.4 * var(--_near));
+      }
+
+      &::after {
+        inset: 0;
+        z-index: -1;
+        background: radial-gradient(
+          70% 130% at var(--_x) var(--_y),
+          color-mix(in srgb, var(--_specular) 14%, transparent),
+          transparent 70%
+        );
+        opacity: calc(0.35 + 0.65 * var(--_near));
+        transition: opacity var(--mk-motion-duration-interaction) var(--mk-motion-easing-default);
+      }
+
+      @media (hover: hover) {
+        &:hover:not(:disabled)::after {
+          opacity: 1;
+        }
+      }
+
+      &:active:not(:disabled)::after {
+        opacity: 0.15;
+      }
     }
 
     &:active:not(:disabled) {
-      background-color: var(--_bg-active);
+      transform: scale(0.97);
     }
 
     &:focus-visible {
       outline: var(--mk-border-width-focus) solid var(--mk-color-border-focus);
-      outline-offset: var(--mk-border-width-focus);
+      outline-offset: 3px;
     }
 
     &:disabled {
@@ -59,6 +163,48 @@
 
     @media (prefers-reduced-motion: reduce) {
       transition: none;
+
+      &::before,
+      &::after {
+        transition: none;
+      }
+    }
+  }
+
+  /* The glass needs a backdrop to keep its label readable, so it turns nearly solid without one. */
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .mk-button[data-variant="quiet"] {
+      background: color-mix(in srgb, var(--mk-button-bg, var(--mk-color-surface-default)) 88%, transparent);
+    }
+  }
+
+  @media (prefers-contrast: more), (prefers-reduced-transparency: reduce) {
+    .mk-button[data-variant="quiet"] {
+      background: var(--mk-button-bg, var(--mk-color-surface-default));
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .mk-button {
+      border-color: var(--mk-color-border-strong);
+
+      &::before,
+      &::after {
+        display: none;
+      }
+
+      &[data-variant="primary"] {
+        background: var(--mk-color-action-background-primary-default);
+      }
+
+      &[data-variant="quiet"] {
+        background: var(--mk-color-surface-default);
+        box-shadow: none;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+      }
     }
   }
 }

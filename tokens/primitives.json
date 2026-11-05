@@ -4,12 +4,14 @@
   "color": {
     "$type": "color",
     "forest": {"$value": {"colorSpace": "oklch", "components": [0.2081, 0.0221, 158.1871], "hex": "#0f1b14"}},
+    "forest-deep": {"$value": {"colorSpace": "oklch", "components": [0.1757, 0.0171, 159.6746], "hex": "#0a130e"}, "$description": "Darker than Forest, for shade inside and under lit controls."},
     "hunter": {"$value": {"colorSpace": "oklch", "components": [0.3809, 0.0459, 155.3737], "hex": "#2e4a38"}},
     "sage": {"$value": {"colorSpace": "oklch", "components": [0.6848, 0.0564, 128.9185], "hex": "#8fa17c"}},
     "sand": {"$value": {"colorSpace": "oklch", "components": [0.7902, 0.0599, 83.9105], "hex": "#cdb88f"}},
     "honey": {"$value": {"colorSpace": "oklch", "components": [0.7677, 0.1353, 80.2998], "hex": "#e0a93f"}},
     "honey-deep": {"$value": {"colorSpace": "oklch", "components": [0.4713, 0.0939, 74.21], "hex": "#7a520e"}},
     "beige": {"$value": {"colorSpace": "oklch", "components": [0.9092, 0.0248, 83.4155], "hex": "#e9e0cf"}},
+    "highlight": {"$value": {"colorSpace": "oklch", "components": [0.9937, 0.0095, 93.5653], "hex": "#fffdf6"}, "$description": "Brighter than Off-white, for specular highlights on lit controls."},
     "off-white": {"$value": {"colorSpace": "oklch", "components": [0.9563, 0.0143, 84.5834], "hex": "#f5f0e6"}},
     "grey-300": {"$value": {"colorSpace": "oklch", "components": [0.7142, 0.0215, 84.593], "hex": "#a9a294"}},
     "grey-600": {"$value": {"colorSpace": "oklch", "components": [0.4663, 0.0189, 82.7494], "hex": "#5f594e"}},
@@ -63,6 +65,11 @@
     "16": {"$value": {"value": 4, "unit": "rem"}},
     "24": {"$value": {"value": 6, "unit": "rem"}},
     "32": {"$value": {"value": 8, "unit": "rem"}}
+  },
+  "brightness": {
+    "$type": "number",
+    "dim": {"$value": 0.5},
+    "full": {"$value": 1}
   },
   "radius": {
     "$type": "dimension",

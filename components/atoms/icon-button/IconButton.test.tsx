@@ -50,10 +50,10 @@ describe("IconButton", () => {
     expect(violations).toEqual([]);
   });
 
-  it("is a 44px square", () => {
+  it("is a 48px square, clearing the 44px target", () => {
     const css = readFileSync("components/atoms/icon-button/icon-button.css", "utf8");
 
-    expect(css).toContain("inline-size: 2.75rem");
-    expect(css).toContain("block-size: 2.75rem");
+    expect(css).toContain("inline-size: 3rem");
+    expect(css).toContain("block-size: 3rem");
   });
 });

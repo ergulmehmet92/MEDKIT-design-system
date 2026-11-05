@@ -42,6 +42,8 @@ describe("primitive colours", () => {
 
     expect(hexes).toEqual({
       forest: "#0f1b14",
+      "forest-deep": "#0a130e",
+      highlight: "#fffdf6",
       hunter: "#2e4a38",
       sage: "#8fa17c",
       sand: "#cdb88f",
@@ -137,5 +139,11 @@ describe("themes", () => {
     expect(base).toContain(":where(:root, [data-theme])");
     expect(base).toContain("background-color: var(--mk-color-surface-default);");
     expect(base).toContain("color: var(--mk-color-text-default);");
+  });
+
+  it("themes non-colour roles by data-theme, because light-dark() only takes colours", () => {
+    expect(css()).not.toMatch(/--mk-glass-brightness: light-dark/);
+    expect(css()).toMatch(/\[data-theme="paper"\] \{\s*--mk-glass-brightness: var\(--mk-brightness-full\);/);
+    expect(css()).toMatch(/\[data-theme="forest"\] \{\s*--mk-glass-brightness: var\(--mk-brightness-dim\);/);
   });
 });

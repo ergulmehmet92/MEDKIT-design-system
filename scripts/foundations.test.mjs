@@ -33,10 +33,18 @@ describe("foundation scales", () => {
     }
   });
 
-  it("stay square by default, with a full radius for circles", () => {
+  it("stay square by default, with stadium controls and circles", () => {
     expect(steps(primitives().radius)).toEqual(["none", "full"]);
     expect(semantic().radius.default.$value).toBe("{radius.none}");
+    expect(semantic().radius.control.$value).toBe("{radius.full}");
     expect(semantic().radius.circle.$value).toBe("{radius.full}");
+  });
+
+  it("let Lens dim the light behind it on Forest only", () => {
+    const paper = JSON.parse(readFileSync("tokens/semantic.paper.json", "utf8"));
+
+    expect(semantic().glass.brightness.$value).toBe("{brightness.dim}");
+    expect(paper.glass.brightness.$value).toBe("{brightness.full}");
   });
 
   it("only offer the weights the two typefaces ship", () => {

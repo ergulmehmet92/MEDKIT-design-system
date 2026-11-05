@@ -39,7 +39,7 @@ Native `click`. `subscribeToTheme` reports changes from this tab and others.
 
 ## Accessibility
 
-Native button with keyboard support. The accessible name and tooltip say what pressing it does: "Switch to Paper theme". Target size is 44px.
+Native button with keyboard support. The accessible name and tooltip say what pressing it does: "Switch to Paper theme". Target size is 48px.
 
 ## Behaviour decisions
 

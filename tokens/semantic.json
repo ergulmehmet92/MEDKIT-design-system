@@ -22,12 +22,17 @@
       "stale": {"$value": "{color.signal-orange}", "$description": "Stale lamp. Graphics only, never as text. 3:1 or more on every surface.", "$extensions": {"com.medkit.forcedColors": "CanvasText"}},
       "failed": {"$value": "{color.signal-red}", "$description": "Failed lamp. Graphics only, never as text. 3:1 or more on every surface.", "$extensions": {"com.medkit.forcedColors": "CanvasText"}}
     },
+    "material": {
+      "specular": {"$value": "{color.highlight}", "$description": "Highlights on glass edges. Decorative, so exempt from contrast minimums.", "$extensions": {"com.medkit.forcedColors": "CanvasText"}},
+      "glow": {"$value": "{color.honey}", "$description": "Light spilling past an opaque control. Decorative.", "$extensions": {"com.medkit.forcedColors": "CanvasText"}},
+      "shade": {"$value": "{color.forest-deep}", "$description": "Contact shadow and occlusion. Decorative.", "$extensions": {"com.medkit.forcedColors": "CanvasText"}}
+    },
     "action": {
       "background": {
         "primary": {
           "default": {"$value": "{color.off-white}", "$description": "Primary action fill at rest.", "$extensions": {"com.medkit.forcedColors": "ButtonFace"}},
-          "hover": {"$value": "{color.beige}", "$description": "Primary action fill on hover.", "$extensions": {"com.medkit.forcedColors": "ButtonFace"}},
-          "active": {"$value": "{color.sand}", "$description": "Primary action fill while pressed.", "$extensions": {"com.medkit.forcedColors": "ButtonFace"}}
+          "lit": {"$value": "{color.highlight}", "$description": "The side of a primary action facing the light.", "$extensions": {"com.medkit.forcedColors": "ButtonFace"}},
+          "far": {"$value": "{color.beige}", "$description": "The side of a primary action away from the light.", "$extensions": {"com.medkit.forcedColors": "ButtonFace"}}
         }
       },
       "foreground": {
@@ -75,11 +80,16 @@
     "$type": "dimension",
     "sm": {"$value": "{space.2}"},
     "md": {"$value": "{space.4}"},
-    "lg": {"$value": "{space.8}"}
+    "lg": {"$value": "{space.8}"},
+    "control": {"$value": "{space.6}", "$description": "Sides of a control with a text label."}
+  },
+  "glass": {
+    "brightness": {"$type": "number", "$value": "{brightness.dim}", "$description": "How much a glass control dims the light behind it, so its label stays readable."}
   },
   "radius": {
     "$type": "dimension",
-    "default": {"$value": "{radius.none}", "$description": "Everything is square unless it's a circle."},
+    "default": {"$value": "{radius.none}", "$description": "Surfaces stay square."},
+    "control": {"$value": "{radius.full}", "$description": "Controls are stadiums: a rectangle with circular ends."},
     "circle": {"$value": "{radius.full}", "$description": "Circles only."}
   },
   "border-width": {

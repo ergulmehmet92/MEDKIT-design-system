@@ -1,8 +1,8 @@
 @layer components {
   .mk-icon-button {
     flex: none;
-    inline-size: 2.75rem;
-    block-size: 2.75rem;
+    inline-size: 3rem;
+    block-size: 3rem;
     padding: 0;
   }
 }

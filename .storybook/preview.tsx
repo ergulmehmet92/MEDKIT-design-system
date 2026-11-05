@@ -1,4 +1,5 @@
 import type { Preview } from "@storybook/react-vite";
+import { LightSource } from "../components/atoms/button";
 import "../dist/tokens/tokens.css";
 
 const preview: Preview = {
@@ -27,6 +28,7 @@ const preview: Preview = {
         data-theme={parameters.pinTheme === false ? undefined : globals.theme}
         style={{ minHeight: "100vh", padding: "var(--mk-inset-lg)" }}
       >
+        <LightSource />
         <Story />
       </div>
     ),

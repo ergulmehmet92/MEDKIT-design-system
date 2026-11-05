@@ -87,8 +87,9 @@ describe("Button", () => {
 describe("Button styles", () => {
   it("read colour from semantic tokens and hold no raw colours", () => {
     expect(css()).toContain("--mk-color-action-background-primary-default");
-    expect(css()).toContain("--mk-color-action-background-primary-hover");
-    expect(css()).toContain("--mk-color-action-background-primary-active");
+    expect(css()).toContain("--mk-color-action-background-primary-lit");
+    expect(css()).toContain("--mk-color-action-background-primary-far");
+    expect(css()).toContain("--mk-color-material-specular");
     expect(css()).not.toMatch(/#[0-9a-f]{3,8}\b|oklch\(|rgb\(/i);
   });
 
@@ -100,16 +101,41 @@ describe("Button styles", () => {
     expect(css()).toContain("font-family: var(--mk-font-family-body)");
   });
 
-  it("meet the 44px target", () => {
-    expect(css()).toContain("min-block-size: 2.75rem");
+  it("clear the 44px target, as a stadium", () => {
+    expect(css()).toContain("min-block-size: 3rem");
+    expect(css()).toContain("border-radius: var(--mk-radius-control)");
   });
 
   it("show a focus ring, using an outline so forced-colors mode keeps it", () => {
     expect(css()).toMatch(/:focus-visible \{[^}]*outline: var\(--mk-border-width-focus\) solid var\(--mk-color-border-focus\)/);
   });
 
-  it("keep a real border on the quiet variant, so forced-colors mode shows its boundary", () => {
-    expect(css()).toMatch(/\[data-variant="quiet"\] \{[^}]*--mk-color-border-strong/);
+  it("read the light from the source, with a usable default when there is none", () => {
+    expect(css()).toContain("var(--mk-light-angle, 0deg)");
+    expect(css()).toContain("var(--mk-light-near, 0.4)");
+  });
+
+  it("make the quiet variant glass, falling back to blur without a lens", () => {
+    expect(css()).toContain("backdrop-filter: var(--mk-lens, blur(3px)) brightness(var(--mk-glass-brightness))");
+  });
+
+  it("stay readable without backdrop filters, or when less transparency is requested", () => {
+    expect(css()).toMatch(/@supports not \(\(backdrop-filter: blur\(1px\)\) or \(-webkit-backdrop-filter: blur\(1px\)\)\)/);
+    expect(css()).toContain("prefers-contrast: more");
+    expect(css()).toContain("prefers-reduced-transparency: reduce");
+  });
+
+  it("drop the material and keep a real boundary in forced-colors mode", () => {
+    const block = css().match(/@media \(forced-colors: active\) \{[\s\S]*$/)?.[0] ?? "";
+
+    expect(block).toContain("border-color: var(--mk-color-border-strong)");
+    expect(block).toMatch(/\[data-variant="quiet"\] \{[^}]*\bbackdrop-filter: none/);
+    expect(block).toMatch(/\[data-variant="quiet"\] \{[^}]*box-shadow: none/);
+    expect(block).toContain("display: none");
+  });
+
+  it("keep the hover sheen faint enough for the label to stay readable over bright light", () => {
+    expect(css()).toContain("color-mix(in srgb, var(--_specular) 14%, transparent),\n          transparent 70%");
   });
 
   it("stop transitions for visitors who prefer reduced motion", () => {

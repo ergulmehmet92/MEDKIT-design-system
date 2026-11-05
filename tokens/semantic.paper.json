@@ -21,12 +21,15 @@
       "stale": {"$value": "{color.signal-orange-deep}"},
       "failed": {"$value": "{color.signal-red-deep}"}
     },
+    "material": {
+      "shade": {"$value": "{color.honey-deep}"}
+    },
     "action": {
       "background": {
         "primary": {
           "default": {"$value": "{color.forest}"},
-          "hover": {"$value": "{color.hunter}"},
-          "active": {"$value": "{color.hunter}"}
+          "lit": {"$value": "{color.hunter}"},
+          "far": {"$value": "{color.forest-deep}"}
         }
       },
       "foreground": {
@@ -35,5 +38,8 @@
         }
       }
     }
+  },
+  "glass": {
+    "brightness": {"$value": "{brightness.full}"}
   }
 }

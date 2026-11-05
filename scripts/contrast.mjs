@@ -7,7 +7,7 @@ const TEXT = ["color.text.default", "color.text.muted", "color.text.accent"];
 const SURFACES = ["color.surface.default", "color.surface.subtle"];
 const BOUNDARIES = ["color.border.strong", "color.border.focus"];
 const LAMPS = ["color.status.live", "color.status.stale", "color.status.failed"];
-const ACTION_FILLS = ["default", "hover", "active"].map((state) => `color.action.background.primary.${state}`);
+const ACTION_FILLS = ["default", "lit", "far"].map((state) => `color.action.background.primary.${state}`);
 
 const pairsOf = (foregrounds, backgrounds, minimum) =>
   foregrounds.flatMap((foreground) => backgrounds.map((background) => ({ foreground, background, minimum })));
