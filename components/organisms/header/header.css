@@ -8,7 +8,7 @@
   .mk-header-layout {
     display: flex;
     align-items: center;
-    gap: var(--mk-gap-sm) var(--mk-gap-md);
+    gap: var(--mk-gap-sm);
   }
 
   .mk-header-brand {
@@ -114,6 +114,10 @@
   }
 
   @container (min-width: 40rem) {
+    .mk-header-layout {
+      column-gap: var(--mk-gap-md);
+    }
+
     .mk-header-navigation {
       display: block;
     }

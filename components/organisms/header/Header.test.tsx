@@ -160,4 +160,8 @@ describe("Header styles", () => {
   it("hides the menu button on wide screens however the stylesheets are ordered", () => {
     expect(css()).toMatch(/\.mk-header \.mk-header-menu-trigger \{\s*display: none/);
   });
+
+  it("tightens its gaps on narrow screens, so the brand stays on one line at 320px", () => {
+    expect(css()).toMatch(/\.mk-header-layout \{[^}]*gap: var\(--mk-gap-sm\);/);
+  });
 });

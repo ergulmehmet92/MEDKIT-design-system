@@ -48,4 +48,4 @@ One, two, four and long values are covered by stories.
 
 ## Lineage
 
-**Contains:** Metric. **Used in:** none yet.
+**Contains:** Metric. **Used in:** the site's landing page.

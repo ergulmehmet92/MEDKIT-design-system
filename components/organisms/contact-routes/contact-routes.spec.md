@@ -59,4 +59,4 @@ Default and long labels at 320px are covered by stories.
 
 ## Lineage
 
-**Contains:** nothing. **Used in:** none yet.
+**Contains:** nothing. **Used in:** the site's landing page.

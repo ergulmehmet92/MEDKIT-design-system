@@ -65,4 +65,4 @@ Both forms, calm, and both pinned themes are covered by stories.
 
 ## Lineage
 
-**Contains:** nothing. **Used in:** none yet.
+**Contains:** nothing. **Used in:** the site's landing page.

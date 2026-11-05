@@ -75,4 +75,4 @@ The menu needs JavaScript to open. Without it, or before hydration, the button d
 
 ## Lineage
 
-**Contains:** HeaderMenu, IconButton, and whatever it's given, usually ThemeSwitch. **Used in:** none yet.
+**Contains:** HeaderMenu, IconButton, and whatever it's given, usually ThemeSwitch. **Used in:** the site's landing page and `/kit-check`.
