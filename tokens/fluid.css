@@ -10,3 +10,17 @@
   --mk-gutter: clamp(1rem, 4vw, 4rem);
   --mk-page-inset: calc(var(--mk-gutter) + 1rem);
 }
+
+/* Analytical density keeps the page tight and metrics small. Editorial resets them, so it can be
+   pinned inside an analytical subtree. */
+[data-density="analytical"] {
+  --mk-font-size-feature: var(--mk-font-size-400);
+  --mk-gutter: var(--mk-space-6);
+  --mk-page-inset: calc(var(--mk-gutter) + 1rem);
+}
+
+[data-density="editorial"] {
+  --mk-font-size-feature: clamp(2rem, 1rem + 4vw, 4.5rem);
+  --mk-gutter: clamp(1rem, 4vw, 4rem);
+  --mk-page-inset: calc(var(--mk-gutter) + 1rem);
+}

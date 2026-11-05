@@ -24,6 +24,6 @@ describe("MetricRow", () => {
   it("fits as many columns as the width allows, without overflowing", () => {
     const css = readFileSync("components/organisms/metric-row/metric-row.css", "utf8");
 
-    expect(css).toContain("repeat(auto-fit, minmax(min(11.25rem, 100%), 1fr))");
+    expect(css).toContain("repeat(auto-fit, minmax(min(var(--mk-size-column), 100%), 1fr))");
   });
 });

@@ -15,11 +15,13 @@ function tokensIn(node, path = []) {
 }
 
 describe("foundation scales", () => {
-  it("keep the type scale to 6 to 8 steps, against 41 sizes in v1", () => {
+  // Two densities share one scale, so the limit is 11 steps in total, and each density's
+  // roles still come from 8 steps at most (approved with the Density board on 2026-11-05).
+  it("keep the type scale to 11 steps across both densities, against 41 sizes in v1", () => {
     const count = steps(primitives().font.size).length;
 
     expect(count).toBeGreaterThanOrEqual(6);
-    expect(count).toBeLessThanOrEqual(8);
+    expect(count).toBeLessThanOrEqual(11);
   });
 
   it("keep spacing to 8 to 12 steps on a 4px grid, against 114 values in v1", () => {

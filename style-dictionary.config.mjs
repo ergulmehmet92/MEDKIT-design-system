@@ -47,12 +47,18 @@ const declarations = (entries, pad) => entries.map(([name, value]) => `${pad}--$
 const { values: forest, colours, forced } = await build({ scheme: "forest" });
 const { values: paper } = await build({ scheme: "paper" });
 const { values: more } = await build({ contrast: "more" });
+const { values: analytical } = await build({ density: "analytical" });
 
 const names = [...forest.keys()];
 const changed = names.filter((name) => forest.get(name) !== paper.get(name));
 const themed = changed.filter((name) => colours.has(name));
 // light-dark() only takes colours, so other roles follow the nearest data-theme instead.
 const themedOther = changed.filter((name) => !colours.has(name));
+// Density changes size and space roles only. Each density gets a block, so either one can be pinned
+// inside the other.
+const dense = names.filter((name) => forest.get(name) !== analytical.get(name));
+const denseColours = dense.filter((name) => colours.has(name));
+if (denseColours.length) throw new Error(`Density must not change colours: ${denseColours.join(", ")}`);
 const promoted = names.filter((name) => forest.get(name) !== more.get(name)).map((name) => [name, more.get(name)]);
 
 const LATIN = "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD";
@@ -115,6 +121,14 @@ ${declarations(themedOther.map((name) => [name, paper.get(name)]), "    ")}
 ${declarations(themedOther.map((name) => [name, forest.get(name)]), "    ")}
   }
 
+  [data-density="analytical"] {
+${declarations(dense.map((name) => [name, analytical.get(name)]), "    ")}
+  }
+
+  [data-density="editorial"] {
+${declarations(dense.map((name) => [name, forest.get(name)]), "    ")}
+  }
+
   @media (prefers-contrast: more) {
     :root,
     [data-theme] {
@@ -141,6 +155,12 @@ ${FLUID.trimEnd().split("\n").map((line) => (line ? `  ${line}` : line)).join("\
     font-family: var(--${PREFIX}-font-family-body);
     font-size: var(--${PREFIX}-font-size-body);
     font-weight: var(--${PREFIX}-font-weight-body);
+    line-height: var(--${PREFIX}-line-height-body);
+  }
+
+  /* Sizes resolve where they're declared, so each density subtree re-applies the body text. */
+  :where([data-density]) {
+    font-size: var(--${PREFIX}-font-size-body);
     line-height: var(--${PREFIX}-line-height-body);
   }
 

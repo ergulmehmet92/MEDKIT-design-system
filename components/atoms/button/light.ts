@@ -6,6 +6,7 @@ export type LightBox = { left: number; top: number; width: number; height: numbe
 
 const LENS_BEND = 44;
 const LENS_EDGE = 18;
+const LENS_HEIGHT = 48;
 const LENS_DISPERSION = 0.1;
 const EASE = 0.14;
 
@@ -19,6 +20,11 @@ export function lightOn(source: LightPoint, box: LightBox, reach: number) {
     y: ((source.y - box.top) / box.height) * 100,
     near: Math.max(0, 1 - Math.hypot(dx, dy) / reach),
   };
+}
+
+// The lens bends the same share of its rim at every control size, so analytical buttons match.
+export function lensScale(height: number) {
+  return { edge: Math.round((LENS_EDGE * height) / LENS_HEIGHT), bend: (LENS_BEND * height) / LENS_HEIGHT };
 }
 
 // An feDisplacementMap image for a rounded box: strongest at the rim, none in the middle.
@@ -94,14 +100,15 @@ function startLens() {
     canvas.height = height;
     const context = canvas.getContext("2d");
     if (!context) return null;
-    context.putImageData(new ImageData(lensMap(width, height, Math.min(width, height) / 2, LENS_EDGE), width, height), 0, 0);
+    const { edge, bend: scale } = lensScale(height);
+    context.putImageData(new ImageData(lensMap(width, height, Math.min(width, height) / 2, edge), width, height), 0, 0);
 
     const id = `mk-lens-${lensCount++}`;
     const box = { x: 0, y: 0, width, height };
     const filter = make("filter", { id, ...box, filterUnits: "userSpaceOnUse", primitiveUnits: "userSpaceOnUse", "color-interpolation-filters": "sRGB" }, host);
     make("feImage", { href: canvas.toDataURL(), ...box, preserveAspectRatio: "none", result: "map" }, filter);
     for (const { name, bend, values } of CHANNELS) {
-      make("feDisplacementMap", { in: "SourceGraphic", in2: "map", scale: LENS_BEND * bend, xChannelSelector: "R", yChannelSelector: "G", result: `d${name}` }, filter);
+      make("feDisplacementMap", { in: "SourceGraphic", in2: "map", scale: scale * bend, xChannelSelector: "R", yChannelSelector: "G", result: `d${name}` }, filter);
       make("feColorMatrix", { in: `d${name}`, type: "matrix", values, result: `c${name}` }, filter);
     }
     make("feBlend", { in: "cr", in2: "cg", mode: "screen", result: "rg" }, filter);

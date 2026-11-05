@@ -1,0 +1,75 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$description": "Analytical density, for dashboards such as Predictor. Overrides size and space roles only, never colour. Approved on the Density board on 2026-11-05.",
+  "font": {
+    "size": {
+      "$type": "dimension",
+      "label": {
+        "$value": "{font.size.050}"
+      },
+      "body": {
+        "$value": "{font.size.075}"
+      },
+      "lead": {
+        "$value": "{font.size.200}"
+      },
+      "title": {
+        "$value": "{font.size.250}"
+      },
+      "subheading": {
+        "$value": "{font.size.400}"
+      }
+    }
+  },
+  "line-height": {
+    "$type": "number",
+    "body": {
+      "$value": "{leading.400}"
+    }
+  },
+  "gap": {
+    "$type": "dimension",
+    "sm": {
+      "$value": "{space.1}"
+    },
+    "md": {
+      "$value": "{space.2}"
+    },
+    "lg": {
+      "$value": "{space.4}"
+    },
+    "xl": {
+      "$value": "{space.8}"
+    },
+    "section": {
+      "$value": "{space.6}"
+    }
+  },
+  "inset": {
+    "$type": "dimension",
+    "sm": {
+      "$value": "{space.1}"
+    },
+    "md": {
+      "$value": "{space.3}"
+    },
+    "lg": {
+      "$value": "{space.4}"
+    },
+    "control": {
+      "$value": "{space.3}"
+    }
+  },
+  "size": {
+    "$type": "dimension",
+    "control": {
+      "$value": "{space.8}"
+    },
+    "row": {
+      "$value": "{space.8}"
+    },
+    "column": {
+      "$value": "{size.120}"
+    }
+  }
+}

@@ -15,8 +15,19 @@ const preview: Preview = {
         dynamicTitle: true,
       },
     },
+    density: {
+      description: "Density",
+      toolbar: {
+        title: "Density",
+        items: [
+          { value: "editorial", title: "Editorial" },
+          { value: "analytical", title: "Analytical" },
+        ],
+        dynamicTitle: true,
+      },
+    },
   },
-  initialGlobals: { theme: "forest" },
+  initialGlobals: { theme: "forest", density: "editorial" },
   parameters: {
     layout: "fullscreen",
     a11y: { test: "error" },
@@ -26,6 +37,7 @@ const preview: Preview = {
     (Story, { globals, parameters }) => (
       <div
         data-theme={parameters.pinTheme === false ? undefined : globals.theme}
+        data-density={globals.density}
         style={{ minHeight: "100vh", padding: "var(--mk-inset-lg)" }}
       >
         <LightSource />

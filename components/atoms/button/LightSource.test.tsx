@@ -1,7 +1,7 @@
 import { cleanup, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { Button } from "./Button";
-import { lensMap, lightOn } from "./light";
+import { lensMap, lensScale, lightOn } from "./light";
 import { LightSource } from "./LightSource";
 
 const box = { left: 100, top: 100, width: 100, height: 40 };
@@ -143,5 +143,13 @@ describe("LightSource", () => {
 
     expect(document.querySelector("svg[data-mk-lens]")).toBeNull();
     expect(screen.getByRole("button").style.getPropertyValue("--mk-lens")).toBe("");
+  });
+});
+
+describe("lensScale", () => {
+  it("bends the same share of the rim on a 32px analytical button as on a 48px one", () => {
+    expect(lensScale(48)).toEqual({ edge: 18, bend: 44 });
+    expect(lensScale(32).edge).toBe(12);
+    expect(lensScale(32).bend).toBeCloseTo(29.33, 1);
   });
 });

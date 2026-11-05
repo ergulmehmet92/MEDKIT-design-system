@@ -101,9 +101,14 @@ describe("Button styles", () => {
     expect(css()).toContain("font-family: var(--mk-font-family-body)");
   });
 
-  it("clear the 44px target, as a stadium", () => {
-    expect(css()).toContain("min-block-size: 3rem");
+  // Editorial controls clear 44px. Analytical ones are 32px, above WCAG 2.2's 24px minimum.
+  it("clear the target size in both densities, as a stadium", () => {
+    const tokens = readFileSync("dist/tokens/tokens.css", "utf8");
+
+    expect(css()).toContain("min-block-size: var(--mk-size-control)");
     expect(css()).toContain("border-radius: var(--mk-radius-control)");
+    expect(tokens).toMatch(/:root \{[\s\S]*?--mk-size-control: var\(--mk-space-12\);/);
+    expect(tokens).toMatch(/\[data-density="analytical"\] \{[^}]*--mk-size-control: var\(--mk-space-8\);/);
   });
 
   it("show a focus ring, using an outline so forced-colors mode keeps it", () => {

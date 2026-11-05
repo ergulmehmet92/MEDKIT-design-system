@@ -99,12 +99,15 @@
     --mk-font-weight-label: var(--mk-font-weight-regular);
     --mk-font-size-100: 0.9375rem;
     --mk-font-size-200: 1rem;
+    --mk-font-size-250: 1.25rem;
     --mk-font-size-300: 1.3125rem;
     --mk-font-size-400: 1.75rem;
     --mk-font-size-500: 2.75rem;
     --mk-font-size-600: 3.25rem;
     --mk-font-size-700: 6.5rem;
     --mk-font-size-800: 8rem;
+    --mk-font-size-050: 0.75rem;
+    --mk-font-size-075: 0.875rem;
     --mk-font-size-label: var(--mk-font-size-100);
     --mk-font-size-body: var(--mk-font-size-200);
     --mk-font-size-lead: var(--mk-font-size-300);
@@ -113,6 +116,7 @@
     --mk-leading-100: 1;
     --mk-leading-200: 1.15;
     --mk-leading-300: 1.35;
+    --mk-leading-400: 1.4;
     --mk-space-1: 0.25rem;
     --mk-space-2: 0.5rem;
     --mk-space-3: 0.75rem;
@@ -120,9 +124,15 @@
     --mk-space-6: 1.5rem;
     --mk-space-8: 2rem;
     --mk-space-12: 3rem;
+    --mk-space-14: 3.5rem;
     --mk-space-16: 4rem;
     --mk-space-24: 6rem;
     --mk-space-32: 8rem;
+    --mk-size-120: 7.5rem;
+    --mk-size-180: 11.25rem;
+    --mk-size-control: var(--mk-space-12);
+    --mk-size-row: var(--mk-space-14);
+    --mk-size-column: var(--mk-size-180);
     --mk-brightness-dim: 0.5;
     --mk-brightness-full: 1;
     --mk-radius-none: 0rem;
@@ -144,6 +154,7 @@
     --mk-gap-md: var(--mk-space-4);
     --mk-gap-lg: var(--mk-space-8);
     --mk-gap-xl: var(--mk-space-16);
+    --mk-gap-section: var(--mk-space-12);
     --mk-inset-sm: var(--mk-space-2);
     --mk-inset-md: var(--mk-space-4);
     --mk-inset-lg: var(--mk-space-8);
@@ -239,6 +250,48 @@
     --mk-glass-brightness: var(--mk-brightness-dim);
   }
 
+  [data-density="analytical"] {
+    --mk-font-size-label: var(--mk-font-size-050);
+    --mk-font-size-body: var(--mk-font-size-075);
+    --mk-font-size-lead: var(--mk-font-size-200);
+    --mk-font-size-title: var(--mk-font-size-250);
+    --mk-font-size-subheading: var(--mk-font-size-400);
+    --mk-size-control: var(--mk-space-8);
+    --mk-size-row: var(--mk-space-8);
+    --mk-size-column: var(--mk-size-120);
+    --mk-line-height-body: var(--mk-leading-400);
+    --mk-gap-sm: var(--mk-space-1);
+    --mk-gap-md: var(--mk-space-2);
+    --mk-gap-lg: var(--mk-space-4);
+    --mk-gap-xl: var(--mk-space-8);
+    --mk-gap-section: var(--mk-space-6);
+    --mk-inset-sm: var(--mk-space-1);
+    --mk-inset-md: var(--mk-space-3);
+    --mk-inset-lg: var(--mk-space-4);
+    --mk-inset-control: var(--mk-space-3);
+  }
+
+  [data-density="editorial"] {
+    --mk-font-size-label: var(--mk-font-size-100);
+    --mk-font-size-body: var(--mk-font-size-200);
+    --mk-font-size-lead: var(--mk-font-size-300);
+    --mk-font-size-title: var(--mk-font-size-400);
+    --mk-font-size-subheading: var(--mk-font-size-500);
+    --mk-size-control: var(--mk-space-12);
+    --mk-size-row: var(--mk-space-14);
+    --mk-size-column: var(--mk-size-180);
+    --mk-line-height-body: var(--mk-leading-300);
+    --mk-gap-sm: var(--mk-space-2);
+    --mk-gap-md: var(--mk-space-4);
+    --mk-gap-lg: var(--mk-space-8);
+    --mk-gap-xl: var(--mk-space-16);
+    --mk-gap-section: var(--mk-space-12);
+    --mk-inset-sm: var(--mk-space-2);
+    --mk-inset-md: var(--mk-space-4);
+    --mk-inset-lg: var(--mk-space-8);
+    --mk-inset-control: var(--mk-space-6);
+  }
+
   @media (prefers-contrast: more) {
     :root,
     [data-theme] {
@@ -287,6 +340,20 @@
     --mk-gutter: clamp(1rem, 4vw, 4rem);
     --mk-page-inset: calc(var(--mk-gutter) + 1rem);
   }
+
+  /* Analytical density keeps the page tight and metrics small. Editorial resets them, so it can be
+     pinned inside an analytical subtree. */
+  [data-density="analytical"] {
+    --mk-font-size-feature: var(--mk-font-size-400);
+    --mk-gutter: var(--mk-space-6);
+    --mk-page-inset: calc(var(--mk-gutter) + 1rem);
+  }
+
+  [data-density="editorial"] {
+    --mk-font-size-feature: clamp(2rem, 1rem + 4vw, 4.5rem);
+    --mk-gutter: clamp(1rem, 4vw, 4rem);
+    --mk-page-inset: calc(var(--mk-gutter) + 1rem);
+  }
 }
 
 @layer base {
@@ -298,6 +365,12 @@
     font-family: var(--mk-font-family-body);
     font-size: var(--mk-font-size-body);
     font-weight: var(--mk-font-weight-body);
+    line-height: var(--mk-line-height-body);
+  }
+
+  /* Sizes resolve where they're declared, so each density subtree re-applies the body text. */
+  :where([data-density]) {
+    font-size: var(--mk-font-size-body);
     line-height: var(--mk-line-height-body);
   }
 

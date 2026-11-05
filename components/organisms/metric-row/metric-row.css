@@ -1,7 +1,7 @@
 @layer components {
   .mk-metric-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(11.25rem, 100%), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(var(--mk-size-column), 100%), 1fr));
     gap: var(--mk-gap-lg);
     margin: 0;
   }

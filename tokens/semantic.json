@@ -4,46 +4,178 @@
   "color": {
     "$type": "color",
     "surface": {
-      "default": {"$value": "{color.forest}", "$description": "Page and section background.", "$extensions": {"com.medkit.forcedColors": "Canvas"}},
-      "subtle": {"$value": "{color.forest}", "$description": "Quieter areas within a page. Only differs from the default in Paper.", "$extensions": {"com.medkit.forcedColors": "Canvas"}}
+      "default": {
+        "$value": "{color.forest}",
+        "$description": "Page and section background.",
+        "$extensions": {
+          "com.medkit.forcedColors": "Canvas"
+        }
+      },
+      "subtle": {
+        "$value": "{color.forest}",
+        "$description": "Quieter areas within a page. Only differs from the default in Paper.",
+        "$extensions": {
+          "com.medkit.forcedColors": "Canvas"
+        }
+      }
     },
     "text": {
-      "default": {"$value": "{color.off-white}", "$description": "Body and heading text. 4.5:1 or more on every surface.", "$extensions": {"com.medkit.forcedColors": "CanvasText"}},
-      "muted": {"$value": "{color.grey-300}", "$description": "Labels and secondary text. 4.5:1 or more on every surface.", "$extensions": {"com.medkit.forcedColors": "CanvasText"}},
-      "accent": {"$value": "{color.honey}", "$description": "Emphasised text. 4.5:1 or more on every surface.", "$extensions": {"com.medkit.forcedColors": "CanvasText"}}
+      "default": {
+        "$value": "{color.off-white}",
+        "$description": "Body and heading text. 4.5:1 or more on every surface.",
+        "$extensions": {
+          "com.medkit.forcedColors": "CanvasText"
+        }
+      },
+      "muted": {
+        "$value": "{color.grey-300}",
+        "$description": "Labels and secondary text. 4.5:1 or more on every surface.",
+        "$extensions": {
+          "com.medkit.forcedColors": "CanvasText"
+        }
+      },
+      "accent": {
+        "$value": "{color.honey}",
+        "$description": "Emphasised text. 4.5:1 or more on every surface.",
+        "$extensions": {
+          "com.medkit.forcedColors": "CanvasText"
+        }
+      }
     },
     "border": {
-      "default": {"$value": "{color.hairline-pale}", "$description": "Decorative rules and grid lines. Exempt from contrast minimums, so never a control's only boundary.", "$extensions": {"com.medkit.forcedColors": "CanvasText"}},
-      "strong": {"$value": "{color.grey-300}", "$description": "Control boundaries. 3:1 or more on every surface.", "$extensions": {"com.medkit.forcedColors": "CanvasText"}},
-      "focus": {"$value": "{color.honey}", "$description": "Focus indicator. 3:1 or more on every surface.", "$extensions": {"com.medkit.forcedColors": "Highlight"}}
+      "default": {
+        "$value": "{color.hairline-pale}",
+        "$description": "Decorative rules and grid lines. Exempt from contrast minimums, so never a control's only boundary.",
+        "$extensions": {
+          "com.medkit.forcedColors": "CanvasText"
+        }
+      },
+      "strong": {
+        "$value": "{color.grey-300}",
+        "$description": "Control boundaries. 3:1 or more on every surface.",
+        "$extensions": {
+          "com.medkit.forcedColors": "CanvasText"
+        }
+      },
+      "focus": {
+        "$value": "{color.honey}",
+        "$description": "Focus indicator. 3:1 or more on every surface.",
+        "$extensions": {
+          "com.medkit.forcedColors": "Highlight"
+        }
+      }
     },
     "status": {
-      "live": {"$value": "{color.signal-green}", "$description": "Live lamp. Graphics only, never as text. 3:1 or more on every surface.", "$extensions": {"com.medkit.forcedColors": "CanvasText"}},
-      "stale": {"$value": "{color.signal-orange}", "$description": "Stale lamp. Graphics only, never as text. 3:1 or more on every surface.", "$extensions": {"com.medkit.forcedColors": "CanvasText"}},
-      "failed": {"$value": "{color.signal-red}", "$description": "Failed lamp. Graphics only, never as text. 3:1 or more on every surface.", "$extensions": {"com.medkit.forcedColors": "CanvasText"}}
+      "live": {
+        "$value": "{color.signal-green}",
+        "$description": "Live lamp. Graphics only, never as text. 3:1 or more on every surface.",
+        "$extensions": {
+          "com.medkit.forcedColors": "CanvasText"
+        }
+      },
+      "stale": {
+        "$value": "{color.signal-orange}",
+        "$description": "Stale lamp. Graphics only, never as text. 3:1 or more on every surface.",
+        "$extensions": {
+          "com.medkit.forcedColors": "CanvasText"
+        }
+      },
+      "failed": {
+        "$value": "{color.signal-red}",
+        "$description": "Failed lamp. Graphics only, never as text. 3:1 or more on every surface.",
+        "$extensions": {
+          "com.medkit.forcedColors": "CanvasText"
+        }
+      }
     },
     "ambient": {
-      "base": {"$value": "{color.forest}", "$description": "The light's darkest colour, and its fallback's edge.", "$extensions": {"com.medkit.forcedColors": "Canvas"}},
-      "mid": {"$value": "{color.ambient-forest-mid}", "$description": "The light's middle tone.", "$extensions": {"com.medkit.forcedColors": "Canvas"}},
-      "high": {"$value": "{color.ambient-forest-high}", "$description": "The light's brightest colour.", "$extensions": {"com.medkit.forcedColors": "Canvas"}},
-      "accent": {"$value": "{color.ambient-forest-accent}", "$description": "Pools of colour within the light.", "$extensions": {"com.medkit.forcedColors": "Canvas"}}
+      "base": {
+        "$value": "{color.forest}",
+        "$description": "The light's darkest colour, and its fallback's edge.",
+        "$extensions": {
+          "com.medkit.forcedColors": "Canvas"
+        }
+      },
+      "mid": {
+        "$value": "{color.ambient-forest-mid}",
+        "$description": "The light's middle tone.",
+        "$extensions": {
+          "com.medkit.forcedColors": "Canvas"
+        }
+      },
+      "high": {
+        "$value": "{color.ambient-forest-high}",
+        "$description": "The light's brightest colour.",
+        "$extensions": {
+          "com.medkit.forcedColors": "Canvas"
+        }
+      },
+      "accent": {
+        "$value": "{color.ambient-forest-accent}",
+        "$description": "Pools of colour within the light.",
+        "$extensions": {
+          "com.medkit.forcedColors": "Canvas"
+        }
+      }
     },
     "material": {
-      "specular": {"$value": "{color.highlight}", "$description": "Highlights on glass edges. Decorative, so exempt from contrast minimums.", "$extensions": {"com.medkit.forcedColors": "CanvasText"}},
-      "glow": {"$value": "{color.honey}", "$description": "Light spilling past an opaque control. Decorative.", "$extensions": {"com.medkit.forcedColors": "CanvasText"}},
-      "shade": {"$value": "{color.forest-deep}", "$description": "Contact shadow and occlusion. Decorative.", "$extensions": {"com.medkit.forcedColors": "CanvasText"}}
+      "specular": {
+        "$value": "{color.highlight}",
+        "$description": "Highlights on glass edges. Decorative, so exempt from contrast minimums.",
+        "$extensions": {
+          "com.medkit.forcedColors": "CanvasText"
+        }
+      },
+      "glow": {
+        "$value": "{color.honey}",
+        "$description": "Light spilling past an opaque control. Decorative.",
+        "$extensions": {
+          "com.medkit.forcedColors": "CanvasText"
+        }
+      },
+      "shade": {
+        "$value": "{color.forest-deep}",
+        "$description": "Contact shadow and occlusion. Decorative.",
+        "$extensions": {
+          "com.medkit.forcedColors": "CanvasText"
+        }
+      }
     },
     "action": {
       "background": {
         "primary": {
-          "default": {"$value": "{color.off-white}", "$description": "Primary action fill at rest.", "$extensions": {"com.medkit.forcedColors": "ButtonFace"}},
-          "lit": {"$value": "{color.highlight}", "$description": "The side of a primary action facing the light.", "$extensions": {"com.medkit.forcedColors": "ButtonFace"}},
-          "far": {"$value": "{color.beige}", "$description": "The side of a primary action away from the light.", "$extensions": {"com.medkit.forcedColors": "ButtonFace"}}
+          "default": {
+            "$value": "{color.off-white}",
+            "$description": "Primary action fill at rest.",
+            "$extensions": {
+              "com.medkit.forcedColors": "ButtonFace"
+            }
+          },
+          "lit": {
+            "$value": "{color.highlight}",
+            "$description": "The side of a primary action facing the light.",
+            "$extensions": {
+              "com.medkit.forcedColors": "ButtonFace"
+            }
+          },
+          "far": {
+            "$value": "{color.beige}",
+            "$description": "The side of a primary action away from the light.",
+            "$extensions": {
+              "com.medkit.forcedColors": "ButtonFace"
+            }
+          }
         }
       },
       "foreground": {
         "primary": {
-          "default": {"$value": "{color.forest}", "$description": "Label on every primary action fill. 4.5:1 or more.", "$extensions": {"com.medkit.forcedColors": "ButtonText"}}
+          "default": {
+            "$value": "{color.forest}",
+            "$description": "Label on every primary action fill. 4.5:1 or more.",
+            "$extensions": {
+              "com.medkit.forcedColors": "ButtonText"
+            }
+          }
         }
       }
     }
@@ -51,72 +183,171 @@
   "font": {
     "family": {
       "$type": "fontFamily",
-      "body": {"$value": "{font.family.sans}", "$description": "Headlines and running text."},
-      "label": {"$value": "{font.family.mono}", "$description": "Uppercase labels and metadata."}
+      "body": {
+        "$value": "{font.family.sans}",
+        "$description": "Headlines and running text."
+      },
+      "label": {
+        "$value": "{font.family.mono}",
+        "$description": "Uppercase labels and metadata."
+      }
     },
     "weight": {
       "$type": "fontWeight",
-      "body": {"$value": "{font.weight.regular}"},
-      "strong": {"$value": "{font.weight.bold}", "$description": "Poster moments and emphasis."},
-      "label": {"$value": "{font.weight.regular}"}
+      "body": {
+        "$value": "{font.weight.regular}"
+      },
+      "strong": {
+        "$value": "{font.weight.bold}",
+        "$description": "Poster moments and emphasis."
+      },
+      "label": {
+        "$value": "{font.weight.regular}"
+      }
     },
     "size": {
       "$type": "dimension",
-      "label": {"$value": "{font.size.100}"},
-      "body": {"$value": "{font.size.200}"},
-      "lead": {"$value": "{font.size.300}"},
-      "title": {"$value": "{font.size.400}"},
-      "subheading": {"$value": "{font.size.500}"}
+      "label": {
+        "$value": "{font.size.100}"
+      },
+      "body": {
+        "$value": "{font.size.200}"
+      },
+      "lead": {
+        "$value": "{font.size.300}"
+      },
+      "title": {
+        "$value": "{font.size.400}"
+      },
+      "subheading": {
+        "$value": "{font.size.500}"
+      }
     }
   },
   "line-height": {
     "$type": "number",
-    "tight": {"$value": "{leading.100}", "$description": "Display and heading sizes."},
-    "snug": {"$value": "{leading.200}", "$description": "Titles."},
-    "body": {"$value": "{leading.300}", "$description": "Running text and labels."}
+    "tight": {
+      "$value": "{leading.100}",
+      "$description": "Display and heading sizes."
+    },
+    "snug": {
+      "$value": "{leading.200}",
+      "$description": "Titles."
+    },
+    "body": {
+      "$value": "{leading.300}",
+      "$description": "Running text and labels."
+    }
   },
   "gap": {
     "$type": "dimension",
-    "sm": {"$value": "{space.2}"},
-    "md": {"$value": "{space.4}"},
-    "lg": {"$value": "{space.8}"},
-    "xl": {"$value": "{space.16}"}
+    "sm": {
+      "$value": "{space.2}"
+    },
+    "md": {
+      "$value": "{space.4}"
+    },
+    "lg": {
+      "$value": "{space.8}"
+    },
+    "xl": {
+      "$value": "{space.16}"
+    },
+    "section": {
+      "$value": "{space.12}",
+      "$description": "Between the blocks of a section."
+    }
   },
   "inset": {
     "$type": "dimension",
-    "sm": {"$value": "{space.2}"},
-    "md": {"$value": "{space.4}"},
-    "lg": {"$value": "{space.8}"},
-    "control": {"$value": "{space.6}", "$description": "Sides of a control with a text label."}
+    "sm": {
+      "$value": "{space.2}"
+    },
+    "md": {
+      "$value": "{space.4}"
+    },
+    "lg": {
+      "$value": "{space.8}"
+    },
+    "control": {
+      "$value": "{space.6}",
+      "$description": "Sides of a control with a text label."
+    }
+  },
+  "size": {
+    "$type": "dimension",
+    "control": {
+      "$value": "{space.12}",
+      "$description": "Height of a control, and the width of an icon button."
+    },
+    "row": {
+      "$value": "{space.14}",
+      "$description": "Height of a table row."
+    },
+    "column": {
+      "$value": "{size.180}",
+      "$description": "Narrowest column in an auto-fit grid, such as a metric row."
+    }
   },
   "glass": {
-    "brightness": {"$type": "number", "$value": "{brightness.dim}", "$description": "How much a glass control dims the light behind it, so its label stays readable."}
+    "brightness": {
+      "$type": "number",
+      "$value": "{brightness.dim}",
+      "$description": "How much a glass control dims the light behind it, so its label stays readable."
+    }
   },
   "radius": {
     "$type": "dimension",
-    "default": {"$value": "{radius.none}", "$description": "Surfaces stay square."},
-    "control": {"$value": "{radius.full}", "$description": "Controls are stadiums: a rectangle with circular ends."},
-    "circle": {"$value": "{radius.full}", "$description": "Circles only."}
+    "default": {
+      "$value": "{radius.none}",
+      "$description": "Surfaces stay square."
+    },
+    "control": {
+      "$value": "{radius.full}",
+      "$description": "Controls are stadiums: a rectangle with circular ends."
+    },
+    "circle": {
+      "$value": "{radius.full}",
+      "$description": "Circles only."
+    }
   },
   "border-width": {
     "$type": "dimension",
-    "default": {"$value": "{stroke.hairline}"},
-    "focus": {"$value": "{stroke.focus}"}
+    "default": {
+      "$value": "{stroke.hairline}"
+    },
+    "focus": {
+      "$value": "{stroke.focus}"
+    }
   },
   "motion": {
     "duration": {
       "$type": "duration",
-      "interaction": {"$value": "{time.150}", "$description": "Hover and press."},
-      "theme-text": {"$value": "{time.1400}", "$description": "Text and surfaces changing theme."},
-      "theme-light": {"$value": "{time.1800}", "$description": "Dawn: the light changing theme."}
+      "interaction": {
+        "$value": "{time.150}",
+        "$description": "Hover and press."
+      },
+      "theme-text": {
+        "$value": "{time.1400}",
+        "$description": "Text and surfaces changing theme."
+      },
+      "theme-light": {
+        "$value": "{time.1800}",
+        "$description": "Dawn: the light changing theme."
+      }
     },
     "delay": {
       "$type": "duration",
-      "theme-text": {"$value": "{time.200}", "$description": "Text follows the light by this much."}
+      "theme-text": {
+        "$value": "{time.200}",
+        "$description": "Text follows the light by this much."
+      }
     },
     "easing": {
       "$type": "cubicBezier",
-      "default": {"$value": "{curve.out-expo}"}
+      "default": {
+        "$value": "{curve.out-expo}"
+      }
     }
   }
 }

@@ -56,10 +56,10 @@ describe("IconButton", () => {
     expect(css).toContain(".mk-button.mk-icon-button");
   });
 
-  it("is a 48px square, clearing the 44px target", () => {
+  it("is a square at the control size, matching Button in both densities", () => {
     const css = readFileSync("components/atoms/icon-button/icon-button.css", "utf8");
 
-    expect(css).toContain("inline-size: 3rem");
-    expect(css).toContain("block-size: 3rem");
+    expect(css).toContain("inline-size: var(--mk-size-control)");
+    expect(css).toContain("block-size: var(--mk-size-control)");
   });
 });
