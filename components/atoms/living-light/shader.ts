@@ -73,7 +73,12 @@ export const FRAGMENT_SHADER = `
     float m = smoothstep(reach - 0.18, reach + 0.18, uShift * 1.6 - 0.25);
     vec3 col = mix(from, to, m);
     col = mix(col, uHiB, m * (1.0 - m) * 0.5);
-    col = mix(col, mix(uBaseA, uBaseB, m), uCalm * (1.0 - smoothstep(0.05, 0.7, uv.y)));
+    vec3 rest = mix(uBaseA, uBaseB, m);
+    col = mix(col, rest, uCalm * (1.0 - smoothstep(0.05, 0.7, uv.y)));
+    // Behind text, the light keeps its shape but can't move far enough from the base to hurt contrast.
+    vec3 lift = col - rest;
+    float ceiling = mix(1.8, 0.31, uCalm * (1.0 - smoothstep(0.72, 0.95, uv.y)));
+    col = rest + lift * min(1.0, ceiling / max(length(lift), 0.001));
     float n = hash(gl_FragCoord.xy + uN * vec2(311.0, 173.0)) - 0.5;
     col += n * uGrain * (0.55 + 0.75 * vg);
     gl_FragColor = vec4(col, 1.0);

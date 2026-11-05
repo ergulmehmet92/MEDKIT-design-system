@@ -17,7 +17,7 @@
 |---|---|---|---|
 | `form` | `"ridge" \| "dune"` | `"ridge"` | The shape of the light |
 | `theme` | `"forest" \| "paper"` | The page's theme | Pins a colourway for a nested tone |
-| `calm` | `number`, 0 to 1 | `0` | Settles the light towards its base colour low down, behind text |
+| `calm` | `number`, 0 to 1 | `0` | Settles the light towards its base colour low down, and caps its brightness up to about 72% of its height, so text stays readable. The top stays bright |
 | `grain` | `number` | `0.12` | Noise amount |
 | `speed` | `number` | `1` | Motion speed |
 | native props | | | Passed to the root |

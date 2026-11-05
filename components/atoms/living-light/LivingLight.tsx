@@ -10,7 +10,7 @@ export type LivingLightProps = Omit<ComponentPropsWithoutRef<"div">, "children">
   form?: LightForm;
   /** Pins a colourway for a nested tone. By default the light follows the page's theme. */
   theme?: LightTheme;
-  /** 0 to 1. Settles the light towards its base colour low down, behind text. */
+  /** 0 to 1. Settles the light towards its base colour, and caps its brightness, behind text. */
   calm?: number;
   grain?: number;
   speed?: number;
