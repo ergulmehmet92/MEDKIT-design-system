@@ -2,7 +2,7 @@
   .mk-header {
     container-type: inline-size;
     padding-block: var(--mk-inset-md);
-    padding-inline: var(--mk-gutter);
+    padding-inline: var(--mk-page-inset);
   }
 
   .mk-header-layout {
@@ -72,7 +72,7 @@
     max-block-size: none;
     margin: 0;
     padding-block: var(--mk-inset-md);
-    padding-inline: var(--mk-gutter);
+    padding-inline: var(--mk-page-inset);
     overflow: auto;
     overscroll-behavior: contain;
     border: 0;

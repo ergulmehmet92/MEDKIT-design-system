@@ -43,7 +43,7 @@ None. Layout follows the available width.
 
 ## Tokens and theming
 
-**Tokens consumed:** `--mk-gutter`, `--mk-inset-md`, `--mk-gap-*`, `--mk-color-surface-default`, `--mk-color-text-default`, `--mk-color-border-default`, `--mk-color-border-focus`, `--mk-border-width-*`, plus type roles.
+**Tokens consumed:** `--mk-page-inset`, `--mk-inset-md`, `--mk-gap-*`, `--mk-color-surface-default`, `--mk-color-text-default`, `--mk-color-border-default`, `--mk-color-border-focus`, `--mk-border-width-*`, plus type roles.
 
 ## Events
 

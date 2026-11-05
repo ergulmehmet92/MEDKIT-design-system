@@ -1,0 +1,42 @@
+@layer components {
+  /* Give the parent `position: relative` and `isolation: isolate`. */
+  .mk-grid-rails {
+    container-type: inline-size;
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    & span {
+      position: absolute;
+      inset-block: 0;
+      inline-size: var(--mk-border-width-default);
+      background-color: var(--mk-color-border-default);
+    }
+
+    & [data-rail="start"] {
+      inset-inline-start: var(--mk-gutter);
+    }
+
+    & [data-rail="middle"] {
+      display: none;
+      inset-inline-start: 50%;
+    }
+
+    & [data-rail="end"] {
+      inset-inline-end: var(--mk-gutter);
+    }
+  }
+
+  @container (min-width: 48rem) {
+    .mk-grid-rails [data-rail="middle"] {
+      display: block;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .mk-grid-rails {
+      display: none;
+    }
+  }
+}

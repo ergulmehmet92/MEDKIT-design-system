@@ -1,0 +1,45 @@
+@layer components {
+  .mk-contact-routes {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    & li {
+      border-block-start: var(--mk-border-width-default) solid var(--mk-color-border-default);
+    }
+
+    & a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--mk-gap-md);
+      padding-block: var(--mk-inset-lg);
+      color: inherit;
+      font-size: var(--mk-font-size-feature);
+      letter-spacing: var(--mk-tracking-display);
+      line-height: var(--mk-line-height-tight);
+      text-decoration: none;
+      overflow-wrap: anywhere;
+      transition: color var(--mk-motion-duration-interaction) var(--mk-motion-easing-default);
+
+      &:hover {
+        color: var(--mk-color-text-accent);
+      }
+
+      &:focus-visible {
+        outline: var(--mk-border-width-focus) solid var(--mk-color-border-focus);
+        outline-offset: var(--mk-border-width-focus);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        transition: none;
+      }
+    }
+
+    & svg {
+      flex: none;
+      inline-size: 0.4em;
+      block-size: 0.4em;
+    }
+  }
+}

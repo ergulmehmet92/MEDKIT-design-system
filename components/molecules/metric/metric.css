@@ -1,0 +1,24 @@
+@layer components {
+  .mk-metric {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mk-gap-sm);
+    min-inline-size: 0;
+  }
+
+  /* The label comes first for screen readers, and the value comes first on screen. */
+  .mk-metric-value {
+    order: -1;
+    margin: 0;
+    font-size: var(--mk-font-size-feature);
+    letter-spacing: var(--mk-tracking-display);
+    line-height: var(--mk-line-height-tight);
+    overflow-wrap: anywhere;
+  }
+
+  .mk-metric-label {
+    color: var(--mk-color-text-muted);
+    font-size: var(--mk-font-size-body);
+    line-height: var(--mk-line-height-body);
+  }
+}
