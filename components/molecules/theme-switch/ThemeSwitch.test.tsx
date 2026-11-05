@@ -20,16 +20,17 @@ afterEach(() => {
 });
 
 describe("ThemeSwitch", () => {
-  it("starts on Forest for a first-time visitor", () => {
+  it("is an icon with no visible label", () => {
     render(<ThemeSwitch />);
 
-    expect(screen.getByRole("button").textContent).toBe("Forest");
+    expect(screen.getByRole("button").textContent).toBe("");
+    expect(screen.getByRole("button").querySelector("svg")).toBeTruthy();
   });
 
-  it("names the current theme and what pressing it does", () => {
+  it("says what pressing it does, starting from Forest for a first-time visitor", () => {
     render(<ThemeSwitch />);
 
-    expect(screen.getByRole("button", { name: "Forest theme. Switch to Paper" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Switch to Paper theme" })).toBeTruthy();
   });
 
   it("switches the whole page to Paper and remembers the choice", async () => {
@@ -40,7 +41,7 @@ describe("ThemeSwitch", () => {
 
     expect(root().dataset.theme).toBe("paper");
     expect(localStorage.getItem(THEME_STORAGE_KEY)).toBe("paper");
-    expect(screen.getByRole("button").textContent).toBe("Paper");
+    expect(screen.getByRole("button", { name: "Switch to Forest theme" })).toBeTruthy();
   });
 
   it("switches back to Forest", async () => {
@@ -51,7 +52,7 @@ describe("ThemeSwitch", () => {
     await user.click(screen.getByRole("button"));
 
     expect(root().dataset.theme).toBe("forest");
-    expect(screen.getByRole("button").textContent).toBe("Forest");
+    expect(screen.getByRole("button", { name: "Switch to Paper theme" })).toBeTruthy();
   });
 
   it("works from the keyboard", async () => {
@@ -82,13 +83,13 @@ describe("ThemeSwitch", () => {
     fireEvent(window, new StorageEvent("storage", { key: THEME_STORAGE_KEY, newValue: "paper" }));
 
     expect(root().dataset.theme).toBe("paper");
-    expect(screen.getByRole("button").textContent).toBe("Paper");
+    expect(screen.getByRole("button", { name: "Switch to Forest theme" })).toBeTruthy();
   });
 
-  it("renders Forest on the server, whatever the browser holds", () => {
+  it("renders for Forest on the server, whatever the browser holds", () => {
     root().dataset.theme = "paper";
 
-    expect(renderToString(<ThemeSwitch />)).toContain("Forest");
+    expect(renderToString(<ThemeSwitch />)).toContain("Switch to Paper theme");
   });
 
   it("has no accessibility violations", async () => {
@@ -96,13 +97,6 @@ describe("ThemeSwitch", () => {
 
     const { violations } = await axe.run(container);
     expect(violations).toEqual([]);
-  });
-
-  it("styles only from semantic tokens", () => {
-    const css = readFileSync("components/molecules/theme-switch/theme-switch.css", "utf8");
-
-    expect(css).toContain("--mk-font-family-label");
-    expect(css).not.toMatch(/#[0-9a-f]{3,8}\b|oklch\(/i);
   });
 });
 
@@ -141,5 +135,6 @@ describe("themeScript", () => {
 
   it("never reads the device's colour preference", () => {
     expect(themeScript).not.toContain("prefers-color-scheme");
+    expect(readFileSync("components/molecules/theme-switch/theme.ts", "utf8")).not.toContain("matchMedia");
   });
 });

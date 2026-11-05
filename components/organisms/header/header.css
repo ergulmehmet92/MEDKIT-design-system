@@ -7,14 +7,18 @@
 
   .mk-header-layout {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    gap: var(--mk-gap-sm) var(--mk-gap-lg);
+    gap: var(--mk-gap-sm) var(--mk-gap-md);
   }
 
-  /* The source order is also the visual order, so tabbing never jumps around. */
   .mk-header-brand {
+    min-inline-size: 0;
     margin-inline-end: auto;
+  }
+
+  /* On narrow screens, the links live in the menu. */
+  .mk-header-navigation {
+    display: none;
   }
 
   .mk-header-links {
@@ -58,9 +62,70 @@
     text-transform: uppercase;
   }
 
+  .mk-header-menu:modal {
+    position: fixed;
+    inset: 0;
+    box-sizing: border-box;
+    inline-size: 100%;
+    max-inline-size: none;
+    block-size: 100dvh;
+    max-block-size: none;
+    margin: 0;
+    padding-block: var(--mk-inset-md);
+    padding-inline: var(--mk-gutter);
+    overflow: auto;
+    overscroll-behavior: contain;
+    border: 0;
+    background-color: var(--mk-color-surface-default);
+    color: var(--mk-color-text-default);
+  }
+
+  .mk-header-menu::backdrop {
+    overflow: hidden;
+    overscroll-behavior: contain;
+  }
+
+  .mk-header-menu[open] {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mk-gap-lg);
+  }
+
+  .mk-header-menu-close {
+    align-self: flex-end;
+  }
+
+  .mk-header-menu-links {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    & li {
+      border-block-start: var(--mk-border-width-default) solid var(--mk-color-border-default);
+    }
+
+    & a {
+      display: flex;
+      padding-block: var(--mk-inset-md);
+      font-size: var(--mk-font-size-subheading);
+      letter-spacing: var(--mk-tracking-display);
+      line-height: var(--mk-line-height-tight);
+    }
+  }
+
+  @container (min-width: 40rem) {
+    .mk-header-navigation {
+      display: block;
+    }
+
+    .mk-header-menu-trigger {
+      display: none;
+    }
+  }
+
   @container (min-width: 64rem) {
     .mk-header-layout {
-      flex-wrap: nowrap;
+      column-gap: var(--mk-gap-lg);
     }
 
     .mk-header-links {
