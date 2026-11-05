@@ -6,15 +6,14 @@ const css = () => readFileSync("dist/tokens/tokens.css", "utf8");
 const faces = () => css().match(/@font-face \{[^}]*\}/g) ?? [];
 
 describe("packaged fonts", () => {
-  it("declare both Heros weights and both Plex Mono weights", () => {
+  it("declare both Heros weights and Share Tech Mono", () => {
     const declared = faces().map((face) => [
       face.match(/font-family: "([^"]+)"/)?.[1],
       face.match(/font-weight: (\d+)/)?.[1],
     ].join(" "));
 
     expect(declared.sort()).toEqual([
-      "IBM Plex Mono 400",
-      "IBM Plex Mono 500",
+      "Share Tech Mono 400",
       "TeX Gyre Heros 400",
       "TeX Gyre Heros 700",
     ]);
@@ -45,7 +44,7 @@ describe("packaged fonts", () => {
 
     expect(files).toContain("fonts");
     expect(existsSync("fonts/GUST-FONT-LICENSE.txt")).toBe(true);
-    expect(existsSync("fonts/IBM-Plex-Mono-OFL.txt")).toBe(true);
+    expect(existsSync("fonts/Share-Tech-Mono-OFL.txt")).toBe(true);
     expect(existsSync("fonts/README.md")).toBe(true);
   });
 });

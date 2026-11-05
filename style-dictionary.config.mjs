@@ -62,8 +62,7 @@ const face = (family, weight, file, format, range) => `@font-face {
 const FACES = [
   face("TeX Gyre Heros", 400, "texgyreheros-regular.otf", "opentype"),
   face("TeX Gyre Heros", 700, "texgyreheros-bold.otf", "opentype"),
-  face("IBM Plex Mono", 400, "ibm-plex-mono-latin-400-normal.woff2", "woff2", LATIN),
-  face("IBM Plex Mono", 500, "ibm-plex-mono-latin-500-normal.woff2", "woff2", LATIN),
+  face("Share Tech Mono", 400, "share-tech-mono-latin-400-normal.woff2", "woff2", LATIN),
 ].join("\n\n");
 
 const css = `/* Generated. Do not edit. Load before any other stylesheet. */

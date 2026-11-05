@@ -18,20 +18,11 @@
 }
 
 @font-face {
-  font-family: "IBM Plex Mono";
+  font-family: "Share Tech Mono";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("../../fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2");
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-
-@font-face {
-  font-family: "IBM Plex Mono";
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("../../fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2");
+  src: url("../../fonts/share-tech-mono-latin-400-normal.woff2") format("woff2");
   unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
 }
 
@@ -83,16 +74,15 @@
     --mk-color-action-background-primary-active: var(--mk-color-sand);
     --mk-color-action-foreground-primary-default: var(--mk-color-forest);
     --mk-font-family-sans: 'TeX Gyre Heros', Arial, sans-serif;
-    --mk-font-family-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    --mk-font-family-mono: 'Share Tech Mono', ui-monospace, Menlo, monospace;
     --mk-font-family-body: var(--mk-font-family-sans);
     --mk-font-family-label: var(--mk-font-family-mono);
     --mk-font-weight-regular: 400;
-    --mk-font-weight-medium: 500;
     --mk-font-weight-bold: 700;
     --mk-font-weight-body: var(--mk-font-weight-regular);
     --mk-font-weight-strong: var(--mk-font-weight-bold);
     --mk-font-weight-label: var(--mk-font-weight-regular);
-    --mk-font-size-100: 0.8125rem;
+    --mk-font-size-100: 0.9375rem;
     --mk-font-size-200: 1rem;
     --mk-font-size-300: 1.3125rem;
     --mk-font-size-400: 1.75rem;
@@ -242,7 +232,7 @@
     --mk-font-size-heading: clamp(var(--mk-font-size-500), 1.4rem + 5.6vw, var(--mk-font-size-700));
     --mk-tracking-display: -0.04em;
     --mk-tracking-title: -0.02em;
-    --mk-tracking-label: 0.04em;
+    --mk-tracking-label: 0.06em;
     --mk-gutter: clamp(1rem, 4vw, 4rem);
   }
 }

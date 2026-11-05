@@ -26,17 +26,16 @@
     "family": {
       "$type": "fontFamily",
       "sans": {"$value": ["TeX Gyre Heros", "Arial", "sans-serif"]},
-      "mono": {"$value": ["IBM Plex Mono", "ui-monospace", "Menlo", "monospace"]}
+      "mono": {"$value": ["Share Tech Mono", "ui-monospace", "Menlo", "monospace"]}
     },
     "weight": {
       "$type": "fontWeight",
       "regular": {"$value": 400},
-      "medium": {"$value": 500, "$description": "IBM Plex Mono only. TeX Gyre Heros ships regular and bold."},
-      "bold": {"$value": 700}
+      "bold": {"$value": 700, "$description": "TeX Gyre Heros only. Share Tech Mono ships one weight."}
     },
     "size": {
       "$type": "dimension",
-      "100": {"$value": {"value": 0.8125, "unit": "rem"}},
+      "100": {"$value": {"value": 0.9375, "unit": "rem"}},
       "200": {"$value": {"value": 1, "unit": "rem"}},
       "300": {"$value": {"value": 1.3125, "unit": "rem"}},
       "400": {"$value": {"value": 1.75, "unit": "rem"}},

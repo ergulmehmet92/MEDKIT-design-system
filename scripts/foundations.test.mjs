@@ -42,7 +42,15 @@ describe("foundation scales", () => {
   it("only offer the weights the two typefaces ship", () => {
     const weights = Object.values(primitives().font.weight).map((token) => token.$value).filter(Boolean);
 
-    expect(weights.sort()).toEqual([400, 500, 700]);
+    expect(weights.sort()).toEqual([400, 700]);
+  });
+});
+
+describe("labels", () => {
+  it("use Share Tech Mono at the size approved on the canvas", () => {
+    expect(primitives().font.family.mono.$value[0]).toBe("Share Tech Mono");
+    expect(primitives().font.size["100"].$value).toEqual({ value: 0.9375, unit: "rem" });
+    expect(css()).toContain("--mk-tracking-label: 0.06em;");
   });
 });
 
