@@ -1,0 +1,70 @@
+@layer components {
+  .mk-header {
+    container-type: inline-size;
+    padding-block: var(--mk-inset-md);
+    padding-inline: var(--mk-gutter);
+  }
+
+  .mk-header-layout {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--mk-gap-sm) var(--mk-gap-lg);
+  }
+
+  /* The source order is also the visual order, so tabbing never jumps around. */
+  .mk-header-brand {
+    margin-inline-end: auto;
+  }
+
+  .mk-header-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--mk-gap-md);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .mk-header a {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 2.75rem;
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 0.25em;
+    }
+
+    &:focus-visible {
+      outline: var(--mk-border-width-focus) solid var(--mk-color-border-focus);
+      outline-offset: var(--mk-border-width-focus);
+    }
+  }
+
+  .mk-header-brand a {
+    font-size: var(--mk-font-size-lead);
+    font-weight: var(--mk-font-weight-strong);
+    letter-spacing: var(--mk-tracking-title);
+  }
+
+  .mk-header-links a {
+    font-family: var(--mk-font-family-label);
+    font-size: var(--mk-font-size-label);
+    font-weight: var(--mk-font-weight-label);
+    letter-spacing: var(--mk-tracking-label);
+    text-transform: uppercase;
+  }
+
+  @container (min-width: 64rem) {
+    .mk-header-layout {
+      flex-wrap: nowrap;
+    }
+
+    .mk-header-links {
+      column-gap: var(--mk-gap-lg);
+    }
+  }
+}
