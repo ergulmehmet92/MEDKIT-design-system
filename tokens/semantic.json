@@ -1,17 +1,33 @@
 {
   "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
-  "$description": "Semantic tier: roles, as aliases only. Names describe purpose and never mention a hue or theme.",
+  "$description": "Semantic tier: roles, as aliases only, with Forest values. semantic.paper.json overrides them for Paper. Names describe purpose and never mention a hue or theme.",
   "color": {
     "$type": "color",
+    "surface": {
+      "default": {"$value": "{color.forest}", "$description": "Page and section background."},
+      "subtle": {"$value": "{color.forest}", "$description": "Quieter areas within a page. Only differs from the default in Paper."}
+    },
+    "text": {
+      "default": {"$value": "{color.off-white}", "$description": "Body and heading text. 4.5:1 or more on every surface."},
+      "muted": {"$value": "{color.grey-300}", "$description": "Labels and secondary text. 4.5:1 or more on every surface."},
+      "accent": {"$value": "{color.honey}", "$description": "Emphasised text. 4.5:1 or more on every surface."}
+    },
+    "border": {
+      "default": {"$value": "{color.hairline-pale}", "$description": "Decorative rules and grid lines. Exempt from contrast minimums, so never a control's only boundary."},
+      "strong": {"$value": "{color.grey-300}", "$description": "Control boundaries. 3:1 or more on every surface."},
+      "focus": {"$value": "{color.honey}", "$description": "Focus indicator. 3:1 or more on every surface."}
+    },
     "action": {
       "background": {
         "primary": {
-          "default": {"$value": "{color.off-white}", "$description": "Primary action fill at rest."}
+          "default": {"$value": "{color.off-white}", "$description": "Primary action fill at rest."},
+          "hover": {"$value": "{color.beige}", "$description": "Primary action fill on hover."},
+          "active": {"$value": "{color.sand}", "$description": "Primary action fill while pressed."}
         }
       },
       "foreground": {
         "primary": {
-          "default": {"$value": "{color.forest}", "$description": "Label on the primary action fill. 4.5:1 or more."}
+          "default": {"$value": "{color.forest}", "$description": "Label on every primary action fill. 4.5:1 or more."}
         }
       }
     }

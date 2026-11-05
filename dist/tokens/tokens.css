@@ -3,9 +3,98 @@
 
 @layer tokens {
   :root {
+    color-scheme: dark;
+  }
+
+  [data-theme="paper"] {
+    color-scheme: light;
+  }
+
+  [data-theme="forest"] {
+    color-scheme: dark;
+  }
+
+  :root {
     --mk-color-forest: oklch(0.2081 0.0221 158.19);
+    --mk-color-hunter: oklch(0.3809 0.0459 155.37);
+    --mk-color-sage: oklch(0.6848 0.0564 128.92);
+    --mk-color-sand: oklch(0.7902 0.0599 83.91);
+    --mk-color-honey: oklch(0.7677 0.1353 80.30);
+    --mk-color-honey-deep: oklch(0.4713 0.0939 74.21);
+    --mk-color-beige: oklch(0.9092 0.0248 83.42);
     --mk-color-off-white: oklch(0.9563 0.0143 84.58);
+    --mk-color-grey-300: oklch(0.7142 0.0215 84.59);
+    --mk-color-grey-600: oklch(0.4663 0.0189 82.75);
+    --mk-color-hairline-pale: oklch(0.9563 0.0143 84.58 / 0.18);
+    --mk-color-hairline-deep: oklch(0.2081 0.0221 158.19 / 0.2);
+    --mk-color-surface-default: var(--mk-color-forest);
+    --mk-color-surface-subtle: var(--mk-color-forest);
+    --mk-color-text-default: var(--mk-color-off-white);
+    --mk-color-text-muted: var(--mk-color-grey-300);
+    --mk-color-text-accent: var(--mk-color-honey);
+    --mk-color-border-default: var(--mk-color-hairline-pale);
+    --mk-color-border-strong: var(--mk-color-grey-300);
+    --mk-color-border-focus: var(--mk-color-honey);
     --mk-color-action-background-primary-default: var(--mk-color-off-white);
+    --mk-color-action-background-primary-hover: var(--mk-color-beige);
+    --mk-color-action-background-primary-active: var(--mk-color-sand);
     --mk-color-action-foreground-primary-default: var(--mk-color-forest);
+  }
+
+  @supports (color: light-dark(#fff, #000)) {
+    :root {
+      --mk-color-surface-default: light-dark(var(--mk-color-off-white), var(--mk-color-forest));
+      --mk-color-surface-subtle: light-dark(var(--mk-color-beige), var(--mk-color-forest));
+      --mk-color-text-default: light-dark(var(--mk-color-forest), var(--mk-color-off-white));
+      --mk-color-text-muted: light-dark(var(--mk-color-grey-600), var(--mk-color-grey-300));
+      --mk-color-text-accent: light-dark(var(--mk-color-honey-deep), var(--mk-color-honey));
+      --mk-color-border-default: light-dark(var(--mk-color-hairline-deep), var(--mk-color-hairline-pale));
+      --mk-color-border-strong: light-dark(var(--mk-color-grey-600), var(--mk-color-grey-300));
+      --mk-color-border-focus: light-dark(var(--mk-color-honey-deep), var(--mk-color-honey));
+      --mk-color-action-background-primary-default: light-dark(var(--mk-color-forest), var(--mk-color-off-white));
+      --mk-color-action-background-primary-hover: light-dark(var(--mk-color-hunter), var(--mk-color-beige));
+      --mk-color-action-background-primary-active: light-dark(var(--mk-color-hunter), var(--mk-color-sand));
+      --mk-color-action-foreground-primary-default: light-dark(var(--mk-color-off-white), var(--mk-color-forest));
+    }
+  }
+
+  @supports not (color: light-dark(#fff, #000)) {
+    [data-theme="paper"] {
+      --mk-color-surface-default: var(--mk-color-off-white);
+      --mk-color-surface-subtle: var(--mk-color-beige);
+      --mk-color-text-default: var(--mk-color-forest);
+      --mk-color-text-muted: var(--mk-color-grey-600);
+      --mk-color-text-accent: var(--mk-color-honey-deep);
+      --mk-color-border-default: var(--mk-color-hairline-deep);
+      --mk-color-border-strong: var(--mk-color-grey-600);
+      --mk-color-border-focus: var(--mk-color-honey-deep);
+      --mk-color-action-background-primary-default: var(--mk-color-forest);
+      --mk-color-action-background-primary-hover: var(--mk-color-hunter);
+      --mk-color-action-background-primary-active: var(--mk-color-hunter);
+      --mk-color-action-foreground-primary-default: var(--mk-color-off-white);
+    }
+
+    [data-theme="forest"] {
+      --mk-color-surface-default: var(--mk-color-forest);
+      --mk-color-surface-subtle: var(--mk-color-forest);
+      --mk-color-text-default: var(--mk-color-off-white);
+      --mk-color-text-muted: var(--mk-color-grey-300);
+      --mk-color-text-accent: var(--mk-color-honey);
+      --mk-color-border-default: var(--mk-color-hairline-pale);
+      --mk-color-border-strong: var(--mk-color-grey-300);
+      --mk-color-border-focus: var(--mk-color-honey);
+      --mk-color-action-background-primary-default: var(--mk-color-off-white);
+      --mk-color-action-background-primary-hover: var(--mk-color-beige);
+      --mk-color-action-background-primary-active: var(--mk-color-sand);
+      --mk-color-action-foreground-primary-default: var(--mk-color-forest);
+    }
+  }
+}
+
+@layer base {
+  /* Repeats the inherited colour on each themed subtree, because light-dark() resolves when computed. */
+  :where(:root, [data-theme]) {
+    background-color: var(--mk-color-surface-default);
+    color: var(--mk-color-text-default);
   }
 }

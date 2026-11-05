@@ -1,0 +1,34 @@
+{
+  "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
+  "$description": "Paper overrides for the semantic tier. Only roles that change.",
+  "color": {
+    "surface": {
+      "default": {"$value": "{color.off-white}"},
+      "subtle": {"$value": "{color.beige}"}
+    },
+    "text": {
+      "default": {"$value": "{color.forest}"},
+      "muted": {"$value": "{color.grey-600}"},
+      "accent": {"$value": "{color.honey-deep}"}
+    },
+    "border": {
+      "default": {"$value": "{color.hairline-deep}"},
+      "strong": {"$value": "{color.grey-600}"},
+      "focus": {"$value": "{color.honey-deep}"}
+    },
+    "action": {
+      "background": {
+        "primary": {
+          "default": {"$value": "{color.forest}"},
+          "hover": {"$value": "{color.hunter}"},
+          "active": {"$value": "{color.hunter}"}
+        }
+      },
+      "foreground": {
+        "primary": {
+          "default": {"$value": "{color.off-white}"}
+        }
+      }
+    }
+  }
+}

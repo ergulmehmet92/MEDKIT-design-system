@@ -9,13 +9,23 @@
       "sources": [{"$ref": "primitives.json"}]
     },
     "semantic": {
-      "description": "Roles that components read.",
+      "description": "Roles that components read, with Forest values.",
       "sources": [{"$ref": "semantic.json"}]
     }
   },
-  "modifiers": {},
+  "modifiers": {
+    "scheme": {
+      "description": "Forest is the default on every device. Paper is the visitor's choice, or a nested section.",
+      "contexts": {
+        "forest": [],
+        "paper": [{"$ref": "semantic.paper.json"}]
+      },
+      "default": "forest"
+    }
+  },
   "resolutionOrder": [
     {"$ref": "#/sets/primitives"},
-    {"$ref": "#/sets/semantic"}
+    {"$ref": "#/sets/semantic"},
+    {"$ref": "#/modifiers/scheme"}
   ]
 }

@@ -1,6 +1,6 @@
 // Token build: DTCG 2025.10 sources to CSS custom properties, via Style Dictionary 5.
 // Style Dictionary doesn't read resolver documents yet, so this script does, and the resolver
-// stays the single source of truth for which files make up the tokens.
+// stays the single source of truth for which files make up each theme.
 // Adapted from the atomic-design skill's template (MIT, Gökberk Nur).
 
 import { mkdir, readFile, writeFile } from "node:fs/promises";
@@ -13,6 +13,7 @@ const TOKENS = join(ROOT, "tokens");
 const OUT = join(ROOT, "dist/tokens");
 const PREFIX = "mk";
 const LAYERS = "@layer reset, tokens, base, components, utilities;";
+const SUPPORTS = "(color: light-dark(#fff, #000))";
 
 const resolver = JSON.parse(await readFile(join(TOKENS, "tokens.resolver.json"), "utf8"));
 
@@ -26,11 +27,12 @@ function merge(into, from) {
   return into;
 }
 
-async function resolve() {
+async function resolve(input) {
   const tree = {};
   for (const { $ref } of resolver.resolutionOrder) {
-    const name = $ref.split("/").at(-1);
-    for (const source of resolver.sets[name].sources) {
+    const [, kind, name] = $ref.split("/");
+    const sources = kind === "sets" ? resolver.sets[name].sources : resolver.modifiers[name].contexts[input[name] ?? resolver.modifiers[name].default];
+    for (const source of sources) {
       merge(tree, JSON.parse(await readFile(join(TOKENS, source.$ref), "utf8")));
     }
   }
@@ -41,24 +43,77 @@ async function resolve() {
 
 const transforms = StyleDictionary.hooks.transformGroups.css.map((name) => (name === "color/css" ? "color/oklch" : name));
 
-const dictionary = new StyleDictionary({
-  tokens: await resolve(),
-  usesDtcg: true,
-  log: { verbosity: "silent" },
-  platforms: { css: { transforms, prefix: PREFIX } },
-});
-const { allTokens } = await dictionary.getPlatformTokens("css");
-const byPath = new Map(allTokens.map((token) => [token.path.join("."), token]));
+// Returns a map of custom property name to its CSS value for one theme.
+async function build(input) {
+  const dictionary = new StyleDictionary({
+    tokens: await resolve(input),
+    usesDtcg: true,
+    log: { verbosity: "silent" },
+    platforms: { css: { transforms, prefix: PREFIX } },
+  });
+  const { allTokens } = await dictionary.getPlatformTokens("css");
+  const byPath = new Map(allTokens.map((token) => [token.path.join("."), token]));
 
-// A pure alias becomes var(--target), so the cascade decides the final value.
-function cssValue(token) {
-  const alias = typeof token.original.$value === "string" && token.original.$value.match(/^\{([^{}]+)\}$/);
-  return alias ? `var(--${byPath.get(alias[1]).name})` : token.$value;
+  // A pure alias becomes var(--target), so the cascade decides the final value.
+  const cssValue = (token) => {
+    const alias = typeof token.original.$value === "string" && token.original.$value.match(/^\{([^{}]+)\}$/);
+    return alias ? `var(--${byPath.get(alias[1]).name})` : token.$value;
+  };
+  return new Map(allTokens.map((token) => [token.name, cssValue(token)]));
 }
 
-const declarations = allTokens.map((token) => `    --${token.name}: ${cssValue(token)};`).join("\n");
-const css = `/* Generated. Do not edit. Load before any other stylesheet. */\n${LAYERS}\n\n@layer tokens {\n  :root {\n${declarations}\n  }\n}\n`;
+const declarations = (entries, pad) => entries.map(([name, value]) => `${pad}--${name}: ${value};`).join("\n");
+
+const forest = await build({ scheme: "forest" });
+const paper = await build({ scheme: "paper" });
+const themed = [...forest.keys()].filter((name) => forest.get(name) !== paper.get(name));
+
+const css = `/* Generated. Do not edit. Load before any other stylesheet. */
+${LAYERS}
+
+@layer tokens {
+  :root {
+    color-scheme: dark;
+  }
+
+  [data-theme="paper"] {
+    color-scheme: light;
+  }
+
+  [data-theme="forest"] {
+    color-scheme: dark;
+  }
+
+  :root {
+${declarations([...forest], "    ")}
+  }
+
+  @supports ${SUPPORTS} {
+    :root {
+${declarations(themed.map((name) => [name, `light-dark(${paper.get(name)}, ${forest.get(name)})`]), "      ")}
+    }
+  }
+
+  @supports not ${SUPPORTS} {
+    [data-theme="paper"] {
+${declarations(themed.map((name) => [name, paper.get(name)]), "      ")}
+    }
+
+    [data-theme="forest"] {
+${declarations(themed.map((name) => [name, forest.get(name)]), "      ")}
+    }
+  }
+}
+
+@layer base {
+  /* Repeats the inherited colour on each themed subtree, because light-dark() resolves when computed. */
+  :where(:root, [data-theme]) {
+    background-color: var(--${PREFIX}-color-surface-default);
+    color: var(--${PREFIX}-color-text-default);
+  }
+}
+`;
 
 await mkdir(OUT, { recursive: true });
 await writeFile(join(OUT, "tokens.css"), css);
-console.log(`Built ${allTokens.length} tokens into dist/tokens/tokens.css`);
+console.log(`Built ${forest.size} tokens into dist/tokens/tokens.css`);

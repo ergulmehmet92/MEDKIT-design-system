@@ -1,9 +1,19 @@
 {
   "$schema": "https://www.designtokens.org/schemas/2025.10/format.json",
-  "$description": "Primitive tier: raw values. Components never read these directly.",
+  "$description": "Primitive tier: raw values. Components never read these directly. The ten opaque colours are the palette approved for v2.",
   "color": {
     "$type": "color",
     "forest": {"$value": {"colorSpace": "oklch", "components": [0.2081, 0.0221, 158.1871], "hex": "#0f1b14"}},
-    "off-white": {"$value": {"colorSpace": "oklch", "components": [0.9563, 0.0143, 84.5834], "hex": "#f5f0e6"}}
+    "hunter": {"$value": {"colorSpace": "oklch", "components": [0.3809, 0.0459, 155.3737], "hex": "#2e4a38"}},
+    "sage": {"$value": {"colorSpace": "oklch", "components": [0.6848, 0.0564, 128.9185], "hex": "#8fa17c"}},
+    "sand": {"$value": {"colorSpace": "oklch", "components": [0.7902, 0.0599, 83.9105], "hex": "#cdb88f"}},
+    "honey": {"$value": {"colorSpace": "oklch", "components": [0.7677, 0.1353, 80.2998], "hex": "#e0a93f"}},
+    "honey-deep": {"$value": {"colorSpace": "oklch", "components": [0.4713, 0.0939, 74.21], "hex": "#7a520e"}},
+    "beige": {"$value": {"colorSpace": "oklch", "components": [0.9092, 0.0248, 83.4155], "hex": "#e9e0cf"}},
+    "off-white": {"$value": {"colorSpace": "oklch", "components": [0.9563, 0.0143, 84.5834], "hex": "#f5f0e6"}},
+    "grey-300": {"$value": {"colorSpace": "oklch", "components": [0.7142, 0.0215, 84.593], "hex": "#a9a294"}},
+    "grey-600": {"$value": {"colorSpace": "oklch", "components": [0.4663, 0.0189, 82.7494], "hex": "#5f594e"}},
+    "hairline-pale": {"$value": {"colorSpace": "oklch", "components": [0.9563, 0.0143, 84.5834], "alpha": 0.18, "hex": "#f5f0e6"}, "$description": "Off-white at 18%, for decorative lines on dark surfaces."},
+    "hairline-deep": {"$value": {"colorSpace": "oklch", "components": [0.2081, 0.0221, 158.1871], "alpha": 0.2, "hex": "#0f1b14"}, "$description": "Forest at 20%, for decorative lines on pale surfaces."}
   }
 }
