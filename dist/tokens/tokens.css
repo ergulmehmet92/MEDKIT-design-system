@@ -39,6 +39,70 @@
     --mk-color-action-background-primary-hover: var(--mk-color-beige);
     --mk-color-action-background-primary-active: var(--mk-color-sand);
     --mk-color-action-foreground-primary-default: var(--mk-color-forest);
+    --mk-font-family-sans: 'TeX Gyre Heros', Arial, sans-serif;
+    --mk-font-family-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    --mk-font-family-body: var(--mk-font-family-sans);
+    --mk-font-family-label: var(--mk-font-family-mono);
+    --mk-font-weight-regular: 400;
+    --mk-font-weight-medium: 500;
+    --mk-font-weight-bold: 700;
+    --mk-font-weight-body: var(--mk-font-weight-regular);
+    --mk-font-weight-strong: var(--mk-font-weight-bold);
+    --mk-font-weight-label: var(--mk-font-weight-regular);
+    --mk-font-size-100: 0.8125rem;
+    --mk-font-size-200: 1rem;
+    --mk-font-size-300: 1.3125rem;
+    --mk-font-size-400: 1.75rem;
+    --mk-font-size-500: 2.75rem;
+    --mk-font-size-600: 3.25rem;
+    --mk-font-size-700: 6.5rem;
+    --mk-font-size-800: 8rem;
+    --mk-font-size-label: var(--mk-font-size-100);
+    --mk-font-size-body: var(--mk-font-size-200);
+    --mk-font-size-lead: var(--mk-font-size-300);
+    --mk-font-size-title: var(--mk-font-size-400);
+    --mk-font-size-subheading: var(--mk-font-size-500);
+    --mk-leading-100: 1;
+    --mk-leading-200: 1.15;
+    --mk-leading-300: 1.35;
+    --mk-space-1: 0.25rem;
+    --mk-space-2: 0.5rem;
+    --mk-space-3: 0.75rem;
+    --mk-space-4: 1rem;
+    --mk-space-6: 1.5rem;
+    --mk-space-8: 2rem;
+    --mk-space-12: 3rem;
+    --mk-space-16: 4rem;
+    --mk-space-24: 6rem;
+    --mk-space-32: 8rem;
+    --mk-radius-none: 0rem;
+    --mk-radius-full: 999rem;
+    --mk-radius-default: var(--mk-radius-none);
+    --mk-radius-circle: var(--mk-radius-full);
+    --mk-stroke-hairline: 1px;
+    --mk-stroke-focus: 2px;
+    --mk-time-150: 0.15s;
+    --mk-time-200: 0.2s;
+    --mk-time-1400: 1.4s;
+    --mk-time-1800: 1.8s;
+    --mk-curve-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --mk-line-height-tight: var(--mk-leading-100);
+    --mk-line-height-snug: var(--mk-leading-200);
+    --mk-line-height-body: var(--mk-leading-300);
+    --mk-gap-sm: var(--mk-space-2);
+    --mk-gap-md: var(--mk-space-4);
+    --mk-gap-lg: var(--mk-space-8);
+    --mk-gap-xl: var(--mk-space-16);
+    --mk-inset-sm: var(--mk-space-2);
+    --mk-inset-md: var(--mk-space-4);
+    --mk-inset-lg: var(--mk-space-8);
+    --mk-border-width-default: var(--mk-stroke-hairline);
+    --mk-border-width-focus: var(--mk-stroke-focus);
+    --mk-motion-duration-interaction: var(--mk-time-150);
+    --mk-motion-duration-theme-text: var(--mk-time-1400);
+    --mk-motion-duration-theme-light: var(--mk-time-1800);
+    --mk-motion-delay-theme-text: var(--mk-time-200);
+    --mk-motion-easing-default: var(--mk-curve-out-expo);
   }
 
   @supports (color: light-dark(#fff, #000)) {
@@ -115,12 +179,39 @@
       --mk-color-action-foreground-primary-default: ButtonText;
     }
   }
+
+  /* What DTCG can't express. Maximums stay within 2.5 times their minimums, and the rem in the
+     middle value keeps browser zoom working at every width. */
+  :root {
+    --mk-font-size-display: clamp(var(--mk-font-size-600), 1.6rem + 7vw, var(--mk-font-size-800));
+    --mk-font-size-heading: clamp(var(--mk-font-size-500), 1.4rem + 5.6vw, var(--mk-font-size-700));
+    --mk-tracking-display: -0.04em;
+    --mk-tracking-title: -0.02em;
+    --mk-tracking-label: 0.04em;
+    --mk-gutter: clamp(1rem, 4vw, 4rem);
+  }
 }
 
 @layer base {
+  :where(:root) {
+    font-family: var(--mk-font-family-body);
+    font-size: var(--mk-font-size-body);
+    font-weight: var(--mk-font-weight-body);
+    line-height: var(--mk-line-height-body);
+  }
+
   /* Repeats the inherited colour on each themed subtree, because light-dark() resolves when computed. */
   :where(:root, [data-theme]) {
     background-color: var(--mk-color-surface-default);
     color: var(--mk-color-text-default);
+    transition:
+      background-color var(--mk-motion-duration-theme-text) ease var(--mk-motion-delay-theme-text),
+      color var(--mk-motion-duration-theme-text) ease var(--mk-motion-delay-theme-text);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :where(:root, [data-theme]) {
+      transition: none;
+    }
   }
 }

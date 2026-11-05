@@ -1,0 +1,10 @@
+/* What DTCG can't express. Maximums stay within 2.5 times their minimums, and the rem in the
+   middle value keeps browser zoom working at every width. */
+:root {
+  --mk-font-size-display: clamp(var(--mk-font-size-600), 1.6rem + 7vw, var(--mk-font-size-800));
+  --mk-font-size-heading: clamp(var(--mk-font-size-500), 1.4rem + 5.6vw, var(--mk-font-size-700));
+  --mk-tracking-display: -0.04em;
+  --mk-tracking-title: -0.02em;
+  --mk-tracking-label: 0.04em;
+  --mk-gutter: clamp(1rem, 4vw, 4rem);
+}

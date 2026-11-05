@@ -3,13 +3,15 @@
 // the resolver stays the single source of truth for which files make up each theme.
 // Adapted from the atomic-design skill's template (MIT, Gökberk Nur).
 
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import StyleDictionary from "style-dictionary";
 import { resolveTokens } from "./scripts/resolve-tokens.mjs";
 
-const OUT = join(dirname(fileURLToPath(import.meta.url)), "dist/tokens");
+const ROOT = dirname(fileURLToPath(import.meta.url));
+const OUT = join(ROOT, "dist/tokens");
+const FLUID = await readFile(join(ROOT, "tokens/fluid.css"), "utf8");
 const PREFIX = "mk";
 const LAYERS = "@layer reset, tokens, base, components, utilities;";
 const SUPPORTS = "(color: light-dark(#fff, #000))";
@@ -98,13 +100,31 @@ ${declarations(promoted, "      ")}
 ${declarations(forced, "      ")}
     }
   }
+
+${FLUID.trimEnd().split("\n").map((line) => (line ? `  ${line}` : line)).join("\n")}
 }
 
 @layer base {
+  :where(:root) {
+    font-family: var(--${PREFIX}-font-family-body);
+    font-size: var(--${PREFIX}-font-size-body);
+    font-weight: var(--${PREFIX}-font-weight-body);
+    line-height: var(--${PREFIX}-line-height-body);
+  }
+
   /* Repeats the inherited colour on each themed subtree, because light-dark() resolves when computed. */
   :where(:root, [data-theme]) {
     background-color: var(--${PREFIX}-color-surface-default);
     color: var(--${PREFIX}-color-text-default);
+    transition:
+      background-color var(--${PREFIX}-motion-duration-theme-text) ease var(--${PREFIX}-motion-delay-theme-text),
+      color var(--${PREFIX}-motion-duration-theme-text) ease var(--${PREFIX}-motion-delay-theme-text);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :where(:root, [data-theme]) {
+      transition: none;
+    }
   }
 }
 `;

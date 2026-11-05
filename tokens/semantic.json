@@ -31,5 +31,71 @@
         }
       }
     }
+  },
+  "font": {
+    "family": {
+      "$type": "fontFamily",
+      "body": {"$value": "{font.family.sans}", "$description": "Headlines and running text."},
+      "label": {"$value": "{font.family.mono}", "$description": "Uppercase labels and metadata."}
+    },
+    "weight": {
+      "$type": "fontWeight",
+      "body": {"$value": "{font.weight.regular}"},
+      "strong": {"$value": "{font.weight.bold}", "$description": "Poster moments and emphasis."},
+      "label": {"$value": "{font.weight.regular}"}
+    },
+    "size": {
+      "$type": "dimension",
+      "label": {"$value": "{font.size.100}"},
+      "body": {"$value": "{font.size.200}"},
+      "lead": {"$value": "{font.size.300}"},
+      "title": {"$value": "{font.size.400}"},
+      "subheading": {"$value": "{font.size.500}"}
+    }
+  },
+  "line-height": {
+    "$type": "number",
+    "tight": {"$value": "{leading.100}", "$description": "Display and heading sizes."},
+    "snug": {"$value": "{leading.200}", "$description": "Titles."},
+    "body": {"$value": "{leading.300}", "$description": "Running text and labels."}
+  },
+  "gap": {
+    "$type": "dimension",
+    "sm": {"$value": "{space.2}"},
+    "md": {"$value": "{space.4}"},
+    "lg": {"$value": "{space.8}"},
+    "xl": {"$value": "{space.16}"}
+  },
+  "inset": {
+    "$type": "dimension",
+    "sm": {"$value": "{space.2}"},
+    "md": {"$value": "{space.4}"},
+    "lg": {"$value": "{space.8}"}
+  },
+  "radius": {
+    "$type": "dimension",
+    "default": {"$value": "{radius.none}", "$description": "Everything is square unless it's a circle."},
+    "circle": {"$value": "{radius.full}", "$description": "Circles only."}
+  },
+  "border-width": {
+    "$type": "dimension",
+    "default": {"$value": "{stroke.hairline}"},
+    "focus": {"$value": "{stroke.focus}"}
+  },
+  "motion": {
+    "duration": {
+      "$type": "duration",
+      "interaction": {"$value": "{time.150}", "$description": "Hover and press."},
+      "theme-text": {"$value": "{time.1400}", "$description": "Text and surfaces changing theme."},
+      "theme-light": {"$value": "{time.1800}", "$description": "Dawn: the light changing theme."}
+    },
+    "delay": {
+      "$type": "duration",
+      "theme-text": {"$value": "{time.200}", "$description": "Text follows the light by this much."}
+    },
+    "easing": {
+      "$type": "cubicBezier",
+      "default": {"$value": "{curve.out-expo}"}
+    }
   }
 }

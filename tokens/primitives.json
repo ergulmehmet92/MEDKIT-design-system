@@ -15,5 +15,69 @@
     "grey-600": {"$value": {"colorSpace": "oklch", "components": [0.4663, 0.0189, 82.7494], "hex": "#5f594e"}},
     "hairline-pale": {"$value": {"colorSpace": "oklch", "components": [0.9563, 0.0143, 84.5834], "alpha": 0.18, "hex": "#f5f0e6"}, "$description": "Off-white at 18%, for decorative lines on dark surfaces."},
     "hairline-deep": {"$value": {"colorSpace": "oklch", "components": [0.2081, 0.0221, 158.1871], "alpha": 0.2, "hex": "#0f1b14"}, "$description": "Forest at 20%, for decorative lines on pale surfaces."}
+  },
+  "font": {
+    "family": {
+      "$type": "fontFamily",
+      "sans": {"$value": ["TeX Gyre Heros", "Arial", "sans-serif"]},
+      "mono": {"$value": ["IBM Plex Mono", "ui-monospace", "Menlo", "monospace"]}
+    },
+    "weight": {
+      "$type": "fontWeight",
+      "regular": {"$value": 400},
+      "medium": {"$value": 500, "$description": "IBM Plex Mono only. TeX Gyre Heros ships regular and bold."},
+      "bold": {"$value": 700}
+    },
+    "size": {
+      "$type": "dimension",
+      "100": {"$value": {"value": 0.8125, "unit": "rem"}},
+      "200": {"$value": {"value": 1, "unit": "rem"}},
+      "300": {"$value": {"value": 1.3125, "unit": "rem"}},
+      "400": {"$value": {"value": 1.75, "unit": "rem"}},
+      "500": {"$value": {"value": 2.75, "unit": "rem"}},
+      "600": {"$value": {"value": 3.25, "unit": "rem"}},
+      "700": {"$value": {"value": 6.5, "unit": "rem"}},
+      "800": {"$value": {"value": 8, "unit": "rem"}}
+    }
+  },
+  "leading": {
+    "$type": "number",
+    "100": {"$value": 1},
+    "200": {"$value": 1.15},
+    "300": {"$value": 1.35}
+  },
+  "space": {
+    "$type": "dimension",
+    "1": {"$value": {"value": 0.25, "unit": "rem"}},
+    "2": {"$value": {"value": 0.5, "unit": "rem"}},
+    "3": {"$value": {"value": 0.75, "unit": "rem"}},
+    "4": {"$value": {"value": 1, "unit": "rem"}},
+    "6": {"$value": {"value": 1.5, "unit": "rem"}},
+    "8": {"$value": {"value": 2, "unit": "rem"}},
+    "12": {"$value": {"value": 3, "unit": "rem"}},
+    "16": {"$value": {"value": 4, "unit": "rem"}},
+    "24": {"$value": {"value": 6, "unit": "rem"}},
+    "32": {"$value": {"value": 8, "unit": "rem"}}
+  },
+  "radius": {
+    "$type": "dimension",
+    "none": {"$value": {"value": 0, "unit": "rem"}},
+    "full": {"$value": {"value": 999, "unit": "rem"}}
+  },
+  "stroke": {
+    "$type": "dimension",
+    "hairline": {"$value": {"value": 1, "unit": "px"}},
+    "focus": {"$value": {"value": 2, "unit": "px"}}
+  },
+  "time": {
+    "$type": "duration",
+    "150": {"$value": {"value": 150, "unit": "ms"}},
+    "200": {"$value": {"value": 200, "unit": "ms"}},
+    "1400": {"$value": {"value": 1400, "unit": "ms"}},
+    "1800": {"$value": {"value": 1800, "unit": "ms"}}
+  },
+  "curve": {
+    "$type": "cubicBezier",
+    "out-expo": {"$value": [0.16, 1, 0.3, 1]}
   }
 }
