@@ -51,8 +51,25 @@ const names = [...forest.keys()];
 const themed = names.filter((name) => forest.get(name) !== paper.get(name));
 const promoted = names.filter((name) => forest.get(name) !== more.get(name)).map((name) => [name, more.get(name)]);
 
+const LATIN = "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD";
+const face = (family, weight, file, format, range) => `@font-face {
+  font-family: "${family}";
+  font-style: normal;
+  font-weight: ${weight};
+  font-display: swap;
+  src: url("../../fonts/${file}") format("${format}");${range ? `\n  unicode-range: ${range};` : ""}
+}`;
+const FACES = [
+  face("TeX Gyre Heros", 400, "texgyreheros-regular.otf", "opentype"),
+  face("TeX Gyre Heros", 700, "texgyreheros-bold.otf", "opentype"),
+  face("IBM Plex Mono", 400, "ibm-plex-mono-latin-400-normal.woff2", "woff2", LATIN),
+  face("IBM Plex Mono", 500, "ibm-plex-mono-latin-500-normal.woff2", "woff2", LATIN),
+].join("\n\n");
+
 const css = `/* Generated. Do not edit. Load before any other stylesheet. */
 ${LAYERS}
+
+${FACES}
 
 @layer tokens {
   :root {

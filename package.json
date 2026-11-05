@@ -1,7 +1,7 @@
 {
   "name": "@ergulmehmet92/medkit",
   "version": "2.0.0-alpha.0",
-  "description": "MED·Kit: the Mehmet Ergul Design Kit. Design tokens and React components.",
+  "description": "MED\u00b7Kit: the Mehmet Ergul Design Kit. Design tokens and React components.",
   "private": true,
   "license": "MIT",
   "type": "module",
@@ -18,6 +18,7 @@
     "components/molecules",
     "components/organisms",
     "dist",
+    "fonts",
     "LICENSE"
   ],
   "scripts": {
