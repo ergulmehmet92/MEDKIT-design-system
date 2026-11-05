@@ -16,7 +16,7 @@ Not applicable. MED·Kit has one maker and no budget holder.
 - Baseline Newly Available: only with feature detection and a working fallback.
 - Anything else: ask first.
 
-No exceptions. No `browserslist` is set. This policy is also in `AGENTS.md`.
+One exception, approved on 2026-11-05: refraction on quiet buttons is Chromium-only, and other browsers get blurred glass. No `browserslist` is set. This policy is also in `AGENTS.md`.
 
 ## Stack
 
