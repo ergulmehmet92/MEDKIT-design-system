@@ -1,13 +1,64 @@
 @layer components {
   .mk-button {
     --_bg: var(--mk-button-bg, var(--mk-color-action-background-primary-default));
+    --_bg-hover: var(--mk-button-bg-hover, var(--mk-color-action-background-primary-hover));
+    --_bg-active: var(--mk-button-bg-active, var(--mk-color-action-background-primary-active));
     --_fg: var(--mk-button-fg, var(--mk-color-action-foreground-primary-default));
+    --_border: var(--mk-button-border, transparent);
 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--mk-gap-sm);
     min-block-size: 2.75rem;
-    padding-inline: 1rem;
-    border: 0;
-    background: var(--_bg);
+    padding-block: var(--mk-inset-sm);
+    padding-inline: var(--mk-inset-md);
+    border: var(--mk-border-width-default) solid var(--_border);
+    border-radius: var(--mk-radius-default);
+    background-color: var(--_bg);
     color: var(--_fg);
+    font-family: var(--mk-font-family-body);
+    font-size: var(--mk-font-size-body);
+    font-weight: var(--mk-font-weight-body);
+    line-height: var(--mk-line-height-snug);
+    text-align: center;
     cursor: pointer;
+    transition:
+      background-color var(--mk-motion-duration-interaction) var(--mk-motion-easing-default),
+      border-color var(--mk-motion-duration-interaction) var(--mk-motion-easing-default);
+
+    &[data-variant="quiet"] {
+      --_bg: transparent;
+      --_bg-hover: transparent;
+      --_bg-active: transparent;
+      --_fg: var(--mk-color-text-default);
+      --_border: var(--mk-color-border-strong);
+    }
+
+    &:hover:not(:disabled) {
+      background-color: var(--_bg-hover);
+    }
+
+    &[data-variant="quiet"]:hover:not(:disabled) {
+      border-color: var(--mk-color-text-default);
+    }
+
+    &:active:not(:disabled) {
+      background-color: var(--_bg-active);
+    }
+
+    &:focus-visible {
+      outline: var(--mk-border-width-focus) solid var(--mk-color-border-focus);
+      outline-offset: var(--mk-border-width-focus);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
   }
 }

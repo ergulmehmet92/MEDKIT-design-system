@@ -121,6 +121,10 @@ ${FLUID.trimEnd().split("\n").map((line) => (line ? `  ${line}` : line)).join("\
 }
 
 @layer base {
+  :where(body) {
+    margin: 0;
+  }
+
   :where(:root) {
     font-family: var(--${PREFIX}-font-family-body);
     font-size: var(--${PREFIX}-font-size-body);

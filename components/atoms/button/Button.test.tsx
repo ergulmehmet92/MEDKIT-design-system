@@ -1,9 +1,13 @@
 import { readFileSync } from "node:fs";
 import { cleanup, render, screen } from "@testing-library/react";
-import { afterEach, describe, expect, it } from "vitest";
+import userEvent from "@testing-library/user-event";
+import axe from "axe-core";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { Button } from "./Button";
 
 afterEach(cleanup);
+
+const css = () => readFileSync("components/atoms/button/button.css", "utf8");
 
 describe("Button", () => {
   it("renders a native button with its label", () => {
@@ -18,6 +22,12 @@ describe("Button", () => {
     expect(screen.getByRole("button").getAttribute("type")).toBe("button");
   });
 
+  it("can still submit a form when asked", () => {
+    render(<Button type="submit">Send</Button>);
+
+    expect(screen.getByRole("button").getAttribute("type")).toBe("submit");
+  });
+
   it("passes native props through to the button", () => {
     render(
       <Button disabled aria-describedby="hint">
@@ -30,16 +40,79 @@ describe("Button", () => {
     expect(button.getAttribute("aria-describedby")).toBe("hint");
   });
 
-  it("exposes its variant for styling", () => {
-    render(<Button variant="quiet">Save</Button>);
+  it("exposes its variant for styling, defaulting to primary", () => {
+    const { rerender } = render(<Button>Save</Button>);
+    expect(screen.getByRole("button").getAttribute("data-variant")).toBe("primary");
 
+    rerender(<Button variant="quiet">Save</Button>);
     expect(screen.getByRole("button").getAttribute("data-variant")).toBe("quiet");
   });
 
-  it("reads colour from semantic tokens and holds no raw colours", () => {
-    const css = readFileSync("components/atoms/button/button.css", "utf8");
+  it("activates with a click, Enter and Space", async () => {
+    const user = userEvent.setup();
+    const onClick = vi.fn();
+    render(<Button onClick={onClick}>Save</Button>);
 
-    expect(css).toContain("--mk-color-action-background-primary-default");
-    expect(css).not.toMatch(/#[0-9a-f]{3,8}\b|oklch\(|rgb\(/i);
+    await user.click(screen.getByRole("button"));
+    await user.tab();
+    screen.getByRole("button").focus();
+    await user.keyboard("{Enter}");
+    await user.keyboard(" ");
+
+    expect(onClick).toHaveBeenCalledTimes(3);
+  });
+
+  it("ignores activation when disabled", async () => {
+    const user = userEvent.setup();
+    const onClick = vi.fn();
+    render(
+      <Button disabled onClick={onClick}>
+        Save
+      </Button>,
+    );
+
+    await user.click(screen.getByRole("button"));
+
+    expect(onClick).not.toHaveBeenCalled();
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<Button>Save</Button>);
+
+    const { violations } = await axe.run(container);
+    expect(violations).toEqual([]);
+  });
+});
+
+describe("Button styles", () => {
+  it("read colour from semantic tokens and hold no raw colours", () => {
+    expect(css()).toContain("--mk-color-action-background-primary-default");
+    expect(css()).toContain("--mk-color-action-background-primary-hover");
+    expect(css()).toContain("--mk-color-action-background-primary-active");
+    expect(css()).not.toMatch(/#[0-9a-f]{3,8}\b|oklch\(|rgb\(/i);
+  });
+
+  it("keep hover from overmatching a disabled button", () => {
+    expect(css()).toMatch(/:hover:not\(:disabled\)/);
+  });
+
+  it("use the brand's type, not the browser's default for buttons", () => {
+    expect(css()).toContain("font-family: var(--mk-font-family-body)");
+  });
+
+  it("meet the 44px target", () => {
+    expect(css()).toContain("min-block-size: 2.75rem");
+  });
+
+  it("show a focus ring, using an outline so forced-colors mode keeps it", () => {
+    expect(css()).toMatch(/:focus-visible \{[^}]*outline: var\(--mk-border-width-focus\) solid var\(--mk-color-border-focus\)/);
+  });
+
+  it("keep a real border on the quiet variant, so forced-colors mode shows its boundary", () => {
+    expect(css()).toMatch(/\[data-variant="quiet"\] \{[^}]*--mk-color-border-strong/);
+  });
+
+  it("stop transitions for visitors who prefer reduced motion", () => {
+    expect(css()).toMatch(/prefers-reduced-motion: reduce\) \{[\s\S]*transition: none/);
   });
 });

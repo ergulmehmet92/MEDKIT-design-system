@@ -238,6 +238,10 @@
 }
 
 @layer base {
+  :where(body) {
+    margin: 0;
+  }
+
   :where(:root) {
     font-family: var(--mk-font-family-body);
     font-size: var(--mk-font-size-body);

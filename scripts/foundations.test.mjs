@@ -99,6 +99,12 @@ describe("semantic foundations", () => {
     expect(color).toBeDefined();
   });
 
+  it("remove the browser's default page margin, so themed sections reach the edge", () => {
+    const base = css().match(/@layer base \{[\s\S]*\n\}/)?.[0] ?? "";
+
+    expect(base).toMatch(/:where\(body\) \{\s+margin: 0;/);
+  });
+
   it("set the page's type from tokens", () => {
     const base = css().match(/@layer base \{[\s\S]*\n\}/)?.[0] ?? "";
 
