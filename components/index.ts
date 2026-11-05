@@ -6,6 +6,7 @@ export * from "./atoms/icon-button";
 export * from "./atoms/link";
 export * from "./atoms/living-light";
 export * from "./atoms/rule";
+export * from "./molecules/chart-frame";
 export * from "./molecules/metric";
 export * from "./molecules/theme-switch";
 export * from "./organisms/contact-routes";
