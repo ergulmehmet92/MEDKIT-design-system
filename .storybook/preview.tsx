@@ -22,8 +22,11 @@ const preview: Preview = {
     options: { storySort: { order: ["Atoms", "Molecules", "Organisms"] } },
   },
   decorators: [
-    (Story, { globals }) => (
-      <div data-theme={globals.theme} style={{ minHeight: "100vh", padding: "var(--mk-inset-lg)" }}>
+    (Story, { globals, parameters }) => (
+      <div
+        data-theme={parameters.pinTheme === false ? undefined : globals.theme}
+        style={{ minHeight: "100vh", padding: "var(--mk-inset-lg)" }}
+      >
         <Story />
       </div>
     ),
