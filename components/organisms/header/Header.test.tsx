@@ -156,4 +156,8 @@ describe("Header styles", () => {
   it("only set the menu's display while it's open, so it stays closed by default", () => {
     expect(css()).toMatch(/\.mk-header-menu\[open\] \{[^}]*display: flex;/);
   });
+
+  it("hides the menu button on wide screens however the stylesheets are ordered", () => {
+    expect(css()).toMatch(/\.mk-header \.mk-header-menu-trigger \{\s*display: none/);
+  });
 });

@@ -118,7 +118,7 @@
       display: block;
     }
 
-    .mk-header-menu-trigger {
+    .mk-header .mk-header-menu-trigger {
       display: none;
     }
   }

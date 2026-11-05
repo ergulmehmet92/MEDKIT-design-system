@@ -50,6 +50,12 @@ describe("IconButton", () => {
     expect(violations).toEqual([]);
   });
 
+  it("outranks Button's padding however the stylesheets are ordered", () => {
+    const css = readFileSync("components/atoms/icon-button/icon-button.css", "utf8");
+
+    expect(css).toContain(".mk-button.mk-icon-button");
+  });
+
   it("is a 48px square, clearing the 44px target", () => {
     const css = readFileSync("components/atoms/icon-button/icon-button.css", "utf8");
 
