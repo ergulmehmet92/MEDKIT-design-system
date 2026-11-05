@@ -16,7 +16,8 @@
 | Prop | Type | Default | Reflected | Notes |
 |---|---|---|---|---|
 | `variant` | `"primary" \| "quiet"` | `"primary"` | `data-variant` | |
-| `type` | native | `"button"` | yes | Set `"submit"` inside forms |
+| `type` | native | `"button"` | yes | Set `"submit"` inside forms. Not used on links |
+| `href` | `string` | none | yes | Renders a native `a` in the same material, for navigation. Links can't be disabled |
 | native props | | | yes | Passed to the root |
 
 **Children:** the label.

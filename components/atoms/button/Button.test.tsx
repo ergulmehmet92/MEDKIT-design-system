@@ -147,3 +147,29 @@ describe("Button styles", () => {
     expect(css()).toMatch(/prefers-reduced-motion: reduce\) \{[\s\S]*transition: none/);
   });
 });
+
+describe("Button as a link", () => {
+  it("renders a native link with the same materials when given an href", () => {
+    render(
+      <Button href="/contact" variant="quiet">
+        Get in touch
+      </Button>,
+    );
+
+    const link = screen.getByRole("link", { name: "Get in touch" });
+    expect(link.getAttribute("href")).toBe("/contact");
+    expect(link.className).toBe("mk-button");
+    expect(link.getAttribute("data-variant")).toBe("quiet");
+    expect(link.hasAttribute("type")).toBe(false);
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<Button href="/work">See the work</Button>);
+
+    expect((await axe.run(container)).violations).toEqual([]);
+  });
+
+  it("drops the link underline", () => {
+    expect(css()).toMatch(/\.mk-button \{[^}]*text-decoration: none/);
+  });
+});

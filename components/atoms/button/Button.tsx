@@ -1,12 +1,20 @@
 import type { ComponentPropsWithoutRef } from "react";
 import "./button.css";
 
-export type ButtonProps = ComponentPropsWithoutRef<"button"> & {
-  variant?: "primary" | "quiet";
-};
+type Variant = { variant?: "primary" | "quiet" };
 
-export function Button({ variant = "primary", type = "button", className, ...rest }: ButtonProps) {
-  const classes = className ? `mk-button ${className}` : "mk-button";
+export type ButtonAsButtonProps = ComponentPropsWithoutRef<"button"> & Variant & { href?: undefined };
+export type ButtonAsLinkProps = ComponentPropsWithoutRef<"a"> & Variant & { href: string };
 
-  return <button className={classes} data-variant={variant} type={type} {...rest} />;
+/** Without `href` it's a native button. With one, it's a native link in the same material. */
+export type ButtonProps = ButtonAsButtonProps | ButtonAsLinkProps;
+
+export function Button(props: ButtonProps) {
+  if (props.href !== undefined) {
+    const { variant = "primary", className, ...rest } = props;
+    return <a className={className ? `mk-button ${className}` : "mk-button"} data-variant={variant} {...rest} />;
+  }
+
+  const { variant = "primary", type = "button", className, ...rest } = props;
+  return <button className={className ? `mk-button ${className}` : "mk-button"} data-variant={variant} type={type} {...rest} />;
 }

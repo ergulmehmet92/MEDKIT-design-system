@@ -1,0 +1,18 @@
+@layer components {
+  /* A border rather than a background, so forced-colors mode keeps it visible. */
+  .mk-rule {
+    margin: 0;
+    border: 0;
+    border-block-start: var(--mk-border-width-default) solid var(--mk-color-border-default);
+
+    &[data-strength="strong"] {
+      border-block-start-color: var(--mk-color-border-strong);
+    }
+  }
+
+  @media (forced-colors: active) {
+    .mk-rule {
+      border-block-start-color: CanvasText;
+    }
+  }
+}

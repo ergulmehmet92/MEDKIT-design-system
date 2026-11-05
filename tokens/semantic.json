@@ -221,6 +221,10 @@
       },
       "subheading": {
         "$value": "{font.size.500}"
+      },
+      "standalone": {
+        "$value": "{font.size.300}",
+        "$description": "Links and actions that stand on their own, such as ArrowLink."
       }
     }
   },

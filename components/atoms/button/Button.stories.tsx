@@ -16,6 +16,10 @@ export const Primary: Story = {};
 
 export const Quiet: Story = { args: { variant: "quiet" } };
 
+export const AsLink: Story = { args: { href: "#contact", children: "Get in touch" } };
+
+export const QuietLink: Story = { args: { href: "#work", variant: "quiet", children: "See the work" } };
+
 export const Disabled: Story = { args: { disabled: true } };
 
 export const QuietDisabled: Story = { args: { variant: "quiet", disabled: true } };

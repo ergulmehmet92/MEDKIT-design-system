@@ -18,6 +18,9 @@
       },
       "subheading": {
         "$value": "{font.size.400}"
+      },
+      "standalone": {
+        "$value": "{font.size.075}"
       }
     }
   },

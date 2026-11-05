@@ -1,7 +1,7 @@
-import { Button, type ButtonProps } from "../button";
+import { Button, type ButtonAsButtonProps } from "../button";
 import "./icon-button.css";
 
-export type IconButtonProps = Omit<ButtonProps, "variant"> & {
+export type IconButtonProps = Omit<ButtonAsButtonProps, "variant" | "href"> & {
   /** Names the button for assistive technology, and shows as a tooltip. Required, as there's no visible text. */
   label: string;
 };

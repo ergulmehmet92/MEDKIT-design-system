@@ -29,6 +29,7 @@
     font-weight: var(--mk-font-weight-body);
     line-height: var(--mk-line-height-snug);
     text-align: center;
+    text-decoration: none;
     cursor: pointer;
     transition: transform var(--mk-motion-duration-interaction) var(--mk-motion-easing-default);
 

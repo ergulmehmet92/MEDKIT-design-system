@@ -1,0 +1,85 @@
+@layer components {
+  /* Inline: an underline that warms to the accent on hover. Visited links look the same on purpose,
+     because the portfolio's links are few and revisiting them is expected. */
+  .mk-link {
+    color: inherit;
+    text-decoration-line: underline;
+    text-decoration-thickness: var(--mk-border-width-default);
+    text-decoration-color: var(--mk-color-border-strong);
+    text-underline-offset: 0.28em;
+    transition:
+      text-decoration-color var(--mk-motion-duration-interaction) var(--mk-motion-easing-default),
+      text-decoration-thickness var(--mk-motion-duration-interaction) var(--mk-motion-easing-default);
+
+    @media (hover: hover) {
+      &:hover {
+        text-decoration-color: var(--mk-color-text-accent);
+        text-decoration-thickness: var(--mk-border-width-focus);
+      }
+    }
+
+    &:focus-visible {
+      outline: var(--mk-border-width-focus) solid var(--mk-color-border-focus);
+      outline-offset: 3px;
+    }
+  }
+
+  /* Standalone: a label and an arrow. The arrow leans in and a hairline draws under the label. */
+  .mk-arrow-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--mk-gap-sm);
+    min-block-size: var(--mk-size-control);
+    color: var(--mk-color-text-default);
+    font-size: var(--mk-font-size-standalone);
+    line-height: var(--mk-line-height-snug);
+    text-decoration: none;
+    transition: color var(--mk-motion-duration-interaction) var(--mk-motion-easing-default);
+
+    & svg {
+      flex: none;
+      inline-size: 1em;
+      block-size: 1em;
+      transition: transform var(--mk-motion-duration-interaction) var(--mk-motion-easing-default);
+    }
+
+    & .mk-arrow-link-label {
+      background: linear-gradient(currentColor 0 0) 0 100% / 0 var(--mk-border-width-default) no-repeat;
+      transition: background-size var(--mk-motion-duration-theme-text) var(--mk-motion-easing-default);
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        color: var(--mk-color-text-accent);
+      }
+
+      &:hover svg {
+        transform: translateX(0.25em);
+      }
+
+      &:hover .mk-arrow-link-label {
+        background-size: 100% var(--mk-border-width-default);
+      }
+    }
+
+    &:focus-visible {
+      outline: var(--mk-border-width-focus) solid var(--mk-color-border-focus);
+      outline-offset: 3px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mk-link,
+    .mk-arrow-link,
+    .mk-arrow-link svg,
+    .mk-arrow-link .mk-arrow-link-label {
+      transition: none;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .mk-arrow-link .mk-arrow-link-label {
+      text-decoration: underline;
+    }
+  }
+}
