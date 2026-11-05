@@ -418,6 +418,10 @@
     "400": {
       "$value": 1.4,
       "$description": "Analytical body, where smaller text needs more air."
+    },
+    "084": {
+      "$value": 0.84,
+      "$description": "Poster type, set solid so the lines lock together."
     }
   },
   "space": {

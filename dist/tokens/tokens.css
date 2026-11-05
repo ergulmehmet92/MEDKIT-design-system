@@ -118,6 +118,7 @@
     --mk-leading-200: 1.15;
     --mk-leading-300: 1.35;
     --mk-leading-400: 1.4;
+    --mk-leading-084: 0.84;
     --mk-space-1: 0.25rem;
     --mk-space-2: 0.5rem;
     --mk-space-3: 0.75rem;
@@ -151,6 +152,7 @@
     --mk-line-height-tight: var(--mk-leading-100);
     --mk-line-height-snug: var(--mk-leading-200);
     --mk-line-height-body: var(--mk-leading-300);
+    --mk-line-height-poster: var(--mk-leading-084);
     --mk-gap-sm: var(--mk-space-2);
     --mk-gap-md: var(--mk-space-4);
     --mk-gap-lg: var(--mk-space-8);
@@ -340,6 +342,10 @@
     --mk-tracking-display: -0.04em;
     --mk-tracking-title: -0.02em;
     --mk-tracking-label: 0.06em;
+    --mk-tracking-poster: -0.055em;
+    /* Poster type: the 2.5 times zoom rule is waived, see foundations.test.mjs. */
+    --mk-font-size-poster: clamp(4rem, 1rem + 19vw, 18rem);
+    --mk-inset-section: clamp(3.5rem, 8vw, 7.5rem);
     --mk-gutter: clamp(1rem, 4vw, 4rem);
     --mk-page-inset: calc(var(--mk-gutter) + 1rem);
   }
@@ -348,12 +354,14 @@
      pinned inside an analytical subtree. */
   [data-density="analytical"] {
     --mk-font-size-feature: var(--mk-font-size-400);
+    --mk-inset-section: var(--mk-space-6);
     --mk-gutter: var(--mk-space-6);
     --mk-page-inset: calc(var(--mk-gutter) + 1rem);
   }
 
   [data-density="editorial"] {
     --mk-font-size-feature: clamp(2rem, 1rem + 4vw, 4.5rem);
+    --mk-inset-section: clamp(3.5rem, 8vw, 7.5rem);
     --mk-gutter: clamp(1rem, 4vw, 4rem);
     --mk-page-inset: calc(var(--mk-gutter) + 1rem);
   }

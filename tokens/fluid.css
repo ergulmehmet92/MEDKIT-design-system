@@ -7,6 +7,10 @@
   --mk-tracking-display: -0.04em;
   --mk-tracking-title: -0.02em;
   --mk-tracking-label: 0.06em;
+  --mk-tracking-poster: -0.055em;
+  /* Poster type: the 2.5 times zoom rule is waived, see foundations.test.mjs. */
+  --mk-font-size-poster: clamp(4rem, 1rem + 19vw, 18rem);
+  --mk-inset-section: clamp(3.5rem, 8vw, 7.5rem);
   --mk-gutter: clamp(1rem, 4vw, 4rem);
   --mk-page-inset: calc(var(--mk-gutter) + 1rem);
 }
@@ -15,12 +19,14 @@
    pinned inside an analytical subtree. */
 [data-density="analytical"] {
   --mk-font-size-feature: var(--mk-font-size-400);
+  --mk-inset-section: var(--mk-space-6);
   --mk-gutter: var(--mk-space-6);
   --mk-page-inset: calc(var(--mk-gutter) + 1rem);
 }
 
 [data-density="editorial"] {
   --mk-font-size-feature: clamp(2rem, 1rem + 4vw, 4.5rem);
+  --mk-inset-section: clamp(3.5rem, 8vw, 7.5rem);
   --mk-gutter: clamp(1rem, 4vw, 4rem);
   --mk-page-inset: calc(var(--mk-gutter) + 1rem);
 }

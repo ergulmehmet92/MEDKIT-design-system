@@ -64,4 +64,4 @@ Inline in a paragraph, a long ArrowLink label that wraps, and an external link a
 
 ## Lineage
 
-**Contains:** nothing. **Used in:** none yet. The `/v2` page's story link moves to ArrowLink in Task 21.
+**Contains:** nothing. **Used in:** none yet.

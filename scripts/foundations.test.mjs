@@ -122,3 +122,28 @@ describe("semantic foundations", () => {
     expect(base).toContain("line-height: var(--mk-line-height-body);");
   });
 });
+
+describe("poster type", () => {
+  // The 2.5 times rule keeps zoom working for reading sizes. Poster type starts at 4rem, so it's
+  // never small enough to need zooming, and a tighter range wouldn't fit a 320px screen.
+  it("stays at 4rem or more, growing towards the Poster board's size on wide screens", () => {
+    const match = css().match(/--mk-font-size-poster: clamp\(([\d.]+)rem, [\d.]+rem \+ [\d.]+vw, ([\d.]+)rem\);/);
+
+    expect(match).not.toBeNull();
+    expect(Number(match[1])).toBeGreaterThanOrEqual(4);
+    expect(Number(match[2]) * 16).toBeGreaterThanOrEqual(280);
+  });
+
+  it("carries the tracking and leading approved on the Poster board", () => {
+    expect(css()).toContain("--mk-tracking-poster: -0.055em;");
+    expect(css()).toMatch(/--mk-line-height-poster: var\(--mk-leading-\w+\);/);
+    expect(primitives().leading["084"].$value).toBe(0.84);
+  });
+});
+
+describe("section spacing", () => {
+  it("is fluid in editorial density and fixed in analytical density", () => {
+    expect(css()).toMatch(/:root \{[\s\S]*--mk-inset-section: clamp\(/);
+    expect(css()).toMatch(/\[data-density="analytical"\] \{[^}]*--mk-inset-section: var\(--mk-space-6\);/);
+  });
+});

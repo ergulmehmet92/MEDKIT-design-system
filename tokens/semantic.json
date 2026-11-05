@@ -241,6 +241,10 @@
     "body": {
       "$value": "{leading.300}",
       "$description": "Running text and labels."
+    },
+    "poster": {
+      "$value": "{leading.084}",
+      "$description": "Poster moments only."
     }
   },
   "gap": {

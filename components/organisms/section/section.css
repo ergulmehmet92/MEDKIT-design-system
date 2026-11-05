@@ -1,0 +1,33 @@
+@layer components {
+  .mk-section {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    gap: var(--mk-gap-xl);
+    box-sizing: border-box;
+    padding: var(--mk-inset-section) var(--mk-page-inset);
+  }
+
+  /* The page's opposite tone, in CSS alone, so a saved theme never flashes here on load. Colour
+     tokens use light-dark(), so they follow this color-scheme. It flips the page's theme, set on
+     the root element, and isn't meant to nest inside a pinned subtree. */
+  .mk-section[data-tone="inverse"] {
+    color-scheme: light;
+    background-color: var(--mk-color-surface-subtle);
+    color: var(--mk-color-text-default);
+    transition:
+      background-color var(--mk-motion-duration-theme-text) ease var(--mk-motion-delay-theme-text),
+      color var(--mk-motion-duration-theme-text) ease var(--mk-motion-delay-theme-text);
+  }
+
+  :root[data-theme="paper"] .mk-section[data-tone="inverse"] {
+    color-scheme: dark;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mk-section[data-tone="inverse"] {
+      transition: none;
+    }
+  }
+}
