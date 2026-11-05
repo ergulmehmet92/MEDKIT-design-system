@@ -21,6 +21,12 @@
       "stale": {"$value": "{color.signal-orange-deep}"},
       "failed": {"$value": "{color.signal-red-deep}"}
     },
+    "ambient": {
+      "base": {"$value": "{color.ambient-paper-base}"},
+      "mid": {"$value": "{color.sand}"},
+      "high": {"$value": "{color.ambient-paper-high}"},
+      "accent": {"$value": "{color.ambient-paper-accent}"}
+    },
     "material": {
       "shade": {"$value": "{color.honey-deep}"}
     },

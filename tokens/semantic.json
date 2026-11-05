@@ -22,6 +22,12 @@
       "stale": {"$value": "{color.signal-orange}", "$description": "Stale lamp. Graphics only, never as text. 3:1 or more on every surface.", "$extensions": {"com.medkit.forcedColors": "CanvasText"}},
       "failed": {"$value": "{color.signal-red}", "$description": "Failed lamp. Graphics only, never as text. 3:1 or more on every surface.", "$extensions": {"com.medkit.forcedColors": "CanvasText"}}
     },
+    "ambient": {
+      "base": {"$value": "{color.forest}", "$description": "The light's darkest colour, and its fallback's edge.", "$extensions": {"com.medkit.forcedColors": "Canvas"}},
+      "mid": {"$value": "{color.ambient-forest-mid}", "$description": "The light's middle tone.", "$extensions": {"com.medkit.forcedColors": "Canvas"}},
+      "high": {"$value": "{color.ambient-forest-high}", "$description": "The light's brightest colour.", "$extensions": {"com.medkit.forcedColors": "Canvas"}},
+      "accent": {"$value": "{color.ambient-forest-accent}", "$description": "Pools of colour within the light.", "$extensions": {"com.medkit.forcedColors": "Canvas"}}
+    },
     "material": {
       "specular": {"$value": "{color.highlight}", "$description": "Highlights on glass edges. Decorative, so exempt from contrast minimums.", "$extensions": {"com.medkit.forcedColors": "CanvasText"}},
       "glow": {"$value": "{color.honey}", "$description": "Light spilling past an opaque control. Decorative.", "$extensions": {"com.medkit.forcedColors": "CanvasText"}},

@@ -21,6 +21,12 @@
     "signal-orange-deep": {"$value": {"colorSpace": "oklch", "components": [0.608, 0.1687, 46.8137], "hex": "#d05a00"}},
     "signal-red": {"$value": {"colorSpace": "oklch", "components": [0.6533, 0.233, 28.8749], "hex": "#ff3a2e"}},
     "signal-red-deep": {"$value": {"colorSpace": "oklch", "components": [0.5879, 0.2234, 29.047], "hex": "#e3241b"}},
+    "ambient-forest-mid": {"$value": {"colorSpace": "oklch", "components": [0.415, 0.0509, 154.0334], "hex": "#35543f"}, "$description": "Living light only, as approved on the canvas."},
+    "ambient-forest-high": {"$value": {"colorSpace": "oklch", "components": [0.863, 0.0519, 93.7895], "hex": "#ddd2ac"}, "$description": "Living light only, as approved on the canvas."},
+    "ambient-forest-accent": {"$value": {"colorSpace": "oklch", "components": [0.7507, 0.1295, 79.8494], "hex": "#d9a441"}, "$description": "Living light only, as approved on the canvas."},
+    "ambient-paper-base": {"$value": {"colorSpace": "oklch", "components": [0.9327, 0.0201, 84.5907], "hex": "#efe8da"}, "$description": "Living light only, as approved on the canvas."},
+    "ambient-paper-high": {"$value": {"colorSpace": "oklch", "components": [0.9795, 0.0098, 87.4702], "hex": "#fbf8f1"}, "$description": "Living light only, as approved on the canvas."},
+    "ambient-paper-accent": {"$value": {"colorSpace": "oklch", "components": [0.7853, 0.0563, 115.5835], "hex": "#b7be95"}, "$description": "Living light only, as approved on the canvas."},
     "hairline-pale": {"$value": {"colorSpace": "oklch", "components": [0.9563, 0.0143, 84.5834], "alpha": 0.18, "hex": "#f5f0e6"}, "$description": "Off-white at 18%, for decorative lines on dark surfaces."},
     "hairline-deep": {"$value": {"colorSpace": "oklch", "components": [0.2081, 0.0221, 158.1871], "alpha": 0.2, "hex": "#0f1b14"}, "$description": "Forest at 20%, for decorative lines on pale surfaces."}
   },

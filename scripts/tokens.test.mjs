@@ -59,6 +59,12 @@ describe("primitive colours", () => {
       "signal-orange-deep": "#d05a00",
       "signal-red": "#ff3a2e",
       "signal-red-deep": "#e3241b",
+      "ambient-forest-mid": "#35543f",
+      "ambient-forest-high": "#ddd2ac",
+      "ambient-forest-accent": "#d9a441",
+      "ambient-paper-base": "#efe8da",
+      "ambient-paper-high": "#fbf8f1",
+      "ambient-paper-accent": "#b7be95",
     });
   });
 });

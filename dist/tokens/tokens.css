@@ -58,6 +58,12 @@
     --mk-color-signal-orange-deep: oklch(0.6080 0.1687 46.81);
     --mk-color-signal-red: oklch(0.6533 0.2330 28.87);
     --mk-color-signal-red-deep: oklch(0.5879 0.2234 29.05);
+    --mk-color-ambient-forest-mid: oklch(0.4150 0.0509 154.03);
+    --mk-color-ambient-forest-high: oklch(0.8630 0.0519 93.79);
+    --mk-color-ambient-forest-accent: oklch(0.7507 0.1295 79.85);
+    --mk-color-ambient-paper-base: oklch(0.9327 0.0201 84.59);
+    --mk-color-ambient-paper-high: oklch(0.9795 0.0098 87.47);
+    --mk-color-ambient-paper-accent: oklch(0.7853 0.0563 115.58);
     --mk-color-hairline-pale: oklch(0.9563 0.0143 84.58 / 0.18);
     --mk-color-hairline-deep: oklch(0.2081 0.0221 158.19 / 0.2);
     --mk-color-surface-default: var(--mk-color-forest);
@@ -71,6 +77,10 @@
     --mk-color-status-live: var(--mk-color-signal-green);
     --mk-color-status-stale: var(--mk-color-signal-orange);
     --mk-color-status-failed: var(--mk-color-signal-red);
+    --mk-color-ambient-base: var(--mk-color-forest);
+    --mk-color-ambient-mid: var(--mk-color-ambient-forest-mid);
+    --mk-color-ambient-high: var(--mk-color-ambient-forest-high);
+    --mk-color-ambient-accent: var(--mk-color-ambient-forest-accent);
     --mk-color-material-specular: var(--mk-color-highlight);
     --mk-color-material-glow: var(--mk-color-honey);
     --mk-color-material-shade: var(--mk-color-forest-deep);
@@ -161,6 +171,10 @@
       --mk-color-status-live: light-dark(var(--mk-color-signal-green-deep), var(--mk-color-signal-green));
       --mk-color-status-stale: light-dark(var(--mk-color-signal-orange-deep), var(--mk-color-signal-orange));
       --mk-color-status-failed: light-dark(var(--mk-color-signal-red-deep), var(--mk-color-signal-red));
+      --mk-color-ambient-base: light-dark(var(--mk-color-ambient-paper-base), var(--mk-color-forest));
+      --mk-color-ambient-mid: light-dark(var(--mk-color-sand), var(--mk-color-ambient-forest-mid));
+      --mk-color-ambient-high: light-dark(var(--mk-color-ambient-paper-high), var(--mk-color-ambient-forest-high));
+      --mk-color-ambient-accent: light-dark(var(--mk-color-ambient-paper-accent), var(--mk-color-ambient-forest-accent));
       --mk-color-material-shade: light-dark(var(--mk-color-honey-deep), var(--mk-color-forest-deep));
       --mk-color-action-background-primary-default: light-dark(var(--mk-color-forest), var(--mk-color-off-white));
       --mk-color-action-background-primary-lit: light-dark(var(--mk-color-hunter), var(--mk-color-highlight));
@@ -182,6 +196,10 @@
       --mk-color-status-live: var(--mk-color-signal-green-deep);
       --mk-color-status-stale: var(--mk-color-signal-orange-deep);
       --mk-color-status-failed: var(--mk-color-signal-red-deep);
+      --mk-color-ambient-base: var(--mk-color-ambient-paper-base);
+      --mk-color-ambient-mid: var(--mk-color-sand);
+      --mk-color-ambient-high: var(--mk-color-ambient-paper-high);
+      --mk-color-ambient-accent: var(--mk-color-ambient-paper-accent);
       --mk-color-material-shade: var(--mk-color-honey-deep);
       --mk-color-action-background-primary-default: var(--mk-color-forest);
       --mk-color-action-background-primary-lit: var(--mk-color-hunter);
@@ -201,6 +219,10 @@
       --mk-color-status-live: var(--mk-color-signal-green);
       --mk-color-status-stale: var(--mk-color-signal-orange);
       --mk-color-status-failed: var(--mk-color-signal-red);
+      --mk-color-ambient-base: var(--mk-color-forest);
+      --mk-color-ambient-mid: var(--mk-color-ambient-forest-mid);
+      --mk-color-ambient-high: var(--mk-color-ambient-forest-high);
+      --mk-color-ambient-accent: var(--mk-color-ambient-forest-accent);
       --mk-color-material-shade: var(--mk-color-forest-deep);
       --mk-color-action-background-primary-default: var(--mk-color-off-white);
       --mk-color-action-background-primary-lit: var(--mk-color-highlight);
@@ -239,6 +261,10 @@
       --mk-color-status-live: CanvasText;
       --mk-color-status-stale: CanvasText;
       --mk-color-status-failed: CanvasText;
+      --mk-color-ambient-base: Canvas;
+      --mk-color-ambient-mid: Canvas;
+      --mk-color-ambient-high: Canvas;
+      --mk-color-ambient-accent: Canvas;
       --mk-color-material-specular: CanvasText;
       --mk-color-material-glow: CanvasText;
       --mk-color-material-shade: CanvasText;
