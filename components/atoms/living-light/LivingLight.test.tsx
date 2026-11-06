@@ -138,6 +138,33 @@ describe("LivingLight", () => {
     expect(frames).toHaveLength(0);
   });
 
+  it("uses the grain and speed Mehmet tuned on the Grain board: light, 2px grain over a quicker light", () => {
+    const { gl, uniforms } = fakeGl();
+    vi.spyOn(HTMLCanvasElement.prototype, "getContext").mockReturnValue(gl as never);
+    render(<LivingLight theme="forest" />);
+    runFrames();
+
+    expect(uniforms.uGrain).toBeCloseTo(0.02);
+    expect(uniforms.uGrainSize).toBeGreaterThanOrEqual(2);
+    const shader = readFileSync("components/atoms/living-light/shader.ts", "utf8");
+    expect(shader).toContain("floor(gl_FragCoord.xy / uGrainSize)");
+  });
+
+  it("reseeds its grain ten times a second, whatever the light's speed", () => {
+    const { gl, uniforms } = fakeGl();
+    vi.spyOn(HTMLCanvasElement.prototype, "getContext").mockReturnValue(gl as never);
+    render(<LivingLight speed={3} />);
+    const seeds = new Set<unknown>();
+    for (let i = 0; i < 25; i++) {
+      runFrames();
+      seeds.add(uniforms.uN);
+    }
+
+    // 25 frames 40ms apart is one second: about ten different seeds, not thirty.
+    expect(seeds.size).toBeGreaterThanOrEqual(9);
+    expect(seeds.size).toBeLessThanOrEqual(11);
+  });
+
   it("passes its pinned theme to the fallback, through data-theme", () => {
     const { container } = render(<LivingLight theme="paper" />);
 

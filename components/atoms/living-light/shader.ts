@@ -3,7 +3,7 @@ export const VERTEX_SHADER = "attribute vec2 aP; void main(){ gl_Position = vec4
 export const FRAGMENT_SHADER = `
   precision highp float;
   uniform vec2 uRes;
-  uniform float uT, uN, uForm, uGrain, uCalm, uSeed, uShift;
+  uniform float uT, uN, uForm, uGrain, uGrainSize, uCalm, uSeed, uShift;
   uniform vec3 uBaseA, uMidA, uHiA, uAccentA;
   uniform vec3 uBaseB, uMidB, uHiB, uAccentB;
 
@@ -79,7 +79,8 @@ export const FRAGMENT_SHADER = `
     vec3 lift = col - rest;
     float ceiling = mix(1.8, 0.31, uCalm * (1.0 - smoothstep(0.72, 0.95, uv.y)));
     col = rest + lift * min(1.0, ceiling / max(length(lift), 0.001));
-    float n = hash(gl_FragCoord.xy + uN * vec2(311.0, 173.0)) - 0.5;
+    // Grain in cells of uGrainSize device pixels, reseeded by uN.
+    float n = hash(floor(gl_FragCoord.xy / uGrainSize) + uN * vec2(311.0, 173.0)) - 0.5;
     col += n * uGrain * (0.55 + 0.75 * vg);
     gl_FragColor = vec4(col, 1.0);
   }

@@ -18,8 +18,8 @@
 | `form` | `"ridge" \| "dune"` | `"ridge"` | The shape of the light |
 | `theme` | `"forest" \| "paper"` | The page's theme | Pins a colourway for a nested tone |
 | `calm` | `number`, 0 to 1 | `0` | Settles the light towards its base colour low down, and caps its brightness up to about 72% of its height, so text stays readable. The top stays bright |
-| `grain` | `number` | `0.12` | Noise amount |
-| `speed` | `number` | `1` | Motion speed |
+| `grain` | `number` | `0.02` | Grain amount. The grain sits in 2px cells and reseeds ten times a second on the clock, whatever the speed. Tuned on the Grain board, 2026-11-06 |
+| `speed` | `number` | `1.5` | Light speed |
 | native props | | | Passed to the root |
 
 Give the parent `position: relative` and `isolation: isolate`. Use at most two on screen.

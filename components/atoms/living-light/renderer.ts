@@ -5,10 +5,14 @@ export type LightForm = "ridge" | "dune";
 export type LightOptions = { form: LightForm; theme: LightTheme; calm: number; grain: number; speed: number; seed: number };
 
 const FORMS: Record<LightForm, number> = { ridge: 0, dune: 1 };
-const UNIFORMS = ["uRes", "uT", "uN", "uForm", "uGrain", "uCalm", "uSeed", "uShift", "uBaseA", "uMidA", "uHiA", "uAccentA", "uBaseB", "uMidB", "uHiB", "uAccentB"];
+const UNIFORMS = ["uRes", "uT", "uN", "uForm", "uGrain", "uGrainSize", "uCalm", "uSeed", "uShift", "uBaseA", "uMidA", "uHiA", "uAccentA", "uBaseB", "uMidB", "uHiB", "uAccentB"];
 const FRAME_MS = 33;
 const MAX_DENSITY = 1.25;
 const MAX_SIDE = 1600;
+// Tuned by Mehmet on the Grain board, 2026-11-06: grain in 2px cells, reseeded ten times a second
+// on the clock, so a faster light doesn't make it shimmer faster.
+const GRAIN_SIZE = 2;
+const GRAIN_RATE = 10;
 
 type Colours = { base: Rgb; mid: Rgb; high: Rgb; accent: Rgb; grain: number };
 
@@ -57,6 +61,8 @@ export function startRenderer(canvas: HTMLCanvasElement, initial: LightOptions) 
   let to = from;
   let shift = 1;
   let time = 12;
+  let clock = 0;
+  let scale = 1;
   let frame = 0;
   let last = 0;
   let alive = true;
@@ -67,6 +73,7 @@ export function startRenderer(canvas: HTMLCanvasElement, initial: LightOptions) 
     const density = Math.min(window.devicePixelRatio || 1, MAX_DENSITY);
     const longest = Math.max(canvas.clientWidth, canvas.clientHeight, 1) * density;
     const fit = longest > MAX_SIDE ? MAX_SIDE / longest : 1;
+    scale = density * fit;
     const width = Math.max(1, Math.round(canvas.clientWidth * density * fit));
     const height = Math.max(1, Math.round(canvas.clientHeight * density * fit));
     if (canvas.width !== width || canvas.height !== height) {
@@ -86,14 +93,18 @@ export function startRenderer(canvas: HTMLCanvasElement, initial: LightOptions) 
     const delta = last ? Math.min((now - last) / 1000, 0.1) : 0;
     last = now;
     const still = Boolean(motion?.matches);
-    if (!still) time += delta * options.speed;
+    if (!still) {
+      time += delta * options.speed;
+      clock += delta;
+    }
     shift = nextShift(shift, delta, still);
     const eased = easeShift(shift);
 
     resize();
     gl.uniform2f(uniforms.uRes, canvas.width, canvas.height);
     gl.uniform1f(uniforms.uT, time);
-    gl.uniform1f(uniforms.uN, Math.floor(time * 12) % 97);
+    gl.uniform1f(uniforms.uN, Math.floor(clock * GRAIN_RATE) % 97);
+    gl.uniform1f(uniforms.uGrainSize, GRAIN_SIZE * scale);
     gl.uniform1f(uniforms.uForm, FORMS[options.form]);
     gl.uniform1f(uniforms.uGrain, options.grain * (from.grain + (to.grain - from.grain) * eased));
     gl.uniform1f(uniforms.uCalm, options.calm);

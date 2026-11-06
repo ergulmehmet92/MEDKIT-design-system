@@ -12,11 +12,13 @@ export type LivingLightProps = Omit<ComponentPropsWithoutRef<"div">, "children">
   theme?: LightTheme;
   /** 0 to 1. Settles the light towards its base colour, and caps its brightness, behind text. */
   calm?: number;
+  /** Grain amount. Tuned on the Grain board. */
   grain?: number;
+  /** Light speed. Grain keeps its own rate. */
   speed?: number;
 };
 
-export function LivingLight({ form = "ridge", theme, calm = 0, grain = 0.12, speed = 1, className, ...rest }: LivingLightProps) {
+export function LivingLight({ form = "ridge", theme, calm = 0, grain = 0.02, speed = 1.5, className, ...rest }: LivingLightProps) {
   const pageTheme = useTheme();
   const root = useRef<HTMLDivElement>(null);
   const renderer = useRef<ReturnType<typeof startRenderer>>(null);
