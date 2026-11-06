@@ -9,6 +9,7 @@ export * from "./atoms/rule";
 export * from "./molecules/chart-frame";
 export * from "./molecules/metric";
 export * from "./molecules/theme-switch";
+export * from "./organisms/area-chart";
 export * from "./organisms/contact-routes";
 export * from "./organisms/header";
 export * from "./organisms/line-chart";

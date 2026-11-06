@@ -1,0 +1,39 @@
+@layer components {
+  .mk-area-layer path:first-child,
+  rect.mk-area-layer {
+    stroke-width: 0;
+  }
+
+  rect.mk-area-layer {
+    stroke-width: 1.5;
+  }
+
+  .mk-area-edge {
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linejoin: round;
+  }
+
+  .mk-area-leader {
+    fill: none;
+    stroke-width: 1;
+  }
+
+  /* Ticks sit in the left margin here, because layers fill the plot from the baseline up. */
+  .mk-chart-plot:has(.mk-area-ticks) .mk-chart-grid text {
+    display: none;
+  }
+
+  @media (forced-colors: active) {
+    .mk-area-layer path:first-child,
+    rect.mk-area-layer {
+      fill: Canvas;
+    }
+
+    .mk-area-edge,
+    .mk-area-leader,
+    rect.mk-area-layer {
+      stroke: CanvasText;
+    }
+  }
+}
