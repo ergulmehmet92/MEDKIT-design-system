@@ -20,6 +20,10 @@ export type CrosshairMark = {
   /** A dot on each series where the crosshair crosses it. */
   dots?: { y: number; colour: string }[];
   tooltip?: TooltipContent;
+  /** Draws the vertical line. Bar charts lift their marks instead. */
+  line?: boolean;
+  /** Where the tooltip sits, in pixels from the top. Defaults to `top`. */
+  anchorY?: number;
 };
 
 export type ChartReading = {
@@ -97,7 +101,7 @@ export function ChartPlot({
         {children}
         {crosshair ? (
           <g className="mk-chart-crosshair">
-            <line x1={Math.round(crosshair.x) + 0.5} x2={Math.round(crosshair.x) + 0.5} y1={crosshair.top} y2={crosshair.bottom} />
+            {crosshair.line === false ? null : <line x1={Math.round(crosshair.x) + 0.5} x2={Math.round(crosshair.x) + 0.5} y1={crosshair.top} y2={crosshair.bottom} />}
             {crosshair.dots?.map((dot, i) => (
               <circle key={i} className="mk-chart-dot" cx={crosshair.x} cy={dot.y} r={4} style={{ fill: dot.colour }} />
             ))}
@@ -105,7 +109,7 @@ export function ChartPlot({
         ) : null}
       </svg>
       {tooltip ? (
-        <div className="mk-chart-tooltip" ref={tip} aria-hidden="true" style={{ transform: `translate(${Math.round(tipX)}px, ${Math.round(crosshair!.top)}px)` }}>
+        <div className="mk-chart-tooltip" ref={tip} aria-hidden="true" style={{ transform: `translate(${Math.round(tipX)}px, ${Math.round(crosshair!.anchorY ?? crosshair!.top)}px)` }}>
           <p className="mk-chart-tooltip-title">{tooltip.title}</p>
           {tooltip.rows.map((row, i) => (
             <p className="mk-chart-tooltip-row" key={i}>

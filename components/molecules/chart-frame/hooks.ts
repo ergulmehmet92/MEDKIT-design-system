@@ -113,13 +113,15 @@ export type CrosshairOptions = {
   describe: (index: number) => string;
   /** How far Shift with an arrow moves. Defaults to 5, a trading week. */
   stride?: number;
+  /** Which way the pointer reads: across for time and columns, down for rows of bars. */
+  axis?: "x" | "y";
 };
 
 /**
  * Shared reading for every chart: the pointer snaps to the nearest index, and the keyboard moves
  * one step, a stride with Shift, or to either end with Home and End. Escape clears it.
  */
-export function useCrosshair({ min, max, start, indexAt, describe, stride = 5 }: CrosshairOptions) {
+export function useCrosshair({ min, max, start, indexAt, describe, stride = 5, axis = "x" }: CrosshairOptions) {
   const [index, setIndex] = useState<number | null>(null);
   const [announcement, setAnnouncement] = useState("");
   const focused = useRef(false);
@@ -140,7 +142,7 @@ export function useCrosshair({ min, max, start, indexAt, describe, stride = 5 }:
   const handlers = {
     onPointerMove: (event: PointerEvent<HTMLElement>) => {
       const box = event.currentTarget.getBoundingClientRect();
-      land(clamp(indexAt(event.clientX - box.left)), false);
+      land(clamp(indexAt(axis === "y" ? event.clientY - box.top : event.clientX - box.left)), false);
     },
     onPointerLeave: () => {
       if (!focused.current) land(null, false);
@@ -156,7 +158,8 @@ export function useCrosshair({ min, max, start, indexAt, describe, stride = 5 }:
     onKeyDown: (event: KeyboardEvent<HTMLElement>) => {
       const from = index ?? start ?? max;
       const step = event.shiftKey ? stride : 1;
-      const moves: Record<string, number> = { ArrowRight: from + step, ArrowLeft: from - step, Home: min, End: max };
+      // Right and Down move forward, Left and Up move back, so rows and columns read the same way.
+      const moves: Record<string, number> = { ArrowRight: from + step, ArrowDown: from + step, ArrowLeft: from - step, ArrowUp: from - step, Home: min, End: max };
       if (event.key === "Escape") {
         land(null, false);
         return;

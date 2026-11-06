@@ -259,6 +259,8 @@ export const LEAD_COLOUR = "var(--mk-color-dataviz-lead)";
 export const ACCENT_COLOUR = "var(--mk-color-dataviz-accent)";
 export const UP_COLOUR = "var(--mk-color-dataviz-up)";
 export const DOWN_COLOUR = "var(--mk-color-dataviz-down)";
+/** Four warm greys for parts of a whole that aren't the story, strongest first. */
+export const neutralColour = (k: number) => `var(--mk-color-dataviz-neutral-${Math.min(4, Math.max(1, k))})`;
 /** A categorical slot's colour, for views with several series of equal weight. Slots run 1 to 8. */
 export const slotColour = (slot: number) => `var(--mk-color-dataviz-category-${slot})`;
 /** Context series, such as a benchmark, wear muted ink instead of a slot. */

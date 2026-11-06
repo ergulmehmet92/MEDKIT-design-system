@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { nearestIndex, placeNote, placeRail, signed, spreadLabels, thinLabels } from "./layout";
+import { barPath, nearestIndex, placeNote, placeRail, signed, spreadLabels, thinLabels, wrapLabel } from "./layout";
 
 describe("thinLabels", () => {
   it("keeps every label when they fit", () => {
@@ -86,5 +86,33 @@ describe("nearestIndex and signed", () => {
     expect(signed(-8.24)).toBe("−8.2");
     expect(signed(3)).toBe("+3.0");
     expect(signed(-0.01)).toBe("0.0");
+  });
+});
+
+describe("wrapLabel", () => {
+  it("keeps a label that fits on one line", () => {
+    expect(wrapLabel("Grid", 100, 8)).toEqual(["Grid"]);
+  });
+
+  it("wraps at spaces onto a second line", () => {
+    expect(wrapLabel("Chip equipment", 80, 8)).toEqual(["Chip", "equipment"]);
+  });
+
+  it("ends a label that still won't fit with an ellipsis", () => {
+    const lines = wrapLabel("Semiconductor manufacturing equipment makers", 80, 8);
+    expect(lines).toHaveLength(2);
+    expect(lines[1].endsWith("…")).toBe(true);
+    expect(lines.every((l) => l.length * 8 <= 80)).toBe(true);
+  });
+});
+
+describe("barPath", () => {
+  it("rounds the data end and squares the baseline", () => {
+    const up = barPath(0, 100, 20, 40, "top");
+    expect(up.startsWith("M0 100V44Q0 40 4 40")).toBe(true);
+  });
+
+  it("draws nothing for a zero-length bar", () => {
+    expect(barPath(0, 100, 20, 100, "top")).toBe("");
   });
 });

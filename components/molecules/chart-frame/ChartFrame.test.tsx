@@ -166,6 +166,24 @@ describe("ChartPlot", () => {
     expect(container.querySelector(".mk-chart-tooltip")?.getAttribute("aria-hidden")).toBe("true");
   });
 
+  it("moves with Up and Down too, for charts read top to bottom", () => {
+    render(<Reader />);
+    const plot = screen.getByRole("group");
+
+    act(() => plot.focus());
+    fireEvent.keyDown(plot, { key: "ArrowUp" });
+    expect(screen.getByText("Day 9. Portfolio 108.")).toBeTruthy();
+    fireEvent.keyDown(plot, { key: "ArrowDown" });
+    expect(screen.getByText("Day 10. Portfolio 109.")).toBeTruthy();
+  });
+
+  it("can show the tooltip without a crosshair line, at a given height", () => {
+    const { container } = render(<ChartPlot label="Bars" crosshair={{ x: 10, top: 0, bottom: 100, line: false, anchorY: 40, tooltip: { title: "Grid", rows: [{ value: "5.1%", label: "This quarter" }] } }} />);
+
+    expect(container.querySelector(".mk-chart-crosshair line")).toBeNull();
+    expect((container.querySelector(".mk-chart-tooltip") as HTMLElement).style.transform).toContain("40px");
+  });
+
   it("clears the crosshair on Escape", () => {
     const { container } = render(<Reader />);
     const plot = screen.getByRole("group");

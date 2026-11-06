@@ -113,3 +113,59 @@ export function signed(value: number, digits = 1): string {
   if (Number(text) === 0) return text;
   return (value < 0 ? "−" : "+") + text;
 }
+
+/**
+ * Wraps a category label onto at most `lines` lines of `maxWidth`, at spaces. What still won't fit
+ * ends in an ellipsis; the full name stays in the tooltip and the table.
+ */
+export function wrapLabel(text: string, maxWidth: number, advance: number, lines = 2): string[] {
+  const fits = (s: string) => s.length * advance <= maxWidth;
+  const clip = (s: string) => {
+    let out = s;
+    while (out.length > 1 && !fits(out + "…")) out = out.slice(0, -1);
+    return out.trimEnd() + "…";
+  };
+  if (fits(text)) return [text];
+  const words = text.split(" ");
+  const out: string[] = [];
+  let current = "";
+  for (let i = 0; i < words.length; i++) {
+    const next = current ? `${current} ${words[i]}` : words[i];
+    if (fits(next)) {
+      current = next;
+      continue;
+    }
+    if (current) out.push(current);
+    current = words[i];
+    if (out.length === lines - 1) {
+      const rest = words.slice(i).join(" ");
+      out.push(fits(rest) ? rest : clip(rest));
+      return out.map((l) => (fits(l) ? l : clip(l)));
+    }
+  }
+  if (current) out.push(current);
+  return out.slice(0, lines).map((l) => (fits(l) ? l : clip(l)));
+}
+
+/**
+ * A bar with a 4px rounded end at its data and a square end at its baseline. `end` names the data
+ * side. A bar of no length draws nothing.
+ */
+export function barPath(x0: number, y0: number, x1: number, y1: number, end: "top" | "bottom" | "left" | "right"): string {
+  const l = Math.min(x0, x1);
+  const r = Math.max(x0, x1);
+  const t = Math.min(y0, y1);
+  const b = Math.max(y0, y1);
+  if (r - l < 0.01 || b - t < 0.01) return "";
+  const k = Math.max(0, Math.min(4, (r - l) / 2, (b - t) / 2));
+  switch (end) {
+    case "top":
+      return `M${l} ${b}V${t + k}Q${l} ${t} ${l + k} ${t}H${r - k}Q${r} ${t} ${r} ${t + k}V${b}Z`;
+    case "bottom":
+      return `M${l} ${t}V${b - k}Q${l} ${b} ${l + k} ${b}H${r - k}Q${r} ${b} ${r} ${b - k}V${t}Z`;
+    case "right":
+      return `M${l} ${t}H${r - k}Q${r} ${t} ${r} ${t + k}V${b - k}Q${r} ${b} ${r - k} ${b}H${l}Z`;
+    case "left":
+      return `M${r} ${t}H${l + k}Q${l} ${t} ${l} ${t + k}V${b - k}Q${l} ${b} ${l + k} ${b}H${r}Z`;
+  }
+}
