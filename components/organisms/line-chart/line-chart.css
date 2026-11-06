@@ -1,0 +1,48 @@
+@layer components {
+  /* The forecast fan: two washes of the forecast series' colour, set as `color` on the group. */
+  .mk-line-forecast path {
+    stroke: none;
+
+    &[data-band="outer"] {
+      fill: color-mix(in oklab, currentColor var(--mk-chart-band-outer), transparent);
+    }
+
+    &[data-band="inner"] {
+      fill: color-mix(in oklab, currentColor var(--mk-chart-band-inner), transparent);
+    }
+  }
+
+  /* Series past the eighth slot sit back further than context. */
+  .mk-chart-line[data-other] {
+    stroke-width: 1px;
+    opacity: 0.6;
+  }
+
+  .mk-line-leader,
+  .mk-line-ruler-bracket {
+    fill: none;
+    stroke: var(--mk-color-text-muted);
+    stroke-width: 1;
+  }
+
+  .mk-line-ruler .mk-chart-strong {
+    fill: var(--mk-color-text-default);
+  }
+
+  @media (forced-colors: active) {
+    .mk-line-forecast path {
+      fill: none;
+      stroke: GrayText;
+      stroke-width: 1;
+    }
+
+    .mk-line-wash {
+      display: none;
+    }
+
+    .mk-line-leader,
+    .mk-line-ruler-bracket {
+      stroke: CanvasText;
+    }
+  }
+}

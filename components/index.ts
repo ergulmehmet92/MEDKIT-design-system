@@ -11,5 +11,6 @@ export * from "./molecules/metric";
 export * from "./molecules/theme-switch";
 export * from "./organisms/contact-routes";
 export * from "./organisms/header";
+export * from "./organisms/line-chart";
 export * from "./organisms/metric-row";
 export * from "./organisms/section";

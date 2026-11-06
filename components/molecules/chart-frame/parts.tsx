@@ -74,20 +74,27 @@ export type AxisXProps = {
   /** Width of one label character, from useLabelAdvance. */
   advance: number;
   gap?: number;
+  /** Left and right edges labels must stay within. A label that would cross one is aligned to it. */
+  bounds?: [number, number];
 };
 
 /** Tick labels along the bottom, thinned evenly so they never touch. No axis line: the grid carries it. */
-export function AxisX({ ticks, y, advance, gap = 16 }: AxisXProps) {
+export function AxisX({ ticks, y, advance, gap = 16, bounds }: AxisXProps) {
   const shown = thinLabels(
     ticks.map((t) => t.x),
     ticks.map((t) => t.label.length * advance),
     gap,
   );
+  const anchor = (t: { x: number; label: string }) => {
+    if (!bounds) return "middle";
+    const half = (t.label.length * advance) / 2;
+    return t.x - half < bounds[0] ? "start" : t.x + half > bounds[1] ? "end" : "middle";
+  };
   return (
     <g className="mk-chart-axis">
       {ticks.map((t, i) =>
         shown[i] ? (
-          <text key={`${t.label}-${t.x}`} x={t.x} y={y} textAnchor="middle">
+          <text key={`${t.label}-${t.x}`} x={t.x} y={y} textAnchor={anchor(t)}>
             {t.label}
           </text>
         ) : null,
@@ -243,4 +250,32 @@ export function EndLabel({ x, y, name, value, colour, dy = 4, side = "end" }: { 
       </text>
     </g>
   );
+}
+
+/** A categorical slot's colour. Slots run 1 to 8, in the approved order. */
+export const slotColour = (slot: number) => `var(--mk-color-dataviz-category-${slot})`;
+/** Context series, such as a benchmark, wear muted ink instead of a slot. */
+export const CONTEXT_COLOUR = "var(--mk-color-text-muted)";
+
+export type MarkerShape = "circle" | "square" | "triangle" | "down";
+const SHAPES: MarkerShape[] = ["circle", "square", "triangle", "down"];
+/** The shape for a slot, so five or more series can be told apart without colour. */
+export const slotShape = (slot: number): MarkerShape => SHAPES[(slot - 1) % SHAPES.length];
+
+export function markerPath(shape: MarkerShape, x: number, y: number, r: number): string {
+  switch (shape) {
+    case "circle":
+      return `M${x - r} ${y}a${r} ${r} 0 1 0 ${2 * r} 0a${r} ${r} 0 1 0 ${-2 * r} 0Z`;
+    case "square":
+      return `M${x - r * 0.9} ${y - r * 0.9}h${r * 1.8}v${r * 1.8}h${-r * 1.8}Z`;
+    case "triangle":
+      return `M${x} ${y - r * 1.1}l${r * 1.1} ${r * 1.9}h${-r * 2.2}Z`;
+    case "down":
+      return `M${x} ${y + r * 1.1}l${r * 1.1} ${-r * 1.9}h${-r * 2.2}Z`;
+  }
+}
+
+/** A series mark in its slot's shape, ringed in the surface colour. */
+export function SeriesMarker({ x, y, shape = "circle", colour, r = 4 }: { x: number; y: number; shape?: MarkerShape; colour: string; r?: number }) {
+  return <path className="mk-chart-dot" d={markerPath(shape, x, y, r)} style={{ fill: colour }} />;
 }

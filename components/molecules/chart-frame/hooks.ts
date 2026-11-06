@@ -199,3 +199,28 @@ export function useLabelAdvance(probe: Element | null): number {
   }, [probe]);
   return advance;
 }
+
+/** The density a chart sits in, from the nearest data-density. Editorial unless told otherwise. */
+export function useDensity(node: Element | null): "editorial" | "analytical" {
+  const [density, setDensity] = useState<"editorial" | "analytical">("editorial");
+  useEffect(() => {
+    const value = node?.closest("[data-density]")?.getAttribute("data-density");
+    setDensity(value === "analytical" ? "analytical" : "editorial");
+  }, [node]);
+  return density;
+}
+
+export type Domain = { i0: number; i1: number; y0: number; y1: number };
+
+/**
+ * Everything a chart over an indexed x needs before it draws: the plot's size, its density, the
+ * reveal, label width, and a domain that glides when the window or data changes.
+ */
+export function useChartViewport(target: Domain, initial: Size = { width: 960, height: 520 }) {
+  const [plotRef, size, node] = useElementSize<HTMLDivElement>(initial);
+  const density = useDensity(node);
+  const reveal = useReveal(node);
+  const advance = useLabelAdvance(node);
+  const view = useGlide(target, node);
+  return { plotRef, size, node, density, reveal, advance, view };
+}

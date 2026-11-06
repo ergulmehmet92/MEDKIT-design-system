@@ -22,6 +22,7 @@
     "LICENSE",
     "!components/**/*.test.tsx",
     "!components/**/*.stories.tsx",
+    "!components/**/*.sample.ts",
     "!components/**/*.spec.md"
   ],
   "scripts": {
