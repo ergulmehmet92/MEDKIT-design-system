@@ -11,6 +11,7 @@ export * from "./molecules/metric";
 export * from "./molecules/sparkline";
 export * from "./molecules/theme-switch";
 export * from "./organisms/area-chart";
+export * from "./organisms/bar-chart";
 export * from "./organisms/candlestick-chart";
 export * from "./organisms/contact-routes";
 export * from "./organisms/header";

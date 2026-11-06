@@ -1,0 +1,39 @@
+@layer components {
+  .mk-bar {
+    transition: opacity var(--mk-motion-duration-interaction) var(--mk-motion-easing-default);
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
+
+  /* Reading a category lifts it and lets the rest fall back. */
+  .mk-bar-plot[data-reading] .mk-bar-group:not([data-active]) .mk-bar {
+    opacity: 0.4;
+  }
+
+  .mk-bar-group[data-active] .mk-bar {
+    stroke: var(--mk-color-text-default);
+    stroke-width: 1.5;
+    paint-order: stroke;
+  }
+
+  .mk-bar-zero {
+    stroke: var(--mk-color-border-strong);
+    shape-rendering: crispEdges;
+  }
+
+  .mk-chart-svg .mk-bar-category {
+    fill: var(--mk-color-text-default);
+  }
+
+  @media (forced-colors: active) {
+    .mk-bar {
+      fill: CanvasText;
+    }
+
+    .mk-bar-zero {
+      stroke: CanvasText;
+    }
+  }
+}
