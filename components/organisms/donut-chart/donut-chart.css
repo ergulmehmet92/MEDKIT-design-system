@@ -1,0 +1,40 @@
+@layer components {
+  .mk-donut-slice {
+    transition: opacity var(--mk-motion-duration-interaction) var(--mk-motion-easing-default);
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
+
+  .mk-donut[data-reading] .mk-donut-slice:not([data-active]) {
+    opacity: 0.4;
+  }
+
+  .mk-donut-leader {
+    fill: none;
+    stroke: var(--mk-color-text-muted);
+    stroke-width: 1;
+  }
+
+  .mk-chart-svg .mk-donut-figure {
+    fill: var(--mk-color-text-default);
+    letter-spacing: -0.02em;
+  }
+
+  @media (forced-colors: active) {
+    .mk-donut-slice {
+      fill: Canvas;
+      stroke: CanvasText;
+      stroke-width: 1;
+    }
+
+    .mk-donut-slice[data-highlight] {
+      fill: CanvasText;
+    }
+
+    .mk-donut-leader {
+      stroke: CanvasText;
+    }
+  }
+}

@@ -1,0 +1,45 @@
+@layer components {
+  /* Tiles take their group's colour from `color`: a tint as the fill, the full colour as the edge. */
+  .mk-treemap-tile rect {
+    fill: color-mix(in oklab, currentColor calc(var(--mk-dataviz-tint) * 100%), var(--mk-color-surface-default));
+    transition: opacity var(--mk-motion-duration-interaction) var(--mk-motion-easing-default);
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
+
+  .mk-treemap-tile line {
+    stroke: currentColor;
+    stroke-width: 3;
+  }
+
+  .mk-treemap[data-reading] .mk-treemap-tile:not([data-active]) rect {
+    opacity: 0.45;
+  }
+
+  .mk-treemap-tile[data-active] rect {
+    stroke: var(--mk-color-text-default);
+    stroke-width: 1.5;
+  }
+
+  /* Tile text stays in ink, never in its group's colour. */
+  .mk-chart-svg .mk-treemap-tile text {
+    fill: var(--mk-color-text-default);
+  }
+
+  .mk-chart-svg .mk-treemap-name {
+    font-weight: var(--mk-font-weight-bold);
+  }
+
+  @media (forced-colors: active) {
+    .mk-treemap-tile rect {
+      fill: Canvas;
+      stroke: CanvasText;
+    }
+
+    .mk-treemap-tile line {
+      stroke: CanvasText;
+    }
+  }
+}

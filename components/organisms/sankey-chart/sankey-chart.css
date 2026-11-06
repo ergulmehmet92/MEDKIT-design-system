@@ -1,0 +1,38 @@
+@layer components {
+  /* A flow wears the tint of where it lands, from `color`. Upstream flows are quieter. */
+  .mk-sankey-flow {
+    fill: color-mix(in oklab, currentColor 34%, transparent);
+    transition: opacity var(--mk-motion-duration-interaction) var(--mk-motion-easing-default);
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
+
+  .mk-sankey-flow[data-upstream] {
+    fill: color-mix(in oklab, currentColor 24%, transparent);
+  }
+
+  .mk-sankey[data-reading] .mk-sankey-flow:not([data-active]) {
+    opacity: 0.35;
+  }
+
+  .mk-sankey-flow[data-active] {
+    fill: color-mix(in oklab, currentColor 60%, transparent);
+  }
+
+  .mk-chart-svg .mk-sankey-label {
+    fill: var(--mk-color-text-default);
+  }
+
+  @media (forced-colors: active) {
+    .mk-sankey-flow {
+      fill: none;
+      stroke: GrayText;
+    }
+
+    .mk-sankey-node {
+      fill: CanvasText;
+    }
+  }
+}

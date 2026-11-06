@@ -101,7 +101,7 @@ describe.each(SCHEMES)("direction B's roles on %s", (scheme) => {
 describe("who reads data-viz tokens", () => {
   // Chart components live in folders named for charts. Nothing else may use chart colours, so the
   // brand palette stays the brand palette.
-  const CHART_FOLDER = /\/(chart-frame|[a-z-]+-chart|sparkline)\//;
+  const CHART_FOLDER = /\/(chart-frame|[a-z-]+-chart|sparkline|treemap)\//;
   const files = (dir) =>
     readdirSync(dir).flatMap((name) => {
       const path = join(dir, name);

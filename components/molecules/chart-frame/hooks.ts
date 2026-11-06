@@ -107,13 +107,16 @@ export type CrosshairOptions = {
   max: number;
   /** Where keyboard reading starts, such as today. Defaults to `max`. */
   start?: number;
-  /** Index nearest a pointer position, in pixels from the plot's left edge. */
-  indexAt: (x: number) => number;
+  /**
+   * Index under the pointer. Gets the position along `axis` first, then the other one, in pixels from
+   * the plot's edges. Return -1 when nothing is there.
+   */
+  indexAt: (along: number, across: number) => number;
   /** What a screen reader hears at an index. */
   describe: (index: number) => string;
   /** How far Shift with an arrow moves. Defaults to 5, a trading week. */
   stride?: number;
-  /** Which way the pointer reads: across for time and columns, down for rows of bars. */
+  /** Which way the pointer reads: across for time and columns, down for rows of bars. Shapes read both. */
   axis?: "x" | "y";
 };
 
@@ -142,7 +145,10 @@ export function useCrosshair({ min, max, start, indexAt, describe, stride = 5, a
   const handlers = {
     onPointerMove: (event: PointerEvent<HTMLElement>) => {
       const box = event.currentTarget.getBoundingClientRect();
-      land(clamp(indexAt(axis === "y" ? event.clientY - box.top : event.clientX - box.left)), false);
+      const x = event.clientX - box.left;
+      const y = event.clientY - box.top;
+      const i = axis === "y" ? indexAt(y, x) : indexAt(x, y);
+      land(i < 0 || !Number.isFinite(i) ? null : clamp(i), false);
     },
     onPointerLeave: () => {
       if (!focused.current) land(null, false);
