@@ -3,7 +3,7 @@ import { markerPath } from "./parts";
 import type { MarkerShape } from "./parts";
 import "./chart-frame.css";
 
-export type LegendKey = "line" | "context" | "forecast" | "area" | "range" | "past" | "next";
+export type LegendKey = "line" | "context" | "forecast" | "area" | "range" | "past" | "next" | "rise" | "fall";
 export type LegendItem = { label: string; key: LegendKey; colour?: string; marker?: MarkerShape };
 
 export type LegendProps = Omit<ComponentPropsWithoutRef<"ul">, "children"> & { items: LegendItem[] };
@@ -32,6 +32,14 @@ function Key({ kind, colour, marker }: { kind: LegendKey; colour?: string; marke
       return <rect x="0" y="0" width="22" height="14" rx="2" style={{ fill: stroke }} />;
     case "range":
       return <rect x="0.5" y="0.5" width="21" height="13" rx="2" className="mk-chart-range-key" />;
+    case "rise":
+    case "fall":
+      return (
+        <>
+          <line x1="11" y1="0.5" x2="11" y2="13.5" style={{ stroke }} strokeWidth="1" />
+          <rect x="7.5" y="3.5" width="7" height="7" className="mk-chart-candle-key" data-direction={kind} style={{ stroke, fill: kind === "fall" ? stroke : undefined }} />
+        </>
+      );
     case "past":
     case "next":
       return <path d="M11 2l5 5l-5 5l-5 -5Z" className="mk-chart-event-key" data-when={kind} />;

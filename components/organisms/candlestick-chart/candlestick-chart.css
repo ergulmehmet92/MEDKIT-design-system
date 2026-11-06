@@ -1,0 +1,55 @@
+@layer components {
+  /* Candles take their arm's colour from `color`. Rising is hollow, falling is filled. */
+  .mk-candle {
+    & line {
+      stroke: currentColor;
+      stroke-width: 1;
+      shape-rendering: crispEdges;
+    }
+
+    & rect {
+      stroke: currentColor;
+      stroke-width: 1;
+      fill: currentColor;
+      shape-rendering: crispEdges;
+    }
+
+    &[data-direction="rise"] rect {
+      fill: var(--mk-color-surface-default);
+    }
+  }
+
+  .mk-candle-bar {
+    fill: none;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+  }
+
+  .mk-candle-volume rect {
+    fill: color-mix(in oklab, var(--mk-color-text-muted) 40%, transparent);
+  }
+
+  .mk-candle-volume-axis line {
+    stroke: var(--mk-color-border-strong);
+    shape-rendering: crispEdges;
+  }
+
+  @media (forced-colors: active) {
+    .mk-candle :is(line, rect),
+    .mk-candle-bar {
+      stroke: CanvasText;
+    }
+
+    .mk-candle rect {
+      fill: CanvasText;
+    }
+
+    .mk-candle[data-direction="rise"] rect {
+      fill: Canvas;
+    }
+
+    .mk-candle-volume rect {
+      fill: GrayText;
+    }
+  }
+}

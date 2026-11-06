@@ -90,6 +90,11 @@
     stroke: var(--mk-color-border-default);
   }
 
+  /* A rising candle is hollow and a falling one filled, so direction never rests on colour. */
+  .mk-chart-candle-key[data-direction="rise"] {
+    fill: var(--mk-color-surface-default);
+  }
+
   .mk-chart-event-key,
   .mk-chart-event path {
     stroke: var(--mk-color-text-default);
