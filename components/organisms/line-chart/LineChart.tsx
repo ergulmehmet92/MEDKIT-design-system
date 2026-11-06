@@ -400,7 +400,7 @@ export function LineChart({
                   </g>
                 );
               })}
-          {today !== undefined ? <MarkerLine x={x(today)} top={box.y} bottom={bottom} label={narrow ? undefined : "Today"} /> : null}
+          {today !== undefined ? <MarkerLine x={x(today)} top={box.y} bottom={bottom} label={narrow ? undefined : "Today"} limit={size.width} advance={advance} /> : null}
           {ends.map((e, k) => {
             const side = narrow ? "start" : "end";
             const tx = side === "end" ? e.px + 10 : e.px - 10;

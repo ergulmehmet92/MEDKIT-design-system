@@ -144,7 +144,7 @@ export function AreaChart({
   const dense = density === "analytical";
   const narrow = size.width < 560;
   const ticks = stream ? [] : scaleLinear().domain([view.y0, view.y1]).ticks(4);
-  const tickText = percent ? (v: number) => `${Math.round(v * 100)}%` : tickFormatter(ticks);
+  const tickText = percent ? (v: number) => `${Math.round(v * 100)}%` : (format ?? tickFormatter(ticks));
   const fmt = format ?? ((v: number) => formatValue(v, 0));
   const share = (k: number, i: number) => (totals[i] ? layers[k].values[i] / totals[i] : 0);
   const valueText = (k: number, i: number) => (percent ? `${Math.round(share(k, i) * 100)}%` : fmt(layers[k].values[i]));

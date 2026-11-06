@@ -279,7 +279,7 @@ export function CandlestickChart({
         {showVolume ? (
           <g className="mk-candle-volume-axis">
             <line x1={box.x} x2={box.x + box.width} y1={vTop + volumeHeight + 0.5} y2={vTop + volumeHeight + 0.5} />
-            <text x={box.x} y={vTop + 10}>
+            <text className="mk-chart-halo" x={box.x} y={vTop + 10}>
               VOLUME · {formatValue(maxVolume, 0)}
             </text>
           </g>
@@ -296,7 +296,7 @@ export function CandlestickChart({
               active={i == null ? undefined : events.find((e) => Math.abs(e.at - i) <= 1)?.id}
             />
           ) : null}
-          {today !== undefined ? <MarkerLine x={x(today)} top={box.y} bottom={bottom} label={narrow ? undefined : "Today"} /> : null}
+          {today !== undefined ? <MarkerLine x={x(today)} top={box.y} bottom={bottom} label={narrow ? undefined : "Today"} limit={size.width} advance={advance} /> : null}
         </g>
       </ChartPlot>
     </ChartFigure>

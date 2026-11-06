@@ -103,13 +103,14 @@ export function AxisX({ ticks, y, advance, gap = 16, bounds }: AxisXProps) {
   );
 }
 
-/** A vertical marker, such as today. */
-export function MarkerLine({ x, top, bottom, label }: { x: number; top: number; bottom: number; label?: string }) {
+/** A vertical marker, such as today. Its label flips to the left when it would cross `limit`. */
+export function MarkerLine({ x, top, bottom, label, limit, advance = 9 }: { x: number; top: number; bottom: number; label?: string; limit?: number; advance?: number }) {
+  const flip = label !== undefined && limit !== undefined && x + 6 + label.length * advance > limit;
   return (
     <g className="mk-chart-marker">
       <line x1={crisp(x)} x2={crisp(x)} y1={top} y2={bottom} />
       {label ? (
-        <text className="mk-chart-halo" x={crisp(x) + 6} y={top + 16}>
+        <text className="mk-chart-halo" x={flip ? crisp(x) - 6 : crisp(x) + 6} y={top + 16} textAnchor={flip ? "end" : "start"}>
           {label}
         </text>
       ) : null}

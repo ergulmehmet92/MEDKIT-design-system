@@ -40,10 +40,10 @@ export const Quarter: Story = {};
 export const Month: Story = { args: { data: quarter.slice(-20), today: 19, events: [] } };
 
 /** A year of days thins candles to bars. */
-export const Year: Story = { args: { data: walk(tradingDays("2025-11-06", "2026-11-06")), today: undefined, events: [] } };
+export const Year: Story = { args: { title: "NVDA over the last year", data: walk(tradingDays("2025-11-06", "2026-11-06")), today: undefined, events: [] } };
 
 /** Five years of days falls back to a closing line. */
-export const FiveYears: Story = { args: { data: walk(tradingDays("2021-11-08", "2026-11-06"), 40, 9), today: undefined, events: [], volume: false } };
+export const FiveYears: Story = { args: { title: "NVDA over five years", data: walk(tradingDays("2021-11-08", "2026-11-06"), 40, 9), today: undefined, events: [], volume: false } };
 
 /** Halted days leave gaps. */
 export const Gaps: Story = { args: { data: quarter.map((c, i) => (i % 13 === 4 ? { ...c, open: null, high: null, low: null, close: null, volume: null } : c)) } };
