@@ -251,11 +251,13 @@
     --mk-brightness-full: 1;
     --mk-mix-030: 0.3;
     --mk-mix-044: 0.44;
+    --mk-radius-18: 1.125rem;
     --mk-radius-none: 0rem;
     --mk-radius-full: 999rem;
     --mk-radius-default: var(--mk-radius-none);
     --mk-radius-control: var(--mk-radius-full);
     --mk-radius-circle: var(--mk-radius-full);
+    --mk-radius-panel: var(--mk-radius-18);
     --mk-stroke-hairline: 1px;
     --mk-stroke-focus: 2px;
     --mk-time-150: 0.15s;

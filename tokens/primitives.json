@@ -1372,6 +1372,12 @@
         "value": 999,
         "unit": "rem"
       }
+    },
+    "18": {
+      "$value": {
+        "value": 1.125,
+        "unit": "rem"
+      }
     }
   },
   "stroke": {

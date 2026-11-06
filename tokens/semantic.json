@@ -575,6 +575,10 @@
     "circle": {
       "$value": "{radius.full}",
       "$description": "Circles only."
+    },
+    "panel": {
+      "$value": "{radius.18}",
+      "$description": "Glass panels and the cards that hold charts, tables and gauges. Approved on Data board 3."
     }
   },
   "border-width": {

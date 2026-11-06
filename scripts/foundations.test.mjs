@@ -35,8 +35,9 @@ describe("foundation scales", () => {
     }
   });
 
-  it("stay square by default, with stadium controls and circles", () => {
-    expect(steps(primitives().radius)).toEqual(["none", "full"]);
+  it("stay square by default, with stadium controls, circles and rounded panels", () => {
+    expect(steps(primitives().radius)).toEqual(["18", "none", "full"]);
+    expect(semantic().radius.panel.$value).toBe("{radius.18}");
     expect(semantic().radius.default.$value).toBe("{radius.none}");
     expect(semantic().radius.control.$value).toBe("{radius.full}");
     expect(semantic().radius.circle.$value).toBe("{radius.full}");

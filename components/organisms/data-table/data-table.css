@@ -1,0 +1,264 @@
+@layer components {
+  /* Rows are 36px in analytical density and 48px in editorial, as on Data board 3. */
+  .mk-data-table {
+    --mk-data-table-row: min(calc(var(--mk-size-row) + var(--mk-space-1)), var(--mk-space-12));
+    --mk-data-table-pin: color-mix(in oklab, var(--mk-color-surface-default) 92%, transparent);
+    --mk-data-table-rule: color-mix(in oklab, var(--mk-color-text-default) 8%, transparent);
+
+    min-inline-size: 0;
+  }
+
+  .mk-data-table-scroll {
+    overflow: auto;
+    max-block-size: calc(var(--mk-data-table-row) * (var(--mk-data-table-rows) + 0.5));
+    border-radius: calc(var(--mk-radius-panel) - var(--mk-space-2));
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in oklab, var(--mk-color-text-default) 25%, transparent) transparent;
+
+    &:focus-visible {
+      outline: var(--mk-border-width-focus) solid var(--mk-color-border-focus);
+      outline-offset: 2px;
+    }
+
+    /* The right edge fades while there is more to scroll. */
+    &[data-overflow]:not([data-end]) {
+      mask-image: linear-gradient(90deg, #000 calc(100% - var(--mk-space-12)), transparent);
+    }
+  }
+
+  .mk-data-table table {
+    inline-size: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: var(--mk-font-size-body);
+    line-height: var(--mk-line-height-snug);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .mk-data-table caption {
+    padding-block-end: var(--mk-gap-md);
+    text-align: start;
+    color: var(--mk-color-text-muted);
+
+    &[data-hidden] {
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+  }
+
+  /* The header row stays pinned inside the table's own scroll area, never the page. */
+  .mk-data-table thead th {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 2;
+    padding: 0;
+    text-align: start;
+    white-space: nowrap;
+    font-family: var(--mk-font-family-label);
+    font-size: var(--mk-font-size-label);
+    font-weight: var(--mk-font-weight-label);
+    letter-spacing: var(--mk-tracking-label);
+    text-transform: uppercase;
+    color: var(--mk-color-text-muted);
+    background: var(--mk-data-table-pin);
+    border-block-end: var(--mk-border-width-default) solid var(--mk-color-border-strong);
+
+    & > span,
+    & > button {
+      display: flex;
+      align-items: center;
+      gap: var(--mk-gap-sm);
+      box-sizing: border-box;
+      inline-size: 100%;
+      min-block-size: var(--mk-data-table-row);
+      padding: 0 var(--mk-inset-md);
+    }
+
+    & > button {
+      appearance: none;
+      border: 0;
+      background: none;
+      color: inherit;
+      font: inherit;
+      letter-spacing: inherit;
+      text-transform: inherit;
+      cursor: pointer;
+      transition: color var(--mk-motion-duration-interaction);
+
+      &:hover {
+        color: var(--mk-color-text-default);
+      }
+
+      &:focus-visible {
+        outline: var(--mk-border-width-focus) solid var(--mk-color-border-focus);
+        outline-offset: -2px;
+      }
+    }
+
+    & svg {
+      flex: none;
+      inline-size: 0.6em;
+      block-size: 0.6em;
+      opacity: 0;
+      transition:
+        opacity var(--mk-motion-duration-interaction),
+        rotate var(--mk-motion-duration-interaction);
+    }
+
+    & > button:hover svg {
+      opacity: 0.5;
+    }
+
+    &[aria-sort] {
+      color: var(--mk-color-text-default);
+
+      & svg {
+        opacity: 1;
+      }
+    }
+
+    &[aria-sort="ascending"] svg {
+      rotate: 180deg;
+    }
+  }
+
+  .mk-data-table thead th:first-child {
+    inset-inline-start: 0;
+    z-index: 3;
+  }
+
+  .mk-data-table [data-numeric] {
+    text-align: end;
+  }
+
+  .mk-data-table thead th[data-numeric] > :is(span, button) {
+    justify-content: flex-end;
+  }
+
+  .mk-data-table tbody :is(th, td) {
+    block-size: var(--mk-data-table-row);
+    padding: 0 var(--mk-inset-md);
+    text-align: start;
+    font-weight: var(--mk-font-weight-body);
+    white-space: nowrap;
+    border-block-end: var(--mk-border-width-default) solid var(--mk-data-table-rule);
+  }
+
+  .mk-data-table tbody :is(th, td)[data-numeric] {
+    text-align: end;
+  }
+
+  .mk-data-table tbody th {
+    color: var(--mk-color-dataviz-lead);
+  }
+
+  .mk-data-table tbody [data-muted] {
+    color: var(--mk-color-text-muted);
+  }
+
+  .mk-data-table tbody tr:last-child > * {
+    border-block-end: 0;
+  }
+
+  .mk-data-table tbody tr:hover > * {
+    background-color: color-mix(in oklab, var(--mk-color-text-default) 6%, transparent);
+  }
+
+  /* The first column pins only when the table is wider than its container. */
+  .mk-data-table-scroll[data-overflow] tbody th {
+    position: sticky;
+    inset-inline-start: 0;
+    z-index: 1;
+    background: var(--mk-data-table-pin);
+  }
+
+  .mk-data-table-scroll[data-overflow] table {
+    inline-size: max-content;
+    min-inline-size: 100%;
+  }
+
+  .mk-data-table-dir {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+
+    & svg {
+      flex: none;
+      inline-size: 0.6em;
+      block-size: 0.6em;
+    }
+
+    &[data-dir="up"] {
+      color: var(--mk-color-dataviz-up);
+    }
+
+    &[data-dir="down"] {
+      color: var(--mk-color-dataviz-down);
+    }
+  }
+
+  /* Loading and empty tables keep their header and their height, so a dashboard doesn't jump. */
+  .mk-data-table-skeleton td span {
+    display: inline-block;
+    max-inline-size: 8rem;
+    block-size: 0.625rem;
+    border-radius: var(--mk-radius-control);
+    vertical-align: middle;
+    background: linear-gradient(
+        90deg,
+        color-mix(in oklab, var(--mk-color-text-default) 9%, transparent) 30%,
+        color-mix(in oklab, var(--mk-color-text-default) 18%, transparent) 50%,
+        color-mix(in oklab, var(--mk-color-text-default) 9%, transparent) 70%
+      )
+      0 0 / 300% 100%;
+    animation: mk-data-table-shimmer 1.6s linear infinite;
+  }
+
+  @keyframes mk-data-table-shimmer {
+    from {
+      background-position: 100% 0;
+    }
+    to {
+      background-position: 0 0;
+    }
+  }
+
+  .mk-data-table-empty td {
+    block-size: auto;
+    padding: var(--mk-inset-lg) var(--mk-inset-md);
+    white-space: normal;
+    text-align: center;
+    color: var(--mk-color-text-muted);
+  }
+
+  .mk-data-table-live {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    margin: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mk-data-table-skeleton td span {
+      animation: none;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .mk-data-table-skeleton td span {
+      background: GrayText;
+      forced-color-adjust: none;
+    }
+
+    .mk-data-table-dir[data-dir] {
+      color: CanvasText;
+    }
+  }
+}

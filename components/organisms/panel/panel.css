@@ -1,0 +1,98 @@
+@layer components {
+  /* Glass over the living light, as approved on Data board 3. */
+  .mk-panel {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: var(--mk-inset-md);
+    min-inline-size: 0;
+    padding: calc(var(--mk-inset-md) + var(--mk-space-1));
+    padding-block-end: var(--mk-inset-md);
+    border-radius: var(--mk-radius-panel);
+    color: var(--mk-color-text-default);
+    background: color-mix(in oklab, var(--mk-color-surface-default) 58%, transparent);
+    -webkit-backdrop-filter: blur(22px) saturate(1.35);
+    backdrop-filter: blur(22px) saturate(1.35);
+    border: var(--mk-border-width-default) solid color-mix(in oklab, var(--mk-color-material-specular) 14%, transparent);
+    box-shadow:
+      inset 0 1px 0 color-mix(in oklab, var(--mk-color-material-specular) 16%, transparent),
+      0 18px 40px -24px color-mix(in oklab, var(--mk-color-material-shade) 70%, transparent);
+  }
+
+  .mk-panel-head {
+    display: flex;
+    align-items: start;
+    gap: var(--mk-gap-md);
+  }
+
+  .mk-panel-titles {
+    display: grid;
+    gap: var(--mk-gap-sm);
+    min-inline-size: 0;
+    margin-inline-end: auto;
+  }
+
+  .mk-panel-kind {
+    margin: 0;
+    font-family: var(--mk-font-family-label);
+    font-size: var(--mk-font-size-label);
+    letter-spacing: var(--mk-tracking-label);
+    line-height: var(--mk-line-height-snug);
+    text-transform: uppercase;
+    color: var(--mk-color-text-muted);
+  }
+
+  .mk-panel-title {
+    margin: 0;
+    font-size: var(--mk-font-size-lead);
+    font-weight: var(--mk-font-weight-body);
+    letter-spacing: var(--mk-tracking-title);
+    line-height: var(--mk-line-height-snug);
+    text-wrap: balance;
+  }
+
+  .mk-panel-actions {
+    display: flex;
+    flex: none;
+    flex-wrap: wrap;
+    justify-content: end;
+    align-items: center;
+    gap: var(--mk-gap-sm);
+  }
+
+  .mk-panel-body {
+    min-inline-size: 0;
+  }
+
+  .mk-panel-foot {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--mk-gap-sm) var(--mk-gap-md);
+    padding-block-start: var(--mk-inset-md);
+    border-block-start: var(--mk-border-width-default) solid var(--mk-color-border-default);
+    font-size: var(--mk-font-size-label);
+    color: var(--mk-color-text-muted);
+  }
+
+  /* The glass needs a backdrop to keep its text readable, so it turns solid without one. */
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .mk-panel {
+      background: var(--mk-color-surface-default);
+    }
+  }
+
+  @media (prefers-reduced-transparency: reduce) {
+    .mk-panel {
+      background: var(--mk-color-surface-default);
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .mk-panel {
+      border-color: CanvasText;
+      box-shadow: none;
+    }
+  }
+}
