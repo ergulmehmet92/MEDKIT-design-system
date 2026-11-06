@@ -220,7 +220,7 @@ export function AreaChart({
     header: dates ? formatMonth(dates[k]) : String(xs[k]),
     cells: [...layers.map((_, j) => valueText(j, k)), ...(percent ? [] : [fmt(totals[k])])],
   }));
-  const xTicks = (dates ? calendarTicks(dates, view.i0, view.i1) : numberTicks(xs as number[], view.i0, view.i1, 6)).map((t) => ({ x: x(t.index), label: t.label.toUpperCase() }));
+  const xTicks = (dates ? calendarTicks(dates, view.i0, view.i1) : numberTicks(xs as number[], view.i0, view.i1, 6)).map((t) => ({ x: x(t.index), label: t.label }));
 
   return (
     <ChartFigure

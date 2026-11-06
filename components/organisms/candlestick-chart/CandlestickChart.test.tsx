@@ -37,7 +37,7 @@ describe("CandlestickChart", () => {
     const { container } = render(<CandlestickChart title="Prices" label="Daily prices" data={data} />);
 
     expect(container.querySelectorAll(".mk-candle-volume rect")).toHaveLength(days.length);
-    expect(container.querySelector(".mk-candle-volume-axis text")?.textContent).toMatch(/^VOLUME/);
+    expect(container.querySelector(".mk-candle-volume-axis text")?.textContent).toMatch(/^Volume/);
   });
 
   it("leaves gaps on days without trading, and says so", () => {

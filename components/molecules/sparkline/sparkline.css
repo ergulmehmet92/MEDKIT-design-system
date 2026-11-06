@@ -7,7 +7,7 @@
     overflow: visible;
 
     &[data-tone="story"] {
-      --mk-sparkline-ink: var(--mk-color-dataviz-category-1);
+      --mk-sparkline-ink: var(--mk-color-dataviz-lead);
     }
   }
 
@@ -29,7 +29,7 @@
 
   /* Now: the accent, ringed in the surface so it reads where it crosses the line. */
   .mk-sparkline-now {
-    fill: var(--mk-color-text-accent);
+    fill: var(--mk-color-dataviz-accent);
     stroke: var(--mk-color-surface-default);
     stroke-width: 2;
     paint-order: stroke;

@@ -56,8 +56,9 @@ export type CandlestickChartProps = {
   emptyText?: string;
 };
 
-const RISE = "var(--mk-color-dataviz-diverging-above-2)";
-const FALL = "var(--mk-color-dataviz-diverging-below-2)";
+// Direction B: green for a close above the open, red below. Hollow and filled carry it without colour.
+const RISE = "var(--mk-color-dataviz-up)";
+const FALL = "var(--mk-color-dataviz-down)";
 
 type Day = { open: number; high: number; low: number; close: number; volume: number | null };
 const whole = (c: Candle): Day | null =>
@@ -220,14 +221,14 @@ export function CandlestickChart({
 
   const legend: LegendItem[] =
     mode === "line"
-      ? [{ label: "Close", key: "line", colour: "var(--mk-color-dataviz-category-1)" }]
+      ? [{ label: "Close", key: "line", colour: "var(--mk-color-dataviz-lead)" }]
       : [
           { label: "Close above open", key: "rise", colour: RISE },
           { label: "Close below open", key: "fall", colour: FALL },
           ...(events.some((e) => today === undefined || e.at <= today) ? [{ label: "Past event", key: "past" as const }] : []),
           ...(today !== undefined && events.some((e) => e.at > today) ? [{ label: "Upcoming", key: "next" as const }] : []),
         ];
-  const xTicks = calendarTicks(dates, view.i0, view.i1).map((t) => ({ x: x(t.index), label: t.label.toUpperCase() }));
+  const xTicks = calendarTicks(dates, view.i0, view.i1).map((t) => ({ x: x(t.index), label: t.label }));
   const visible = days.map((d, k) => (d && k >= view.i0 - 1 && k <= view.i1 + 1 ? k : -1)).filter((k) => k >= 0);
 
   return (
@@ -245,7 +246,7 @@ export function CandlestickChart({
         <AxisX ticks={xTicks} y={size.height - m.b + (dense ? 17 : 24)} advance={advance} bounds={[0, size.width]} />
         <PlotLayer box={{ ...full }} reveal={reveal}>
           {mode === "line" ? (
-            <path className="mk-chart-line" d={closeLine(days) ?? ""} style={{ stroke: "var(--mk-color-dataviz-category-1)" }} />
+            <path className="mk-chart-line" d={closeLine(days) ?? ""} style={{ stroke: "var(--mk-color-dataviz-lead)" }} />
           ) : (
             visible.map((k) => {
               const d = days[k]!;
@@ -280,14 +281,14 @@ export function CandlestickChart({
           <g className="mk-candle-volume-axis">
             <line x1={box.x} x2={box.x + box.width} y1={vTop + volumeHeight + 0.5} y2={vTop + volumeHeight + 0.5} />
             <text className="mk-chart-halo" x={box.x} y={vTop + 10}>
-              VOLUME · {formatValue(maxVolume, 0)}
+              Volume · {formatValue(maxVolume, 0)}
             </text>
           </g>
         ) : null}
         <g opacity={labelOpacity(reveal)}>
           {events.length ? (
             <EventRail
-              events={events.map((e) => ({ id: e.id, x: x(e.at), label: e.label.toUpperCase(), when: today !== undefined && e.at > today ? "next" : "past" }))}
+              events={events.map((e) => ({ id: e.id, x: x(e.at), label: e.label, when: today !== undefined && e.at > today ? "next" : "past" }))}
               y={box.y - (dense || narrow ? 16 : 22)}
               bottom={bottom}
               rows={dense || narrow ? 1 : 2}

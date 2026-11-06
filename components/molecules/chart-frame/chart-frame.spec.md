@@ -24,7 +24,7 @@ SVG parts: `GridY`, `AxisX`, `PlotLayer`, `RangeBand`, `Bracket`, `MarkerLine`, 
 
 | Export | Takes | Notes |
 |---|---|---|
-| `ChartFigure` | `title`, `titleAs`, `eyebrow`, `description`, `legend`, `table` (required), `caption`, `toggleLabels`, `defaultView` | Native `figure` props pass through |
+| `ChartFigure` | `title`, `titleAs`, `eyebrow`, `description`, `legend`, `table` (required), `caption`, `toggleLabels`, `defaultView`, `keys` | Native `figure` props pass through. `keys` is `"on-demand"` by default |
 | `ChartPlot` | `label` (required), `instructions`, `plotRef`, `reading`, `crosshair`, `empty`, SVG children | `crosshair` carries x, dots and the tooltip |
 | `ChartTable` | `caption`, `columns`, `rows` | First column is the row header |
 | `Legend` | `items` of `{ label, key, colour }` | Keys: line, context, forecast, area, range, past, next |
@@ -52,9 +52,17 @@ SVG parts: `GridY`, `AxisX`, `PlotLayer`, `RangeBand`, `Bracket`, `MarkerLine`, 
 
 **Component tokens:** `--mk-chart-stroke` (2px), `--mk-chart-stroke-context` (1.5px), `--mk-chart-ring` (2px), `--mk-chart-band-inner` (22%), `--mk-chart-band-outer` (10%), `--mk-chart-wash` (20%).
 
+## Keys on demand
+
+From the direction B board (2026-11-06): keys clutter a dashboard when every chart shows them. By default the key stays out of sight and fades in while the pointer is on the chart or the keyboard is inside it. A quiet Key button pins it open, with `aria-pressed` and `aria-controls`. The key stays in the accessibility tree either way. `keys="shown"` keeps it visible, for a lone chart in a story.
+
+## Colour roles
+
+Direction B: one story series wears `--mk-color-dataviz-lead` (white on Forest, ink on Paper), context wears `--mk-color-dataviz-context`, direction wears `--mk-color-dataviz-up` and `--mk-color-dataviz-down`, and forecasts or a highlighted part wear `--mk-color-dataviz-accent`. Parts of a whole that aren't the story take `--mk-color-dataviz-neutral-1` to `4`. The eight categorical slots stay for views with several series of equal weight. Text inside a chart uses the body face at `--mk-font-size-chart`.
+
 ## Rules from Data board 1
 
-- The story wears a colour slot. Context, such as a benchmark, wears muted ink.
+- The story wears the lead colour. Context, such as a benchmark, wears muted ink.
 - Text never wears a series colour. Values are strong ink and names are muted ink.
 - Dotted means forecast. Nothing else is dotted or dashed, and a test enforces it.
 - Gridlines are solid hairlines. A reference value, such as 100 or zero, gets the stronger line.

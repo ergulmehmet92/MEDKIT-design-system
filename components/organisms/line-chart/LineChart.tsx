@@ -1,11 +1,13 @@
 import { scaleLinear, scaleLog } from "d3-scale";
-import { area, line } from "d3-shape";
-import { useCallback, useId, useMemo } from "react";
+import { line } from "d3-shape";
+import { useCallback, useMemo } from "react";
 import type { ReactNode } from "react";
 import {
+  ACCENT_COLOUR,
   AxisX,
   Bracket,
   CONTEXT_COLOUR,
+  LEAD_COLOUR,
   ChartFigure,
   ChartPlot,
   ChartTable,
@@ -100,8 +102,15 @@ const DIRECT_LABELS = 4;
 
 type Drawn = Omit<LineSeries, "slot"> & { colour: string; slot: number | null; other: boolean };
 
-/** Assigns slots in order, keeps pinned ones, and sends series past the eighth to muted ink. */
+/**
+ * One story series wears the lead colour, white on Forest. Several take slots in order, keeping
+ * pinned ones, and series past the eighth go to muted ink.
+ */
 function assign(series: LineSeries[]): Drawn[] {
+  const stories = series.filter((s) => !s.context);
+  if (stories.length === 1 && !stories[0].slot) {
+    return series.map((s) => (s.context ? { ...s, colour: CONTEXT_COLOUR, slot: null, other: false } : { ...s, colour: LEAD_COLOUR, slot: 1, other: false }));
+  }
   let next = 1;
   const taken = new Set(series.map((s) => s.slot).filter(Boolean));
   return series.map((s) => {
@@ -145,7 +154,6 @@ export function LineChart({
   tableCaption,
   emptyText = "No data to show yet.",
 }: LineChartProps) {
-  const washId = useId().replace(/:/g, "");
   const n = xs.length;
   const dates = n > 0 && xs.every((v) => v instanceof Date) ? (xs as Date[]) : null;
   const drawn = useMemo(() => assign(series), [series]);
@@ -216,14 +224,7 @@ export function LineChart({
     .x((_, i) => x(i))
     .y((v) => y(v as number));
 
-  // The wash follows each run of values, so a gap leaves a gap beneath it too.
-  const wash = area<number | null>()
-    .defined(finite)
-    .x((_, i) => x(i))
-    .y0(bottom)
-    .y1((v) => y(v as number));
-
-  const xTicks = (dates ? calendarTicks(dates, view.i0, view.i1) : numberTicks(xs as number[], view.i0, view.i1, 6)).map((t) => ({ x: x(t.index), label: t.label.toUpperCase() }));
+  const xTicks = (dates ? calendarTicks(dates, view.i0, view.i1) : numberTicks(xs as number[], view.i0, view.i1, 6)).map((t) => ({ x: x(t.index), label: t.label }));
   const xText = (i: number) => (dates ? formatDay(dates[i]) : String(xs[i]));
   const when = (at: number) => (today !== undefined && at > today ? "next" : "past");
 
@@ -273,10 +274,10 @@ export function LineChart({
     let note = listed.length > MAX_SLOTS ? `${listed.length - MAX_SLOTS} more in the table.` : undefined;
     if (forecast && fcSeries && i > forecast.start && forecast.median[i - forecast.start] !== undefined) {
       const t = i - forecast.start;
-      rows.push({ value: fmt(forecast.median[t]), label: "Median", colour: fcSeries.colour, key: "dotted" });
-      if (forecast.inner?.[t]) rows.push({ value: forecast.inner[t].map(fmt).join("–"), label: "50% range", colour: `color-mix(in oklab, ${fcSeries.colour} 45%, transparent)`, key: "swatch" });
-      if (forecast.outer?.[t]) rows.push({ value: forecast.outer[t].map(fmt).join("–"), label: "80% range", colour: `color-mix(in oklab, ${fcSeries.colour} 22%, transparent)`, key: "swatch" });
-      dots.push({ y: y(forecast.median[t]), colour: fcSeries.colour });
+      rows.push({ value: fmt(forecast.median[t]), label: "Median", colour: ACCENT_COLOUR, key: "dotted" });
+      if (forecast.inner?.[t]) rows.push({ value: forecast.inner[t].map(fmt).join("–"), label: "50% range", colour: `color-mix(in oklab, ${ACCENT_COLOUR} 45%, transparent)`, key: "swatch" });
+      if (forecast.outer?.[t]) rows.push({ value: forecast.outer[t].map(fmt).join("–"), label: "80% range", colour: `color-mix(in oklab, ${ACCENT_COLOUR} 22%, transparent)`, key: "swatch" });
+      dots.push({ y: y(forecast.median[t]), colour: ACCENT_COLOUR });
     }
     const event = events.find((e) => Math.abs(e.at - i) <= 1);
     if (event) note = [event.label + (when(event.at) === "next" ? ", upcoming" : ""), event.detail].filter(Boolean).join(". ") + ".";
@@ -298,7 +299,6 @@ export function LineChart({
     bottom - 4,
   );
   const fade = labelOpacity(reveal);
-  const story = coloured.length === 1 ? coloured[0] : undefined;
   const fx = (t: number) => x((forecast?.start ?? 0) + t);
   const band = (rangeOf: [number, number][]) =>
     `M${rangeOf.map((r, t) => `${fx(t)} ${y(r[1])}`).join("L")}L${rangeOf
@@ -311,7 +311,7 @@ export function LineChart({
   const legend: LegendItem[] = [
     ...drawn.filter((s) => !s.other).map((s): LegendItem => (s.slot ? { label: s.name, key: "line", colour: s.colour, marker: coloured.length > DIRECT_LABELS ? slotShape(s.slot) : undefined } : { label: s.name, key: "context" })),
     ...(others.length ? [{ label: `Other, ${others.length} series`, key: "context" as const }] : []),
-    ...(forecast && fcSeries ? [{ label: dense ? "Forecast" : `Forecast, ${[forecast.inner && "50%", forecast.outer && "80%"].filter(Boolean).join(" and ")} ranges`, key: "forecast" as const, colour: fcSeries.colour }] : []),
+    ...(forecast && fcSeries ? [{ label: dense ? "Forecast" : `Forecast, ${[forecast.inner && "50%", forecast.outer && "80%"].filter(Boolean).join(" and ")} ranges`, key: "forecast" as const, colour: ACCENT_COLOUR }] : []),
     ...(events.some((e) => when(e.at) === "past") ? [{ label: "Past event", key: "past" as const }] : []),
     ...(events.some((e) => when(e.at) === "next") ? [{ label: "Upcoming", key: "next" as const }] : []),
     ...[...new Set(ranges.map((r) => r.label))].map((r) => ({ label: r, key: "range" as const })),
@@ -340,12 +340,6 @@ export function LineChart({
       table={<ChartTable caption={tableCaption ?? label} columns={[{ label: dates ? "Month" : "Point" }, ...drawn.map((s) => ({ label: s.name, numeric: true }))]} rows={tableRows} />}
     >
       <ChartPlot label={label} plotRef={plotRef} reading={reading} crosshair={crosshair}>
-        <defs>
-          <linearGradient id={washId} x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" style={{ stopColor: story?.colour, stopOpacity: 0.2 }} />
-            <stop offset="1" style={{ stopColor: story?.colour, stopOpacity: 0 }} />
-          </linearGradient>
-        </defs>
         <GridY ticks={ticks} y={y} left={box.x} right={box.x + box.width} format={tickText} reference={ref?.value} referenceLabel={ref?.label} referenceInside={narrow} />
         <AxisX ticks={xTicks} y={size.height - m.b + (dense ? 17 : 24)} advance={advance} bounds={[0, size.width]} />
         {ranges.map((r) => (
@@ -353,16 +347,15 @@ export function LineChart({
         ))}
         <PlotLayer box={box} reveal={reveal}>
           {forecast && fcSeries ? (
-            <g className="mk-line-forecast" style={{ color: fcSeries.colour }}>
+            <g className="mk-line-forecast" style={{ color: ACCENT_COLOUR }}>
               {forecast.outer ? <path data-band="outer" d={band(forecast.outer)} /> : null}
               {forecast.inner ? <path data-band="inner" d={band(forecast.inner)} /> : null}
             </g>
           ) : null}
-          {story ? <path className="mk-line-wash" d={wash(story.values) ?? ""} fill={`url(#${washId})`} /> : null}
           {[...drawn].reverse().map((s) => (
             <path key={s.id} className="mk-chart-line" data-context={s.slot ? undefined : ""} data-other={s.other ? "" : undefined} d={path(s.values) ?? ""} style={s.slot ? { stroke: s.colour } : undefined} />
           ))}
-          {forecast && fcSeries ? <path className="mk-chart-line" data-forecast="" d={`M${forecast.median.map((v, t) => `${fx(t)} ${y(v)}`).join("L")}`} style={{ stroke: fcSeries.colour }} /> : null}
+          {forecast && fcSeries ? <path className="mk-chart-line" data-forecast="" d={`M${forecast.median.map((v, t) => `${fx(t)} ${y(v)}`).join("L")}`} style={{ stroke: ACCENT_COLOUR }} /> : null}
           {drawn.map((s) =>
             s.values.map((v, k) =>
               finite(v) && !finite(s.values[k - 1]) && !finite(s.values[k + 1]) ? <circle key={`${s.id}-${k}`} className="mk-chart-dot" cx={x(k)} cy={y(v)} r={3} style={{ fill: s.colour }} /> : null,
@@ -372,7 +365,7 @@ export function LineChart({
         <g opacity={fade}>
           {events.length ? (
             <EventRail
-              events={events.map((e) => ({ id: e.id, x: x(e.at), label: e.label.toUpperCase(), when: when(e.at) }))}
+              events={events.map((e) => ({ id: e.id, x: x(e.at), label: e.label, when: when(e.at) }))}
               y={box.y - (dense || narrow ? 16 : 22)}
               bottom={bottom}
               rows={dense || narrow ? 1 : 2}
@@ -390,7 +383,7 @@ export function LineChart({
                 if (!s || !finite(a) || !finite(b)) return null;
                 return (
                   <g key={`${mz.series}-${mz.from}-${mz.to}`}>
-                    <Bracket x={x(mz.to) - 14} from={y(a)} to={y(b)} fromX={x(mz.from)} label={mz.label ?? `${signed((b / a - 1) * 100)}%`} />
+                    <Bracket x={x(mz.to) - 14} from={y(a)} to={y(b)} fromX={x(mz.from)} label={mz.label ?? `${signed((b / a - 1) * 100)}%`} direction={b >= a ? "up" : "down"} />
                     <circle className="mk-chart-dot" cx={x(mz.from)} cy={y(a)} r={3} style={{ fill: "var(--mk-color-text-default)" }} />
                     {mz.fromLabel ? (
                       <text className="mk-chart-value mk-chart-halo" x={x(mz.from)} y={y(a) - 12} textAnchor="middle">
@@ -425,7 +418,7 @@ export function LineChart({
             <g className="mk-line-ruler">
               <path className="mk-line-ruler-bracket" d={`M${size.width - m.r + 2} ${y(ruler[T][1])}h4V${y(ruler[T][0])}h-4`} />
               <text x={size.width - m.r + 10} y={y(ruler[T][1]) - 10}>
-                {forecast?.outer ? "80% RANGE" : "50% RANGE"}
+                {forecast?.outer ? "80% range" : "50% range"}
               </text>
               <text className="mk-chart-value" x={size.width - m.r + 10} y={y(ruler[T][1]) + 4}>
                 {fmt(ruler[T][1])}
@@ -434,7 +427,7 @@ export function LineChart({
                 {fmt(ruler[T][0])}
               </text>
               <text x={size.width - m.r + 10} y={y(forecast!.median[T]) - 4}>
-                MEDIAN
+                Median
               </text>
               <text className="mk-chart-value mk-chart-strong" x={size.width - m.r + 10} y={y(forecast!.median[T]) + (dense ? 13 : 16)}>
                 {fmt(forecast!.median[T])}

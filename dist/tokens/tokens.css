@@ -222,6 +222,7 @@
     --mk-font-size-title: var(--mk-font-size-400);
     --mk-font-size-subheading: var(--mk-font-size-500);
     --mk-font-size-standalone: var(--mk-font-size-300);
+    --mk-font-size-chart: var(--mk-font-size-075);
     --mk-leading-100: 1;
     --mk-leading-200: 1.15;
     --mk-leading-300: 1.35;
@@ -493,6 +494,7 @@
     --mk-font-size-title: var(--mk-font-size-250);
     --mk-font-size-subheading: var(--mk-font-size-400);
     --mk-font-size-standalone: var(--mk-font-size-075);
+    --mk-font-size-chart: var(--mk-font-size-050);
     --mk-size-control: var(--mk-space-8);
     --mk-size-row: var(--mk-space-8);
     --mk-size-column: var(--mk-size-120);
@@ -516,6 +518,7 @@
     --mk-font-size-title: var(--mk-font-size-400);
     --mk-font-size-subheading: var(--mk-font-size-500);
     --mk-font-size-standalone: var(--mk-font-size-300);
+    --mk-font-size-chart: var(--mk-font-size-075);
     --mk-size-control: var(--mk-space-12);
     --mk-size-row: var(--mk-space-14);
     --mk-size-column: var(--mk-size-180);

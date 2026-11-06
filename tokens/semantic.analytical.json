@@ -21,6 +21,9 @@
       },
       "standalone": {
         "$value": "{font.size.075}"
+      },
+      "chart": {
+        "$value": "{font.size.050}"
       }
     }
   },

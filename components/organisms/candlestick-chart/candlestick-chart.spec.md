@@ -18,8 +18,8 @@
 
 ## Behaviour
 
-- Direction uses the polarity scale's arms: amber when the close is above the open, blue when below. It's also told by shape, hollow for rising and filled for falling, so it never rests on colour. Status green and red are never used.
-- Candle bodies are 62% of a day's width, capped at 14px. Under 5px a day, candles become open-high-low-close bars. Under 2.5px, they become a closing line in slot 1.
+- Direction uses the up and down roles from direction B: green when the close is above the open, red when below. It's also told by shape, hollow for rising and filled for falling, so it never rests on colour.
+- Candle bodies are 62% of a day's width, capped at 14px. Under 5px a day, candles become open-high-low-close bars. Under 2.5px, they become a closing line in the lead colour.
 - Volume sits in its own panel, a fifth of the plot's height, with its maximum named. It never shares the price axis.
 - The tooltip lists open, high, low, close and volume, and notes the day's move against the previous close with an arrow and a sign.
 - The table lists each day for spans up to 90 days, and rolls longer spans up into months.

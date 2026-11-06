@@ -138,13 +138,14 @@ export function RangeBand({ x0, x1, top, bottom, label, advance }: { x0: number;
  * Measures a gap between two values at one x, such as a fall from a peak. `from` is where the
  * measurement starts; a hairline runs back to it from `fromX`.
  */
-export function Bracket({ x, from, to, fromX, label }: { x: number; from: number; to: number; fromX?: number; label: string }) {
+export function Bracket({ x, from, to, fromX, label, direction }: { x: number; from: number; to: number; fromX?: number; label: string; direction?: "up" | "down" }) {
   const bx = crisp(x);
   return (
-    <g className="mk-chart-bracket">
+    <g className="mk-chart-bracket" data-direction={direction}>
       {fromX !== undefined ? <line x1={fromX} x2={bx} y1={crisp(from)} y2={crisp(from)} /> : null}
       <path d={`M${bx - 4} ${crisp(from)}H${bx}V${crisp(to)}H${bx - 4}`} />
       <text className="mk-chart-value mk-chart-strong mk-chart-halo" x={bx - 8} y={(from + to) / 2 + 5} textAnchor="end">
+        {direction ? <tspan className="mk-chart-arrow">{direction === "up" ? "\u25B2 " : "\u25BC "}</tspan> : null}
         {label}
       </text>
     </g>
@@ -253,10 +254,15 @@ export function EndLabel({ x, y, name, value, colour, dy = 4, side = "end" }: { 
   );
 }
 
-/** A categorical slot's colour. Slots run 1 to 8, in the approved order. */
+/** Direction B's roles: the lead series, the one accent, and up and down. */
+export const LEAD_COLOUR = "var(--mk-color-dataviz-lead)";
+export const ACCENT_COLOUR = "var(--mk-color-dataviz-accent)";
+export const UP_COLOUR = "var(--mk-color-dataviz-up)";
+export const DOWN_COLOUR = "var(--mk-color-dataviz-down)";
+/** A categorical slot's colour, for views with several series of equal weight. Slots run 1 to 8. */
 export const slotColour = (slot: number) => `var(--mk-color-dataviz-category-${slot})`;
 /** Context series, such as a benchmark, wear muted ink instead of a slot. */
-export const CONTEXT_COLOUR = "var(--mk-color-text-muted)";
+export const CONTEXT_COLOUR = "var(--mk-color-dataviz-context)";
 
 export type MarkerShape = "circle" | "square" | "triangle" | "down";
 const SHAPES: MarkerShape[] = ["circle", "square", "triangle", "down"];

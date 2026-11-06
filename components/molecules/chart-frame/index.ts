@@ -6,7 +6,7 @@ export { ChartTable } from "./ChartTable";
 export type { ChartTableColumn, ChartTableProps, ChartTableRow } from "./ChartTable";
 export { Legend } from "./Legend";
 export type { LegendItem, LegendKey, LegendProps } from "./Legend";
-export { AxisX, Bracket, CONTEXT_COLOUR, EndLabel, EventRail, GridY, MarkerLine, Note, PlotLayer, RangeBand, SeriesMarker, labelOpacity, markerPath, slotColour, slotShape } from "./parts";
+export { ACCENT_COLOUR, AxisX, Bracket, CONTEXT_COLOUR, DOWN_COLOUR, LEAD_COLOUR, UP_COLOUR, EndLabel, EventRail, GridY, MarkerLine, Note, PlotLayer, RangeBand, SeriesMarker, labelOpacity, markerPath, slotColour, slotShape } from "./parts";
 export type { AxisXProps, ChartEvent, EventRailProps, GridYProps, MarkerShape, NoteProps } from "./parts";
 export { useChartViewport, useCrosshair, useDensity, useElementSize, useGlide, useLabelAdvance, useReveal } from "./hooks";
 export type { CrosshairOptions, Domain, Size } from "./hooks";

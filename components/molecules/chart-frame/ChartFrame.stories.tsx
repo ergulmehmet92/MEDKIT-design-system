@@ -104,19 +104,19 @@ function FrameAnatomy({ dense = false }: { dense?: boolean }) {
           bottom: box.y + box.height,
           dots:
             i <= today
-              ? [{ y: y(bench[i]), colour: "var(--mk-color-text-muted)" }, { y: y(port[i]), colour: "var(--mk-color-dataviz-category-1)" }]
-              : [{ y: y(forecast[i - today].median), colour: "var(--mk-color-dataviz-category-1)" }],
+              ? [{ y: y(bench[i]), colour: "var(--mk-color-text-muted)" }, { y: y(port[i]), colour: "var(--mk-color-dataviz-lead)" }]
+              : [{ y: y(forecast[i - today].median), colour: "var(--mk-color-dataviz-accent)" }],
           tooltip: {
             title: dateText(days[i]) + (i > today ? " · forecast" : ""),
             rows:
               i <= today
                 ? [
-                    { value: port[i].toFixed(1), label: "Portfolio", colour: "var(--mk-color-dataviz-category-1)" },
+                    { value: port[i].toFixed(1), label: "Portfolio", colour: "var(--mk-color-dataviz-lead)" },
                     { value: bench[i].toFixed(1), label: "S&P 500", colour: "var(--mk-color-text-muted)" },
                   ]
                 : [
-                    { value: forecast[i - today].median.toFixed(1), label: "Median", colour: "var(--mk-color-dataviz-category-1)", key: "dotted" as const },
-                    { value: forecast[i - today].outer.map((v) => v.toFixed(1)).join("–"), label: "80% range", colour: "var(--mk-color-dataviz-category-1)", key: "swatch" as const },
+                    { value: forecast[i - today].median.toFixed(1), label: "Median", colour: "var(--mk-color-dataviz-accent)", key: "dotted" as const },
+                    { value: forecast[i - today].outer.map((v) => v.toFixed(1)).join("–"), label: "80% range", colour: "var(--mk-color-dataviz-accent)", key: "swatch" as const },
                   ],
             note: event?.label,
           },
@@ -131,9 +131,9 @@ function FrameAnatomy({ dense = false }: { dense?: boolean }) {
       legend={
         <Legend
           items={[
-            { label: "Portfolio", key: "line", colour: "var(--mk-color-dataviz-category-1)" },
+            { label: "Portfolio", key: "line", colour: "var(--mk-color-dataviz-lead)" },
             { label: "S&P 500", key: "context" },
-            { label: dense ? "Forecast" : "Forecast, 50% and 80% ranges", key: "forecast", colour: "var(--mk-color-dataviz-category-1)" },
+            { label: dense ? "Forecast" : "Forecast, 50% and 80% ranges", key: "forecast", colour: "var(--mk-color-dataviz-accent)" },
             { label: "Past catalyst", key: "past" },
             { label: "Upcoming", key: "next" },
           ]}
@@ -156,11 +156,11 @@ function FrameAnatomy({ dense = false }: { dense?: boolean }) {
         <AxisX ticks={months} y={size.height - m.b + (dense ? 17 : 24)} advance={advance} />
         <RangeBand x0={x(peak)} x1={x(today)} top={box.y} bottom={box.y + box.height} label="Drawdown" advance={advance} />
         <PlotLayer box={box} reveal={reveal}>
-          <path d={fan("outer")} style={{ fill: "color-mix(in oklab, var(--mk-color-dataviz-category-1) var(--mk-chart-band-outer), transparent)" }} />
-          <path d={fan("inner")} style={{ fill: "color-mix(in oklab, var(--mk-color-dataviz-category-1) var(--mk-chart-band-inner), transparent)" }} />
+          <path d={fan("outer")} style={{ fill: "color-mix(in oklab, var(--mk-color-dataviz-accent) var(--mk-chart-band-outer), transparent)" }} />
+          <path d={fan("inner")} style={{ fill: "color-mix(in oklab, var(--mk-color-dataviz-accent) var(--mk-chart-band-inner), transparent)" }} />
           <path className="mk-chart-line" data-context="" d={path(bench) ?? ""} />
-          <path className="mk-chart-line" d={path(port) ?? ""} style={{ stroke: "var(--mk-color-dataviz-category-1)" }} />
-          <path className="mk-chart-line" data-forecast="" d={`M${forecast.map((f, t) => `${forecastAt(t)} ${y(f.median)}`).join("L")}`} style={{ stroke: "var(--mk-color-dataviz-category-1)" }} />
+          <path className="mk-chart-line" d={path(port) ?? ""} style={{ stroke: "var(--mk-color-dataviz-lead)" }} />
+          <path className="mk-chart-line" data-forecast="" d={`M${forecast.map((f, t) => `${forecastAt(t)} ${y(f.median)}`).join("L")}`} style={{ stroke: "var(--mk-color-dataviz-accent)" }} />
         </PlotLayer>
         <g opacity={fade}>
           <EventRail
@@ -172,9 +172,9 @@ function FrameAnatomy({ dense = false }: { dense?: boolean }) {
             limit={size.width}
             active={event?.id}
           />
-          {narrow ? null : <Bracket x={x(today) - 14} from={y(port[peak])} to={y(port[today])} fromX={x(peak)} label={`${signed(fall)}%`} />}
+          {narrow ? null : <Bracket x={x(today) - 14} from={y(port[peak])} to={y(port[today])} fromX={x(peak)} label={`${signed(fall)}%`} direction="down" />}
           <MarkerLine x={x(today)} top={box.y} bottom={box.y + box.height} label={narrow ? undefined : "Today"} />
-          <EndLabel x={x(today)} y={y(port[today])} name="Portfolio" value={port[today].toFixed(1)} colour="var(--mk-color-dataviz-category-1)" dy={narrow ? -14 : -12} side={narrow ? "start" : "end"} />
+          <EndLabel x={x(today)} y={y(port[today])} name="Portfolio" value={port[today].toFixed(1)} colour="var(--mk-color-dataviz-lead)" dy={narrow ? -14 : -12} side={narrow ? "start" : "end"} />
           <EndLabel x={x(today)} y={y(bench[today])} name="S&P 500" value={bench[today].toFixed(1)} colour="var(--mk-color-text-muted)" dy={18} side={narrow ? "start" : "end"} />
           {dense ? null : (
             <Note
@@ -225,7 +225,7 @@ export const LegendKeys: Story = {
       items={[
         ...Array.from({ length: 8 }, (_, k) => ({ label: `Slot ${k + 1}`, key: "line" as const, colour: `var(--mk-color-dataviz-category-${k + 1})` })),
         { label: "Context", key: "context" },
-        { label: "Forecast", key: "forecast", colour: "var(--mk-color-dataviz-category-1)" },
+        { label: "Forecast", key: "forecast", colour: "var(--mk-color-dataviz-accent)" },
         { label: "Area", key: "area", colour: "var(--mk-color-dataviz-category-2)" },
         { label: "Range", key: "range" },
         { label: "Past", key: "past" },

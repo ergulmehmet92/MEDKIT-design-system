@@ -49,8 +49,26 @@
     gap: var(--mk-gap-md) var(--mk-gap-lg);
   }
 
-  .mk-chart-switch {
-    margin-inline-start: auto;
+  .mk-chart-key {
+    margin-inline-end: auto;
+  }
+
+  /* On demand: the key fades in while the chart has the pointer or the keyboard, or when pinned. */
+  .mk-chart[data-keys="on-demand"] .mk-chart-key {
+    opacity: 0;
+    translate: 0 -4px;
+    transition:
+      opacity var(--mk-motion-duration-interaction) var(--mk-motion-easing-default),
+      translate var(--mk-motion-duration-interaction) var(--mk-motion-easing-default);
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
+
+  .mk-chart[data-keys="on-demand"]:is(:hover, :focus-within, [data-pinned]) .mk-chart-key {
+    opacity: 1;
+    translate: 0 0;
   }
 
   .mk-chart-view[hidden] {
@@ -64,10 +82,8 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    color: var(--mk-color-text-muted);
-    font: var(--mk-font-weight-label) var(--mk-font-size-label) / 1.2 var(--mk-font-family-label);
-    letter-spacing: var(--mk-tracking-label);
-    text-transform: uppercase;
+    color: var(--mk-color-text-default);
+    font: var(--mk-font-weight-body) var(--mk-font-size-chart) / 1.2 var(--mk-font-family-body);
 
     & li {
       display: inline-flex;
@@ -115,9 +131,9 @@
     position: relative;
     block-size: var(--mk-size-chart);
     color: var(--mk-color-text-muted);
-    font-family: var(--mk-font-family-label);
-    font-size: var(--mk-font-size-label);
-    letter-spacing: var(--mk-tracking-label);
+    font-family: var(--mk-font-family-body);
+    font-size: var(--mk-font-size-chart);
+    font-variant-numeric: tabular-nums;
     border-radius: var(--mk-radius-default);
 
     &:focus-visible {
@@ -135,7 +151,6 @@
 
     & text {
       fill: currentColor;
-      text-transform: uppercase;
     }
   }
 
@@ -169,6 +184,27 @@
   .mk-chart-marker line {
     stroke: var(--mk-color-border-strong);
     shape-rendering: crispEdges;
+  }
+
+  /* A measured change: the bracket and its arrow wear the direction; the number stays in ink. */
+  .mk-chart-bracket[data-direction="up"] :is(line, path),
+  .mk-chart-bracket[data-direction="up"] .mk-chart-arrow {
+    stroke: var(--mk-color-dataviz-up);
+  }
+
+  .mk-chart-bracket[data-direction="down"] :is(line, path),
+  .mk-chart-bracket[data-direction="down"] .mk-chart-arrow {
+    stroke: var(--mk-color-dataviz-down);
+  }
+
+  .mk-chart-svg .mk-chart-bracket[data-direction="up"] .mk-chart-arrow {
+    fill: var(--mk-color-dataviz-up);
+    stroke: var(--mk-color-surface-default);
+  }
+
+  .mk-chart-svg .mk-chart-bracket[data-direction="down"] .mk-chart-arrow {
+    fill: var(--mk-color-dataviz-down);
+    stroke: var(--mk-color-surface-default);
   }
 
   .mk-chart-range rect {

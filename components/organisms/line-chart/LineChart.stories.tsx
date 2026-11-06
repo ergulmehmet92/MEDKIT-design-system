@@ -19,7 +19,7 @@ const hero: LineChartProps = {
   ],
   forecast: year.forecast,
   today: year.today,
-  reference: { value: 100, label: "100 START" },
+  reference: { value: 100, label: "100 start" },
   ranges: [{ id: "dd", from: year.peak, to: year.today, label: "Drawdown" }],
   measures: [{ series: "port", from: year.peak, to: year.today, fromLabel: "Peak" }],
   notes: [{ series: "port", at: year.dip, lines: [`${Math.round((year.dip - year.march) / 5)} weeks after the March rate`, "decision, the portfolio had", `given back ${Math.round(year.port[year.march]! - year.port[year.dip]!)} points.`] }],

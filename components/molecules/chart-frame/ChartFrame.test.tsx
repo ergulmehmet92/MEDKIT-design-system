@@ -81,6 +81,49 @@ describe("ChartFigure", () => {
   });
 });
 
+describe("keys on demand", () => {
+  const figure = (keys?: "on-demand" | "shown") => (
+    <ChartFigure title="Portfolio" keys={keys} legend={<Legend items={[{ label: "Portfolio", key: "line" }, { label: "S&P 500", key: "context" }]} />} table={table}>
+      <ChartPlot label="Portfolio" />
+    </ChartFigure>
+  );
+
+  it("hides the key until asked, and a Key button pins it open", () => {
+    const { container } = render(figure());
+    const fig = container.querySelector("figure")!;
+    const key = screen.getByRole("button", { name: "Key" });
+
+    expect(fig.getAttribute("data-keys")).toBe("on-demand");
+    expect(key.getAttribute("aria-pressed")).toBe("false");
+    expect(document.getElementById(key.getAttribute("aria-controls")!)?.textContent).toContain("S&P 500");
+
+    fireEvent.click(key);
+    expect(key.getAttribute("aria-pressed")).toBe("true");
+    expect(fig.hasAttribute("data-pinned")).toBe(true);
+  });
+
+  it("shows the key from the start when asked to, with no Key button", () => {
+    render(figure("shown"));
+
+    expect(screen.queryByRole("button", { name: "Key" })).toBeNull();
+    expect(screen.getByText("S&P 500")).toBeTruthy();
+  });
+
+  it("reveals the key on hover, keyboard focus or when pinned, in CSS", () => {
+    expect(css()).toMatch(/\[data-keys="on-demand"\]:is\(:hover, :focus-within, \[data-pinned\]\) \.mk-chart-key/);
+  });
+});
+
+describe("chart text", () => {
+  it("uses the body face at the chart size, not the mono label face", () => {
+    const plot = css().match(/\.mk-chart-plot \{[^}]*\}/)![0];
+
+    expect(plot).toContain("var(--mk-font-family-body)");
+    expect(plot).toContain("var(--mk-font-size-chart)");
+    expect(css()).not.toMatch(/\.mk-chart-svg \{[^}]*text-transform: uppercase/);
+  });
+});
+
 describe("ChartTable", () => {
   it("ties every value to its row and column, and its scroll area takes focus", () => {
     render(table);

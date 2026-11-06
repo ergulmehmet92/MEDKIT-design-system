@@ -19,6 +19,11 @@ export type ChartFigureProps = Omit<ComponentPropsWithoutRef<"figure">, "title" 
   toggleLabels?: { table: string; chart: string };
   /** Starts on the table instead of the chart. */
   defaultView?: "chart" | "table";
+  /**
+   * On demand, the key appears while the pointer or keyboard is on the chart, and a Key button pins
+   * it open. Shown keeps it visible. Either way it stays in the accessibility tree.
+   */
+  keys?: "on-demand" | "shown";
   /** The plot, usually a ChartPlot. */
   children: ReactNode;
 };
@@ -37,16 +42,20 @@ export function ChartFigure({
   caption,
   toggleLabels = { table: "View as table", chart: "View as chart" },
   defaultView = "chart",
+  keys = "on-demand",
   className,
   children,
   ...rest
 }: ChartFigureProps) {
   const [view, setView] = useState(defaultView);
+  const [pinned, setPinned] = useState(false);
   const titleId = useId();
+  const keyId = useId();
+  const onDemand = keys === "on-demand" && Boolean(legend);
   const showTable = view === "table";
 
   return (
-    <figure className={className ? `mk-chart ${className}` : "mk-chart"} aria-labelledby={titleId} data-view={view} {...rest}>
+    <figure className={className ? `mk-chart ${className}` : "mk-chart"} aria-labelledby={titleId} data-view={view} data-keys={onDemand ? "on-demand" : "shown"} data-pinned={pinned ? "" : undefined} {...rest}>
       <div className="mk-chart-head">
         {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
         <Title className="mk-chart-title" id={titleId}>
@@ -55,7 +64,16 @@ export function ChartFigure({
         {description ? <p className="mk-chart-description">{description}</p> : null}
       </div>
       <div className="mk-chart-bar">
-        {legend}
+        {legend ? (
+          <div className="mk-chart-key" id={keyId}>
+            {legend}
+          </div>
+        ) : null}
+        {onDemand ? (
+          <Button variant="quiet" className="mk-chart-pin" aria-pressed={pinned} aria-controls={keyId} onClick={() => setPinned(!pinned)}>
+            Key
+          </Button>
+        ) : null}
         <Button variant="quiet" className="mk-chart-switch" onClick={() => setView(showTable ? "chart" : "table")}>
           {showTable ? toggleLabels.chart : toggleLabels.table}
         </Button>

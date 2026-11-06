@@ -28,7 +28,9 @@
 
 - Series take slots 1 to 8 in order, or the slot they pin. Past eight, they draw thin in muted ink and the legend names them as "Other, n series". A ninth colour is never made up.
 - Up to four series get labels where they end, spread apart with leaders. With five or more, each slot gets a marker shape in the legend and at the line's end, so series can be told apart without colour.
-- One coloured series gets a soft wash beneath it.
+- One story series wears the lead colour, white on Forest and ink on Paper. Two or more take the categorical slots.
+- Forecasts wear the accent, whichever series they continue.
+- A measure's bracket and arrow wear up or down; its number stays in ink.
 - A gap breaks the line, and a lone point gets a dot.
 - Narrow plots drop the right margin, the measure bracket, the note and the "Today" label, and move end labels inside.
 - The table lists each month's end, today and the forecast months for dates, or up to 40 evenly spaced points for numbers.

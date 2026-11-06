@@ -21,7 +21,7 @@ function Hero() {
       ]}
       forecast={year.forecast}
       today={year.today}
-      reference={{ value: 100, label: "100 START" }}
+      reference={{ value: 100, label: "100 start" }}
       ranges={[{ id: "dd", from: year.peak, to: year.today, label: "Drawdown" }]}
       measures={[{ series: "port", from: year.peak, to: year.today, fromLabel: "Peak" }]}
       events={year.events}
@@ -40,10 +40,21 @@ describe("LineChart", () => {
     expect(container.querySelectorAll(".mk-chart-line[data-forecast]")).toHaveLength(1);
   });
 
-  it("measures the drawdown, and labels the series where they end", () => {
+  it("draws one story series in the lead colour, context in grey and the forecast in the accent", () => {
     const { container } = render(<Hero />);
 
-    expect(container.querySelector(".mk-chart-bracket text")?.textContent).toBe("−8.2%");
+    const [bench, port] = [...container.querySelectorAll<SVGPathElement>(".mk-chart-line:not([data-forecast])")];
+    expect(port.style.stroke).toBe("var(--mk-color-dataviz-lead)");
+    expect(bench.hasAttribute("data-context")).toBe(true);
+    expect(container.querySelector<SVGPathElement>(".mk-chart-line[data-forecast]")!.style.stroke).toBe("var(--mk-color-dataviz-accent)");
+  });
+
+  it("measures the drawdown in red with an arrow, and labels the series where they end", () => {
+    const { container } = render(<Hero />);
+
+    const bracket = container.querySelector(".mk-chart-bracket")!;
+    expect(bracket.getAttribute("data-direction")).toBe("down");
+    expect(bracket.querySelector("text")?.textContent).toBe("▼ −8.2%");
     expect([...container.querySelectorAll(".mk-chart-end text")].map((t) => t.textContent?.split(" ")[0])).toEqual(["Portfolio", "S&P"]);
   });
 
