@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { LivingLight } from "../../atoms/living-light";
 import { signed } from "../../molecules/chart-frame/layout";
+import { TrackBar, trackStatus } from "../../molecules/track-bar";
 import { Panel } from "../panel";
 import { DataTable, type DataTableColumn } from "./DataTable";
 import { closes, positions, type Close, type Position } from "./positions.sample";
@@ -10,6 +11,13 @@ const positionColumns: DataTableColumn<Position>[] = [
   { id: "ticker", header: "Ticker" },
   { id: "theme", header: "Theme", muted: true },
   { id: "weight", header: "Weight", numeric: true, format: pct },
+  {
+    id: "range",
+    header: "Against range",
+    numeric: true,
+    value: (r) => trackStatus(r.weight, r.range).by,
+    cell: (r) => <TrackBar label={`${r.ticker} against its range`} value={r.weight} max={10} target={r.target} range={r.range} size="compact" format={pct} />,
+  },
   { id: "today", header: "Today", numeric: true, direction: true, format: (v) => `${signed(v, 1)}%` },
   { id: "year", header: "1 year", numeric: true, direction: true, format: (v) => `${signed(v, 0)}%` },
 ];

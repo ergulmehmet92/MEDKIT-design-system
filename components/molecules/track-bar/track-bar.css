@@ -1,0 +1,148 @@
+@layer components {
+  .mk-track-bar {
+    --mk-track-bar-thickness: 6px;
+
+    display: grid;
+    gap: var(--mk-gap-sm);
+    min-inline-size: 0;
+    font-size: var(--mk-font-size-body);
+    line-height: var(--mk-line-height-snug);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .mk-track-bar-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--mk-gap-md);
+  }
+
+  .mk-track-bar-label {
+    min-inline-size: 0;
+
+    &[data-hidden] {
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+  }
+
+  .mk-track-bar-readout {
+    flex: none;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.4em;
+    color: var(--mk-color-text-default);
+    white-space: pre;
+
+    & em {
+      font-style: normal;
+      color: var(--mk-color-text-muted);
+    }
+
+    & svg {
+      inline-size: 0.6em;
+      block-size: 0.6em;
+      align-self: center;
+    }
+  }
+
+  .mk-track-bar-track {
+    position: relative;
+    block-size: var(--mk-track-bar-thickness);
+    border-radius: var(--mk-radius-control);
+    background: color-mix(in oklab, var(--mk-color-text-default) 12%, transparent);
+  }
+
+  .mk-track-bar-range {
+    position: absolute;
+    inset-block: 0;
+    background: color-mix(in oklab, var(--mk-color-text-default) 22%, transparent);
+  }
+
+  .mk-track-bar-fill {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    border-radius: var(--mk-radius-control);
+    background: var(--mk-color-dataviz-lead);
+  }
+
+  .mk-track-bar-tick {
+    position: absolute;
+    inset-block: -4px;
+    inline-size: 2px;
+    margin-inline-start: -1px;
+    border-radius: 1px;
+    background: var(--mk-color-text-default);
+    box-shadow: 0 0 0 1px var(--mk-color-surface-default);
+  }
+
+  .mk-track-bar[data-tone="accent"] .mk-track-bar-fill {
+    background: var(--mk-color-dataviz-accent);
+  }
+
+  /* Out of range, or past a limit: red, as on the bullet chart, and the readout says by how much. */
+  .mk-track-bar[data-status] {
+    & .mk-track-bar-fill {
+      background: var(--mk-color-dataviz-down);
+    }
+
+    & .mk-track-bar-readout {
+      color: var(--mk-color-dataviz-down);
+    }
+  }
+
+  .mk-track-bar-note {
+    margin: 0;
+    font-size: var(--mk-font-size-label);
+    color: var(--mk-color-text-muted);
+  }
+
+  /* Compact: one line in a table cell, the track first and the readout after it. */
+  .mk-track-bar[data-size="compact"] {
+    --mk-track-bar-thickness: 4px;
+
+    display: inline-grid;
+    vertical-align: middle;
+    text-align: start;
+    grid-template-columns: 6rem 5.5em;
+    align-items: center;
+    gap: var(--mk-gap-md);
+    font-size: var(--mk-font-size-label);
+
+    & .mk-track-bar-tick {
+      inset-block: -3px;
+    }
+
+    & .mk-track-bar-readout {
+      justify-content: start;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .mk-track-bar-track {
+      background: Canvas;
+      outline: 1px solid CanvasText;
+    }
+
+    .mk-track-bar-fill,
+    .mk-track-bar-tick {
+      background: CanvasText;
+      box-shadow: none;
+      forced-color-adjust: none;
+    }
+
+    .mk-track-bar-range {
+      background: GrayText;
+      forced-color-adjust: none;
+    }
+
+    .mk-track-bar[data-status] .mk-track-bar-readout {
+      color: CanvasText;
+    }
+  }
+}
