@@ -1,0 +1,37 @@
+@layer components {
+  .mk-bullet-track {
+    fill: color-mix(in oklab, var(--mk-color-text-default) 4%, transparent);
+  }
+
+  .mk-bullet-range {
+    fill: color-mix(in oklab, var(--mk-color-text-default) 12%, transparent);
+  }
+
+  .mk-bullet-target {
+    stroke: var(--mk-color-text-default);
+    stroke-width: 2;
+  }
+
+  .mk-bullet[data-reading] .mk-bullet-row:not([data-active]) {
+    opacity: 0.4;
+  }
+
+  .mk-chart-svg .mk-bullet-name {
+    fill: var(--mk-color-text-default);
+  }
+
+  @media (forced-colors: active) {
+    .mk-bullet-bar {
+      fill: CanvasText;
+    }
+
+    .mk-bullet-range {
+      fill: none;
+      stroke: GrayText;
+    }
+
+    .mk-bullet-target {
+      stroke: CanvasText;
+    }
+  }
+}

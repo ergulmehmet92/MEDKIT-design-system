@@ -27,6 +27,7 @@ export const Stacked: Story = {
   args: {
     title: "Trading peaked in October.",
     label: "Trades per month, by kind",
+    layout: "stacked",
     categories: months,
     series: [
       { id: "buy", name: "Buy", values: [9, 12, 8, 11, 6, 10, 13, 9, 7, 12, 14, 10] },

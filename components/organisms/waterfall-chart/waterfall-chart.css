@@ -1,0 +1,30 @@
+@layer components {
+  .mk-waterfall-link {
+    stroke: var(--mk-color-border-strong);
+    shape-rendering: crispEdges;
+  }
+
+  .mk-waterfall[data-reading] .mk-waterfall-step:not([data-active]) .mk-waterfall-bar {
+    opacity: 0.4;
+  }
+
+  .mk-waterfall-step[data-active] .mk-waterfall-bar {
+    stroke: var(--mk-color-text-default);
+    stroke-width: 1.5;
+    paint-order: stroke;
+  }
+
+  .mk-chart-svg .mk-waterfall-name {
+    fill: var(--mk-color-text-default);
+  }
+
+  @media (forced-colors: active) {
+    .mk-waterfall-bar {
+      fill: CanvasText;
+    }
+
+    .mk-waterfall-link {
+      stroke: CanvasText;
+    }
+  }
+}
