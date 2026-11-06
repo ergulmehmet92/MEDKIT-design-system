@@ -1,0 +1,42 @@
+@layer components {
+  /* Dots take their group's colour from `color`, with a surface ring so neighbours stay apart. */
+  .mk-beeswarm-dot {
+    fill: currentColor;
+    stroke: var(--mk-color-surface-default);
+    stroke-width: 1;
+  }
+
+  /* Rows too full to separate draw faintly, so density reads as depth. */
+  .mk-beeswarm-row:not([data-packed]) .mk-beeswarm-dot {
+    stroke: none;
+    opacity: 0.35;
+  }
+
+  .mk-beeswarm[data-reading] .mk-beeswarm-row:not([data-active]) {
+    opacity: 0.35;
+  }
+
+  .mk-beeswarm-reference {
+    stroke: var(--mk-color-border-strong);
+    shape-rendering: crispEdges;
+  }
+
+  .mk-beeswarm-median line {
+    stroke: var(--mk-color-text-default);
+    stroke-width: 2;
+  }
+
+  .mk-chart-svg .mk-beeswarm-name {
+    fill: var(--mk-color-text-default);
+  }
+
+  @media (forced-colors: active) {
+    .mk-beeswarm-dot {
+      fill: CanvasText;
+    }
+
+    .mk-beeswarm-median line {
+      stroke: Highlight;
+    }
+  }
+}

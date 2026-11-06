@@ -1,0 +1,34 @@
+@layer components {
+  /* Ridges are opaque tints, so each one covers the one behind it. */
+  .mk-ridge-fill {
+    fill: color-mix(in oklab, currentColor calc(var(--mk-dataviz-tint) * 100%), var(--mk-color-surface-default));
+  }
+
+  .mk-ridge-edge {
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linejoin: round;
+  }
+
+  .mk-ridgeline[data-reading] .mk-ridge:not([data-active]) {
+    opacity: 0.45;
+  }
+
+  .mk-ridge[data-active] .mk-ridge-edge {
+    stroke-width: 2.5;
+  }
+
+  .mk-chart-svg .mk-ridge-name {
+    fill: var(--mk-color-text-default);
+  }
+
+  @media (forced-colors: active) {
+    .mk-ridge-fill {
+      fill: Canvas;
+    }
+
+    .mk-ridge-edge {
+      stroke: CanvasText;
+    }
+  }
+}

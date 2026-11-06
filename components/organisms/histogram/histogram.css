@@ -1,0 +1,30 @@
+@layer components {
+  .mk-histogram-spread {
+    fill: color-mix(in oklab, var(--mk-color-text-default) 6%, transparent);
+  }
+
+  .mk-histogram-mean line {
+    stroke: var(--mk-color-dataviz-accent);
+    stroke-width: 2;
+  }
+
+  .mk-histogram[data-reading] .mk-histogram-bin:not([data-active]) {
+    opacity: 0.4;
+  }
+
+  .mk-histogram-bin[data-active] {
+    stroke: var(--mk-color-text-default);
+    stroke-width: 1.5;
+    paint-order: stroke;
+  }
+
+  @media (forced-colors: active) {
+    .mk-histogram-bin {
+      fill: CanvasText;
+    }
+
+    .mk-histogram-mean line {
+      stroke: Highlight;
+    }
+  }
+}
