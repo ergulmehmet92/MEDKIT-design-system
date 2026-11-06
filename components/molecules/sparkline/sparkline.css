@@ -1,0 +1,64 @@
+@layer components {
+  .mk-sparkline {
+    --mk-sparkline-ink: var(--mk-color-text-muted);
+
+    display: inline-block;
+    vertical-align: middle;
+    overflow: visible;
+
+    &[data-tone="story"] {
+      --mk-sparkline-ink: var(--mk-color-dataviz-category-1);
+    }
+  }
+
+  .mk-sparkline-line {
+    fill: none;
+    stroke: var(--mk-sparkline-ink);
+    stroke-width: 1.5;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+
+  .mk-sparkline-area {
+    fill: color-mix(in oklab, var(--mk-sparkline-ink) 14%, transparent);
+  }
+
+  .mk-sparkline-point {
+    fill: var(--mk-sparkline-ink);
+  }
+
+  /* Now: the accent, ringed in the surface so it reads where it crosses the line. */
+  .mk-sparkline-now {
+    fill: var(--mk-color-text-accent);
+    stroke: var(--mk-color-surface-default);
+    stroke-width: 2;
+    paint-order: stroke;
+  }
+
+  .mk-sparkline-reference,
+  .mk-sparkline-empty {
+    stroke: var(--mk-color-border-default);
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+  }
+
+  @media (forced-colors: active) {
+    .mk-sparkline-line {
+      stroke: CanvasText;
+    }
+
+    .mk-sparkline-area {
+      fill: none;
+    }
+
+    .mk-sparkline-now,
+    .mk-sparkline-point {
+      fill: CanvasText;
+    }
+
+    .mk-sparkline-reference,
+    .mk-sparkline-empty {
+      stroke: GrayText;
+    }
+  }
+}
