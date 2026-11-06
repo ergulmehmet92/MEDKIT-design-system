@@ -365,6 +365,68 @@
             "com.medkit.forcedColors": "CanvasText"
           }
         }
+      },
+      "lead": {
+        "$value": "{color.off-white}",
+        "$description": "The series or metric a view is about. White on Forest, ink on Paper.",
+        "$extensions": {
+          "com.medkit.forcedColors": "CanvasText"
+        }
+      },
+      "context": {
+        "$value": "{color.grey-300}",
+        "$description": "Benchmarks and comparisons.",
+        "$extensions": {
+          "com.medkit.forcedColors": "CanvasText"
+        }
+      },
+      "up": {
+        "$value": "{color.viz.up.forest}",
+        "$description": "Gains and rises. Always with a sign or an arrow.",
+        "$extensions": {
+          "com.medkit.forcedColors": "CanvasText"
+        }
+      },
+      "down": {
+        "$value": "{color.viz.down.forest}",
+        "$description": "Losses and falls. Always with a sign or an arrow.",
+        "$extensions": {
+          "com.medkit.forcedColors": "CanvasText"
+        }
+      },
+      "accent": {
+        "$value": "{color.honey}",
+        "$description": "The one accent: forecasts, a highlighted part, now.",
+        "$extensions": {
+          "com.medkit.forcedColors": "CanvasText"
+        }
+      },
+      "neutral": {
+        "1": {
+          "$value": "{color.viz.neutral.forest.1}",
+          "$description": "Parts of a whole that aren't the story, strongest first.",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        },
+        "2": {
+          "$value": "{color.viz.neutral.forest.2}",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        },
+        "3": {
+          "$value": "{color.viz.neutral.forest.3}",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        },
+        "4": {
+          "$value": "{color.viz.neutral.forest.4}",
+          "$extensions": {
+            "com.medkit.forcedColors": "CanvasText"
+          }
+        }
       }
     }
   },

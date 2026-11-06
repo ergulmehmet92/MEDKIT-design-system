@@ -124,6 +124,18 @@
     --mk-color-viz-blue-amber-forest-500: oklch(0.4208 0.0800 77.99);
     --mk-color-viz-blue-amber-forest-600: oklch(0.5700 0.1180 77.97);
     --mk-color-viz-blue-amber-forest-700: oklch(0.7200 0.1401 78.12);
+    --mk-color-viz-up-paper: oklch(0.4051 0.0860 161.57);
+    --mk-color-viz-up-forest: oklch(0.7846 0.1347 159.52);
+    --mk-color-viz-down-paper: oklch(0.6111 0.1642 25.79);
+    --mk-color-viz-down-forest: oklch(0.6694 0.1793 25.87);
+    --mk-color-viz-neutral-paper-1: oklch(0.2990 0.0135 81.70);
+    --mk-color-viz-neutral-paper-2: oklch(0.3992 0.0141 84.59);
+    --mk-color-viz-neutral-paper-3: oklch(0.5006 0.0148 86.88);
+    --mk-color-viz-neutral-paper-4: oklch(0.5803 0.0143 86.87);
+    --mk-color-viz-neutral-forest-1: oklch(0.8803 0.0146 84.59);
+    --mk-color-viz-neutral-forest-2: oklch(0.7703 0.0147 88.71);
+    --mk-color-viz-neutral-forest-3: oklch(0.6607 0.0139 86.86);
+    --mk-color-viz-neutral-forest-4: oklch(0.5598 0.0145 86.87);
     --mk-color-surface-default: var(--mk-color-forest);
     --mk-color-surface-subtle: var(--mk-color-forest);
     --mk-color-text-default: var(--mk-color-off-white);
@@ -175,6 +187,15 @@
     --mk-color-dataviz-diverging-above-1: var(--mk-color-viz-blue-amber-forest-500);
     --mk-color-dataviz-diverging-above-2: var(--mk-color-viz-blue-amber-forest-600);
     --mk-color-dataviz-diverging-above-3: var(--mk-color-viz-blue-amber-forest-700);
+    --mk-color-dataviz-lead: var(--mk-color-off-white);
+    --mk-color-dataviz-context: var(--mk-color-grey-300);
+    --mk-color-dataviz-up: var(--mk-color-viz-up-forest);
+    --mk-color-dataviz-down: var(--mk-color-viz-down-forest);
+    --mk-color-dataviz-accent: var(--mk-color-honey);
+    --mk-color-dataviz-neutral-1: var(--mk-color-viz-neutral-forest-1);
+    --mk-color-dataviz-neutral-2: var(--mk-color-viz-neutral-forest-2);
+    --mk-color-dataviz-neutral-3: var(--mk-color-viz-neutral-forest-3);
+    --mk-color-dataviz-neutral-4: var(--mk-color-viz-neutral-forest-4);
     --mk-font-family-sans: 'TeX Gyre Heros', Arial, sans-serif;
     --mk-font-family-mono: 'Share Tech Mono', ui-monospace, Menlo, monospace;
     --mk-font-family-body: var(--mk-font-family-sans);
@@ -319,6 +340,15 @@
       --mk-color-dataviz-diverging-above-1: light-dark(var(--mk-color-viz-blue-amber-paper-500), var(--mk-color-viz-blue-amber-forest-500));
       --mk-color-dataviz-diverging-above-2: light-dark(var(--mk-color-viz-blue-amber-paper-600), var(--mk-color-viz-blue-amber-forest-600));
       --mk-color-dataviz-diverging-above-3: light-dark(var(--mk-color-viz-blue-amber-paper-700), var(--mk-color-viz-blue-amber-forest-700));
+      --mk-color-dataviz-lead: light-dark(var(--mk-color-forest), var(--mk-color-off-white));
+      --mk-color-dataviz-context: light-dark(var(--mk-color-grey-600), var(--mk-color-grey-300));
+      --mk-color-dataviz-up: light-dark(var(--mk-color-viz-up-paper), var(--mk-color-viz-up-forest));
+      --mk-color-dataviz-down: light-dark(var(--mk-color-viz-down-paper), var(--mk-color-viz-down-forest));
+      --mk-color-dataviz-accent: light-dark(var(--mk-color-viz-amber-paper), var(--mk-color-honey));
+      --mk-color-dataviz-neutral-1: light-dark(var(--mk-color-viz-neutral-paper-1), var(--mk-color-viz-neutral-forest-1));
+      --mk-color-dataviz-neutral-2: light-dark(var(--mk-color-viz-neutral-paper-2), var(--mk-color-viz-neutral-forest-2));
+      --mk-color-dataviz-neutral-3: light-dark(var(--mk-color-viz-neutral-paper-3), var(--mk-color-viz-neutral-forest-3));
+      --mk-color-dataviz-neutral-4: light-dark(var(--mk-color-viz-neutral-paper-4), var(--mk-color-viz-neutral-forest-4));
     }
   }
 
@@ -373,6 +403,15 @@
       --mk-color-dataviz-diverging-above-1: var(--mk-color-viz-blue-amber-paper-500);
       --mk-color-dataviz-diverging-above-2: var(--mk-color-viz-blue-amber-paper-600);
       --mk-color-dataviz-diverging-above-3: var(--mk-color-viz-blue-amber-paper-700);
+      --mk-color-dataviz-lead: var(--mk-color-forest);
+      --mk-color-dataviz-context: var(--mk-color-grey-600);
+      --mk-color-dataviz-up: var(--mk-color-viz-up-paper);
+      --mk-color-dataviz-down: var(--mk-color-viz-down-paper);
+      --mk-color-dataviz-accent: var(--mk-color-viz-amber-paper);
+      --mk-color-dataviz-neutral-1: var(--mk-color-viz-neutral-paper-1);
+      --mk-color-dataviz-neutral-2: var(--mk-color-viz-neutral-paper-2);
+      --mk-color-dataviz-neutral-3: var(--mk-color-viz-neutral-paper-3);
+      --mk-color-dataviz-neutral-4: var(--mk-color-viz-neutral-paper-4);
     }
 
     [data-theme="forest"] {
@@ -425,6 +464,15 @@
       --mk-color-dataviz-diverging-above-1: var(--mk-color-viz-blue-amber-forest-500);
       --mk-color-dataviz-diverging-above-2: var(--mk-color-viz-blue-amber-forest-600);
       --mk-color-dataviz-diverging-above-3: var(--mk-color-viz-blue-amber-forest-700);
+      --mk-color-dataviz-lead: var(--mk-color-off-white);
+      --mk-color-dataviz-context: var(--mk-color-grey-300);
+      --mk-color-dataviz-up: var(--mk-color-viz-up-forest);
+      --mk-color-dataviz-down: var(--mk-color-viz-down-forest);
+      --mk-color-dataviz-accent: var(--mk-color-honey);
+      --mk-color-dataviz-neutral-1: var(--mk-color-viz-neutral-forest-1);
+      --mk-color-dataviz-neutral-2: var(--mk-color-viz-neutral-forest-2);
+      --mk-color-dataviz-neutral-3: var(--mk-color-viz-neutral-forest-3);
+      --mk-color-dataviz-neutral-4: var(--mk-color-viz-neutral-forest-4);
     }
   }
 
@@ -546,6 +594,15 @@
       --mk-color-dataviz-diverging-above-1: CanvasText;
       --mk-color-dataviz-diverging-above-2: CanvasText;
       --mk-color-dataviz-diverging-above-3: CanvasText;
+      --mk-color-dataviz-lead: CanvasText;
+      --mk-color-dataviz-context: CanvasText;
+      --mk-color-dataviz-up: CanvasText;
+      --mk-color-dataviz-down: CanvasText;
+      --mk-color-dataviz-accent: CanvasText;
+      --mk-color-dataviz-neutral-1: CanvasText;
+      --mk-color-dataviz-neutral-2: CanvasText;
+      --mk-color-dataviz-neutral-3: CanvasText;
+      --mk-color-dataviz-neutral-4: CanvasText;
     }
   }
 

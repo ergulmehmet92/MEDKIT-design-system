@@ -45,6 +45,12 @@
       }
     },
     "dataviz": {
+      "lead": {"$value": "{color.forest}"},
+      "context": {"$value": "{color.grey-600}"},
+      "up": {"$value": "{color.viz.up.paper}"},
+      "down": {"$value": "{color.viz.down.paper}"},
+      "accent": {"$value": "{color.viz.amber.paper}"},
+      "neutral": {"1": {"$value": "{color.viz.neutral.paper.1}"}, "2": {"$value": "{color.viz.neutral.paper.2}"}, "3": {"$value": "{color.viz.neutral.paper.3}"}, "4": {"$value": "{color.viz.neutral.paper.4}"}},
       "category": {"1": {"$value": "{color.viz.amber.paper}"}, "2": {"$value": "{color.viz.teal.paper}"}, "3": {"$value": "{color.viz.iris.paper}"}, "4": {"$value": "{color.viz.rose.paper}"}, "5": {"$value": "{color.viz.blue.paper}"}, "6": {"$value": "{color.viz.olive.paper}"}, "7": {"$value": "{color.viz.orchid.paper}"}, "8": {"$value": "{color.viz.jade.paper}"}},
       "sequential": {"100": {"$value": "{color.viz.amber-scale.paper.100}"}, "200": {"$value": "{color.viz.amber-scale.paper.200}"}, "300": {"$value": "{color.viz.amber-scale.paper.300}"}, "400": {"$value": "{color.viz.amber-scale.paper.400}"}, "500": {"$value": "{color.viz.amber-scale.paper.500}"}, "600": {"$value": "{color.viz.amber-scale.paper.600}"}, "700": {"$value": "{color.viz.amber-scale.paper.700}"}},
       "sequential-alt": {"100": {"$value": "{color.viz.blue-scale.paper.100}"}, "200": {"$value": "{color.viz.blue-scale.paper.200}"}, "300": {"$value": "{color.viz.blue-scale.paper.300}"}, "400": {"$value": "{color.viz.blue-scale.paper.400}"}, "500": {"$value": "{color.viz.blue-scale.paper.500}"}, "600": {"$value": "{color.viz.blue-scale.paper.600}"}, "700": {"$value": "{color.viz.blue-scale.paper.700}"}},

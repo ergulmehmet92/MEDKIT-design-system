@@ -74,7 +74,8 @@ describe("chart colours", () => {
     const viz = tokensIn(json("tokens/primitives.json").color.viz);
     const hues = ["amber", "teal", "iris", "rose", "blue", "olive", "orchid", "jade"];
 
-    expect(viz).toHaveLength(hues.length * 2 + 3 * 14);
+    // Eight hues, three seven-step scales, up and down, and four neutrals, each for Paper and Forest.
+    expect(viz).toHaveLength(hues.length * 2 + 3 * 14 + 2 * 2 + 4 * 2);
     for (const hue of hues) {
       expect(viz.filter((token) => token.path[0] === hue).map((token) => token.path[1]).sort()).toEqual(["forest", "paper"]);
     }

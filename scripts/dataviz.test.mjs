@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { hexColours } from "./contrast.mjs";
+import { contrastRatio, hexColours } from "./contrast.mjs";
 import { everyPair, lightnessChroma, neighbours, THRESHOLDS, worstPairs } from "./dataviz.mjs";
 import { resolveTokens } from "./resolve-tokens.mjs";
 
@@ -70,6 +70,31 @@ describe.each(SCHEMES)("scales on %s", (scheme) => {
     expect(mid.chroma).toBeLessThan(0.02);
     expect(contrastWithMid(diverging[0])).toBeGreaterThan(contrastWithMid(diverging[2]));
     expect(contrastWithMid(diverging[6])).toBeGreaterThan(contrastWithMid(diverging[4]));
+  });
+});
+
+describe.each(SCHEMES)("direction B's roles on %s", (scheme) => {
+  const roles = async () => {
+    const colours = hexColours(await resolveTokens({ scheme }));
+    const pick = (name) => colours[`color.dataviz.${name}`];
+    return { pick, surface: colours["color.surface.default"] };
+  };
+
+  it("keeps up and down apart for colour-blind readers, and both readable as marks", async () => {
+    const { pick, surface } = await roles();
+    const worst = worstPairs([pick("up"), pick("down")], [[0, 1]]);
+
+    expect(worst.deficient).toBeGreaterThanOrEqual(THRESHOLDS.deficient);
+    expect(worst.normal).toBeGreaterThanOrEqual(THRESHOLDS.normal);
+    for (const role of ["lead", "context", "up", "down", "accent"]) expect(contrastRatio(pick(role), surface), role).toBeGreaterThanOrEqual(3);
+  });
+
+  it("steps the neutrals from strongest to quietest, all readable as marks", async () => {
+    const { pick, surface } = await roles();
+    const ratios = [1, 2, 3, 4].map((k) => contrastRatio(pick(`neutral.${k}`), surface));
+
+    expect(ratios.every((r, k) => k === 0 || r < ratios[k - 1])).toBe(true);
+    expect(Math.min(...ratios)).toBeGreaterThanOrEqual(3);
   });
 });
 

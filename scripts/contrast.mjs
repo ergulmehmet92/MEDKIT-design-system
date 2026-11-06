@@ -9,6 +9,7 @@ const BOUNDARIES = ["color.border.strong", "color.border.focus"];
 const LAMPS = ["color.status.live", "color.status.stale", "color.status.failed"];
 // Chart colours are marks, not text, so they need 3:1 against every surface a chart sits on.
 const SERIES = Array.from({ length: 8 }, (_, k) => `color.dataviz.category.${k + 1}`);
+const ROLES = ["lead", "context", "up", "down", "accent", "neutral.1", "neutral.2", "neutral.3", "neutral.4"].map((r) => `color.dataviz.${r}`);
 const ACTION_FILLS = ["default", "lit", "far"].map((state) => `color.action.background.primary.${state}`);
 
 const pairsOf = (foregrounds, backgrounds, minimum) =>
@@ -20,6 +21,7 @@ export const PAIRS = [
   ...pairsOf(BOUNDARIES, SURFACES, 3),
   ...pairsOf(LAMPS, SURFACES, 3),
   ...pairsOf(SERIES, SURFACES, 3),
+  ...pairsOf(ROLES, SURFACES, 3),
 ];
 
 function luminance(hex) {
