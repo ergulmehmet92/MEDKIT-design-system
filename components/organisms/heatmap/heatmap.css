@@ -1,0 +1,55 @@
+@layer components {
+  .mk-heat-cell {
+    transition: opacity var(--mk-motion-duration-interaction) var(--mk-motion-easing-default);
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
+
+  .mk-heat-cell[data-empty] {
+    fill: var(--mk-color-border-default);
+  }
+
+  .mk-heatmap[data-reading] .mk-heat-cell:not([data-active]) {
+    opacity: 0.45;
+  }
+
+  .mk-heat-cell[data-active] {
+    stroke: var(--mk-color-text-default);
+    stroke-width: 1.5;
+  }
+
+  /* Values sit on any step with a surface halo, so they read in every theme without colour. */
+  .mk-chart-svg .mk-heat-value {
+    fill: var(--mk-color-text-default);
+    stroke: var(--mk-color-surface-default);
+    stroke-width: 3px;
+    stroke-linejoin: round;
+    paint-order: stroke;
+  }
+
+  .mk-chart-svg .mk-heat-name {
+    fill: var(--mk-color-text-default);
+  }
+
+  .mk-heat-key li {
+    gap: 0.5em;
+  }
+
+  .mk-heat-centre {
+    color: var(--mk-color-text-muted);
+  }
+
+  @media (forced-colors: active) {
+    .mk-heat-cell {
+      fill: Canvas;
+      stroke: CanvasText;
+    }
+
+    .mk-chart-svg .mk-heat-value {
+      fill: CanvasText;
+      stroke: Canvas;
+    }
+  }
+}

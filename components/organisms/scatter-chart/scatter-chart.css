@@ -1,0 +1,42 @@
+@layer components {
+  .mk-scatter-dot {
+    stroke: var(--mk-color-surface-default);
+    stroke-width: 2;
+    paint-order: stroke;
+    transition: opacity var(--mk-motion-duration-interaction) var(--mk-motion-easing-default);
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
+
+  /* Bubbles are a little see-through, so overlaps stay readable. */
+  .mk-scatter-dot[data-bubble] {
+    fill-opacity: 0.88;
+  }
+
+  .mk-scatter[data-reading] .mk-scatter-dot:not([data-active]) {
+    opacity: 0.35;
+  }
+
+  .mk-scatter-dot[data-active] {
+    stroke: var(--mk-color-text-default);
+    stroke-width: 2;
+  }
+
+  .mk-scatter-reference line {
+    stroke: var(--mk-color-border-strong);
+    shape-rendering: crispEdges;
+  }
+
+  .mk-chart-svg .mk-scatter-name {
+    fill: var(--mk-color-text-default);
+  }
+
+  @media (forced-colors: active) {
+    .mk-scatter-dot {
+      fill: CanvasText;
+      stroke: Canvas;
+    }
+  }
+}
