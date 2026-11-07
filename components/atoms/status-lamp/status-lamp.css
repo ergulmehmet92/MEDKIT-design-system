@@ -1,0 +1,178 @@
+@layer components {
+  /*
+   * Shapes and motion from the approved Lamps board. Cycles: the radar and scan take 2.4s, and the
+   * failed blink once a second, never faster. Task 45 moves these durations into motion tokens.
+   */
+  .mk-status-lamp {
+    --mk-status-lamp-size: 0.7em;
+    --mk-status-lamp-colour: var(--mk-color-status-live);
+    --mk-status-lamp-ring: max(1px, calc(var(--mk-status-lamp-size) * 0.05));
+
+    position: relative;
+    display: inline-block;
+    flex: none;
+    inline-size: var(--mk-status-lamp-size);
+    block-size: var(--mk-status-lamp-size);
+    /* Room for the halo, so it never touches the word beside it. */
+    margin: calc(var(--mk-status-lamp-size) * 0.35);
+    vertical-align: middle;
+
+    &[data-size="large"] {
+      --mk-status-lamp-size: 2.75rem;
+    }
+
+    &[data-status="stale"] {
+      --mk-status-lamp-colour: var(--mk-color-status-stale);
+    }
+
+    &[data-status="failed"] {
+      --mk-status-lamp-colour: var(--mk-color-status-failed);
+    }
+  }
+
+  /* Live: a solid circle with two radar rings, half a cycle apart. */
+  .mk-status-lamp[data-status="live"] {
+    border-radius: var(--mk-radius-circle);
+    background: var(--mk-status-lamp-colour);
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      box-sizing: border-box;
+      border: var(--mk-status-lamp-ring) solid var(--mk-status-lamp-colour);
+      border-radius: var(--mk-radius-circle);
+      opacity: 0;
+      animation: mk-status-radar 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+    }
+
+    &::after {
+      animation-delay: 1.2s;
+    }
+  }
+
+  /* Stale: a tinted circle scanned from south-west to north-east, with a ring and a flat disc behind. */
+  .mk-status-lamp[data-status="stale"] {
+    border-radius: var(--mk-radius-circle);
+    background:
+      linear-gradient(45deg, transparent 40%, var(--mk-status-lamp-colour) 50%, transparent 60%) 100% 0% / 300% 300%,
+      color-mix(in srgb, var(--mk-status-lamp-colour) 30%, transparent);
+    box-shadow: 0 0 0 calc(var(--mk-status-lamp-size) * 0.35) color-mix(in srgb, var(--mk-status-lamp-colour) 16%, transparent);
+    animation: mk-status-scan 2.4s linear infinite;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      box-sizing: border-box;
+      border: var(--mk-status-lamp-ring) solid var(--mk-status-lamp-colour);
+      border-radius: var(--mk-radius-circle);
+      opacity: 0;
+      animation: mk-status-radar 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+    }
+  }
+
+  /* Failed: a hexagon blinking once a second inside a flat hexagon halo. */
+  .mk-status-lamp[data-status="failed"] {
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--mk-status-lamp-colour);
+      clip-path: polygon(50% 0, 93.3% 25%, 93.3% 75%, 50% 100%, 6.7% 75%, 6.7% 25%);
+    }
+
+    &::before {
+      transform: scale(1.7);
+      opacity: 0.2;
+    }
+
+    &::after {
+      animation: mk-status-alarm 1s steps(1, end) infinite;
+    }
+  }
+
+  @keyframes mk-status-radar {
+    0% {
+      transform: scale(1);
+      opacity: 0.9;
+    }
+    100% {
+      transform: scale(1.7);
+      opacity: 0;
+    }
+  }
+
+  @keyframes mk-status-scan {
+    0% {
+      background-position: 100% 0%, 0 0;
+    }
+    100% {
+      background-position: 0% 100%, 0 0;
+    }
+  }
+
+  @keyframes mk-status-alarm {
+    0% {
+      opacity: 1;
+    }
+    55% {
+      opacity: 0.12;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  /* The still versions: the rings rest part-way out, the scan rests in the middle, Failed stays lit. */
+  .mk-status-lamp[data-still] {
+    &,
+    &::before,
+    &::after {
+      animation: none;
+    }
+
+    &[data-status="stale"] {
+      background-position: 50% 50%, 0 0;
+    }
+
+    &:is([data-status="live"], [data-status="stale"])::before {
+      opacity: 0.35;
+      transform: scale(1.4);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mk-status-lamp {
+      &,
+      &::before,
+      &::after {
+        animation: none;
+      }
+
+      &[data-status="stale"] {
+        background-position: 50% 50%, 0 0;
+      }
+
+      &:is([data-status="live"], [data-status="stale"])::before {
+        opacity: 0.35;
+        transform: scale(1.4);
+      }
+    }
+  }
+
+  /* In forced colours the shapes and the word carry the state; the tints become outlines. */
+  @media (forced-colors: active) {
+    .mk-status-lamp {
+      forced-color-adjust: none;
+    }
+
+    .mk-status-lamp[data-status="stale"] {
+      background: Canvas;
+      box-shadow: none;
+      outline: var(--mk-status-lamp-ring) solid CanvasText;
+    }
+  }
+}

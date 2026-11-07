@@ -1,0 +1,14 @@
+@layer components {
+  /* As the board's readings: a small lamp and the words, in the text colour. No chrome around them. */
+  .mk-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--mk-gap-sm) / 2);
+    color: var(--mk-color-text-default);
+    line-height: var(--mk-line-height-snug);
+  }
+
+  .mk-status-pill-text {
+    min-inline-size: 0;
+  }
+}

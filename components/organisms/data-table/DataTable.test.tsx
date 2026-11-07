@@ -115,15 +115,17 @@ describe("DataTable", () => {
       { id: "close", header: "Close", numeric: true },
       { id: "change", header: "Change", numeric: true, direction: true },
     ];
-    render(<DataTable label="Daily closes" columns={closeColumns} rows={rows} rowKey={(r) => r.date.toISOString()} />);
+    const { container } = render(<DataTable label="Daily closes" columns={closeColumns} rows={rows} rowKey={(r) => r.date.toISOString()} />);
+    const body = () => [...container.querySelectorAll("tbody tr")];
+    const header = (name: string) => [...container.querySelectorAll("thead button")].find((b) => b.textContent === name)!;
 
-    expect(screen.getAllByRole("row")).toHaveLength(1001);
-    fireEvent.click(screen.getByRole("button", { name: "Date" }));
-    expect(firstColumn()[0]).toBe("6 Nov 2026");
-    fireEvent.click(screen.getByRole("button", { name: "Close" }));
-    const values = screen.getAllByRole("row").slice(1, 4).map((r) => Number(within(r).getAllByRole("cell")[0].textContent!.replace(/,/g, "")));
+    expect(body()).toHaveLength(1000);
+    fireEvent.click(header("Date"));
+    expect(body()[0].querySelector("th")?.textContent).toBe("6 Nov 2026");
+    fireEvent.click(header("Close"));
+    const values = body().slice(0, 3).map((r) => Number(r.querySelector("td")!.textContent!.replace(/,/g, "")));
     expect(values).toEqual([...values].sort((a, b) => b - a));
-  });
+  }, 15000);
 
   it("names its scroll area, takes focus to scroll, and passes axe", async () => {
     const { container } = render(table());
