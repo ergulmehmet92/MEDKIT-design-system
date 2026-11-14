@@ -2,6 +2,8 @@
   /* Glass over the living light, as approved on Data board 3. */
   .mk-panel {
     display: grid;
+    /* One column that may shrink, so a wide table scrolls inside the panel instead of widening it. */
+    grid-template-columns: minmax(0, 1fr);
     grid-template-rows: auto 1fr auto;
     gap: var(--mk-inset-md);
     min-inline-size: 0;

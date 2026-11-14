@@ -1,0 +1,74 @@
+@layer components {
+  .mk-editorial-page {
+    position: relative;
+    min-block-size: 100svh;
+    background: var(--mk-color-surface-default);
+    color: var(--mk-color-text-default);
+  }
+
+  /* The header's glass sits over the hero's light, while staying outside main, so it is still a banner. */
+  .mk-editorial-page-header {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline: 0;
+    z-index: 1;
+  }
+
+  .mk-editorial-page-footer {
+    padding-inline: var(--mk-page-inset);
+  }
+
+  .mk-page-hero {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: var(--mk-gap-lg);
+    box-sizing: border-box;
+    min-block-size: max(100svh, 46rem);
+    padding: 7rem var(--mk-page-inset) var(--mk-gap-xl);
+  }
+
+  .mk-page-hero-title {
+    max-inline-size: 12.5em;
+    overflow-wrap: break-word;
+  }
+
+  .mk-page-hero-accent {
+    color: var(--mk-color-text-accent);
+    transition: color var(--mk-motion-duration-theme-text) ease var(--mk-motion-delay-theme-text);
+  }
+
+  .mk-split {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(26.25rem, 100%), 1fr));
+    gap: var(--mk-gap-md) var(--mk-gap-xl);
+
+    &[data-align="end"] {
+      align-items: end;
+    }
+  }
+
+  .mk-lead {
+    margin: 0;
+    max-inline-size: 34em;
+    font-size: var(--mk-font-size-lead);
+    letter-spacing: var(--mk-tracking-title);
+    line-height: var(--mk-line-height-body);
+  }
+
+  /* Cards in a page: as many 18rem columns as fit. */
+  .mk-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr));
+    gap: var(--mk-gap-lg);
+    align-items: start;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mk-page-hero-accent {
+      transition: none;
+    }
+  }
+}

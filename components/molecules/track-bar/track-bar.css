@@ -2,6 +2,8 @@
   .mk-track-bar {
     --mk-track-bar-thickness: 6px;
 
+    /* Contains the hidden label, so it can't reach past the page's edge. */
+    position: relative;
     display: grid;
     gap: var(--mk-gap-sm);
     min-inline-size: 0;
@@ -22,6 +24,8 @@
 
     &[data-hidden] {
       position: absolute;
+      inset-inline-start: 0;
+      margin: -1px;
       inline-size: 1px;
       block-size: 1px;
       overflow: hidden;

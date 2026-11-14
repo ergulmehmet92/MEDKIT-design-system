@@ -1,0 +1,73 @@
+@layer components {
+  .mk-dashboard-page {
+    position: relative;
+    isolation: isolate;
+    min-block-size: 100svh;
+    color: var(--mk-color-text-default);
+    container-type: inline-size;
+  }
+
+  .mk-dashboard-page-main {
+    display: grid;
+    gap: var(--mk-gap-lg);
+    padding: var(--mk-inset-lg) var(--mk-page-inset) var(--mk-gap-xl);
+  }
+
+  .mk-dashboard-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--mk-gap-sm) var(--mk-gap-md);
+  }
+
+  .mk-dashboard-title {
+    margin: 0;
+    font-size: var(--mk-font-size-title);
+    font-weight: var(--mk-font-weight-body);
+    letter-spacing: var(--mk-tracking-title);
+  }
+
+  .mk-dashboard-meta {
+    margin: 0;
+    font-family: var(--mk-font-family-label);
+    font-size: var(--mk-font-size-label);
+    letter-spacing: var(--mk-tracking-label);
+    text-transform: uppercase;
+    color: var(--mk-color-text-muted);
+  }
+
+  .mk-dashboard-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--mk-gap-sm);
+    margin-inline-start: auto;
+  }
+
+  .mk-dashboard-tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(13rem, 100%), 1fr));
+    gap: var(--mk-gap-lg);
+  }
+
+  .mk-dashboard-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--mk-gap-lg);
+    align-items: start;
+  }
+
+  .mk-dashboard-aside,
+  .mk-dashboard-content {
+    display: grid;
+    gap: var(--mk-gap-lg);
+    min-inline-size: 0;
+  }
+
+  /* From 64rem, the aside takes a 27.5rem column beside the content, as on Data board 3. */
+  @container (width >= 64rem) {
+    .mk-dashboard-body[data-aside] {
+      grid-template-columns: 27.5rem minmax(0, 1fr);
+    }
+  }
+}

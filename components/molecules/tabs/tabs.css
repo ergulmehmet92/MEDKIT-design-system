@@ -1,6 +1,7 @@
 @layer components {
   .mk-tabs {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--mk-gap-md);
     min-inline-size: 0;
   }

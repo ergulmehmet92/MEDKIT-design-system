@@ -56,3 +56,5 @@ export * from "./organisms/section";
 export * from "./organisms/slope-chart";
 export * from "./organisms/treemap";
 export * from "./organisms/waterfall-chart";
+export * from "./templates/dashboard-page";
+export * from "./templates/editorial-page";
