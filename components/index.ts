@@ -21,6 +21,7 @@ export * from "./molecules/metric";
 export * from "./molecules/pull-quote";
 export * from "./molecules/sparkline";
 export * from "./molecules/status-pill";
+export * from "./molecules/step-relay";
 export * from "./molecules/tabs";
 export * from "./molecules/theme-switch";
 export * from "./molecules/track-bar";

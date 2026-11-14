@@ -1,0 +1,151 @@
+@layer components {
+  .mk-step-relay {
+    position: relative;
+    min-inline-size: 0;
+  }
+
+  .mk-step-relay-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .mk-step-relay-step {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mk-gap-md);
+  }
+
+  .mk-step-relay-number {
+    font-family: var(--mk-font-family-label);
+    font-size: var(--mk-font-size-label);
+    letter-spacing: var(--mk-tracking-label);
+    color: var(--mk-color-text-muted);
+  }
+
+  .mk-step-relay-title {
+    font-size: var(--mk-font-size-title);
+    letter-spacing: var(--mk-tracking-title);
+    line-height: var(--mk-line-height-snug);
+  }
+
+  .mk-step-relay-description {
+    max-inline-size: 34em;
+    color: var(--mk-color-text-muted);
+    line-height: var(--mk-line-height-body);
+  }
+
+  /* Horizontal: each step takes the honey baton in turn, two seconds a step. */
+  .mk-step-relay[data-orientation="horizontal"] {
+    --mk-relay-cycle: calc(var(--mk-relay-steps) * 2s);
+
+    & .mk-step-relay-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
+      gap: var(--mk-gap-lg);
+    }
+  }
+
+  .mk-step-relay-rule {
+    display: block;
+    block-size: var(--mk-border-width-default);
+    background-color: var(--mk-color-border-default);
+  }
+
+  .mk-step-relay-baton {
+    display: block;
+    block-size: var(--mk-border-width-focus);
+    background-color: var(--mk-color-text-accent);
+    transform-origin: left center;
+    animation: mk-relay var(--mk-relay-cycle) var(--mk-motion-easing-default) infinite;
+    animation-delay: calc(var(--mk-relay-step) * var(--mk-relay-cycle) / 5);
+  }
+
+  @keyframes mk-relay {
+    0% {
+      transform: scaleX(0);
+    }
+    20% {
+      transform: scaleX(1);
+    }
+    85% {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scaleX(1);
+      opacity: 0;
+    }
+  }
+
+  /*
+   * Vertical: a tick ruler beside the steps. The marker rides the page's scroll and snaps to a nearby
+   * pointer; the ticks around it extend, and the step under it takes the text colour.
+   */
+  .mk-step-relay[data-orientation="vertical"] {
+    padding-inline-start: calc(var(--mk-space-12) + var(--mk-space-2));
+
+    & .mk-step-relay-step {
+      gap: var(--mk-space-2);
+      padding-block: var(--mk-inset-md);
+      border-block-start: var(--mk-border-width-default) solid var(--mk-color-border-default);
+    }
+
+    & .mk-step-relay-title {
+      font-size: var(--mk-font-size-lead);
+      color: var(--mk-color-text-muted);
+      transition: color var(--mk-motion-duration-interaction);
+    }
+
+    & .mk-step-relay-step[data-current] .mk-step-relay-title {
+      color: var(--mk-color-text-default);
+    }
+  }
+
+  .mk-step-relay-ruler {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: var(--mk-space-4);
+    inline-size: var(--mk-space-6);
+
+    & i {
+      position: absolute;
+      inset-inline-start: 0;
+      block-size: 1px;
+      inline-size: 5px;
+      background: color-mix(in srgb, var(--mk-color-text-default) 28%, transparent);
+    }
+  }
+
+  .mk-step-relay-marker {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: calc(var(--mk-space-2) + 2px);
+    inline-size: 1.875rem;
+    block-size: 6px;
+    margin-block-start: -3px;
+    border-block: 1px solid var(--mk-color-text-default);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mk-step-relay-baton {
+      animation: none;
+    }
+
+    .mk-step-relay[data-orientation="vertical"] .mk-step-relay-title {
+      transition: none;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .mk-step-relay-baton,
+    .mk-step-relay-ruler i {
+      background: CanvasText;
+      forced-color-adjust: none;
+    }
+
+    .mk-step-relay-marker {
+      border-color: CanvasText;
+    }
+  }
+}
