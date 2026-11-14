@@ -35,9 +35,9 @@
     line-height: var(--mk-line-height-body);
   }
 
-  /* Horizontal: each step takes the honey baton in turn, two seconds a step. */
+  /* Horizontal: each step takes the honey baton in turn, motion.duration.relay-step (2s) a step. */
   .mk-step-relay[data-orientation="horizontal"] {
-    --mk-relay-cycle: calc(var(--mk-relay-steps) * 2s);
+    --mk-relay-cycle: calc(var(--mk-relay-steps) * var(--mk-motion-duration-relay-step));
 
     & .mk-step-relay-list {
       display: grid;

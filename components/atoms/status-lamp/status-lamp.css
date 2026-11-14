@@ -1,7 +1,7 @@
 @layer components {
   /*
-   * Shapes and motion from the approved Lamps board. Cycles: the radar and scan take 2.4s, and the
-   * failed blink once a second, never faster. Task 45 moves these durations into motion tokens.
+   * Shapes and motion from the approved Lamps board. The radar and scan take motion.duration.lamp-pulse
+   * (2.4s); Failed blinks at motion.duration.lamp-blink, once a second and never faster.
    */
   .mk-status-lamp {
     --mk-status-lamp-size: 0.7em;
@@ -44,11 +44,11 @@
       border: var(--mk-status-lamp-ring) solid var(--mk-status-lamp-colour);
       border-radius: var(--mk-radius-circle);
       opacity: 0;
-      animation: mk-status-radar 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+      animation: mk-status-radar var(--mk-motion-duration-lamp-pulse) var(--mk-motion-easing-default) infinite;
     }
 
     &::after {
-      animation-delay: 1.2s;
+      animation-delay: calc(var(--mk-motion-duration-lamp-pulse) / 2);
     }
   }
 
@@ -59,7 +59,7 @@
       linear-gradient(45deg, transparent 40%, var(--mk-status-lamp-colour) 50%, transparent 60%) 100% 0% / 300% 300%,
       color-mix(in srgb, var(--mk-status-lamp-colour) 30%, transparent);
     box-shadow: 0 0 0 calc(var(--mk-status-lamp-size) * 0.35) color-mix(in srgb, var(--mk-status-lamp-colour) 16%, transparent);
-    animation: mk-status-scan 2.4s linear infinite;
+    animation: mk-status-scan var(--mk-motion-duration-lamp-pulse) var(--mk-motion-easing-linear) infinite;
 
     &::before {
       content: "";
@@ -69,7 +69,7 @@
       border: var(--mk-status-lamp-ring) solid var(--mk-status-lamp-colour);
       border-radius: var(--mk-radius-circle);
       opacity: 0;
-      animation: mk-status-radar 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+      animation: mk-status-radar var(--mk-motion-duration-lamp-pulse) var(--mk-motion-easing-default) infinite;
     }
   }
 
@@ -90,7 +90,7 @@
     }
 
     &::after {
-      animation: mk-status-alarm 1s steps(1, end) infinite;
+      animation: mk-status-alarm var(--mk-motion-duration-lamp-blink) steps(1, end) infinite;
     }
   }
 

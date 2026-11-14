@@ -642,6 +642,26 @@
       "chart-change": {
         "$value": "{time.600}",
         "$description": "A chart moving to a new range or new data."
+      },
+      "settle": {
+        "$value": "{time.300}",
+        "$description": "Something settling after a hover: a card's lift, a key fading in."
+      },
+      "reveal": {
+        "$value": "{time.1400}",
+        "$description": "Content or line art arriving on screen, once."
+      },
+      "relay-step": {
+        "$value": "{time.2000}",
+        "$description": "One step of the StepRelay baton."
+      },
+      "lamp-pulse": {
+        "$value": "{time.2400}",
+        "$description": "The Live and Stale lamps' radar and scan."
+      },
+      "lamp-blink": {
+        "$value": "{time.1000}",
+        "$description": "The Failed lamp's blink and the typing caret. Never shorter: nothing blinks faster than once a second."
       }
     },
     "delay": {
@@ -649,12 +669,25 @@
       "theme-text": {
         "$value": "{time.200}",
         "$description": "Text follows the light by this much."
+      },
+      "stagger": {
+        "$value": "{time.60}",
+        "$description": "Between items revealed together."
       }
     },
     "easing": {
       "$type": "cubicBezier",
       "default": {
-        "$value": "{curve.out-expo}"
+        "$value": "{curve.out-expo}",
+        "$description": "Arrivals: fast, then settling."
+      },
+      "ambient": {
+        "$value": "{curve.in-out}",
+        "$description": "Ambient loops: the light, dawn."
+      },
+      "linear": {
+        "$value": "{curve.linear}",
+        "$description": "Scans and progress: the Stale sweep."
       }
     }
   },

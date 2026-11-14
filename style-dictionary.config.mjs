@@ -184,3 +184,19 @@ ${FLUID.trimEnd().split("\n").map((line) => (line ? `  ${line}` : line)).join("\
 await mkdir(OUT, { recursive: true });
 await writeFile(join(OUT, "tokens.css"), css);
 console.log(`Built ${names.length} tokens into dist/tokens/tokens.css`);
+
+// Motion for Remotion: the same scale in milliseconds and bezier points, so videos move on the site's clock.
+const json = async (file) => JSON.parse(await readFile(join(ROOT, "tokens", file), "utf8"));
+const [primitives, semantic] = await Promise.all([json("primitives.json"), json("semantic.json")]);
+const lookup = (ref) => ref.replace(/^\{|\}$/g, "").split(".").reduce((node, key) => node[key], primitives).$value;
+const group = (node, read) =>
+  Object.fromEntries(Object.entries(node).filter(([key]) => !key.startsWith("$")).map(([key, token]) => [key, read(lookup(token.$value))]));
+const ms = (value) => (value.unit === "s" ? value.value * 1000 : value.value);
+const motion = {
+  $description: "MED·Kit motion scale. Durations and delays in milliseconds; easings as cubic-bezier points. Generated from tokens/; do not edit.",
+  duration: group(semantic.motion.duration, ms),
+  delay: group(semantic.motion.delay, ms),
+  easing: group(semantic.motion.easing, (points) => points),
+};
+await writeFile(join(OUT, "motion.json"), `${JSON.stringify(motion, null, 2)}\n`);
+console.log("Built the motion scale into dist/tokens/motion.json");

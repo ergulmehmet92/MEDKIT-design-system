@@ -1,0 +1,39 @@
+{
+  "$description": "MED·Kit motion scale. Durations and delays in milliseconds; easings as cubic-bezier points. Generated from tokens/; do not edit.",
+  "duration": {
+    "interaction": 150,
+    "theme-text": 1400,
+    "theme-light": 1800,
+    "chart-reveal": 1400,
+    "chart-change": 600,
+    "settle": 300,
+    "reveal": 1400,
+    "relay-step": 2000,
+    "lamp-pulse": 2400,
+    "lamp-blink": 1000
+  },
+  "delay": {
+    "theme-text": 200,
+    "stagger": 60
+  },
+  "easing": {
+    "default": [
+      0.16,
+      1,
+      0.3,
+      1
+    ],
+    "ambient": [
+      0.37,
+      0,
+      0.63,
+      1
+    ],
+    "linear": [
+      0,
+      0,
+      1,
+      1
+    ]
+  }
+}

@@ -264,12 +264,19 @@
     --mk-radius-panel: var(--mk-radius-18);
     --mk-stroke-hairline: 1px;
     --mk-stroke-focus: 2px;
+    --mk-time-60: 0.06s;
     --mk-time-150: 0.15s;
     --mk-time-200: 0.2s;
+    --mk-time-300: 0.3s;
     --mk-time-600: 0.6s;
+    --mk-time-1000: 1s;
     --mk-time-1400: 1.4s;
     --mk-time-1800: 1.8s;
+    --mk-time-2000: 2s;
+    --mk-time-2400: 2.4s;
     --mk-curve-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --mk-curve-in-out: cubic-bezier(0.37, 0, 0.63, 1);
+    --mk-curve-linear: cubic-bezier(0, 0, 1, 1);
     --mk-line-height-tight: var(--mk-leading-100);
     --mk-line-height-snug: var(--mk-leading-200);
     --mk-line-height-body: var(--mk-leading-300);
@@ -291,8 +298,16 @@
     --mk-motion-duration-theme-light: var(--mk-time-1800);
     --mk-motion-duration-chart-reveal: var(--mk-time-1400);
     --mk-motion-duration-chart-change: var(--mk-time-600);
+    --mk-motion-duration-settle: var(--mk-time-300);
+    --mk-motion-duration-reveal: var(--mk-time-1400);
+    --mk-motion-duration-relay-step: var(--mk-time-2000);
+    --mk-motion-duration-lamp-pulse: var(--mk-time-2400);
+    --mk-motion-duration-lamp-blink: var(--mk-time-1000);
     --mk-motion-delay-theme-text: var(--mk-time-200);
+    --mk-motion-delay-stagger: var(--mk-time-60);
     --mk-motion-easing-default: var(--mk-curve-out-expo);
+    --mk-motion-easing-ambient: var(--mk-curve-in-out);
+    --mk-motion-easing-linear: var(--mk-curve-linear);
     --mk-dataviz-tint: var(--mk-mix-044);
   }
 

@@ -24,9 +24,12 @@ describe("StatusLamp", () => {
     expect(css).not.toMatch(/#[0-9a-f]{3,8}\b/i);
   });
 
-  it("never blinks faster than once a second, and has still versions", () => {
-    const durations = [...css.matchAll(/animation: mk-status-\w+ ([\d.]+)s/g)].map((m) => Number(m[1]));
-    expect(Math.min(...durations)).toBeGreaterThanOrEqual(1);
+  it("moves on the motion tokens, never blinks faster than once a second, and has still versions", () => {
+    expect(css).toContain("var(--mk-motion-duration-lamp-pulse)");
+    expect(css).toContain("animation: mk-status-alarm var(--mk-motion-duration-lamp-blink)");
+    expect(css).not.toMatch(/animation: mk-status-\w+ [\d.]+s/);
+    const blink = JSON.parse(readFileSync("dist/tokens/motion.json", "utf8")).duration["lamp-blink"];
+    expect(blink).toBeGreaterThanOrEqual(1000);
     expect(css).toContain("prefers-reduced-motion: reduce");
     expect(css).toContain("[data-still]");
   });

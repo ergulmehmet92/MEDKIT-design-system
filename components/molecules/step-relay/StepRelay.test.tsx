@@ -30,7 +30,7 @@ describe("StepRelay", () => {
   it("holds still for reduced motion, and paces the baton at two seconds a step", () => {
     const css = readFileSync("components/molecules/step-relay/step-relay.css", "utf8");
     expect(css).toMatch(/prefers-reduced-motion: reduce[\s\S]*\.mk-step-relay-baton \{\s*animation: none/);
-    expect(css).toContain("calc(var(--mk-relay-steps) * 2s)");
+    expect(css).toContain("calc(var(--mk-relay-steps) * var(--mk-motion-duration-relay-step))");
   });
 
   it("passes axe in both orientations", async () => {
