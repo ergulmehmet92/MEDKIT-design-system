@@ -1,0 +1,27 @@
+@layer components {
+  /*
+   * Scroll-driven animation is newly available, so it sits behind feature detection: without it the
+   * content is simply shown, which is the static fallback the browser policy asks for.
+   * Each step of `order` starts the rise 4% of the entry later, about the 60ms stagger at reading speed.
+   */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .mk-reveal {
+        animation: mk-reveal linear both;
+        animation-timeline: view();
+        animation-range: entry calc(var(--mk-reveal-order, 0) * 4%) entry calc(70% + var(--mk-reveal-order, 0) * 4%);
+      }
+    }
+  }
+
+  @keyframes mk-reveal {
+    from {
+      opacity: 0;
+      translate: 0 0.75rem;
+    }
+    to {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+}

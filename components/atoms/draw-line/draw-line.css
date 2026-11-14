@@ -1,0 +1,24 @@
+@layer components {
+  .mk-draw-line {
+    overflow: visible;
+  }
+
+  /* Armed only by the script, so without it the lines stay drawn. */
+  .mk-draw-line[data-armed] :is(path, line, polyline, polygon, circle, ellipse, rect) {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    transition: stroke-dashoffset var(--mk-motion-duration-reveal) var(--mk-motion-easing-default);
+    transition-delay: calc(var(--mk-draw-order, 0) * var(--mk-motion-delay-stagger) * 4);
+  }
+
+  .mk-draw-line[data-armed][data-drawn] :is(path, line, polyline, polygon, circle, ellipse, rect) {
+    stroke-dashoffset: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mk-draw-line[data-armed] :is(path, line, polyline, polygon, circle, ellipse, rect) {
+      stroke-dashoffset: 0;
+      transition: none;
+    }
+  }
+}

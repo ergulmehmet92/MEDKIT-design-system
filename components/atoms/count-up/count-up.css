@@ -1,0 +1,51 @@
+@layer components {
+  .mk-count-up {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* The final value, for screen readers only; the visible digits are hidden from them. */
+  .mk-count-up-final,
+  .mk-typewriter-full {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .mk-typewriter-caret {
+    display: inline-block;
+    inline-size: 2px;
+    block-size: 0.9em;
+    margin-inline-start: 0.12em;
+    vertical-align: -0.08em;
+    background: var(--mk-color-text-accent);
+    animation: mk-caret var(--mk-motion-duration-lamp-blink) steps(1, end) infinite;
+    transition: opacity var(--mk-motion-duration-change) var(--mk-motion-easing-default);
+  }
+
+  .mk-typewriter[data-done] .mk-typewriter-caret {
+    animation: none;
+    opacity: 0;
+  }
+
+  @keyframes mk-caret {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mk-typewriter-caret {
+      display: none;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .mk-typewriter-caret {
+      background: CanvasText;
+      forced-color-adjust: none;
+    }
+  }
+}
