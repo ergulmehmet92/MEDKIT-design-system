@@ -1,3 +1,5 @@
+export * from "./atoms/avatar";
+export * from "./atoms/badge";
 export * from "./atoms/button";
 export * from "./atoms/chip";
 export * from "./atoms/eyebrow";

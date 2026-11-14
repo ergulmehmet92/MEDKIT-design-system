@@ -1,0 +1,53 @@
+@layer components {
+  .mk-badge {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3125rem;
+    min-block-size: 1.375rem;
+    padding: 0 0.5625rem;
+    border-radius: var(--mk-radius-control);
+    font-family: var(--mk-font-family-label);
+    font-size: 0.6875rem;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    vertical-align: middle;
+    color: var(--mk-color-text-default);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--mk-color-text-default) 28%, transparent);
+
+    &[data-tone="accent"] {
+      background: color-mix(in srgb, var(--mk-color-text-accent) 22%, transparent);
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--mk-color-text-accent) 70%, transparent);
+    }
+
+    /* Versions keep their case, and a honey dot marks them as a release. */
+    &[data-tone="version"] {
+      text-transform: none;
+      letter-spacing: 0.02em;
+      background: color-mix(in srgb, var(--mk-color-text-default) 9%, transparent);
+      box-shadow: none;
+
+      &::before {
+        content: "";
+        inline-size: 0.3125rem;
+        block-size: 0.3125rem;
+        border-radius: var(--mk-radius-circle);
+        background: var(--mk-color-text-accent);
+      }
+    }
+  }
+
+  @media (forced-colors: active) {
+    .mk-badge {
+      border: 1px solid CanvasText;
+      box-shadow: none;
+
+      &[data-tone="version"]::before {
+        background: CanvasText;
+        forced-color-adjust: none;
+      }
+    }
+  }
+}

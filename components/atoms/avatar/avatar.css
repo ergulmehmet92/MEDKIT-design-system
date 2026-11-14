@@ -1,0 +1,55 @@
+@layer components {
+  .mk-avatar {
+    --mk-avatar-size: 3rem;
+
+    position: relative;
+    display: inline-grid;
+    place-items: center;
+    flex: none;
+    inline-size: var(--mk-avatar-size);
+    block-size: var(--mk-avatar-size);
+    overflow: hidden;
+    border-radius: var(--mk-radius-circle);
+    font-family: var(--mk-font-family-label);
+    font-size: calc(var(--mk-avatar-size) * 0.34);
+    line-height: 1;
+    letter-spacing: 0.04em;
+    color: var(--mk-color-text-default);
+    background: color-mix(in srgb, var(--mk-color-surface-default) 40%, transparent);
+    box-shadow:
+      inset 0 0 0 0.5px color-mix(in srgb, var(--mk-color-material-specular) 35%, transparent),
+      0 2px 6px -2px color-mix(in srgb, var(--mk-color-material-shade) 60%, transparent);
+    vertical-align: middle;
+
+    &[data-size="sm"] {
+      --mk-avatar-size: 2rem;
+    }
+
+    &[data-size="lg"] {
+      --mk-avatar-size: 4.5rem;
+    }
+
+    & img {
+      inline-size: 100%;
+      block-size: 100%;
+      object-fit: cover;
+    }
+
+    & svg {
+      inline-size: 55%;
+      block-size: 55%;
+      fill: var(--mk-color-text-muted);
+    }
+  }
+
+  @media (forced-colors: active) {
+    .mk-avatar {
+      border: 1px solid CanvasText;
+      box-shadow: none;
+
+      & svg {
+        fill: CanvasText;
+      }
+    }
+  }
+}
