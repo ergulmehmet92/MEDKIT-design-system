@@ -4,7 +4,8 @@
     isolation: isolate;
     overflow: hidden;
     inline-size: 100%;
-    container-type: inline-size;
+    /* Its height comes from the aspect ratio, so the type can be capped by both sides. */
+    container-type: size;
     background: var(--mk-color-blaze-base);
     color: var(--mk-color-text-default);
   }
@@ -29,7 +30,7 @@
 
   .mk-poster-title {
     margin: 0;
-    font-size: min(var(--mk-font-size-poster), 27cqi);
+    font-size: min(var(--mk-font-size-poster), 27cqi, 28cqb);
     font-weight: var(--mk-font-weight-bold);
     line-height: var(--mk-line-height-poster);
     letter-spacing: var(--mk-tracking-poster);
