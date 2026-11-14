@@ -1,0 +1,17 @@
+@layer components {
+  .mk-textarea {
+    display: block;
+    min-block-size: calc(var(--mk-size-control) * 2.4);
+    padding-block: calc(var(--mk-inset-sm) + var(--mk-space-1));
+    border-radius: 0.875rem;
+    resize: vertical;
+  }
+
+  /* Newly available: grow with the text where the browser can, up to 24 lines. */
+  @supports (field-sizing: content) {
+    .mk-textarea {
+      field-sizing: content;
+      max-block-size: 24lh;
+    }
+  }
+}

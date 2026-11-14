@@ -1,0 +1,50 @@
+@layer components {
+  .mk-field {
+    display: grid;
+    gap: calc(var(--mk-gap-sm) + var(--mk-space-1) / 2);
+    min-inline-size: 0;
+  }
+
+  .mk-field-label {
+    font-size: var(--mk-font-size-body);
+    line-height: var(--mk-line-height-snug);
+    color: var(--mk-color-text-default);
+  }
+
+  .mk-field-optional {
+    color: var(--mk-color-text-muted);
+  }
+
+  .mk-field-hint,
+  .mk-field-error {
+    margin: 0;
+    font-size: var(--mk-font-size-label);
+    line-height: var(--mk-line-height-snug);
+  }
+
+  .mk-field-hint {
+    color: var(--mk-color-text-muted);
+  }
+
+  /* The sentence is in the text colour; only the hexagon and the control's rim carry the Failed colour. */
+  .mk-field-error {
+    display: flex;
+    align-items: baseline;
+    gap: var(--mk-gap-sm);
+    color: var(--mk-color-text-default);
+  }
+
+  .mk-field-error-icon {
+    flex: none;
+    inline-size: 0.75rem;
+    block-size: 0.75rem;
+    translate: 0 0.1em;
+    fill: var(--mk-color-status-failed);
+  }
+
+  @media (forced-colors: active) {
+    .mk-field-error-icon {
+      fill: CanvasText;
+    }
+  }
+}

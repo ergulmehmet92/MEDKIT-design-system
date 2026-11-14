@@ -1,0 +1,123 @@
+@layer components {
+  /*
+   * The well: Lens glass pressed into the surface, from the Controls board. Shade along the top
+   * edge, the light's rim along the bottom. Input, Textarea and Select share it.
+   */
+  .mk-well {
+    --_specular: var(--mk-color-material-specular);
+    --_shade: var(--mk-color-material-shade);
+    --_rim: color-mix(in srgb, var(--_specular) 18%, transparent);
+
+    box-sizing: border-box;
+    inline-size: 100%;
+    min-inline-size: 0;
+    min-block-size: var(--mk-size-control);
+    margin: 0;
+    padding: var(--mk-inset-sm) var(--mk-inset-control);
+    border: 0;
+    border-radius: var(--mk-radius-control);
+    font: inherit;
+    font-size: var(--mk-font-size-body);
+    line-height: var(--mk-line-height-snug);
+    color: var(--mk-color-text-default);
+    background-color: color-mix(in srgb, var(--mk-color-surface-default) 26%, transparent);
+    -webkit-backdrop-filter: var(--mk-lens, blur(3px)) blur(6px) saturate(1.3);
+    backdrop-filter: var(--mk-lens, blur(3px)) blur(6px) saturate(1.3);
+    box-shadow:
+      inset 0 1px 2px color-mix(in srgb, var(--_shade) 55%, transparent),
+      inset 0 0.6rem 0.8rem -0.6rem color-mix(in srgb, var(--_shade) 50%, transparent),
+      inset 0 0 0 0.5px var(--_rim),
+      0 1px 0 color-mix(in srgb, var(--_specular) calc(10% + 18% * var(--mk-light-near, 0.4)), transparent);
+    transition:
+      box-shadow var(--mk-motion-duration-interaction),
+      background-color var(--mk-motion-duration-interaction);
+
+    &::placeholder {
+      color: var(--mk-color-text-muted);
+      opacity: 1;
+    }
+
+    @media (hover: hover) {
+      &:hover:not(:disabled) {
+        --_rim: color-mix(in srgb, var(--_specular) 30%, transparent);
+
+        background-color: color-mix(in srgb, var(--mk-color-surface-default) 16%, transparent);
+      }
+    }
+
+    &:focus-visible {
+      outline: var(--mk-border-width-focus) solid var(--mk-color-border-focus);
+      outline-offset: 2px;
+    }
+
+    /* Invalid only after someone has used the field, or when the app says so. */
+    &:user-invalid,
+    &[aria-invalid="true"] {
+      --_rim: var(--mk-color-status-failed);
+
+      box-shadow:
+        inset 0 1px 2px color-mix(in srgb, var(--_shade) 55%, transparent),
+        inset 0 0 0 1.5px var(--_rim);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
+
+  /* The glass needs a backdrop, so it turns solid without one. */
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .mk-well {
+      background-color: var(--mk-color-surface-subtle);
+    }
+  }
+
+  @media (forced-colors: active) {
+    .mk-well {
+      border: 1px solid CanvasText;
+      box-shadow: none;
+
+      &:is(:user-invalid, [aria-invalid="true"]) {
+        border-width: 3px;
+      }
+
+      &:disabled {
+        border-color: GrayText;
+        color: GrayText;
+      }
+    }
+  }
+
+  .mk-input-affix {
+    position: relative;
+    display: block;
+    min-inline-size: 0;
+
+    & .mk-well {
+      padding-inline-start: calc(var(--mk-inset-control) + 1.375rem);
+    }
+  }
+
+  .mk-input-icon {
+    position: absolute;
+    z-index: 1;
+    inset-inline-start: var(--mk-inset-control);
+    inset-block-start: 50%;
+    translate: 0 -50%;
+    display: grid;
+    inline-size: 0.875rem;
+    block-size: 0.875rem;
+    color: var(--mk-color-text-muted);
+    pointer-events: none;
+
+    & svg {
+      inline-size: 100%;
+      block-size: 100%;
+    }
+  }
+}
