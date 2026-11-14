@@ -1117,6 +1117,42 @@
           }
         }
       }
+    },
+    "ambient-blaze-base": {
+      "$value": {
+        "colorSpace": "oklch",
+        "components": [
+          0.4944,
+          0.059,
+          146.9864
+        ],
+        "hex": "#4b6b4e"
+      },
+      "$description": "The Blaze light, for poster moments only, as approved on the Poster and Light boards."
+    },
+    "ambient-blaze-mid": {
+      "$value": {
+        "colorSpace": "oklch",
+        "components": [
+          0.7507,
+          0.0677,
+          101.1127
+        ],
+        "hex": "#b7b07e"
+      },
+      "$description": "The Blaze light, for poster moments only, as approved on the Poster and Light boards."
+    },
+    "ambient-blaze-high": {
+      "$value": {
+        "colorSpace": "oklch",
+        "components": [
+          0.9346,
+          0.0528,
+          91.776
+        ],
+        "hex": "#f6e9c2"
+      },
+      "$description": "The Blaze light, for poster moments only, as approved on the Poster and Light boards."
     }
   },
   "font": {

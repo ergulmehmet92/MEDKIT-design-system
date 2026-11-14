@@ -36,6 +36,7 @@ export * from "./organisms/histogram";
 export * from "./organisms/line-chart";
 export * from "./organisms/metric-row";
 export * from "./organisms/panel";
+export * from "./organisms/poster-headline";
 export * from "./organisms/ridgeline-chart";
 export * from "./organisms/sankey-chart";
 export * from "./organisms/scatter-chart";

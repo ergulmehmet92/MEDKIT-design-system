@@ -136,6 +136,9 @@
     --mk-color-viz-neutral-forest-2: oklch(0.7703 0.0147 88.71);
     --mk-color-viz-neutral-forest-3: oklch(0.6607 0.0139 86.86);
     --mk-color-viz-neutral-forest-4: oklch(0.5598 0.0145 86.87);
+    --mk-color-ambient-blaze-base: oklch(0.4944 0.0590 146.99);
+    --mk-color-ambient-blaze-mid: oklch(0.7507 0.0677 101.11);
+    --mk-color-ambient-blaze-high: oklch(0.9346 0.0528 91.78);
     --mk-color-surface-default: var(--mk-color-forest);
     --mk-color-surface-subtle: var(--mk-color-forest);
     --mk-color-text-default: var(--mk-color-off-white);
@@ -196,6 +199,10 @@
     --mk-color-dataviz-neutral-2: var(--mk-color-viz-neutral-forest-2);
     --mk-color-dataviz-neutral-3: var(--mk-color-viz-neutral-forest-3);
     --mk-color-dataviz-neutral-4: var(--mk-color-viz-neutral-forest-4);
+    --mk-color-blaze-base: var(--mk-color-ambient-blaze-base);
+    --mk-color-blaze-mid: var(--mk-color-ambient-blaze-mid);
+    --mk-color-blaze-high: var(--mk-color-ambient-blaze-high);
+    --mk-color-blaze-accent: var(--mk-color-honey);
     --mk-font-family-sans: 'TeX Gyre Heros', Arial, sans-serif;
     --mk-font-family-mono: 'Share Tech Mono', ui-monospace, Menlo, monospace;
     --mk-font-family-body: var(--mk-font-family-sans);
@@ -608,6 +615,10 @@
       --mk-color-dataviz-neutral-2: CanvasText;
       --mk-color-dataviz-neutral-3: CanvasText;
       --mk-color-dataviz-neutral-4: CanvasText;
+      --mk-color-blaze-base: Canvas;
+      --mk-color-blaze-mid: Canvas;
+      --mk-color-blaze-high: Canvas;
+      --mk-color-blaze-accent: Canvas;
     }
   }
 

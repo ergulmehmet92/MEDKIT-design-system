@@ -428,6 +428,36 @@
           }
         }
       }
+    },
+    "blaze": {
+      "base": {
+        "$value": "{color.ambient-blaze-base}",
+        "$description": "The Blaze light's darkest colour. Poster type cut through to it keeps 3.3:1 against the multiplied surface.",
+        "$extensions": {
+          "com.medkit.forcedColors": "Canvas"
+        }
+      },
+      "mid": {
+        "$value": "{color.ambient-blaze-mid}",
+        "$description": "The Blaze light's middle tone.",
+        "$extensions": {
+          "com.medkit.forcedColors": "Canvas"
+        }
+      },
+      "high": {
+        "$value": "{color.ambient-blaze-high}",
+        "$description": "The Blaze light's brightest colour.",
+        "$extensions": {
+          "com.medkit.forcedColors": "Canvas"
+        }
+      },
+      "accent": {
+        "$value": "{color.honey}",
+        "$description": "Pools of honey within the Blaze light.",
+        "$extensions": {
+          "com.medkit.forcedColors": "Canvas"
+        }
+      }
     }
   },
   "font": {

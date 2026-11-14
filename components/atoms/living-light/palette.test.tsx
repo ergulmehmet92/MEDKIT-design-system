@@ -12,6 +12,7 @@ describe("palettes", () => {
 
     expect(PALETTES.forest[role].toLowerCase()).toBe(primitive(forest));
     expect(PALETTES.paper[role].toLowerCase()).toBe(primitive(paper));
+    expect(PALETTES.blaze[role].toLowerCase()).toBe(primitive(json("tokens/semantic.json").color.blaze[role].$value));
   });
 });
 

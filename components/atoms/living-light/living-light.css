@@ -1,4 +1,12 @@
 @layer components {
+  /* Blaze pins the poster colourway, so the fallback gradient matches the shader. */
+  .mk-living-light[data-theme="blaze"] {
+    --mk-color-ambient-base: var(--mk-color-blaze-base);
+    --mk-color-ambient-mid: var(--mk-color-blaze-mid);
+    --mk-color-ambient-high: var(--mk-color-blaze-high);
+    --mk-color-ambient-accent: var(--mk-color-blaze-accent);
+  }
+
   /* Give the parent `position: relative` and `isolation: isolate`. */
   .mk-living-light {
     position: absolute;
