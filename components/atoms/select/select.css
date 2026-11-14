@@ -1,0 +1,44 @@
+@layer components {
+  .mk-select {
+    position: relative;
+    display: block;
+    min-inline-size: 0;
+
+    & select {
+      appearance: none;
+      padding-inline-end: calc(var(--mk-inset-control) + 1.5rem);
+      cursor: pointer;
+    }
+
+    & select:disabled {
+      cursor: not-allowed;
+    }
+
+    /* Options take the page's colours where the browser lets us style them. */
+    & option {
+      color: var(--mk-color-text-default);
+      background-color: var(--mk-color-surface-default);
+    }
+  }
+
+  .mk-select-chevron {
+    position: absolute;
+    inset-inline-end: var(--mk-inset-control);
+    inset-block-start: 50%;
+    translate: 0 -50%;
+    inline-size: 0.75rem;
+    block-size: 0.5rem;
+    color: var(--mk-color-text-muted);
+    pointer-events: none;
+  }
+
+  .mk-select:has(select:disabled) .mk-select-chevron {
+    opacity: 0.5;
+  }
+
+  @media (forced-colors: active) {
+    .mk-select-chevron {
+      color: CanvasText;
+    }
+  }
+}

@@ -1,4 +1,5 @@
 export * from "./atoms/button";
+export * from "./atoms/chip";
 export * from "./atoms/eyebrow";
 export * from "./atoms/grid-rails";
 export * from "./atoms/heading";
@@ -7,6 +8,7 @@ export * from "./atoms/input";
 export * from "./atoms/link";
 export * from "./atoms/living-light";
 export * from "./atoms/rule";
+export * from "./atoms/select";
 export * from "./atoms/status-lamp";
 export * from "./atoms/textarea";
 export * from "./molecules/chart-frame";
