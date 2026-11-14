@@ -65,9 +65,6 @@ describe("primitive colours", () => {
       "ambient-paper-base": "#efe8da",
       "ambient-paper-high": "#fbf8f1",
       "ambient-paper-accent": "#b7be95",
-      "ambient-blaze-base": "#4b6b4e",
-      "ambient-blaze-mid": "#b7b07e",
-      "ambient-blaze-high": "#f6e9c2",
     });
   });
 });

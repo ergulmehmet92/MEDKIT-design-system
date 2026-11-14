@@ -9,7 +9,7 @@ export type Rgb = [number, number, number];
 export const PALETTES = {
   forest: { base: "#0F1B14", mid: "#35543F", high: "#DDD2AC", accent: "#D9A441", grain: 1 },
   paper: { base: "#EFE8DA", mid: "#CDB88F", high: "#FBF8F1", accent: "#B7BE95", grain: 0.45 },
-  blaze: { base: "#4B6B4E", mid: "#B7B07E", high: "#F6E9C2", accent: "#E0A93F", grain: 0.8 },
+  blaze: { base: "#8FA17C", mid: "#CDB88F", high: "#FFFDF6", accent: "#E0A93F", grain: 0.8 },
 } as const;
 
 export function hexToRgb(hex: string): Rgb {

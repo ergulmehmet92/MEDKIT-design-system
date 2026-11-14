@@ -13,7 +13,7 @@
   /*
    * The cut: a dark sheet multiplied over the light. White type multiplies to the light itself, so the
    * words show the light through them while the sheet stays dark. White here is a blend operand, not a
-   * colour choice. At Blaze's darkest point the type keeps 3.3:1 against the sheet.
+   * colour choice. At Blaze's darkest point the type keeps 6.9:1 against the sheet.
    */
   .mk-poster-cut {
     position: absolute;

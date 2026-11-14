@@ -19,7 +19,7 @@
 
 The Blaze light sits behind a dark sheet in the Forest surface colour. The sheet is multiplied over the light, and its white type multiplies to the light itself, so the words show the light while the sheet stays dark. A honey quarter circle sits in the top corner. Type is bold, sized by `font.size.poster` and capped at 27% of the poster's width, with the poster leading and tracking.
 
-The poster always uses Forest and Blaze, whatever the page's theme: Blaze's darkest colour keeps the type at 3.3:1 against the sheet, where Forest's own light would fall to 1.2:1. A test checks the ratio from the tokens.
+The poster always uses Forest and Blaze, whatever the page's theme. Blaze is built from the palette's sage, sand, highlight and honey, with no colours of its own: Blaze's darkest colour keeps the type at 6.9:1 against the sheet, where Forest's own light would fall to 1.2:1. A test checks the ratio from the tokens.
 
 ## Fallbacks
 
