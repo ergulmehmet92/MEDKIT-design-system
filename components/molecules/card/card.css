@@ -1,0 +1,197 @@
+@layer components {
+  /* Glass with the panel's corners, as chosen on the Cards board (option A). */
+  .mk-card {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    min-inline-size: 0;
+    overflow: hidden;
+    border-radius: var(--mk-radius-panel);
+    color: var(--mk-color-text-default);
+    background: color-mix(in oklab, var(--mk-color-surface-default) 58%, transparent);
+    -webkit-backdrop-filter: blur(22px) saturate(1.35);
+    backdrop-filter: blur(22px) saturate(1.35);
+    border: var(--mk-border-width-default) solid color-mix(in oklab, var(--mk-color-material-specular) 14%, transparent);
+    box-shadow:
+      inset 0 1px 0 color-mix(in oklab, var(--mk-color-material-specular) 16%, transparent),
+      0 18px 40px -24px color-mix(in oklab, var(--mk-color-material-shade) 70%, transparent);
+    transition:
+      translate 0.3s var(--mk-motion-easing-default),
+      box-shadow 0.3s var(--mk-motion-easing-default);
+
+    @media (hover: hover) {
+      &:hover {
+        translate: 0 -3px;
+        box-shadow:
+          inset 0 1px 0 color-mix(in oklab, var(--mk-color-material-specular) 24%, transparent),
+          0 26px 48px -24px color-mix(in oklab, var(--mk-color-material-shade) 80%, transparent);
+      }
+    }
+
+    /* The link is the title; the whole card shows its focus. */
+    &:has(.mk-card-title a:focus-visible) {
+      outline: var(--mk-border-width-focus) solid var(--mk-color-border-focus);
+      outline-offset: 3px;
+    }
+  }
+
+  .mk-card-media {
+    position: relative;
+    margin: var(--mk-space-2) var(--mk-space-2) 0;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    border-radius: calc(var(--mk-radius-panel) - var(--mk-space-2));
+    background: color-mix(in oklab, var(--mk-color-text-default) 7%, transparent);
+
+    &[data-ratio="9:16"] {
+      aspect-ratio: 9 / 16;
+    }
+
+    &[data-ratio="4:3"] {
+      aspect-ratio: 4 / 3;
+    }
+
+    & img {
+      display: block;
+      inline-size: 100%;
+      block-size: 100%;
+      object-fit: cover;
+    }
+
+    &[data-missing] {
+      display: grid;
+      place-items: center;
+
+      & svg {
+        inline-size: 2.5rem;
+        block-size: 2.5rem;
+        fill: none;
+        stroke: var(--mk-color-text-muted);
+        stroke-width: 1.5;
+      }
+    }
+  }
+
+  /* Durations sit on the picture as text, on a dark lozenge that reads on any frame. */
+  .mk-card-duration {
+    position: absolute;
+    inset-block-end: var(--mk-space-2);
+    inset-inline-end: var(--mk-space-2);
+    padding: 0.1875rem 0.4375rem;
+    border-radius: var(--mk-radius-control);
+    font-family: var(--mk-font-family-label);
+    font-size: var(--mk-font-size-label);
+    line-height: 1;
+    letter-spacing: 0.04em;
+    color: var(--mk-color-highlight);
+    background: color-mix(in srgb, var(--mk-color-forest-deep) 72%, transparent);
+  }
+
+  .mk-card-hidden {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .mk-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mk-gap-sm);
+    padding: calc(var(--mk-inset-md) + var(--mk-space-1)) var(--mk-inset-lg) var(--mk-inset-lg);
+  }
+
+  /* The meta reads above the title, but follows it in the source so the title comes first. */
+  .mk-card-meta {
+    order: -1;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 0.625rem;
+    font-family: var(--mk-font-family-label);
+    font-size: var(--mk-font-size-label);
+    letter-spacing: var(--mk-tracking-label);
+    line-height: var(--mk-line-height-snug);
+    text-transform: uppercase;
+    color: var(--mk-color-text-muted);
+
+    & > * + *::before {
+      content: "\00B7" / "";
+      margin-inline-end: 0.625rem;
+    }
+  }
+
+  .mk-card-title {
+    margin: 0;
+    font-size: var(--mk-font-size-lead);
+    font-weight: var(--mk-font-weight-body);
+    line-height: var(--mk-line-height-snug);
+    letter-spacing: var(--mk-tracking-title);
+
+    & a {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+      color: inherit;
+      text-decoration: none;
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+      }
+
+      &:focus-visible {
+        outline: none;
+      }
+    }
+  }
+
+  .mk-card-summary {
+    margin: 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    color: var(--mk-color-text-muted);
+    line-height: var(--mk-line-height-body);
+  }
+
+  .mk-card-foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--mk-gap-sm);
+    margin-block-start: var(--mk-space-1);
+  }
+
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .mk-card {
+      background: var(--mk-color-surface-default);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mk-card {
+      transition: none;
+
+      &:hover {
+        translate: none;
+      }
+    }
+  }
+
+  @media (forced-colors: active) {
+    .mk-card {
+      border-color: CanvasText;
+      box-shadow: none;
+    }
+
+    .mk-card-duration {
+      border: 1px solid CanvasText;
+    }
+  }
+}

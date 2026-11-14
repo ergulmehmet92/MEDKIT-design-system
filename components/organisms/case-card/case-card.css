@@ -1,0 +1,7 @@
+@layer components {
+  .mk-case-outcome {
+    margin: 0;
+    color: var(--mk-color-text-default);
+    line-height: var(--mk-line-height-snug);
+  }
+}
