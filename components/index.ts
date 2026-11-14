@@ -17,6 +17,7 @@ export * from "./molecules/gauge";
 export * from "./molecules/metric";
 export * from "./molecules/sparkline";
 export * from "./molecules/status-pill";
+export * from "./molecules/tabs";
 export * from "./molecules/theme-switch";
 export * from "./molecules/track-bar";
 export * from "./organisms/area-chart";

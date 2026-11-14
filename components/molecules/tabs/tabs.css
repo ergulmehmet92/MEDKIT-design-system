@@ -1,0 +1,112 @@
+@layer components {
+  .mk-tabs {
+    display: grid;
+    gap: var(--mk-gap-md);
+    min-inline-size: 0;
+  }
+
+  /* A shallow well that holds the tabs, and scrolls sideways when they don't fit. */
+  .mk-tabs-list {
+    position: relative;
+    display: flex;
+    gap: var(--mk-space-1);
+    padding: var(--mk-space-1);
+    overflow-x: auto;
+    scrollbar-width: none;
+    border-radius: var(--mk-radius-control);
+    background: color-mix(in srgb, var(--mk-color-surface-default) 24%, transparent);
+    box-shadow:
+      inset 0 1px 2px color-mix(in srgb, var(--mk-color-material-shade) 45%, transparent),
+      0 1px 0 color-mix(in srgb, var(--mk-color-material-specular) 14%, transparent);
+
+    &[data-fade-end]:not([data-fade-start]) {
+      mask-image: linear-gradient(90deg, #000 calc(100% - var(--mk-space-12)), transparent);
+    }
+
+    &[data-fade-start]:not([data-fade-end]) {
+      mask-image: linear-gradient(270deg, #000 calc(100% - var(--mk-space-12)), transparent);
+    }
+
+    &[data-fade-start][data-fade-end] {
+      mask-image: linear-gradient(90deg, transparent, #000 var(--mk-space-12), #000 calc(100% - var(--mk-space-12)), transparent);
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .mk-tab {
+    position: relative;
+    flex: none;
+    min-block-size: calc(var(--mk-size-control) - var(--mk-space-2));
+    margin: 0;
+    padding: 0 var(--mk-inset-control);
+    border: 0;
+    border-radius: var(--mk-radius-control);
+    font: inherit;
+    font-size: var(--mk-font-size-body);
+    line-height: var(--mk-line-height-snug);
+    color: var(--mk-color-text-muted);
+    background: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition:
+      color var(--mk-motion-duration-interaction),
+      background-color var(--mk-motion-duration-interaction);
+
+    @media (hover: hover) {
+      &:hover {
+        color: var(--mk-color-text-default);
+      }
+    }
+
+    &:focus-visible {
+      outline: var(--mk-border-width-focus) solid var(--mk-color-border-focus);
+      outline-offset: -2px;
+    }
+
+    /* Selected: a Lens body, the text colour, and an underline, so it never rests on colour. */
+    &[aria-selected="true"] {
+      color: var(--mk-color-text-default);
+      background: color-mix(in srgb, var(--mk-color-surface-default) 50%, transparent);
+      box-shadow:
+        inset 0 0 0 0.5px color-mix(in srgb, var(--mk-color-material-specular) 30%, transparent),
+        0 2px 6px -2px color-mix(in srgb, var(--mk-color-material-shade) 60%, transparent);
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset-inline: 30%;
+        inset-block-end: var(--mk-space-1);
+        block-size: 2px;
+        border-radius: 1px;
+        background: currentColor;
+      }
+    }
+  }
+
+  .mk-tabs-panel:focus-visible {
+    outline: var(--mk-border-width-focus) solid var(--mk-color-border-focus);
+    outline-offset: 2px;
+    border-radius: var(--mk-space-1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mk-tab {
+      transition: none;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .mk-tabs-list {
+      border: 1px solid CanvasText;
+      box-shadow: none;
+    }
+
+    .mk-tab[aria-selected="true"] {
+      border: 1px solid CanvasText;
+      box-shadow: none;
+    }
+  }
+}
