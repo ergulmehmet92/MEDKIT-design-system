@@ -2,7 +2,7 @@
 
 MED·Kit follows [semantic versioning](docs/versioning.md). Dates are when a version is tagged.
 
-## 2.1.0 (unreleased)
+## 2.1.0 (15 Nov 2026)
 
 ### Added
 
