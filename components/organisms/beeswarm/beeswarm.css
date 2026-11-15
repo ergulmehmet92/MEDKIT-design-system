@@ -1,3 +1,5 @@
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   /* Dots take their group's colour from `color`, with a surface ring so neighbours stay apart. */
   .mk-beeswarm-dot {

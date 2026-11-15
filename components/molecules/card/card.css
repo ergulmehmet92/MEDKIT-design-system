@@ -1,3 +1,5 @@
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   /* Glass with the panel's corners, as chosen on the Cards board (option A). */
   .mk-card {

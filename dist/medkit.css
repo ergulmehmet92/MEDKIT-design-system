@@ -704,6 +704,8 @@
 }
 
 /* components/atoms/avatar/avatar.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-avatar {
     --mk-avatar-size: 3rem;
@@ -761,6 +763,8 @@
 }
 
 /* components/atoms/badge/badge.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-badge {
     box-sizing: border-box;
@@ -816,6 +820,8 @@
 }
 
 /* components/atoms/button/button.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-button {
     --_angle: var(--mk-light-angle, 0deg);
@@ -1029,6 +1035,8 @@
 }
 
 /* components/atoms/chip/chip.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-chip {
     position: relative;
@@ -1147,6 +1155,8 @@
 }
 
 /* components/atoms/count-up/count-up.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-count-up {
     font-variant-numeric: tabular-nums;
@@ -1200,6 +1210,8 @@
 }
 
 /* components/atoms/draw-line/draw-line.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-draw-line {
     overflow: visible;
@@ -1226,6 +1238,8 @@
 }
 
 /* components/atoms/eyebrow/eyebrow.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-eyebrow {
     margin: 0;
@@ -1240,6 +1254,8 @@
 }
 
 /* components/atoms/grid-rails/grid-rails.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   /* Give the parent `position: relative` and `isolation: isolate`. */
   .mk-grid-rails {
@@ -1284,6 +1300,8 @@
 }
 
 /* components/atoms/heading/heading.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-heading {
     margin: 0;
@@ -1319,6 +1337,8 @@
 }
 
 /* components/atoms/icon-button/icon-button.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-button.mk-icon-button {
     flex: none;
@@ -1329,6 +1349,8 @@
 }
 
 /* components/atoms/input/input.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   /*
    * The well: Lens glass pressed into the surface, from the Controls board. Shade along the top
@@ -1454,6 +1476,8 @@
 }
 
 /* components/atoms/link/link.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   /* Inline: an underline that warms to the accent on hover. Visited links look the same on purpose,
      because the portfolio's links are few and revisiting them is expected. */
@@ -1541,6 +1565,8 @@
 }
 
 /* components/atoms/living-light/living-light.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   /* Blaze pins the poster colourway, so the fallback gradient matches the shader. */
   .mk-living-light[data-theme="blaze"] {
@@ -1585,6 +1611,8 @@
 }
 
 /* components/atoms/reveal/reveal.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   /*
    * Scroll-driven animation is newly available, so it sits behind feature detection: without it the
@@ -1614,6 +1642,8 @@
 }
 
 /* components/atoms/rule/rule.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   /* A border rather than a background, so forced-colors mode keeps it visible. */
   .mk-rule {
@@ -1634,6 +1664,8 @@
 }
 
 /* components/atoms/select/select.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-select {
     position: relative;
@@ -1680,6 +1712,8 @@
 }
 
 /* components/atoms/status-lamp/status-lamp.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   /*
    * Shapes and motion from the approved Lamps board. The radar and scan take motion.duration.lamp-pulse
@@ -1860,6 +1894,8 @@
 }
 
 /* components/atoms/textarea/textarea.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-textarea {
     display: block;
@@ -1879,6 +1915,8 @@
 }
 
 /* components/molecules/card/card.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   /* Glass with the panel's corners, as chosen on the Cards board (option A). */
   .mk-card {
@@ -2078,6 +2116,8 @@
 }
 
 /* components/molecules/chart-frame/chart-frame.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   /* Mark specs from Data board 1. Every chart reads these, so they change in one place. */
   .mk-chart {
@@ -2554,6 +2594,8 @@
 }
 
 /* components/molecules/field/field.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-field {
     display: grid;
@@ -2606,6 +2648,8 @@
 }
 
 /* components/molecules/gauge/gauge.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-gauge {
     display: grid;
@@ -2766,6 +2810,8 @@
 }
 
 /* components/molecules/metric/metric.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-metric {
     display: flex;
@@ -2792,6 +2838,8 @@
 }
 
 /* components/molecules/pull-quote/pull-quote.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-pull-quote {
     display: grid;
@@ -2849,6 +2897,8 @@
 }
 
 /* components/molecules/sparkline/sparkline.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-sparkline {
     --mk-sparkline-ink: var(--mk-color-text-muted);
@@ -2915,6 +2965,8 @@
 }
 
 /* components/molecules/status-pill/status-pill.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   /* As the board's readings: a small lamp and the words, in the text colour. No chrome around them. */
   .mk-status-pill {
@@ -2931,6 +2983,8 @@
 }
 
 /* components/molecules/step-relay/step-relay.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-step-relay {
     position: relative;
@@ -3084,6 +3138,8 @@
 }
 
 /* components/molecules/tabs/tabs.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-tabs {
     display: grid;
@@ -3199,6 +3255,8 @@
 }
 
 /* components/molecules/track-bar/track-bar.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-track-bar {
     --mk-track-bar-thickness: 6px;
@@ -3353,6 +3411,8 @@
 }
 
 /* components/organisms/area-chart/area-chart.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-area-layer path:first-child,
   rect.mk-area-layer {
@@ -3394,6 +3454,8 @@
 }
 
 /* components/organisms/bar-chart/bar-chart.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-bar {
     transition: opacity var(--mk-motion-duration-interaction) var(--mk-motion-easing-default);
@@ -3435,6 +3497,8 @@
 }
 
 /* components/organisms/beeswarm/beeswarm.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   /* Dots take their group's colour from `color`, with a surface ring so neighbours stay apart. */
   .mk-beeswarm-dot {
@@ -3479,6 +3543,8 @@
 }
 
 /* components/organisms/bullet-chart/bullet-chart.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-bullet-track {
     fill: color-mix(in oklab, var(--mk-color-text-default) 4%, transparent);
@@ -3518,6 +3584,8 @@
 }
 
 /* components/organisms/candlestick-chart/candlestick-chart.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   /* Candles take their arm's colour from `color`. Rising is hollow, falling is filled. */
   .mk-candle {
@@ -3575,6 +3643,8 @@
 }
 
 /* components/organisms/case-card/case-card.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-case-outcome {
     margin: 0;
@@ -3584,6 +3654,8 @@
 }
 
 /* components/organisms/contact-routes/contact-routes.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-contact-routes {
     margin: 0;
@@ -3631,6 +3703,8 @@
 }
 
 /* components/organisms/data-table/data-table.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   /* Rows are 36px in analytical density and 48px in editorial, as on Data board 3. */
   .mk-data-table {
@@ -3897,6 +3971,8 @@
 }
 
 /* components/organisms/donut-chart/donut-chart.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-donut-slice {
     transition: opacity var(--mk-motion-duration-interaction) var(--mk-motion-easing-default);
@@ -3939,6 +4015,8 @@
 }
 
 /* components/organisms/entry-card/entry-card.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-entry-changes {
     margin: 0;
@@ -3976,6 +4054,8 @@
 }
 
 /* components/organisms/footer/footer.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-footer {
     padding-block: var(--mk-inset-lg) var(--mk-inset-md);
@@ -4095,6 +4175,8 @@
 }
 
 /* components/organisms/header/header.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-header {
     container-type: inline-size;
@@ -4236,6 +4318,8 @@
 }
 
 /* components/organisms/heatmap/heatmap.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-heat-cell {
     transition: opacity var(--mk-motion-duration-interaction) var(--mk-motion-easing-default);
@@ -4293,6 +4377,8 @@
 }
 
 /* components/organisms/histogram/histogram.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-histogram-spread {
     fill: color-mix(in oklab, var(--mk-color-text-default) 6%, transparent);
@@ -4325,6 +4411,8 @@
 }
 
 /* components/organisms/line-chart/line-chart.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   /* The forecast fan: two washes of the forecast series' colour, set as `color` on the group. */
   .mk-line-forecast path {
@@ -4375,6 +4463,8 @@
 }
 
 /* components/organisms/metric-row/metric-row.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-metric-row {
     display: grid;
@@ -4385,6 +4475,8 @@
 }
 
 /* components/organisms/panel/panel.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   /* Glass over the living light, as approved on Data board 3. */
   .mk-panel {
@@ -4487,6 +4579,8 @@
 }
 
 /* components/organisms/poster-headline/poster-headline.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-poster {
     position: relative;
@@ -4568,6 +4662,8 @@
 }
 
 /* components/organisms/ridgeline-chart/ridgeline-chart.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   /* Ridges are opaque tints, so each one covers the one behind it. */
   .mk-ridge-fill {
@@ -4604,6 +4700,8 @@
 }
 
 /* components/organisms/sankey-chart/sankey-chart.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   /* A flow wears the tint of where it lands, from `color`. Upstream flows are quieter. */
   .mk-sankey-flow {
@@ -4644,6 +4742,8 @@
 }
 
 /* components/organisms/scatter-chart/scatter-chart.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-scatter-dot {
     stroke: var(--mk-color-surface-default);
@@ -4688,6 +4788,8 @@
 }
 
 /* components/organisms/section/section.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-section {
     position: relative;
@@ -4723,6 +4825,8 @@
 }
 
 /* components/organisms/slope-chart/slope-chart.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-slope-axis {
     stroke: var(--mk-color-border-default);
@@ -4759,6 +4863,8 @@
 }
 
 /* components/organisms/treemap/treemap.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   /* Tiles take their group's colour from `color`: a tint as the fill, the full colour as the edge. */
   .mk-treemap-tile rect {
@@ -4806,6 +4912,8 @@
 }
 
 /* components/organisms/waterfall-chart/waterfall-chart.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-waterfall-link {
     stroke: var(--mk-color-border-strong);
@@ -4838,6 +4946,8 @@
 }
 
 /* components/templates/dashboard-page/dashboard-page.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-dashboard-page {
     position: relative;
@@ -4913,6 +5023,8 @@
 }
 
 /* components/templates/editorial-page/editorial-page.css */
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   .mk-editorial-page {
     position: relative;

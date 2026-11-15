@@ -1,3 +1,5 @@
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   /* Blaze pins the poster colourway, so the fallback gradient matches the shader. */
   .mk-living-light[data-theme="blaze"] {

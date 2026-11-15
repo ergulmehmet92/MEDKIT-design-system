@@ -1,3 +1,5 @@
+@layer reset, tokens, base, components, utilities;
+
 @layer components {
   /* Inline: an underline that warms to the accent on hover. Visited links look the same on purpose,
      because the portfolio's links are few and revisiting them is expected. */

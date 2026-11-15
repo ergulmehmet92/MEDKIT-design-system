@@ -8,6 +8,10 @@ MED·Kit follows [semantic versioning](docs/versioning.md). Dates are when a ver
 
 - `tokens.json`, exported as `@ergulmehmet92/medkit/tokens.json`: every colour role resolved to hex in Forest and Paper, the font stacks, and type sizes in pixels, for code that can't read CSS, such as emails and video.
 
+### Fixed
+
+- Every component stylesheet now declares the kit's layer order first. A bundler that emitted a component's CSS before `tokens.css` put the components layer below `base`, so a host's base reset, such as Tailwind's preflight, overrode the kit's sizes and spacing.
+
 ## 2.0.0 (15 Nov 2026)
 
 A rebuild. MED·Kit becomes one design system for three products, a portfolio, a dashboard and a video studio, with one brand and two densities. Nothing from v1 carries over as code; some names carry over as concepts.
