@@ -3348,15 +3348,10 @@
     background: var(--mk-color-dataviz-accent);
   }
 
-  /* Out of range, or past a limit: red, as on the bullet chart, and the readout says by how much. */
-  .mk-track-bar[data-status] {
-    & .mk-track-bar-fill {
-      background: var(--mk-color-dataviz-down);
-    }
-
-    & .mk-track-bar-readout {
-      color: var(--mk-color-dataviz-down);
-    }
+  /* Out of range, or past a limit: the bar turns red, as on the bullet chart, and the readout says by
+     how much in ink. Red as text misses 4.5:1 on Paper. */
+  .mk-track-bar[data-status] .mk-track-bar-fill {
+    background: var(--mk-color-dataviz-down);
   }
 
   .mk-track-bar-note {
@@ -3899,11 +3894,13 @@
       block-size: 0.6em;
     }
 
-    &[data-dir="up"] {
+    /* The arrow carries the direction colour; the number stays in ink. Red and green as text
+       miss 4.5:1 on Paper, and the signed number already says the direction in words. */
+    &[data-dir="up"] svg {
       color: var(--mk-color-dataviz-up);
     }
 
-    &[data-dir="down"] {
+    &[data-dir="down"] svg {
       color: var(--mk-color-dataviz-down);
     }
   }

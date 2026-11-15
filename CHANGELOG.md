@@ -11,6 +11,7 @@ MED·Kit follows [semantic versioning](docs/versioning.md). Dates are when a ver
 ### Fixed
 
 - Every component stylesheet now declares the kit's layer order first. A bundler that emitted a component's CSS before `tokens.css` put the components layer below `base`, so a host's base reset, such as Tailwind's preflight, overrode the kit's sizes and spacing.
+- DataTable direction cells and an out-of-range TrackBar readout set their text in ink. The red and green moved to the arrow and the bar: as text they measured 3.6:1 on Paper, under the 4.5:1 that WCAG AA asks of text. The signed number and the readout still say the direction in words.
 
 ## 2.0.0 (15 Nov 2026)
 

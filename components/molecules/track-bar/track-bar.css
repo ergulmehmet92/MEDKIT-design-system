@@ -91,15 +91,10 @@
     background: var(--mk-color-dataviz-accent);
   }
 
-  /* Out of range, or past a limit: red, as on the bullet chart, and the readout says by how much. */
-  .mk-track-bar[data-status] {
-    & .mk-track-bar-fill {
-      background: var(--mk-color-dataviz-down);
-    }
-
-    & .mk-track-bar-readout {
-      color: var(--mk-color-dataviz-down);
-    }
+  /* Out of range, or past a limit: the bar turns red, as on the bullet chart, and the readout says by
+     how much in ink. Red as text misses 4.5:1 on Paper. */
+  .mk-track-bar[data-status] .mk-track-bar-fill {
+    background: var(--mk-color-dataviz-down);
   }
 
   .mk-track-bar-note {

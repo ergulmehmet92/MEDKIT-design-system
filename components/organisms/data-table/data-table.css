@@ -194,11 +194,13 @@
       block-size: 0.6em;
     }
 
-    &[data-dir="up"] {
+    /* The arrow carries the direction colour; the number stays in ink. Red and green as text
+       miss 4.5:1 on Paper, and the signed number already says the direction in words. */
+    &[data-dir="up"] svg {
       color: var(--mk-color-dataviz-up);
     }
 
-    &[data-dir="down"] {
+    &[data-dir="down"] svg {
       color: var(--mk-color-dataviz-down);
     }
   }
