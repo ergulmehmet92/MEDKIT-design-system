@@ -1,9 +1,14 @@
-// Fails if the public package, docs or built Storybook mention anything that belongs in the private
-// portfolio repo: employers' products, career plans, private specs and plans, or personal addresses.
+// Fails if the public package, docs or built Storybook mention anything that belongs in a private
+// repo: career plans, private specs and plans, or personal addresses. Names that would themselves be
+// private go one per line in .private-terms, which git ignores, and are added to the check.
 import { readdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
 
-const TERMS = /salary|recruit|job search|career|SPEC-medkit|SPEC-brand|tasks\/plan|tasks\/todo/i;
+const GENERIC = ["salary", "recruit", "job search", "career", "SPEC-medkit", "SPEC-brand", "tasks/plan", "tasks/todo"];
+const LOCAL = (await readFile(".private-terms", "utf8").catch(() => "")).split("\n").map((t) => t.trim()).filter(Boolean);
+const escape = (t) => t.replace(/[.*+?^${}()|[\]\\/]/g, "\\$&");
+const TERMS = new RegExp([...GENERIC, ...LOCAL].map(escape).join("|"), "i");
+if (!LOCAL.length) console.warn("No .private-terms file: checking the generic terms only.");
 const ROOTS = ["components", "docs", "examples", "dist", "storybook-static", "README.md", "SKILL.md"];
 const TEXT = /\.(tsx?|jsx?|mjs|css|json|md|mdx|html|txt)$/;
 

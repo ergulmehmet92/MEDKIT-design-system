@@ -1,30 +1,34 @@
 ---
 name: medkit-design
-description: Use this skill to generate well-crafted interfaces and assets with MED·Kit, the Mehmet Ergul Design Kit (a quiet, near-black, cinematic editorial design language with one warm rust accent), either for production or throwaway prototypes/mocks/etc. Contains essential design guidelines, colors, type, fonts, and UI kit components for prototyping.
+description: Use this skill to build interfaces, pages, dashboards, charts, mocks or prototypes with MED·Kit, the Mehmet Ergul Design Kit (Forest and Paper themes over a living light, glass panels, honey as the one accent, editorial and analytical densities). Covers its tokens, components, templates and rules.
 user-invocable: true
 ---
 
-Read the README.md file within this skill, and explore the other available files.
-
-If creating visual artifacts (slides, mocks, throwaway prototypes, etc), copy assets out and create static HTML files for the user to view. If working on production code, you can copy assets and read the rules here to become an expert in designing with this system.
-
-If the user invokes this skill without any other guidance, ask them what they want to build or design, ask some questions, and act as an expert designer who outputs HTML artifacts _or_ production code, depending on the need.
+MED·Kit is a React 19 design system with DTCG tokens. Read `README.md` first, then the spec beside any component you use (`components/<level>/<name>/<name>.spec.md`).
 
 ## Where things live
-- `README.md` — full design guide: scaling architecture, content voice, visual foundations, iconography, manifest.
-- `styles.css` — global stylesheet; link it to inherit every token. `@import`s `tokens/*.css`.
-- `tokens/` — colors (dual theme + domain signals), typography, spacing, radii/shadows, motion, fonts (Inter via Google Fonts).
-- `components/` — theme-aware React primitives (Button, Badge, Chip, Card, Avatar, IconButton, SectionLabel, Tabs, Input, Select, LiveBadge), content components (VideoCard, PostCard, IterationCard, VersionBadge, PullQuote), and data components (Panel, StatTile, TrackBar, StatusPill, LineChart, BarChart, DonutChart, DataTable), exported on `window.MehmetErgulDesignSystem_61b8ed` via `_ds_bundle.js` (bundle predates the data/PullQuote additions — import those from source until it is regenerated).
-- `guidelines/` — foundation specimen cards.
-- `ui_kits/portfolio/` — a personal-portfolio example (Home, Thoughts, About, Article).
-- `ui_kits/studio/` — multi-domain content hub (Videos, Writing on the paper theme, Design iterations).
 
-## Scaling across domains
-- Wrap any surface in `data-theme="ink"` (dark, default) or `data-theme="paper"` (warm light reading). Components adapt automatically — author against semantic tokens (`--color-bg`, `--color-fg`, `--surface-contrast`), never raw hex.
-- Give a content stream its signature with a domain accent: `editorial` (rust) · `content` (amber) · `craft` (steel) · `live` (green, status only). Re-point `--accent` locally and use `Button variant="accent"` / `Badge tone="…"`. Never introduce hues outside this set.
+- `dist/tokens/tokens.css`: every token as a CSS custom property. Load it first. `dist/medkit.css` adds every component's CSS, for pages without React.
+- `dist/tokens/motion.json`: the motion scale for video.
+- `components/`: atoms, molecules, organisms and templates, each with a spec, stories and tests. `components/index.ts` exports them all.
+- `docs/`: the foundation pages (colour, type, density, materials, motion, data), the lineage map and the versioning policy.
+- `examples/plain.html`: static components with `medkit.css` alone.
 
-## House rules (the short version)
-- Near-black canvas (`#0e0e0e`), monochrome greys, **one** rust accent (`#c0551a`) used only in long-form editorial. No new hues.
-- Inter everywhere; display set **light (300)** with tight tracking; editorial article H1s bold (700). Labels small, uppercase, wide-tracked grey. Lowercase nav.
-- Hairline `1px` borders; pill chips/CTAs; restrained radii; soft deep shadows. Glass header with backdrop blur.
-- Motion: ease-out-expo `cubic-bezier(0.16,1,0.3,1)`, fade-up entrances, hovers brighten borders / lift text. No emoji.
+## Building with it
+
+1. Set `data-theme` (`forest` or `paper`) and `data-density` (`editorial` for reading, `analytical` for working) on the page or any section.
+2. Start from a template: `EditorialPage` with `PageHero`, `Section`s and a `Footer`, or `DashboardPage` with tiles, an aside and panels.
+3. Put each chart, table or gauge in a `Panel`. Under a page's h1, give panels `titleAs="h2"`.
+4. Use components' props for variation, and semantic tokens (`--mk-color-text-default`, `--mk-gap-md`) for anything custom. Never use primitives or raw colours.
+
+For a throwaway mock without a build, link `dist/medkit.css` and write the class names from the docs.
+
+## Rules
+
+- **Colour:** Forest is the default theme. Honey is the only accent, once per view. Status colours (Live, Stale, Failed) only report state, always beside a word in a StatusPill. Errors use the Failed colour with a sentence saying how to fix them. No new colours.
+- **Charts:** one story series in the lead colour, comparisons in grey, green and red for up and down with a sign, honey for the one thing that matters. Keys appear on hover or focus. Every chart keeps its table.
+- **Type:** TeX Gyre Heros for reading, Share Tech Mono uppercase for labels. Tabular figures for numbers that compare, and a real minus.
+- **Materials:** one primary action per view, in Eclipse (`Button`); everything else is Lens (`variant="quiet"`). One-line controls are stadiums; panels and cards have 18px corners.
+- **Motion:** use the motion tokens. Nothing blinks faster than once a second. Every motion needs a reduced-motion end state.
+- **Writing:** plain, first person, short sentences. Titles state the point, such as "NVDA is over its range", rather than naming the data.
+- **Accessibility:** WCAG 2.2 AA in both themes and densities. Don't remove a component's labels, tables or live regions.

@@ -21,7 +21,6 @@
       "contains": [],
       "used_in": [
         "app:../portfolio/src/components/sections/medkit/component-docs.tsx",
-        "core",
         "index"
       ],
       "orphan": false
@@ -36,7 +35,6 @@
         "app:../portfolio/src/components/sections/medkit/foundations.tsx",
         "app:../portfolio/src/components/sections/medkit/overview-page.tsx",
         "app:../portfolio/src/components/sections/medkit/setup-page.tsx",
-        "core",
         "entry-card",
         "index"
       ],
@@ -98,7 +96,6 @@
         "app:../portfolio/src/components/sections/project-beta/AgenticCaseContent.tsx",
         "app:../portfolio/src/components/ui/ContactModal.tsx",
         "chart-frame",
-        "core",
         "icon-button",
         "index"
       ],
@@ -128,7 +125,6 @@
         "app:../portfolio/src/components/sections/medkit/overview-page.tsx",
         "app:../portfolio/src/components/sections/medkit/setup-page.tsx",
         "case-card",
-        "core",
         "entry-card",
         "index",
         "media-card",
@@ -194,7 +190,6 @@
         "app:../portfolio/src/components/sections/medkit/style-pages.tsx",
         "app:../portfolio/src/components/sections/predictor/DashboardTab.tsx",
         "case-card",
-        "core",
         "index",
         "post-card"
       ],
@@ -210,31 +205,6 @@
         "index"
       ],
       "orphan": false
-    },
-    "content": {
-      "tier": null,
-      "files": 11,
-      "elements": [],
-      "contains": [
-        "post-card"
-      ],
-      "used_in": [],
-      "orphan": true
-    },
-    "core": {
-      "tier": null,
-      "files": 15,
-      "elements": [],
-      "contains": [
-        "avatar",
-        "badge",
-        "button",
-        "card",
-        "chip",
-        "icon-button"
-      ],
-      "used_in": [],
-      "orphan": true
     },
     "count-up": {
       "tier": "atoms",
@@ -258,14 +228,6 @@
         "index"
       ],
       "orphan": false
-    },
-    "data": {
-      "tier": null,
-      "files": 18,
-      "elements": [],
-      "contains": [],
-      "used_in": [],
-      "orphan": true
     },
     "data-table": {
       "tier": "organisms",
@@ -349,14 +311,6 @@
       ],
       "orphan": false
     },
-    "feedback": {
-      "tier": null,
-      "files": 3,
-      "elements": [],
-      "contains": [],
-      "used_in": [],
-      "orphan": true
-    },
     "field": {
       "tier": "molecules",
       "files": 2,
@@ -379,17 +333,6 @@
         "index"
       ],
       "orphan": false
-    },
-    "forms": {
-      "tier": null,
-      "files": 5,
-      "elements": [],
-      "contains": [
-        "input",
-        "select"
-      ],
-      "used_in": [],
-      "orphan": true
     },
     "gauge": {
       "tier": "molecules",
@@ -475,7 +418,6 @@
       ],
       "used_in": [
         "app:../portfolio/src/components/sections/medkit/component-docs.tsx",
-        "core",
         "header",
         "index",
         "theme-switch"
@@ -560,7 +502,6 @@
         "app:../portfolio/src/components/sections/medkit/component-docs.tsx",
         "app:../portfolio/src/components/sections/medkit/foundations.tsx",
         "field",
-        "forms",
         "index",
         "select",
         "textarea"
@@ -657,16 +598,6 @@
       ],
       "orphan": false
     },
-    "navigation": {
-      "tier": null,
-      "files": 3,
-      "elements": [],
-      "contains": [
-        "tabs"
-      ],
-      "used_in": [],
-      "orphan": true
-    },
     "panel": {
       "tier": "organisms",
       "files": 2,
@@ -689,7 +620,6 @@
       ],
       "used_in": [
         "app:../portfolio/src/components/sections/medkit/component-docs.tsx",
-        "content",
         "index"
       ],
       "orphan": false
@@ -799,7 +729,6 @@
       "used_in": [
         "app:../portfolio/src/components/sections/Thoughts.tsx",
         "app:../portfolio/src/components/sections/medkit/component-docs.tsx",
-        "forms",
         "index"
       ],
       "orphan": false
@@ -874,8 +803,7 @@
       "used_in": [
         "app:../portfolio/src/components/sections/PredictorCase.tsx",
         "app:../portfolio/src/components/sections/medkit/component-docs.tsx",
-        "index",
-        "navigation"
+        "index"
       ],
       "orphan": false
     },

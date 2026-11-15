@@ -22,7 +22,7 @@ A rebuild. MED·Kit becomes one design system for three products, a portfolio, a
 
 ### Components
 
-67 components, each with a spec, stories and tests, checked with axe in both themes and both densities.
+60 components, each with a spec, stories and tests, checked with axe in both themes and both densities.
 
 - **Atoms:** Avatar, Badge, Button and IconButton, Chip, CountUp, DrawLine, Eyebrow, GridRails, Heading, Input, Link, LivingLight, Reveal, Rule, Select, StatusLamp, Textarea, Typewriter.
 - **Molecules:** Card, ChartFrame, Field, Gauge, Metric, PullQuote, Sparkline, StatusPill, StepRelay, Tabs, ThemeSwitch, TrackBar.

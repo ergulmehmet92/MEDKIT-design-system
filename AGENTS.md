@@ -1,6 +1,6 @@
 # MED·Kit
 
-v2 is being built on the `v2` branch. Legacy v1 files stay in place until they are retired.
+One design system for the portfolio, Predictor and the YouTube studio. See `README.md` for how it works and `SKILL.md` for how to build with it.
 
 ## Browser support
 
@@ -11,3 +11,5 @@ Baseline Widely Available: use freely. Baseline Newly Available: only with featu
 - This repo is public. Don't commit private plans or career details.
 - Components read semantic tokens only, never primitives.
 - Generated files in `dist/` are never edited by hand.
+- Every component ships with a spec, stories and tests; run `npm test`, `npm run typecheck` and `npm run check:private` before committing.
+- Record changes in `CHANGELOG.md` and follow `docs/versioning.md`.
