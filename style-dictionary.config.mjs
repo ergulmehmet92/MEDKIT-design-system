@@ -200,3 +200,56 @@ const motion = {
 };
 await writeFile(join(OUT, "motion.json"), `${JSON.stringify(motion, null, 2)}\n`);
 console.log("Built the motion scale into dist/tokens/motion.json");
+
+// Values for code that can't read CSS, such as emails and video: each colour role resolved to hex in both
+// themes, the font stacks, and type sizes in pixels. Read from the token sources, so it can't drift.
+const paperOverrides = await json("semantic.paper.json");
+const merge = (base, over) => {
+  const out = structuredClone(base);
+  const visit = (target, source) => {
+    for (const [key, value] of Object.entries(source)) {
+      if (value && typeof value === "object" && !("$value" in value) && target[key]) visit(target[key], value);
+      else target[key] = value;
+    }
+  };
+  visit(out, over);
+  return out;
+};
+const resolveIn = (tree) => {
+  const find = (ref) => ref.replace(/^\{|\}$/g, "").split(".").reduce((node, key) => node?.[key], tree)?.$value;
+  const deep = (value) => (typeof value === "string" && /^\{[^{}]+\}$/.test(value) ? deep(find(value)) : value);
+  return deep;
+};
+const hexOf = (value) => {
+  if (!value?.hex) return null;
+  const alpha = value.alpha ?? 1;
+  return alpha < 1 ? value.hex + Math.round(alpha * 255).toString(16).padStart(2, "0") : value.hex;
+};
+const leaves = (node, path = []) =>
+  Object.entries(node).flatMap(([key, value]) =>
+    key.startsWith("$") || !value || typeof value !== "object" ? [] : "$value" in value ? [[[...path, key].join("-"), value.$value]] : leaves(value, [...path, key]),
+  );
+const themeColours = (semanticTree) => {
+  const resolve = resolveIn({ ...primitives, ...semanticTree, color: { ...primitives.color, ...semanticTree.color } });
+  return Object.fromEntries(leaves(semanticTree.color).map(([name, value]) => [name, hexOf(resolve(value))]).filter(([, hex]) => hex));
+};
+const resolveForest = resolveIn(merge(primitives, semantic));
+const px = (value) => (value?.unit === "rem" ? value.value * 16 : value?.unit === "px" ? value.value : null);
+const tokensJson = {
+  $description: "MED·Kit values for code that can't read CSS, such as emails and video. Colours are hex per theme; sizes are px at editorial density. Generated from tokens/; do not edit.",
+  version: JSON.parse(await readFile(join(ROOT, "package.json"), "utf8")).version,
+  color: { forest: themeColours(semantic), paper: themeColours(merge(semantic, paperOverrides)) },
+  font: {
+    family: Object.fromEntries(
+      Object.entries(semantic.font.family).filter(([key]) => !key.startsWith("$")).map(([key, token]) => {
+        const stack = resolveForest(token.$value);
+        return [key, Array.isArray(stack) ? stack.map((f) => (/\s/.test(f) ? `'${f}'` : f)).join(", ") : stack];
+      }),
+    ),
+    size: Object.fromEntries(
+      Object.entries(semantic.font.size).filter(([key]) => !key.startsWith("$")).map(([key, token]) => [key, px(resolveForest(token.$value))]).filter(([, v]) => v),
+    ),
+  },
+};
+await writeFile(join(OUT, "tokens.json"), `${JSON.stringify(tokensJson, null, 2)}\n`);
+console.log("Built colours, fonts and sizes for non-CSS code into dist/tokens/tokens.json");

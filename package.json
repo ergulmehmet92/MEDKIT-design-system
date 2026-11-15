@@ -1,6 +1,6 @@
 {
   "name": "@ergulmehmet92/medkit",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "MED\u00b7Kit: the Mehmet Ergul Design Kit. Design tokens and React components.",
   "private": true,
   "license": "MIT",
@@ -9,7 +9,8 @@
     ".": "./components/index.ts",
     "./tokens.css": "./dist/tokens/tokens.css",
     "./motion.json": "./dist/tokens/motion.json",
-    "./medkit.css": "./dist/medkit.css"
+    "./medkit.css": "./dist/medkit.css",
+    "./tokens.json": "./dist/tokens/tokens.json"
   },
   "sideEffects": [
     "**/*.css"
