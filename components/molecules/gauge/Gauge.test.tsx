@@ -42,6 +42,11 @@ describe("Gauge", () => {
     expect(screen.getByRole("meter").getAttribute("aria-valuetext")).toBe("Crisis, band 4 of 4. The reading is 2.40, in Mid. Forced to 4: high-yield spread is above 4.50%.");
   });
 
+  it("renders nothing without bands, rather than failing", () => {
+    const { container } = render(<Gauge label="Cycle state" value={2} min={1} bands={[]} />);
+    expect(container.innerHTML).toBe("");
+  });
+
   it("carries its why as sections of meters, and passes axe", async () => {
     const { container } = render(
       <Gauge label="Cycle state" value={2.93} min={1} bands={cycleBands}>

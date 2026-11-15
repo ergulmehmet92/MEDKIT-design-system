@@ -120,8 +120,11 @@ export function DataTable<Row>({
     };
     measure();
     node.addEventListener("scroll", measure, { passive: true });
+    // Watch the table too: rows arriving after loading widen it without resizing the scroll area.
     const observer = typeof ResizeObserver === "function" ? new ResizeObserver(measure) : null;
     observer?.observe(node);
+    const table = node.querySelector("table");
+    if (table) observer?.observe(table);
     return () => {
       node.removeEventListener("scroll", measure);
       observer?.disconnect();

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef, type ComponentPropsWithoutRef, type CSSProperties } from "react";
+import { useEffect, useId, useRef, type ComponentPropsWithoutRef } from "react";
 import "./draw-line.css";
 
 export type DrawLineProps = Omit<ComponentPropsWithoutRef<"svg">, "title"> & {
@@ -15,7 +15,7 @@ const SHAPES = "path, line, polyline, polygon, circle, ellipse, rect";
  * Each shape follows the one before by the stagger. Without JavaScript, an IntersectionObserver or
  * motion, the lines are simply drawn. It is the base for motion vectors, once they are placed.
  */
-export function DrawLine({ title, children, className, style, ...rest }: DrawLineProps) {
+export function DrawLine({ title, children, className, ...rest }: DrawLineProps) {
   const ref = useRef<SVGSVGElement>(null);
   const titleId = `${useId()}-title`;
 
@@ -46,7 +46,6 @@ export function DrawLine({ title, children, className, style, ...rest }: DrawLin
     <svg
       ref={ref}
       className={className ? `mk-draw-line ${className}` : "mk-draw-line"}
-      style={style as CSSProperties}
       {...(title ? { role: "img", "aria-labelledby": titleId } : { "aria-hidden": true, focusable: false })}
       {...rest}
     >

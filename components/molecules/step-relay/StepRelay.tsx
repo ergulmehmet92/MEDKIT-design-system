@@ -100,7 +100,7 @@ function useVerticalRuler(enabled: boolean) {
     window.addEventListener("scroll", wake, { passive: true });
     window.addEventListener("resize", wake);
     document.addEventListener("pointermove", onPointer, { passive: true });
-    document.addEventListener("pointerleave", onLeave);
+    document.documentElement.addEventListener("pointerleave", onLeave);
     const resize = typeof ResizeObserver === "function" ? new ResizeObserver(() => (build(), wake())) : null;
     resize?.observe(root);
     const seen =
@@ -117,7 +117,7 @@ function useVerticalRuler(enabled: boolean) {
       window.removeEventListener("scroll", wake);
       window.removeEventListener("resize", wake);
       document.removeEventListener("pointermove", onPointer);
-      document.removeEventListener("pointerleave", onLeave);
+      document.documentElement.removeEventListener("pointerleave", onLeave);
       resize?.disconnect();
       seen?.disconnect();
     };

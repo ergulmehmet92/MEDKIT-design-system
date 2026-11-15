@@ -51,6 +51,7 @@ export function bandOf(value: number, min: number, bands: GaugeBand[]): number {
  */
 export function Gauge({ label, value, min, bands, state, reason, format, reading, valueText, children, className }: GaugeProps) {
   const id = useId();
+  if (!bands.length) return null;
   const max = bands[bands.length - 1].to;
   const fmt = format ?? ((v: number) => v.toFixed(2));
   const current = Math.min(Math.max(state ?? bandOf(value, min, bands), 1), bands.length);

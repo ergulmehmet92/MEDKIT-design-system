@@ -11,6 +11,8 @@ describe("trackStatus", () => {
     expect(trackStatus(9.8, [6, 9]).by).toBeCloseTo(0.8);
     expect(trackStatus(1.2, [1.5, 3]).status).toBe("under");
     expect(trackStatus(5.2, [4, 7]).status).toBeNull();
+    expect(trackStatus(9, [6, 9]).status).toBeNull();
+    expect(trackStatus(6, [6, 9]).status).toBeNull();
     expect(trackStatus(0.52, undefined, 0.5).status).toBe("reached");
   });
 });

@@ -70,7 +70,17 @@ export function Field({ label, hint, error, invalidMessage, optional, required =
     };
     const events = ["blur", "change", "input", "invalid"] as const;
     events.forEach((type) => node.addEventListener(type, check, true));
-    return () => events.forEach((type) => node.removeEventListener(type, check, true));
+    // A form reset clears the browser's own flag, so it clears ours.
+    const form = node.closest("form");
+    const reset = () => {
+      touched = false;
+      setNative({ invalid: false, message: "", touched: false });
+    };
+    form?.addEventListener("reset", reset);
+    return () => {
+      events.forEach((type) => node.removeEventListener(type, check, true));
+      form?.removeEventListener("reset", reset);
+    };
   }, []);
 
   const shown = error ?? (native.invalid ? invalidMessage ?? native.message : null);

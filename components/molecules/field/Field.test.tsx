@@ -54,6 +54,34 @@ describe("Field", () => {
     expect(input.getAttribute("aria-invalid")).toBe("false");
   });
 
+  it("doesn't flag a required field someone only tabs past", () => {
+    render(
+      <Field label="Ticker" invalidMessage="Enter a ticker.">
+        <Input required />
+      </Field>,
+    );
+    const input = screen.getByRole("textbox", { name: "Ticker" });
+    fireEvent.focus(input);
+    fireEvent.blur(input);
+
+    expect(screen.queryByText("Enter a ticker.")).toBeNull();
+    expect(input.getAttribute("aria-invalid")).toBe("false");
+  });
+
+  it("clears its error when the form is reset", () => {
+    const { container } = render(
+      <form>
+        <Field label="Reason" invalidMessage="Say why.">
+          <Textarea required />
+        </Field>
+      </form>,
+    );
+    fireEvent.invalid(screen.getByRole("textbox", { name: "Reason" }));
+    expect(screen.getByText("Say why.")).toBeTruthy();
+    fireEvent.reset(container.querySelector("form")!);
+    expect(screen.queryByText("Say why.")).toBeNull();
+  });
+
   it("shows the error for untouched fields after a failed submit", () => {
     render(
       <form>
