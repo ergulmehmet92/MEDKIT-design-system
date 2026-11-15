@@ -1,0 +1,36 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { BothThemes, Swatches } from "./foundations";
+
+<Meta title="Foundations/Data" />
+
+# Data
+
+Charts tell one story each, in few colours, with every number reachable without a mouse.
+
+## Roles
+
+<BothThemes>
+  <Swatches
+    tokens={[
+      ["color-dataviz-lead", "The story series"],
+      ["color-dataviz-context", "Comparisons"],
+      ["color-dataviz-up", "Up, with a sign"],
+      ["color-dataviz-down", "Down, with a sign"],
+      ["color-dataviz-accent", "The one thing that matters"],
+      ["color-dataviz-neutral-1", "Parts, strongest"],
+      ["color-dataviz-neutral-4", "Parts, faintest"],
+    ]}
+  />
+</BothThemes>
+
+Eight categorical colours, in a fixed order, stay for views with several series of equal weight. Amber and blue scales carry magnitude; a blue to amber scale carries polarity around a neutral middle.
+
+## Rules
+
+- One story series wears the lead colour; comparisons wear grey.
+- Green and red mean up and down, and nothing else; every value they mark carries a sign or an arrow.
+- Honey marks one thing per chart: a forecast, a highlighted part.
+- Keys appear on hover or focus, and pin with the Key button.
+- Every chart has a crosshair or nearest-point reading, arrow-key reading with a live region, and a table.
+- Bars start at zero, are 24px at most, and are rounded at the data end only.
+- Tables are real tables: numbers right in tabular figures, headers that sort and say so.

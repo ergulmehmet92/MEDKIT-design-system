@@ -17,7 +17,7 @@ import { PostCard } from "../../organisms/post-card";
 import { Section } from "../../organisms/section";
 import { EditorialPage, PageHero, Split } from "./EditorialPage";
 
-// Sample content only: the kit carries no real career copy.
+// Sample content only: the kit carries no real personal copy.
 const day = (iso: string) => new Date(`${iso}T12:00:00Z`);
 const P = { forest: "#0f1b14", hunter: "#2e4a38", sage: "#8fa17c", sand: "#cdb88f", honey: "#e0a93f" };
 const thumb = (n: number, w = 320, h = 180) =>

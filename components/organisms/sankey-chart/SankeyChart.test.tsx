@@ -7,7 +7,7 @@ import { SankeyChart } from "./SankeyChart";
 afterEach(cleanup);
 
 const nodes = [
-  { id: "salary", name: "Salary" },
+  { id: "income", name: "Income" },
   { id: "sales", name: "Sold positions" },
   { id: "portfolio", name: "Portfolio" },
   { id: "ai", name: "AI compute", highlight: true },
@@ -15,7 +15,7 @@ const nodes = [
   { id: "cash", name: "Cash" },
 ];
 const links = [
-  { source: "salary", target: "portfolio", value: 60 },
+  { source: "income", target: "portfolio", value: 60 },
   { source: "sales", target: "portfolio", value: 40 },
   { source: "portfolio", target: "ai", value: 50 },
   { source: "portfolio", target: "power", value: 30 },
@@ -29,8 +29,8 @@ describe("layoutSankey", () => {
     const col = (id: string) => laid.nodes.find((n) => n.id === id)!.column;
     const h = (id: string) => laid.nodes.find((n) => n.id === id)!.height;
 
-    expect([col("salary"), col("portfolio"), col("ai")]).toEqual([0, 1, 2]);
-    expect(h("portfolio")).toBeCloseTo(h("salary") + h("sales"), 5);
+    expect([col("income"), col("portfolio"), col("ai")]).toEqual([0, 1, 2]);
+    expect(h("portfolio")).toBeCloseTo(h("income") + h("sales"), 5);
   });
 
   it("stacks flows so their widths add up at each node", () => {

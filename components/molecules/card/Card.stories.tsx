@@ -26,6 +26,7 @@ const grid = { display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(1
 const meta = {
   title: "Molecules/Card",
   component: Card,
+  subcomponents: { MediaCard, PostCard, CaseCard, EntryCard },
   decorators: [
     (Story, { globals }) => (
       <div style={{ position: "relative", isolation: "isolate", padding: "var(--mk-inset-lg)" }}>

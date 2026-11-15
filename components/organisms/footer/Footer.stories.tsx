@@ -6,6 +6,7 @@ import { Footer } from "./Footer";
 const meta = {
   title: "Organisms/Footer",
   component: Footer,
+  subcomponents: { PullQuote },
   args: {
     name: "Mehmet Ergul",
     thesis: "Designer and builder. Not the artifact: the system that produces it.",

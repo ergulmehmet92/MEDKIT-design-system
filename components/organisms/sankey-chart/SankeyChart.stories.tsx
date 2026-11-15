@@ -12,7 +12,7 @@ export const Money: Story = {
     label: "Where this year's money came from and went, in percent",
     format: (v) => `${v}%`,
     nodes: [
-      { id: "salary", name: "Salary" },
+      { id: "income", name: "Income" },
       { id: "sales", name: "Sold positions" },
       { id: "dividends", name: "Dividends" },
       { id: "portfolio", name: "Portfolio" },
@@ -23,7 +23,7 @@ export const Money: Story = {
       { id: "nuclear", name: "Nuclear" },
     ],
     links: [
-      { source: "salary", target: "portfolio", value: 60 },
+      { source: "income", target: "portfolio", value: 60 },
       { source: "sales", target: "portfolio", value: 28 },
       { source: "dividends", target: "portfolio", value: 12 },
       { source: "portfolio", target: "ai", value: 34 },

@@ -15,6 +15,7 @@ const search = (
 const meta = {
   title: "Molecules/Field",
   component: Field,
+  subcomponents: { Input, Textarea },
   decorators: [
     (Story, { globals }) => (
       <div style={{ position: "relative", isolation: "isolate", padding: "var(--mk-inset-lg)", maxInlineSize: 560, display: "grid", gap: "var(--mk-gap-lg)" }}>

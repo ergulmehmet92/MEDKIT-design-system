@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MED·Kit without React</title>
+<!-- One stylesheet: the tokens and every component. No script, no bundler. -->
+<link rel="stylesheet" href="../dist/medkit.css">
+<style>
+  body { margin: 0; font-family: var(--mk-font-family-body); background: var(--mk-color-surface-default); color: var(--mk-color-text-default); }
+  main { display: grid; gap: var(--mk-gap-lg); max-inline-size: 64rem; margin: 0 auto; padding: var(--mk-inset-lg) var(--mk-page-inset); }
+  .row { display: flex; flex-wrap: wrap; gap: var(--mk-gap-sm); align-items: center; }
+  .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr)); gap: var(--mk-gap-lg); align-items: start; }
+</style>
+</head>
+<body data-theme="forest" data-density="editorial">
+<main>
+  <p class="mk-eyebrow">[00] Plain HTML</p>
+  <h1 class="mk-heading" data-size="heading" style="margin:0">Link one stylesheet.</h1>
+
+  <div class="row">
+    <button type="button" class="mk-button" data-variant="primary">Record a call</button>
+    <button type="button" class="mk-button" data-variant="quiet">Cancel</button>
+    <span class="mk-badge" data-tone="neutral">Draft</span>
+    <span class="mk-badge" data-tone="accent">New</span>
+    <span class="mk-badge" data-tone="version">v2.0.0</span>
+    <span class="mk-status-pill" data-status="stale"><span class="mk-status-lamp" data-status="stale" data-size="inline" aria-hidden="true"></span><span class="mk-status-pill-text">Prices are 3 hours old</span></span>
+  </div>
+
+  <div class="cols">
+    <section class="mk-panel" aria-labelledby="form-title">
+      <div class="mk-panel-head"><div class="mk-panel-titles"><p class="mk-panel-kind">Form</p><h2 class="mk-panel-title" id="form-title">Record a call</h2></div></div>
+      <div class="mk-panel-body" style="display:grid;gap:var(--mk-gap-md)">
+        <div class="mk-field">
+          <label class="mk-field-label" for="ticker">Ticker</label>
+          <input class="mk-well mk-input" id="ticker" value="NVDA">
+        </div>
+        <div class="mk-field" data-invalid>
+          <label class="mk-field-label" for="weight">New weight</label>
+          <input class="mk-well mk-input" id="weight" value="14" aria-invalid="true" aria-describedby="weight-hint weight-error">
+          <p class="mk-field-hint" id="weight-hint">Allowed 6 to 9% in state 3</p>
+          <p class="mk-field-error" id="weight-error"><svg class="mk-field-error-icon" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 0.5l4.76 2.75v5.5L6 11.5 1.24 8.75v-5.5z"/></svg>Enter a weight between 0 and 10%.</p>
+        </div>
+        <div class="row" role="group" aria-label="Themes">
+          <button type="button" class="mk-chip" aria-pressed="true"><svg class="mk-chip-tick" viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 5.5l2.5 2.5 4.5-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>AI compute</button>
+          <button type="button" class="mk-chip" aria-pressed="false"><svg class="mk-chip-tick" viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 5.5l2.5 2.5 4.5-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Power</button>
+        </div>
+      </div>
+    </section>
+
+    <article class="mk-card">
+      <div class="mk-card-body">
+        <h2 class="mk-card-title"><a href="#post">Not the artifact: the system that produces it</a></h2>
+        <p class="mk-card-meta"><time datetime="2026-11-02">2 Nov 2026</time><span>7 min read</span></p>
+        <p class="mk-card-summary">Why the design system behind the screens matters more than any one screen.</p>
+        <div class="mk-card-foot"><span class="mk-chip">Process</span></div>
+      </div>
+    </article>
+  </div>
+
+  <figure class="mk-pull-quote" data-size="medium">
+    <blockquote><p>The gauge shows. The person decides.</p></blockquote>
+    <figcaption><span class="mk-pull-quote-who">Predictor</span><span>design principle</span></figcaption>
+  </figure>
+</main>
+</body>
+</html>

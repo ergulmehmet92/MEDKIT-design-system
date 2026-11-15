@@ -1,0 +1,58 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { BothThemes, Swatches } from "./foundations";
+
+<Meta title="Foundations/Colour" />
+
+# Colour
+
+A small palette, each colour with one job. Components read **roles**, never raw colours, so a role can change in one place. Every role is written once with `light-dark()`, so Forest and Paper come from the same token; in forced colours each role maps to a system colour.
+
+## The palette
+
+<Swatches
+  tokens={[
+    ["color-forest", "The dark ground"],
+    ["color-forest-deep", "Shade under glass"],
+    ["color-hunter", "Deep green"],
+    ["color-sage", "Muted green"],
+    ["color-sand", "Warm neutral"],
+    ["color-honey", "The one accent"],
+    ["color-highlight", "Light on glass edges"],
+  ]}
+/>
+
+## Roles
+
+<BothThemes>
+  <Swatches
+    tokens={[
+      ["color-surface-default", "Page and panels"],
+      ["color-text-default", "Body text"],
+      ["color-text-muted", "Secondary text"],
+      ["color-text-accent", "The accent, sparingly"],
+      ["color-border-default", "Hairlines"],
+      ["color-border-strong", "Rules that matter"],
+      ["color-border-focus", "Focus rings"],
+    ]}
+  />
+</BothThemes>
+
+## Status
+
+Status colours report whether something works, and nothing else. They always sit beside a word, in a StatusPill, and never stand alone.
+
+<BothThemes>
+  <Swatches
+    tokens={[
+      ["color-status-live", "Live"],
+      ["color-status-stale", "Stale"],
+      ["color-status-failed", "Failed, and form errors"],
+    ]}
+  />
+</BothThemes>
+
+## Rules
+
+- One accent: honey marks the single thing to notice in a view.
+- Text never sits on a colour that fails 4.5:1; large type and marks need 3:1. `npm run contrast` checks every pair.
+- No new colours outside the palette: new needs are met with roles over the colours above.

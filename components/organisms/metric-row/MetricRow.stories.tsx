@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Metric } from "../../molecules/metric";
 import { MetricRow } from "./MetricRow";
 
-const meta = { title: "Organisms/MetricRow", component: MetricRow } satisfies Meta<typeof MetricRow>;
+const meta = { title: "Organisms/MetricRow", component: MetricRow, subcomponents: { Metric } } satisfies Meta<typeof MetricRow>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

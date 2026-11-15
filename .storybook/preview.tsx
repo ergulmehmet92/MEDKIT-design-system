@@ -1,8 +1,10 @@
 import type { Preview } from "@storybook/react-vite";
 import { LightSource } from "../components/atoms/button";
+import { SpecPage } from "./SpecPage";
 import "../dist/tokens/tokens.css";
 
 const preview: Preview = {
+  tags: ["autodocs"],
   globalTypes: {
     theme: {
       description: "Theme",
@@ -31,7 +33,8 @@ const preview: Preview = {
   parameters: {
     layout: "fullscreen",
     a11y: { test: "error" },
-    options: { storySort: { order: ["Atoms", "Molecules", "Organisms", "Templates"] } },
+    options: { storySort: { order: ["Foundations", ["Overview", "Colour", "Type", "Density", "Materials", "Motion", "Data"], "Atoms", "Molecules", "Organisms", "Templates"] } },
+    docs: { page: SpecPage, toc: true },
   },
   decorators: [
     (Story, { globals, parameters }) => (

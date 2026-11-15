@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { StatusLamp } from "../../atoms/status-lamp";
 import { StatusPill } from "./StatusPill";
 
-const meta = { title: "Molecules/StatusPill", component: StatusPill, args: { status: "live" } } satisfies Meta<typeof StatusPill>;
+const meta = { title: "Molecules/StatusPill", component: StatusPill, subcomponents: { StatusLamp }, args: { status: "live" } } satisfies Meta<typeof StatusPill>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 

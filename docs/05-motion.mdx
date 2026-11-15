@@ -1,0 +1,30 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { MotionScale } from "./foundations";
+
+<Meta title="Foundations/Motion" />
+
+# Motion
+
+Motion explains a change: something arrived, moved, or is still working. Nothing moves to decorate.
+
+<MotionScale />
+
+| Easing | Value | For |
+|---|---|---|
+| default | out-expo, `cubic-bezier(0.16, 1, 0.3, 1)` | Arrivals: fast, then settling |
+| ambient | in-out, `cubic-bezier(0.37, 0, 0.63, 1)` | Ambient loops: the light, dawn |
+| linear | `linear` | Scans and progress |
+
+Blinks are never faster than once a second. Items revealed together are 60ms apart.
+
+## Components
+
+Reveal (scroll-driven, behind `@supports`), DrawLine, CountUp and Typewriter. Lamps, the StepRelay baton and card hovers read the same tokens.
+
+## Reduced motion
+
+Every motion has an end state, shown at once when motion is reduced: lines drawn, numbers final, text whole, lamps still. Animated text and numbers are in the page from the start and read once by screen readers.
+
+## Video
+
+`motion.json` carries the same scale in milliseconds and bezier points, for Remotion.

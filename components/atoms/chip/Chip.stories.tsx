@@ -8,6 +8,7 @@ import { Chip } from "./Chip";
 const meta: Meta<typeof Chip> = {
   title: "Atoms/Chip",
   component: Chip,
+  subcomponents: { Select },
   decorators: [
     (Story, { globals }) => (
       <div style={{ position: "relative", isolation: "isolate", padding: "var(--mk-inset-lg)", maxInlineSize: 560, display: "grid", gap: "var(--mk-gap-lg)" }}>

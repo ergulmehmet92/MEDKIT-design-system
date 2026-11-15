@@ -1,0 +1,25 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Foundations/Density" />
+
+# Density
+
+Density changes sizes and space, never colour. Set it with `data-density` on any element; everything inside follows, so an analytical panel can sit inside an editorial page.
+
+| Role | Editorial | Analytical |
+|---|---|---|
+| Body text | 16px | 14px |
+| Labels | 15px | 12px |
+| Titles | 28px | 20px |
+| Controls | 48px | 32px |
+| Table rows | 48px | 36px |
+| Chart height | 520px | 280px |
+| Gaps | as set | halved |
+
+Editorial controls clear the 44px touch target. Analytical controls are 32px, above the 24px minimum, for pointer-first dashboards.
+
+## Rules
+
+- Pick density by task: reading is editorial, working is analytical.
+- Controls stay stadiums and stay lit in both.
+- The one primary action per view stays the Eclipse button in both.

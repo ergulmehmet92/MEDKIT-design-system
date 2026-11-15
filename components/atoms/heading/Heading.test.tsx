@@ -10,9 +10,9 @@ const css = () => readFileSync("components/atoms/heading/heading.css", "utf8");
 
 describe("Heading", () => {
   it("renders the level it's given, so the outline stays correct", () => {
-    render(<Heading level={3}>Annotation Builder</Heading>);
+    render(<Heading level={3}>Case studies</Heading>);
 
-    expect(screen.getByRole("heading", { level: 3, name: "Annotation Builder" })).toBeTruthy();
+    expect(screen.getByRole("heading", { level: 3, name: "Case studies" })).toBeTruthy();
   });
 
   it("keeps the size separate from the level", () => {

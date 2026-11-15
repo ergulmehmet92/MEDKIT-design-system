@@ -12,11 +12,11 @@ describe("Section", () => {
   it("renders a section region named by its heading", () => {
     render(
       <Section aria-labelledby="work-title">
-        <h2 id="work-title">Annotation Builder</h2>
+        <h2 id="work-title">Case studies</h2>
       </Section>,
     );
 
-    expect(screen.getByRole("region", { name: "Annotation Builder" })).toBeTruthy();
+    expect(screen.getByRole("region", { name: "Case studies" })).toBeTruthy();
   });
 
   it("follows the page's tone by default", () => {

@@ -9,7 +9,7 @@ const portrait =
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96"><defs><radialGradient id="g" cx=".3" cy=".25" r=".9"><stop offset="0" stop-color="#f1d79a"/><stop offset=".45" stop-color="#5b8a5f"/><stop offset="1" stop-color="#16271d"/></radialGradient></defs><rect width="96" height="96" fill="url(#g)"/><circle cx="48" cy="40" r="16" fill="#0f1b14" opacity=".55"/><path d="M16 96c4-22 18-32 32-32s28 10 32 32z" fill="#0f1b14" opacity=".55"/></svg>`,
   );
 
-const meta = { title: "Atoms/Avatar", component: Avatar, args: { name: "Mehmet Ergul" } } satisfies Meta<typeof Avatar>;
+const meta = { title: "Atoms/Avatar", component: Avatar, subcomponents: { Badge }, args: { name: "Mehmet Ergul" } } satisfies Meta<typeof Avatar>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 

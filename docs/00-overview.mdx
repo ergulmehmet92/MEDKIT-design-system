@@ -1,0 +1,33 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Foundations/Overview" />
+
+# MED·Kit
+
+One design system for a portfolio, a dashboard and a video studio: one brand, two densities.
+
+- **Editorial** density is for reading: larger type, generous space, 48px controls.
+- **Analytical** density is for working: the same brand, tighter, with 32px controls and 36px table rows.
+
+Colour comes in two themes. **Forest** is the default; **Paper** is its light partner. Behind both sits the living light, and over it glass: panels and cards are frosted glass, quiet controls are clear glass that bends the light at its edge, and the one primary action is an opaque body with light spilling past it.
+
+## Using it
+
+```sh
+npm install github:ergulmehmet92/MEDKIT-design-system#v2.0.0
+```
+
+```tsx
+import "@ergulmehmet92/medkit/tokens.css";
+import { Button, Panel, DataTable } from "@ergulmehmet92/medkit";
+
+<div data-theme="forest" data-density="analytical">…</div>;
+```
+
+Without React, link `@ergulmehmet92/medkit/medkit.css` and use the class names shown on each component's page. Motion timings for video live in `@ergulmehmet92/medkit/motion.json`.
+
+## Reading these docs
+
+Each component's page is its spec: what it is for, its props, its behaviour and its accessibility, then its stories. Switch theme and density in the toolbar; every story is checked with axe in both.
+
+The foundations come first: [Colour](?path=/docs/foundations-colour--docs), [Type](?path=/docs/foundations-type--docs), [Density](?path=/docs/foundations-density--docs), [Materials](?path=/docs/foundations-materials--docs), [Motion](?path=/docs/foundations-motion--docs) and [Data](?path=/docs/foundations-data--docs).

@@ -36,7 +36,7 @@ export const Arrow: Story = { render: () => <ArrowLink href="#">Read the story</
 export const ArrowLongLabelWraps: Story = {
   render: () => (
     <div style={{ maxWidth: "14rem" }}>
-      <ArrowLink href="#">Read how the annotation builder reached production in twelve weeks</ArrowLink>
+      <ArrowLink href="#">Read how the design system reached three products in one release</ArrowLink>
     </div>
   ),
 };

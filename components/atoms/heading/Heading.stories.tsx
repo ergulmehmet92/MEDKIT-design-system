@@ -4,7 +4,7 @@ import { Heading } from "./Heading";
 const meta = {
   title: "Atoms/Heading",
   component: Heading,
-  args: { level: 2, size: "title", children: "Annotation Builder" },
+  args: { level: 2, size: "title", children: "Case studies" },
   argTypes: {
     level: { control: "select", options: [1, 2, 3, 4, 5, 6] },
     size: { control: "inline-radio", options: ["display", "heading", "subheading", "title"] },
@@ -18,7 +18,7 @@ export const Title: Story = {};
 
 export const Subheading: Story = { args: { size: "subheading", children: "What is the optimal experience?" } };
 
-export const SectionHeading: Story = { args: { size: "heading", children: "Annotation Builder" } };
+export const SectionHeading: Story = { args: { size: "heading", children: "Case studies" } };
 
 export const Display: Story = {
   args: { level: 1, size: "display", children: "The designer's job is no longer the artifact." },

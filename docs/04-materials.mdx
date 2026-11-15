@@ -1,0 +1,23 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Foundations/Materials" />
+
+# Materials
+
+Everything sits over the **living light**: a slow WebGL light in the theme's ambient colours, with fine grain. It holds still for reduced motion and falls back to a gradient without WebGL. Posters use **Blaze**, the light rebuilt from sage, sand, highlight and honey, so cut-through type keeps 6.9:1.
+
+Over the light, three materials:
+
+| Material | Used for | How it's made |
+|---|---|---|
+| **Glass** | Panels and cards | The surface at 58% over a 22px blur, a specular hairline, a soft shade, 18px corners |
+| **Lens** | Quiet buttons, chips, tabs, fields | Clear glass that bends the light at its rim, with a highlight facing the pointer's light; fields are a lens pressed in |
+| **Eclipse** | The one primary action, pressed chips | An opaque body that blocks the light, which spills past its edge |
+
+## Shapes
+
+One-line controls are stadiums; text areas take 14px corners; panels and cards take `radius.panel`, 18px. Surfaces outside glass stay square.
+
+## Fallbacks
+
+Without backdrop-filter, or when someone asks for less transparency, glass turns solid. In forced colours, materials become CanvasText borders on Canvas.

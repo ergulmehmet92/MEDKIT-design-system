@@ -120,7 +120,7 @@ export const Loading: Story = { render: () => dashboard({ rows: [], loading: tru
 export const LongContent: Story = {
   render: () =>
     dashboard({
-      title: "Predictor · household account, with the long-form name that someone typed into the settings",
+      title: "Predictor, with the very long name that someone typed into the settings and kept on typing",
       rows: [...positions, ...positions.map((p) => ({ ...p, ticker: `${p.ticker}.L` }))],
       chart: true,
     }),

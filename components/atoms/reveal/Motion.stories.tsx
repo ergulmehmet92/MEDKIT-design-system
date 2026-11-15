@@ -4,7 +4,7 @@ import { DrawLine } from "../draw-line";
 import { Typewriter } from "../typewriter";
 import { Reveal } from "./Reveal";
 
-const meta = { title: "Atoms/Motion", component: Reveal, args: { children: null } } satisfies Meta<typeof Reveal>;
+const meta = { title: "Atoms/Motion", component: Reveal, subcomponents: { DrawLine, CountUp, Typewriter }, args: { children: null } } satisfies Meta<typeof Reveal>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 
