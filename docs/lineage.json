@@ -1,0 +1,959 @@
+{
+  "root": "/Users/m.erguel/Desktop/Personal Projects/MEDKIT-design-system/components",
+  "manifest": null,
+  "components": {
+    "area-chart": {
+      "tier": "organisms",
+      "files": 2,
+      "elements": [],
+      "contains": [
+        "chart-frame"
+      ],
+      "used_in": [
+        "index"
+      ],
+      "orphan": false
+    },
+    "avatar": {
+      "tier": "atoms",
+      "files": 2,
+      "elements": [],
+      "contains": [],
+      "used_in": [
+        "app:../portfolio/src/components/sections/medkit/component-docs.tsx",
+        "core",
+        "index"
+      ],
+      "orphan": false
+    },
+    "badge": {
+      "tier": "atoms",
+      "files": 2,
+      "elements": [],
+      "contains": [],
+      "used_in": [
+        "app:../portfolio/src/components/sections/medkit/component-docs.tsx",
+        "app:../portfolio/src/components/sections/medkit/foundations.tsx",
+        "app:../portfolio/src/components/sections/medkit/overview-page.tsx",
+        "app:../portfolio/src/components/sections/medkit/setup-page.tsx",
+        "core",
+        "entry-card",
+        "index"
+      ],
+      "orphan": false
+    },
+    "bar-chart": {
+      "tier": "organisms",
+      "files": 2,
+      "elements": [],
+      "contains": [
+        "chart-frame"
+      ],
+      "used_in": [
+        "app:../portfolio/src/components/sections/medkit/component-docs.tsx",
+        "app:../portfolio/src/components/sections/medkit/data-specimens.tsx",
+        "app:../portfolio/src/components/sections/predictor/DashboardTab.tsx",
+        "index"
+      ],
+      "orphan": false
+    },
+    "beeswarm": {
+      "tier": "organisms",
+      "files": 2,
+      "elements": [],
+      "contains": [
+        "chart-frame"
+      ],
+      "used_in": [
+        "index"
+      ],
+      "orphan": false
+    },
+    "bullet-chart": {
+      "tier": "organisms",
+      "files": 2,
+      "elements": [],
+      "contains": [
+        "chart-frame"
+      ],
+      "used_in": [
+        "index"
+      ],
+      "orphan": false
+    },
+    "button": {
+      "tier": "atoms",
+      "files": 4,
+      "elements": [],
+      "contains": [],
+      "used_in": [
+        "app:../portfolio/src/app/(v2)/kit-check/page.tsx",
+        "app:../portfolio/src/components/sections/AboutPage.tsx",
+        "app:../portfolio/src/components/sections/ProjectCasePlatformBody.tsx",
+        "app:../portfolio/src/components/sections/medkit/component-docs.tsx",
+        "app:../portfolio/src/components/sections/medkit/foundations.tsx",
+        "app:../portfolio/src/components/sections/medkit/overview-page.tsx",
+        "app:../portfolio/src/components/sections/medkit/setup-page.tsx",
+        "app:../portfolio/src/components/sections/medkit/style-pages.tsx",
+        "app:../portfolio/src/components/sections/project-beta/AgenticCaseContent.tsx",
+        "app:../portfolio/src/components/ui/ContactModal.tsx",
+        "chart-frame",
+        "core",
+        "icon-button",
+        "index"
+      ],
+      "orphan": false
+    },
+    "candlestick-chart": {
+      "tier": "organisms",
+      "files": 2,
+      "elements": [],
+      "contains": [
+        "chart-frame"
+      ],
+      "used_in": [
+        "index"
+      ],
+      "orphan": false
+    },
+    "card": {
+      "tier": "molecules",
+      "files": 2,
+      "elements": [],
+      "contains": [],
+      "used_in": [
+        "app:../portfolio/src/components/sections/Processes.tsx",
+        "app:../portfolio/src/components/sections/medkit/component-docs.tsx",
+        "app:../portfolio/src/components/sections/medkit/foundations.tsx",
+        "app:../portfolio/src/components/sections/medkit/overview-page.tsx",
+        "app:../portfolio/src/components/sections/medkit/setup-page.tsx",
+        "case-card",
+        "core",
+        "entry-card",
+        "index",
+        "media-card",
+        "post-card"
+      ],
+      "orphan": false
+    },
+    "case-card": {
+      "tier": "organisms",
+      "files": 2,
+      "elements": [],
+      "contains": [
+        "card",
+        "chip"
+      ],
+      "used_in": [
+        "index"
+      ],
+      "orphan": false
+    },
+    "chart-frame": {
+      "tier": "molecules",
+      "files": 9,
+      "elements": [],
+      "contains": [
+        "button",
+        "eyebrow"
+      ],
+      "used_in": [
+        "area-chart",
+        "bar-chart",
+        "beeswarm",
+        "bullet-chart",
+        "candlestick-chart",
+        "data-table",
+        "donut-chart",
+        "heatmap",
+        "histogram",
+        "index",
+        "line-chart",
+        "ridgeline-chart",
+        "sankey-chart",
+        "scatter-chart",
+        "slope-chart",
+        "sparkline",
+        "treemap",
+        "waterfall-chart"
+      ],
+      "orphan": false
+    },
+    "chip": {
+      "tier": "atoms",
+      "files": 2,
+      "elements": [],
+      "contains": [],
+      "used_in": [
+        "app:../portfolio/src/components/sections/FeaturedWork.tsx",
+        "app:../portfolio/src/components/sections/PredictorCase.tsx",
+        "app:../portfolio/src/components/sections/Processes.tsx",
+        "app:../portfolio/src/components/sections/Thoughts.tsx",
+        "app:../portfolio/src/components/sections/medkit/component-docs.tsx",
+        "app:../portfolio/src/components/sections/medkit/foundations.tsx",
+        "app:../portfolio/src/components/sections/medkit/style-pages.tsx",
+        "app:../portfolio/src/components/sections/predictor/DashboardTab.tsx",
+        "case-card",
+        "core",
+        "index",
+        "post-card"
+      ],
+      "orphan": false
+    },
+    "contact-routes": {
+      "tier": "organisms",
+      "files": 2,
+      "elements": [],
+      "contains": [],
+      "used_in": [
+        "app:../portfolio/src/app/(v2)/v2/page.tsx",
+        "index"
+      ],
+      "orphan": false
+    },
+    "content": {
+      "tier": null,
+      "files": 11,
+      "elements": [],
+      "contains": [
+        "post-card"
+      ],
+      "used_in": [],
+      "orphan": true
+    },
+    "core": {
+      "tier": null,
+      "files": 15,
+      "elements": [],
+      "contains": [
+        "avatar",
+        "badge",
+        "button",
+        "card",
+        "chip",
+        "icon-button"
+      ],
+      "used_in": [],
+      "orphan": true
+    },
+    "count-up": {
+      "tier": "atoms",
+      "files": 3,
+      "elements": [],
+      "contains": [],
+      "used_in": [
+        "index",
+        "typewriter"
+      ],
+      "orphan": false
+    },
+    "dashboard-page": {
+      "tier": "templates",
+      "files": 2,
+      "elements": [],
+      "contains": [
+        "living-light"
+      ],
+      "used_in": [
+        "index"
+      ],
+      "orphan": false
+    },
+    "data": {
+      "tier": null,
+      "files": 18,
+      "elements": [],
+      "contains": [],
+      "used_in": [],
+      "orphan": true
+    },
+    "data-table": {
+      "tier": "organisms",
+      "files": 4,
+      "elements": [],
+      "contains": [
+        "chart-frame"
+      ],
+      "used_in": [
+        "app:../portfolio/src/components/sections/medkit/component-docs.tsx",
+        "app:../portfolio/src/components/sections/medkit/data-specimens.tsx",
+        "app:../portfolio/src/components/sections/predictor/DashboardTab.tsx",
+        "index"
+      ],
+      "orphan": false
+    },
+    "donut-chart": {
+      "tier": "organisms",
+      "files": 2,
+      "elements": [],
+      "contains": [
+        "chart-frame"
+      ],
+      "used_in": [
+        "app:../portfolio/src/components/sections/medkit/component-docs.tsx",
+        "app:../portfolio/src/components/sections/predictor/DashboardTab.tsx",
+        "index"
+      ],
+      "orphan": false
+    },
+    "draw-line": {
+      "tier": "atoms",
+      "files": 2,
+      "elements": [],
+      "contains": [],
+      "used_in": [
+        "index"
+      ],
+      "orphan": false
+    },
+    "editorial-page": {
+      "tier": "templates",
+      "files": 2,
+      "elements": [],
+      "contains": [
+        "eyebrow",
+        "grid-rails",
+        "heading",
+        "living-light",
+        "rule"
+      ],
+      "used_in": [
+        "index"
+      ],
+      "orphan": false
+    },
+    "entry-card": {
+      "tier": "organisms",
+      "files": 2,
+      "elements": [],
+      "contains": [
+        "badge",
+        "card"
+      ],
+      "used_in": [
+        "index"
+      ],
+      "orphan": false
+    },
+    "eyebrow": {
+      "tier": "atoms",
+      "files": 2,
+      "elements": [],
+      "contains": [],
+      "used_in": [
+        "app:../portfolio/src/app/(v2)/kit-check/page.tsx",
+        "app:../portfolio/src/app/(v2)/v2/page.tsx",
+        "chart-frame",
+        "editorial-page",
+        "index"
+      ],
+      "orphan": false
+    },
+    "feedback": {
+      "tier": null,
+      "files": 3,
+      "elements": [],
+      "contains": [],
+      "used_in": [],
+      "orphan": true
+    },
+    "field": {
+      "tier": "molecules",
+      "files": 2,
+      "elements": [],
+      "contains": [
+        "input"
+      ],
+      "used_in": [
+        "index"
+      ],
+      "orphan": false
+    },
+    "footer": {
+      "tier": "organisms",
+      "files": 2,
+      "elements": [],
+      "contains": [],
+      "used_in": [
+        "app:../portfolio/src/app/(v1)/layout.tsx",
+        "index"
+      ],
+      "orphan": false
+    },
+    "forms": {
+      "tier": null,
+      "files": 5,
+      "elements": [],
+      "contains": [
+        "input",
+        "select"
+      ],
+      "used_in": [],
+      "orphan": true
+    },
+    "gauge": {
+      "tier": "molecules",
+      "files": 3,
+      "elements": [],
+      "contains": [],
+      "used_in": [
+        "index"
+      ],
+      "orphan": false
+    },
+    "grid-rails": {
+      "tier": "atoms",
+      "files": 2,
+      "elements": [],
+      "contains": [],
+      "used_in": [
+        "app:../portfolio/src/app/(v2)/v2/page.tsx",
+        "editorial-page",
+        "index",
+        "section"
+      ],
+      "orphan": false
+    },
+    "header": {
+      "tier": "organisms",
+      "files": 3,
+      "elements": [],
+      "contains": [
+        "icon-button"
+      ],
+      "used_in": [
+        "app:../portfolio/src/app/(v1)/layout.tsx",
+        "app:../portfolio/src/app/(v2)/kit-check/page.tsx",
+        "app:../portfolio/src/app/(v2)/v2/page.tsx",
+        "index"
+      ],
+      "orphan": false
+    },
+    "heading": {
+      "tier": "atoms",
+      "files": 2,
+      "elements": [],
+      "contains": [],
+      "used_in": [
+        "app:../portfolio/src/app/(v2)/kit-check/page.tsx",
+        "app:../portfolio/src/app/(v2)/v2/page.tsx",
+        "editorial-page",
+        "index"
+      ],
+      "orphan": false
+    },
+    "heatmap": {
+      "tier": "organisms",
+      "files": 5,
+      "elements": [],
+      "contains": [
+        "chart-frame"
+      ],
+      "used_in": [
+        "index"
+      ],
+      "orphan": false
+    },
+    "histogram": {
+      "tier": "organisms",
+      "files": 2,
+      "elements": [],
+      "contains": [
+        "chart-frame"
+      ],
+      "used_in": [
+        "index"
+      ],
+      "orphan": false
+    },
+    "icon-button": {
+      "tier": "atoms",
+      "files": 2,
+      "elements": [],
+      "contains": [
+        "button"
+      ],
+      "used_in": [
+        "app:../portfolio/src/components/sections/medkit/component-docs.tsx",
+        "core",
+        "header",
+        "index",
+        "theme-switch"
+      ],
+      "orphan": false
+    },
+    "index": {
+      "tier": null,
+      "files": 1,
+      "elements": [],
+      "contains": [
+        "area-chart",
+        "avatar",
+        "badge",
+        "bar-chart",
+        "beeswarm",
+        "bullet-chart",
+        "button",
+        "candlestick-chart",
+        "card",
+        "case-card",
+        "chart-frame",
+        "chip",
+        "contact-routes",
+        "count-up",
+        "dashboard-page",
+        "data-table",
+        "donut-chart",
+        "draw-line",
+        "editorial-page",
+        "entry-card",
+        "eyebrow",
+        "field",
+        "footer",
+        "gauge",
+        "grid-rails",
+        "header",
+        "heading",
+        "heatmap",
+        "histogram",
+        "icon-button",
+        "input",
+        "line-chart",
+        "link",
+        "living-light",
+        "media-card",
+        "metric",
+        "metric-row",
+        "panel",
+        "post-card",
+        "poster-headline",
+        "pull-quote",
+        "reveal",
+        "ridgeline-chart",
+        "rule",
+        "sankey-chart",
+        "scatter-chart",
+        "section",
+        "select",
+        "slope-chart",
+        "sparkline",
+        "status-lamp",
+        "status-pill",
+        "step-relay",
+        "tabs",
+        "textarea",
+        "theme-switch",
+        "track-bar",
+        "treemap",
+        "typewriter",
+        "waterfall-chart"
+      ],
+      "used_in": [],
+      "orphan": true
+    },
+    "input": {
+      "tier": "atoms",
+      "files": 3,
+      "elements": [],
+      "contains": [],
+      "used_in": [
+        "app:../portfolio/src/components/sections/medkit/component-docs.tsx",
+        "app:../portfolio/src/components/sections/medkit/foundations.tsx",
+        "field",
+        "forms",
+        "index",
+        "select",
+        "textarea"
+      ],
+      "orphan": false
+    },
+    "line-chart": {
+      "tier": "organisms",
+      "files": 3,
+      "elements": [],
+      "contains": [
+        "chart-frame"
+      ],
+      "used_in": [
+        "app:../portfolio/src/components/sections/medkit/component-docs.tsx",
+        "app:../portfolio/src/components/sections/medkit/data-specimens.tsx",
+        "app:../portfolio/src/components/sections/predictor/DashboardTab.tsx",
+        "index"
+      ],
+      "orphan": false
+    },
+    "link": {
+      "tier": "atoms",
+      "files": 3,
+      "elements": [],
+      "contains": [],
+      "used_in": [
+        "app:../portfolio/src/app/(v1)/processes/medkit/layout.tsx",
+        "app:../portfolio/src/app/(v2)/kit-check/page.tsx",
+        "app:../portfolio/src/app/(v2)/v2/page.tsx",
+        "app:../portfolio/src/components/layout/Header.tsx",
+        "app:../portfolio/src/components/sections/AboutPage.tsx",
+        "app:../portfolio/src/components/sections/PredictorCase.tsx",
+        "app:../portfolio/src/components/sections/ThoughtArticleBody.tsx",
+        "app:../portfolio/src/components/sections/Thoughts.tsx",
+        "app:../portfolio/src/components/sections/medkit/MedkitSidebar.tsx",
+        "app:../portfolio/src/components/sections/medkit/component-docs.tsx",
+        "app:../portfolio/src/components/sections/medkit/docs-ui.tsx",
+        "app:../portfolio/src/components/sections/medkit/overview-page.tsx",
+        "app:../portfolio/src/components/ui/CaseBackOverlay.tsx",
+        "app:../portfolio/src/components/ui/ViewCaseCursorLink.tsx",
+        "index"
+      ],
+      "orphan": false
+    },
+    "living-light": {
+      "tier": "atoms",
+      "files": 5,
+      "elements": [],
+      "contains": [
+        "theme-switch"
+      ],
+      "used_in": [
+        "app:../portfolio/src/app/(v2)/v2/InverseLight.tsx",
+        "app:../portfolio/src/app/(v2)/v2/page.tsx",
+        "dashboard-page",
+        "editorial-page",
+        "index",
+        "poster-headline"
+      ],
+      "orphan": false
+    },
+    "media-card": {
+      "tier": "organisms",
+      "files": 2,
+      "elements": [],
+      "contains": [
+        "card"
+      ],
+      "used_in": [
+        "index"
+      ],
+      "orphan": false
+    },
+    "metric": {
+      "tier": "molecules",
+      "files": 2,
+      "elements": [],
+      "contains": [],
+      "used_in": [
+        "app:../portfolio/src/app/(v2)/v2/page.tsx",
+        "index"
+      ],
+      "orphan": false
+    },
+    "metric-row": {
+      "tier": "organisms",
+      "files": 2,
+      "elements": [],
+      "contains": [],
+      "used_in": [
+        "app:../portfolio/src/app/(v2)/v2/page.tsx",
+        "index"
+      ],
+      "orphan": false
+    },
+    "navigation": {
+      "tier": null,
+      "files": 3,
+      "elements": [],
+      "contains": [
+        "tabs"
+      ],
+      "used_in": [],
+      "orphan": true
+    },
+    "panel": {
+      "tier": "organisms",
+      "files": 2,
+      "elements": [],
+      "contains": [],
+      "used_in": [
+        "app:../portfolio/src/components/sections/medkit/component-docs.tsx",
+        "app:../portfolio/src/components/sections/predictor/DashboardTab.tsx",
+        "index"
+      ],
+      "orphan": false
+    },
+    "post-card": {
+      "tier": "organisms",
+      "files": 2,
+      "elements": [],
+      "contains": [
+        "card",
+        "chip"
+      ],
+      "used_in": [
+        "app:../portfolio/src/components/sections/medkit/component-docs.tsx",
+        "content",
+        "index"
+      ],
+      "orphan": false
+    },
+    "poster-headline": {
+      "tier": "organisms",
+      "files": 2,
+      "elements": [],
+      "contains": [
+        "living-light"
+      ],
+      "used_in": [
+        "index"
+      ],
+      "orphan": false
+    },
+    "pull-quote": {
+      "tier": "molecules",
+      "files": 2,
+      "elements": [],
+      "contains": [],
+      "used_in": [
+        "app:../portfolio/src/components/sections/medkit/component-docs.tsx",
+        "app:../portfolio/src/components/sections/predictor/SystemTab.tsx",
+        "index"
+      ],
+      "orphan": false
+    },
+    "reveal": {
+      "tier": "atoms",
+      "files": 2,
+      "elements": [],
+      "contains": [],
+      "used_in": [
+        "index"
+      ],
+      "orphan": false
+    },
+    "ridgeline-chart": {
+      "tier": "organisms",
+      "files": 2,
+      "elements": [],
+      "contains": [
+        "chart-frame"
+      ],
+      "used_in": [
+        "index"
+      ],
+      "orphan": false
+    },
+    "rule": {
+      "tier": "atoms",
+      "files": 2,
+      "elements": [],
+      "contains": [],
+      "used_in": [
+        "app:../portfolio/src/app/(v2)/v2/page.tsx",
+        "editorial-page",
+        "index"
+      ],
+      "orphan": false
+    },
+    "sankey-chart": {
+      "tier": "organisms",
+      "files": 3,
+      "elements": [],
+      "contains": [
+        "chart-frame"
+      ],
+      "used_in": [
+        "index"
+      ],
+      "orphan": false
+    },
+    "scatter-chart": {
+      "tier": "organisms",
+      "files": 2,
+      "elements": [],
+      "contains": [
+        "chart-frame"
+      ],
+      "used_in": [
+        "index"
+      ],
+      "orphan": false
+    },
+    "section": {
+      "tier": "organisms",
+      "files": 2,
+      "elements": [],
+      "contains": [
+        "grid-rails"
+      ],
+      "used_in": [
+        "app:../portfolio/src/app/(v2)/v2/page.tsx",
+        "index"
+      ],
+      "orphan": false
+    },
+    "select": {
+      "tier": "atoms",
+      "files": 2,
+      "elements": [],
+      "contains": [
+        "input"
+      ],
+      "used_in": [
+        "app:../portfolio/src/components/sections/Thoughts.tsx",
+        "app:../portfolio/src/components/sections/medkit/component-docs.tsx",
+        "forms",
+        "index"
+      ],
+      "orphan": false
+    },
+    "slope-chart": {
+      "tier": "organisms",
+      "files": 2,
+      "elements": [],
+      "contains": [
+        "chart-frame"
+      ],
+      "used_in": [
+        "index"
+      ],
+      "orphan": false
+    },
+    "sparkline": {
+      "tier": "molecules",
+      "files": 2,
+      "elements": [],
+      "contains": [
+        "chart-frame"
+      ],
+      "used_in": [
+        "app:../portfolio/src/components/sections/project-beta/UXMetrics.tsx",
+        "index"
+      ],
+      "orphan": false
+    },
+    "status-lamp": {
+      "tier": "atoms",
+      "files": 2,
+      "elements": [],
+      "contains": [],
+      "used_in": [
+        "index",
+        "status-pill"
+      ],
+      "orphan": false
+    },
+    "status-pill": {
+      "tier": "molecules",
+      "files": 2,
+      "elements": [],
+      "contains": [
+        "status-lamp"
+      ],
+      "used_in": [
+        "app:../portfolio/src/components/sections/medkit/component-docs.tsx",
+        "app:../portfolio/src/components/sections/predictor/DashboardTab.tsx",
+        "app:../portfolio/src/components/sections/predictor/ThesisModal.tsx",
+        "index"
+      ],
+      "orphan": false
+    },
+    "step-relay": {
+      "tier": "molecules",
+      "files": 2,
+      "elements": [],
+      "contains": [],
+      "used_in": [
+        "app:../portfolio/src/app/(v2)/v2/page.tsx",
+        "index"
+      ],
+      "orphan": false
+    },
+    "tabs": {
+      "tier": "molecules",
+      "files": 2,
+      "elements": [],
+      "contains": [],
+      "used_in": [
+        "app:../portfolio/src/components/sections/PredictorCase.tsx",
+        "app:../portfolio/src/components/sections/medkit/component-docs.tsx",
+        "index",
+        "navigation"
+      ],
+      "orphan": false
+    },
+    "textarea": {
+      "tier": "atoms",
+      "files": 2,
+      "elements": [],
+      "contains": [
+        "input"
+      ],
+      "used_in": [
+        "index"
+      ],
+      "orphan": false
+    },
+    "theme-switch": {
+      "tier": "molecules",
+      "files": 4,
+      "elements": [],
+      "contains": [
+        "icon-button"
+      ],
+      "used_in": [
+        "app:../portfolio/src/app/(v2)/kit-check/page.tsx",
+        "app:../portfolio/src/app/(v2)/v2/page.tsx",
+        "index",
+        "living-light"
+      ],
+      "orphan": false
+    },
+    "track-bar": {
+      "tier": "molecules",
+      "files": 2,
+      "elements": [],
+      "contains": [],
+      "used_in": [
+        "app:../portfolio/src/components/sections/medkit/component-docs.tsx",
+        "app:../portfolio/src/components/sections/predictor/DashboardTab.tsx",
+        "app:../portfolio/src/components/sections/predictor/ThesisModal.tsx",
+        "index"
+      ],
+      "orphan": false
+    },
+    "treemap": {
+      "tier": "organisms",
+      "files": 2,
+      "elements": [],
+      "contains": [
+        "chart-frame"
+      ],
+      "used_in": [
+        "index"
+      ],
+      "orphan": false
+    },
+    "typewriter": {
+      "tier": "atoms",
+      "files": 2,
+      "elements": [],
+      "contains": [
+        "count-up"
+      ],
+      "used_in": [
+        "index"
+      ],
+      "orphan": false
+    },
+    "waterfall-chart": {
+      "tier": "organisms",
+      "files": 2,
+      "elements": [],
+      "contains": [
+        "chart-frame"
+      ],
+      "used_in": [
+        "index"
+      ],
+      "orphan": false
+    }
+  }
+}
